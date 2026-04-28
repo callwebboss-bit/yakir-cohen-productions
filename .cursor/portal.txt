@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <!-- 🔒 SEO PROTECTION - קריטי! -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex">
+  <meta name="description" content="פורטל VIP אישי - יקיר כהן הפקות">
+  
+  <!-- 📱 PWA Support -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#D42B2B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <title>הסשן שלך | יקיר כהן הפקות</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ══ CSS VARIABLES - Cloudflare Style ══ */
+    :root {
+      --color-white: #FAFAF8;
+      --color-black: #1A1A1A;
+      --color-red: #D42B2B;
+      --color-red-hover: #B82525;
+      --color-gray: #6B6B6B;
+      --color-light-gray: #E5E5E5;
+      --color-bg-card: #FFFFFF;
+      
+      --font-tech: 'Heebo', sans-serif;
+      --font-luxury: 'Frank Ruhl Libre', serif;
+      
+      --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+      --glow-red: 0 0 20px rgba(212,43,43,0.25);
+      --glow-red-strong: 0 0 30px rgba(212,43,43,0.4);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-full: 999px;
+      
+      --transition: all 0.3s ease;
+      --transition-fast: all 0.15s ease;
+      
+      --spacing-xs: 8px;
+      --spacing-sm: 12px;
+      --spacing-md: 20px;
+      --spacing-lg: 32px;
+      --spacing-xl: 48px;
+    }
+
+    /* ══ BASE RESET ══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-tech);
+      background: var(--color-white);
+      color: var(--color-black);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+    input, textarea { font: inherit; outline: none; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ══ UTILITIES ══ */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .text-center { text-align: center; }
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-sm { gap: var(--spacing-sm); }
+    .gap-md { gap: var(--spacing-md); }
+    .gap-lg { gap: var(--spacing-lg); }
+    .hidden { display: none !important; }
+    .fade-in { animation: fadeIn 0.3s ease forwards; }
+    .slide-up { animation: slideUp 0.3s ease forwards; }
+    
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+
+    /* ══ LAYOUT ══ */
+    .container { max-width: 480px; margin: 0 auto; padding: var(--spacing-md); min-height: 100vh; display: flex; flex-direction: column; }
+    
+    /* ══ TOPBAR ══ */
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(250,250,248,0.95); backdrop-filter: blur(10px);
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-bottom: 1px solid var(--color-light-gray);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar-logo { font-family: var(--font-luxury); font-weight: 700; font-size: 1.1rem; color: var(--color-black); }
+    .topbar-logo span { color: var(--color-red); }
+    .topbar-user { display: flex; align-items: center; gap: var(--spacing-xs); font-size: 0.9rem; }
+    .topbar-user-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--color-red); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; }
+
+    /* ══ HERO ══ */
+    .hero {
+      text-align: center; padding: var(--spacing-xl) var(--spacing-md);
+      background: linear-gradient(135deg, var(--color-white) 0%, #FFF9F9 100%);
+      border-radius: var(--radius-lg); margin-bottom: var(--spacing-lg);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; right: -50%;
+      width: 200px; height: 200px; background: var(--color-red);
+      border-radius: 50%; filter: blur(60px); opacity: 0.1;
+    }
+    .hero-title { font-family: var(--font-luxury); font-size: 1.8rem; font-weight: 700; margin-bottom: var(--spacing-sm); }
+    .hero-subtitle { color: var(--color-gray); font-size: 1rem; }
+
+    /* ══ LOGIN SCREEN ══ */
+    .login-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center; }
+    .login-title { font-family: var(--font-luxury); font-size: 1.5rem; margin-bottom: var(--spacing-lg); }
+    .login-input {
+      width: 100%; max-width: 320px; padding: var(--spacing-md);
+      border: 2px solid var(--color-light-gray); border-radius: var(--radius-md);
+      font-size: 1.1rem; text-align: center; transition: var(--transition);
+    }
+    .login-input:focus { border-color: var(--color-red); box-shadow: var(--glow-red); }
+    .login-btn {
+      margin-top: var(--spacing-md); padding: var(--spacing-md) var(--spacing-xl);
+      background: var(--color-red); color: white; border-radius: var(--radius-full);
+      font-weight: 700; font-size: 1rem; transition: var(--transition);
+    }
+    .login-btn:hover { background: var(--color-red-hover); box-shadow: var(--glow-red-strong); }
+    .login-btn:disabled { background: var(--color-light-gray); cursor: not-allowed; }
+
+    /* ══ WIZARD NAV ══ */
+    .wizard-nav { display: flex; justify-content: center; gap: var(--spacing-xs); padding: var(--spacing-md) 0; margin-bottom: var(--spacing-lg); }
+    .wizard-step {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--color-light-gray); transition: var(--transition);
+    }
+    .wizard-step.active { background: var(--color-red); transform: scale(1.3); }
+    .wizard-step.done { background: var(--color-red); opacity: 0.6; }
+
+    /* ══ STEP CONTAINER ══ */
+    .step { display: none; animation: slideUp 0.3s ease; }
+    .step.active { display: block; }
+
+    /* ══ RULES CARD ══ */
+    .rules-card {
+      background: var(--color-bg-card); border-radius: var(--radius-md);
+      padding: var(--spacing-lg); box-shadow: var(--shadow-soft);
+      margin-bottom: var(--spacing-md);
+    }
+    .rules-title { font-family: var(--font-luxury); font-size: 1.3rem; margin-bottom: var(--spacing-md); text-align: center; }
+    .rules-list { display: flex; flex-direction: column; gap: var(--spacing-sm); }
+    .rule-item { display: flex; gap: var(--spacing-sm); align-items: flex-start; }
+    .rule-icon { color: var(--color-red); font-size: 1.2rem; flex-shrink: 0; }
+    .rule-text { font-size: 0.95rem; color: var(--color-black); }
+    .agree-row {
+      display: flex; align-items: center; gap: var(--spacing-sm);
+      padding: var(--spacing-md); background: #FFF9F9;
+      border-radius: var(--radius-md); margin: var(--spacing-md) 0;
+      border: 2px solid transparent; transition: var(--transition);
+    }
+    .agree-row.on { border-color: var(--color-red); }
+    .agree-checkbox { width: 20px; height: 20px; accent-color: var(--color-red); }
+    .agree-label { font-size: 0.95rem; }
+
+    /* ══ UPSELL CARDS ══ */
+    .upsell-grid { display: grid; gap: var(--spacing-md); }
+    .upsell-card {
+      background: var(--color-bg-card); border-radius: var(--radius-md);
+      padding: var(--spacing-md); border: 2px solid var(--color-light-gray);
+      transition: var(--transition); position: relative;
+    }
+    .upsell-card:hover { border-color: var(--color-red); box-shadow: var(--shadow-hover); }
+    .upsell-card.selected { border-color: var(--color-red); background: #FFF9F9; }
+    .upsell-badge {
+      position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+      background: var(--color-red); color: white; padding: 2px 12px;
+      border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700;
+    }
+    .upsell-icon { font-size: 1.5rem; margin-bottom: var(--spacing-xs); }
+    .upsell-name { font-weight: 700; margin-bottom: var(--spacing-xs); }
+    .upsell-desc { font-size: 0.9rem; color: var(--color-gray); margin-bottom: var(--spacing-sm); }
+    .upsell-price { display: flex; align-items: center; gap: var(--spacing-xs); }
+    .upsell-price-main { font-weight: 700; color: var(--color-red); font-size: 1.1rem; }
+    .upsell-price-old { text-decoration: line-through; color: var(--color-gray); font-size: 0.9rem; }
+    .upsell-save { background: #E8F5E9; color: #2E7D32; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; }
+    .upsell-btn {
+      width: 100%; margin-top: var(--spacing-sm); padding: var(--spacing-sm);
+      border: 2px solid var(--color-light-gray); border-radius: var(--radius-md);
+      font-weight: 500; transition: var(--transition-fast);
+    }
+    .upsell-card.selected .upsell-btn {
+      background: var(--color-red); color: white; border-color: var(--color-red);
+    }
+
+    /* ══ CART SUMMARY ══ */
+    .cart-summary {
+      background: var(--color-bg-card); border-radius: var(--radius-md);
+      padding: var(--spacing-md); box-shadow: var(--shadow-soft);
+      margin: var(--spacing-lg) 0;
+    }
+    .cart-row { display: flex; justify-content: space-between; padding: var(--spacing-xs) 0; }
+    .cart-row.total { border-top: 2px solid var(--color-light-gray); margin-top: var(--spacing-sm); padding-top: var(--spacing-sm); font-weight: 700; font-size: 1.1rem; }
+    .cart-items { font-size: 0.9rem; color: var(--color-gray); }
+
+    /* ══ ACTION BUTTONS ══ */
+    .btn-primary {
+      width: 100%; padding: var(--spacing-md); background: var(--color-red);
+      color: white; border-radius: var(--radius-full); font-weight: 700;
+      font-size: 1rem; transition: var(--transition); margin-top: var(--spacing-md);
+    }
+    .btn-primary:hover { background: var(--color-red-hover); box-shadow: var(--glow-red-strong); }
+    .btn-primary:disabled { background: var(--color-light-gray); cursor: not-allowed; }
+    
+    .btn-secondary {
+      width: 100%; padding: var(--spacing-md); background: transparent;
+      color: var(--color-gray); border: 2px solid var(--color-light-gray);
+      border-radius: var(--radius-full); font-weight: 500; margin-top: var(--spacing-sm);
+      transition: var(--transition-fast);
+    }
+    .btn-secondary:hover { border-color: var(--color-black); color: var(--color-black); }
+
+    /* ══ DASHBOARD ══ */
+    .dashboard-card {
+      background: var(--color-bg-card); border-radius: var(--radius-md);
+      padding: var(--spacing-md); box-shadow: var(--shadow-soft);
+      margin-bottom: var(--spacing-md);
+    }
+    .dashboard-title { font-family: var(--font-luxury); font-size: 1.2rem; margin-bottom: var(--spacing-sm); }
+    .package-badge {
+      display: inline-block; padding: 4px 12px; background: var(--color-red);
+      color: white; border-radius: var(--radius-full); font-size: 0.85rem;
+      font-weight: 700; margin-bottom: var(--spacing-sm);
+    }
+    .includes-list { display: flex; flex-direction: column; gap: var(--spacing-xs); }
+    .include-item { display: flex; align-items: center; gap: var(--spacing-xs); font-size: 0.95rem; }
+    .include-item::before { content: '✓'; color: var(--color-red); font-weight: 700; }
+
+    /* ══ WIFI REVEAL ══ */
+    .wifi-card { text-align: center; }
+    .wifi-ssid { font-size: 1.3rem; font-weight: 700; margin-bottom: var(--spacing-sm); }
+    .wifi-pass {
+      font-family: monospace; font-size: 1.1rem; letter-spacing: 2px;
+      padding: var(--spacing-sm); background: #F5F5F5; border-radius: var(--radius-sm);
+      margin: var(--spacing-sm) 0; min-height: 24px;
+    }
+    .wifi-pass.hidden { color: transparent; text-shadow: 0 0 8px rgba(0,0,0,0.3); }
+    .wifi-btn {
+      padding: var(--spacing-sm) var(--spacing-lg); background: var(--color-black);
+      color: white; border-radius: var(--radius-full); font-weight: 500;
+      transition: var(--transition-fast);
+    }
+    .wifi-btn.ok { background: #2E7D32; }
+
+    /* ══ GAL ASSISTANT ══ */
+    .gal-btn {
+      position: fixed; bottom: var(--spacing-lg); left: var(--spacing-md);
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--color-red); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; box-shadow: var(--glow-red);
+      transition: var(--transition); z-index: 100;
+    }
+    .gal-btn:hover { transform: scale(1.1); box-shadow: var(--glow-red-strong); }
+    
+    .gal-panel {
+      position: fixed; bottom: 80px; left: var(--spacing-md); right: var(--spacing-md);
+      background: var(--color-bg-card); border-radius: var(--radius-lg);
+      padding: var(--spacing-md); box-shadow: var(--shadow-hover);
+      z-index: 99; display: none; animation: slideUp 0.3s ease;
+    }
+    .gal-panel.active { display: block; }
+    .gal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-md); }
+    .gal-title { font-weight: 700; }
+    .gal-close { font-size: 1.5rem; color: var(--color-gray); }
+    .gal-faq { display: flex; flex-direction: column; gap: var(--spacing-sm); }
+    .gal-question { font-weight: 500; cursor: pointer; padding: var(--spacing-xs) 0; }
+    .gal-answer { display: none; font-size: 0.9rem; color: var(--color-gray); padding: var(--spacing-xs) 0 var(--spacing-sm); }
+    .gal-question.active + .gal-answer { display: block; }
+
+    /* ══ VIRAL SHARE ══ */
+    .viral-card { text-align: center; }
+    .viral-input {
+      width: 100%; padding: var(--spacing-md); border: 2px solid var(--color-light-gray);
+      border-radius: var(--radius-md); font-size: 1rem; margin: var(--spacing-sm) 0;
+      text-align: center; transition: var(--transition);
+    }
+    .viral-input:focus { border-color: var(--color-red); }
+
+    /* ══ TOAST ══ */
+    .toast {
+      position: fixed; bottom: var(--spacing-lg); left: 50%; transform: translateX(-50%) translateY(100px);
+      background: var(--color-black); color: white; padding: var(--spacing-sm) var(--spacing-lg);
+      border-radius: var(--radius-full); font-size: 0.9rem; z-index: 200;
+      transition: transform 0.3s ease; box-shadow: var(--shadow-hover);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ══ ERROR SCREEN ══ */
+    .error-screen {
+      position: fixed; inset: 0; background: var(--color-white);
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: var(--spacing-lg); z-index: 300;
+    }
+    .error-screen.show { display: flex; }
+    .error-icon { font-size: 3rem; margin-bottom: var(--spacing-md); }
+    .error-title { font-family: var(--font-luxury); font-size: 1.4rem; margin-bottom: var(--spacing-sm); }
+    .error-msg { color: var(--color-gray); margin-bottom: var(--spacing-lg); }
+    .error-btn {
+      padding: var(--spacing-md) var(--spacing-xl); background: var(--color-red);
+      color: white; border-radius: var(--radius-full); font-weight: 700;
+    }
+
+    /* ══ DEMO NOTICE ══ */
+    .demo-notice {
+      background: #FFF3E0; border: 1px solid #FFB74D; border-radius: var(--radius-md);
+      padding: var(--spacing-md); margin-bottom: var(--spacing-md); font-size: 0.9rem;
+      display: none;
+    }
+    .demo-notice.show { display: block; }
+
+    /* ══ VOICE RECORD ══ */
+    .voice-record {
+      text-align: center; padding: var(--spacing-lg);
+      background: #F5F5F5; border-radius: var(--radius-md); margin: var(--spacing-md) 0;
+    }
+    .voice-btn {
+      width: 70px; height: 70px; border-radius: 50%;
+      background: var(--color-red); color: white; font-size: 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto var(--spacing-sm); transition: var(--transition);
+    }
+    .voice-btn.recording { animation: pulse 1s infinite; background: #B71C1C; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(212,43,43,0.7); } 70% { box-shadow: 0 0 0 15px rgba(212,43,43,0); } 100% { box-shadow: 0 0 0 0 rgba(212,43,43,0); } }
+    .voice-status { font-size: 0.9rem; color: var(--color-gray); }
+
+    /* ══ IMAGE UPLOAD ══ */
+    .image-upload { text-align: center; margin: var(--spacing-md) 0; }
+    .image-preview {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: var(--color-light-gray); margin: 0 auto var(--spacing-sm);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; border: 3px solid var(--color-red);
+    }
+    .image-preview img { width: 100%; height: 100%; object-fit: cover; }
+    .image-input { display: none; }
+    .image-label {
+      display: inline-block; padding: var(--spacing-sm) var(--spacing-lg);
+      background: var(--color-black); color: white; border-radius: var(--radius-full);
+      font-size: 0.9rem; cursor: pointer; transition: var(--transition-fast);
+    }
+    .image-label:hover { background: var(--color-red); }
+
+    /* ══ RESPONSIVE ══ */
+    @media (min-width: 481px) {
+      .container { max-width: 520px; padding: var(--spacing-lg); }
+      .hero-title { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ══ ERROR SCREEN ══ -->
+  <div id="errScreen" class="error-screen">
+    <div class="error-icon">⚠️</div>
+    <h1 class="error-title">אופס, משהו במיקס התערבב</h1>
+    <p class="error-msg">הלינק הזה כבר לא בתוקף או שלא הועתק במלואו.<br>אל דאגה, הודעה קטנה ליקיר ותקבלו לינק חדש.</p>
+    <a id="errWa" href="#" class="error-btn">💬 WhatsApp ליקיר</a>
+  </div>
+
+  <!-- ══ MAIN APP ══ -->
+  <div id="portalMain" class="container">
+    
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-logo">יקיר כהן <span>הפקות</span></div>
+      <div class="topbar-user">
+        <div id="tbAvatar" class="topbar-user-avatar">י</div>
+        <span id="tbName">[שם]</span>
+      </div>
+    </header>
+
+    <!-- Demo Notice -->
+    <div id="demoNotice" class="demo-notice">
+      🔧 <strong>מצב הדגמה</strong> - הוסף פרמטרים ל-URL לשליחה ללקוח.<br>
+      <a href="#" onclick="showURLGuide(); return false;">[הספר לי איך ←]</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1 id="heroName" class="hero-title">ברוך הבא 👋</h1>
+      <p id="heroSub" class="hero-subtitle">הסשן שלך מתחיל כאן</p>
+    </section>
+
+    <!-- Wizard Nav -->
+    <nav id="wizardNav" class="wizard-nav hidden">
+      <div id="ws0" class="wizard-step active"></div>
+      <div id="ws1" class="wizard-step"></div>
+      <div id="ws2" class="wizard-step"></div>
+    </nav>
+
+    <!-- ══ STEP 1: RULES ══ -->
+    <section id="step-1" class="step active">
+      <div class="rules-card">
+        <h2 class="rules-title">🎙 חוקי האולפן</h2>
+        <div class="rules-list">
+          <div class="rule-item"><span class="rule-icon">🎵</span><span class="rule-text"><strong>תרגול מוקדם:</strong> קול מוכן הוא קול מנצח. הגעה עם חומר מתורגל תאפשר לנו להתמקד בביצוע וברגש.</span></div>
+          <div class="rule-item"><span class="rule-icon">💧</span><span class="rule-text"><strong>הידרציה:</strong> מיתרי הקול זקוקים ללחות. מומלץ לשתות מים כשעה לפני ההקלטה. קפה – במידה, אלכוהול – לא מומלץ.</span></div>
+          <div class="rule-item"><span class="rule-icon">😴</span><span class="rule-text"><strong>מנוחה:</strong> מיתרי הקול הם שריר. שנת לילה טובה היא ה"דלק" הכרחי לסשן מוצלח.</span></div>
+          <div class="rule-item"><span class="rule-icon">👥</span><span class="rule-text"><strong>מרחב יצירה:</strong> ניתן להביא עד 2 מלווים, בתנאי שהם מהווים קהל תומך ושקט.</span></div>
+          <div class="rule-item"><span class="rule-icon">🚫</span><span class="rule-text"><strong>תזונה:</strong> אין להכניס מזון לחדר ההקלטה. שתייה (מים) בלבד. הפסקות אוכל בחלל האירוח.</span></div>
+          <div class="rule-item"><span class="rule-icon">📱</span><span class="rule-text"><strong>מצב טיסה:</strong> יש להעביר טלפונים למצב שקט מוחלט (ללא רטט) למניעת רעשים אלקטרומגנטיים.</span></div>
+          <div class="rule-item"><span class="rule-icon">⏰</span><span class="rule-text"><strong>ביטולים:</strong> ביטול/דחייה יתבצעו לפחות 24 שעות מראש. אי הגעה מאוחרת תגרור חיוב של 50%.</span></div>
+          <div class="rule-item"><span class="rule-icon">🎛️</span><span class="rule-text"><strong>אותנטיות:</strong> אנחנו משתמשים בטכנולוגיה מתקדמת, אך ככל שהביצוע המקורי טוב יותר – התוצאה תישמע טבעית יותר.</span></div>
+        </div>
+      </div>
+      
+      <div id="agreeRow" class="agree-row" onclick="toggleAgree()">
+        <input type="checkbox" id="agreeCheck" class="agree-checkbox" onclick="event.stopPropagation()">
+        <label for="agreeCheck" class="agree-label">✓ קראתי, הבנתי ואני מסכים לחוקי האולפן</label>
+      </div>
+      
+      <button id="step1Btn" class="btn-primary" onclick="goStep(2)" disabled>אני מוכן, בואו נתחיל 🎵 ←</button>
+    </section>
+
+    <!-- ══ STEP 2: ONBOARDING + UPSELLS ══ -->
+    <section id="step-2" class="step">
+      <h2 id="upsellTitle" class="text-center" style="font-family:var(--font-luxury); font-size:1.4rem; margin-bottom:var(--spacing-sm);">🚀 שדרוגים ייחודיים</h2>
+      <p id="upsellLead" class="text-center" style="color:var(--color-gray); margin-bottom:var(--spacing-lg);">בואו ניקח את זה לקצה</p>
+      
+      <!-- Image Upload -->
+      <div class="image-upload">
+        <div class="image-preview" id="imgPreview">📷</div>
+        <input type="file" id="imgInput" class="image-input" accept="image/*" onchange="handleImageUpload(this)">
+        <label for="imgInput" class="image-label">📤 העלה תמונת חוגג/ת</label>
+        <p style="font-size:0.8rem; color:var(--color-gray); margin-top:var(--spacing-xs);">תשמש כרקע אישי בפורטל</p>
+      </div>
+      
+      <!-- Voice Brief -->
+      <div class="voice-record">
+        <button id="voiceBtn" class="voice-btn" onclick="toggleRecording()">🎤</button>
+        <p id="voiceStatus" class="voice-status">לחץ להקלטת דגשים אישיים (אופציונלי)</p>
+      </div>
+      
+      <!-- Upsells -->
+      <div id="upsellCards" class="upsell-grid"></div>
+      
+      <!-- Cart Summary -->
+      <div class="cart-summary">
+        <div class="cart-row"><span>חבילה בסיסית (<span id="csBasePkg">Silver</span>)</span><span id="csBase">₪1,480</span></div>
+        <div id="csItems" class="cart-items">לא נבחרו שדרוגים עדיין</div>
+        <div class="cart-row total"><span>סה"כ משוער</span><span id="csTotal">₪1,480</span></div>
+      </div>
+      
+      <button id="step2Btn" class="btn-primary" onclick="submitStep2()">
+        <span id="step2BtnTxt">אני מוכן - המשך לתיאום 🗓</span>
+      </button>
+      <button class="btn-secondary" onclick="skipUpsells()">דלג על השדרוגים והמשך ←</button>
+    </section>
+
+    <!-- ══ STEP 3: DASHBOARD ══ -->
+    <section id="step-3" class="step">
+      <div style="text-align:center; padding:var(--spacing-lg); background:linear-gradient(135deg,#E8F5E9,#C8E6C9); border-radius:var(--radius-lg); margin-bottom:var(--spacing-lg);">
+        <div style="font-size:2.5rem; margin-bottom:var(--spacing-sm);">🎉</div>
+        <h2 style="font-family:var(--font-luxury); font-size:1.4rem; margin-bottom:var(--spacing-xs);">זה קורה!</h2>
+        <p style="color:var(--color-gray);">נתראה באולפן ✨</p>
+      </div>
+      
+      <!-- Package Card -->
+      <div class="dashboard-card">
+        <span id="pkgBadge" class="package-badge">Silver</span>
+        <h3 class="dashboard-title">מה מחכה לך בסשן:</h3>
+        <ul id="includesList" class="includes-list">
+          <!-- Populated by JS -->
+        </ul>
+      </div>
+      
+      <!-- WiFi -->
+      <div class="dashboard-card wifi-card">
+        <h3 class="dashboard-title">📶 WiFi באולפן</h3>
+        <div id="wifiSSID" class="wifi-ssid">StudioNet</div>
+        <div id="wifiPass" class="wifi-pass hidden">••••••••</div>
+        <button id="wifiRevBtn" class="wifi-btn" onclick="revPass()">הצג סיסמה</button>
+      </div>
+      
+      <!-- Upsells Reminder -->
+      <div class="dashboard-card">
+        <h3 class="dashboard-title">🎁 עדיין אפשר לשדרג</h3>
+        <p style="font-size:0.9rem; color:var(--color-gray); margin-bottom:var(--spacing-sm);">השדרוגים זמינים עד תחילת הסשן</p>
+        <button class="btn-secondary" onclick="goStep(2)">צפה בשדרוגים ←</button>
+      </div>
+      
+      <!-- Viral Share -->
+      <div class="dashboard-card viral-card">
+        <h3 class="dashboard-title">💝 הזמן חבר</h3>
+        <p style="font-size:0.9rem; color:var(--color-gray); margin-bottom:var(--spacing-sm);">פנק חבר בקליפ מתנה מהסשן שלך</p>
+        <input type="tel" id="friendPhone" class="viral-input" placeholder="הזן מספר טלפון (05...)">
+        <button class="btn-primary" style="background:var(--color-black); margin-top:var(--spacing-sm);" onclick="sendToFriend()">📲 שלח מתנה ב-WhatsApp</button>
+      </div>
+      
+      <!-- Calendar -->
+      <div class="dashboard-card text-center">
+        <h3 class="dashboard-title">📅 שריין את התאריך</h3>
+        <p style="font-size:0.9rem; color:var(--color-gray); margin-bottom:var(--spacing-sm);">הדרך המהירה להבטיח את המקום שלך</p>
+        <a id="calBtn" href="#" class="btn-primary" style="background:var(--color-black);">שריין תאריך ביומן ←</a>
+      </div>
+      
+      <!-- Help -->
+      <div class="text-center" style="margin-top:var(--spacing-lg);">
+        <a id="waBtnFinal" href="#" class="btn-secondary">💬 שאלה ליקיר ב-WhatsApp</a>
+      </div>
+    </section>
+
+    <!-- Gal Assistant -->
+    <button class="gal-btn" onclick="toggleGal()" aria-label="עזרה">👩‍💼</button>
+    <div id="galPanel" class="gal-panel">
+      <div class="gal-header">
+        <span class="gal-title">👩‍💼 גל - האסיסטנטית שלך</span>
+        <button class="gal-close" onclick="toggleGal()">×</button>
+      </div>
+      <div class="gal-faq">
+        <div class="gal-question" onclick="toggleFaq(this)">📍 איך מגיעים לאולפן?</div>
+        <div class="gal-answer">עמק איילון 34, מודיעין. חניה חופשית צמודה. <a href="https://maps.app.goo.gl/zRR5mi6Nmi6g3wg57" target="_blank" style="color:var(--color-red);">פתח Waze →</a></div>
+        
+        <div class="gal-question" onclick="toggleFaq(this)">⏰ מה שעות הפעילות?</div>
+        <div class="gal-answer">א'-ה': 10:00-22:00, ו': 10:00-14:00. שבת: סגור.</div>
+        
+        <div class="gal-question" onclick="toggleFaq(this)">💳 איך משלמים?</div>
+        <div class="gal-answer">כל התשלומים דרך חשבונית ירוקה מאובטחת. ניתן גם במזומן באולפן.</div>
+        
+        <div class="gal-question" onclick="toggleFaq(this)">🎁 מה קורה אם אני מאחר?</div>
+        <div class="gal-answer">נשמח שתעדכן ב-WhatsApp. נעשה כמיטב יכולתנו להתאים את הזמן, אך זמן הסשן עשוי להתקצר.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- ══ CONFIG & DATA ══ -->
+  <script>
+    const CFG = {
+      WA: '972587555456',
+      W3F_KEY: '636e046c-45b4-4011-a947-1ffe575b5bb1', // 🔑 החלף במפתח שלך
+      W3F_EMAIL: 'callwebboss@gmail.com',
+      SHEETS_API: 'https://sheets.googleapis.com/v4/spreadsheets/YOUR_SHEET_ID/values/Clients!A:L',
+      SHEETS_KEY: 'AIzaSyD70zHgKTvzTYRhgW0Xg5rQF5-7ema3qwwY', // 🔑 החלף במפתח Google API שלך
+      CLAUDE_API: 'https://api.anthropic.com/v1/messages', // 🔑 החלף במפתח Claude שלך
+      KOA: 'https://koalendar.com/e/Studio',
+      DRIVE_FOLDER: 'YOUR_DRIVE_FOLDER_ID'
+    };
+
+    const CM = {
+      song: {
+        label: 'הקלטת שיר',
+        tag: '🎵 זמרים',
+        upsellTitle: '🚀 שדרוגים להקלטת שיר',
+        upsellLead: 'הקלטה טובה היא רק הבסיס. הנה דרכים להפוך את הסשן למוצר מוגמר ומקצועי.',
+        upsells: [
+          { id:'cloud', n:'☁️ אחסון לכל החיים', d:'נשמור את קבצי המאסטר שלך בשרתים פרטיים לנצח. גישה מכל מקום.', p:49, o:199, save:'75% OFF', featured:true, ico:'☁️' },
+          { id:'bts', n:'🎬 תיעוד 4K', d:'צילום מקצועי של הסשן + עריכת Reels מוכן לסושיאל.', p:499, o:850, save:'₪351 חסכון', featured:false, ico:'🎬' },
+          { id:'hour', n:'⏰ שעה אקסטרה', d:'ליצור בראש שקט, בלי לוחץ של זמן.', p:250, o:350, save:'₪100 חסכון', featured:false, ico:'⏰' },
+          { id:'drinks', n:'🥤 בר פרימיום', d:'קולה/זירו/סודה ללא הגבלה לכל המשתתפים.', p:89, o:150, save:'₪61 חסכון', featured:false, ico:'🥤' }
+        ],
+        includes: ['הקלטה מקצועית באולפן אקוסטי', 'מיקס ומסטרינג ברמה הגבוהה ביותר', 'מסירת קבצים מוכנים (WAV+MP3)', 'ליווי אישי של יקיר לכל אורך הדרך']
+      },
+      podcast: {
+        label: 'פודקאסט',
+        tag: '🎙️ קריינות',
+        upsellTitle: '🚀 שדרוגים לפודקאסט',
+        upsellLead: 'תוכן איכותי חייב להישמע מעולה. הנה דרכים לשדרג את הפרק שלך.',
+        upsells: [
+          { id:'cloud', n:'☁️ אחסון פרקים', d:'אחסון מאובטח לכל הפרקים שלך עם גישה נוחה.', p:49, o:199, save:'75% OFF', featured:true, ico:'☁️' },
+          { id:'intro', n:'🎵 ג׳ינגל מותאם', d:'ג׳ינגל מקורי לפודקאסט שלך שייזכר.', p:299, o:499, save:'₪200 חסכון', featured:false, ico:'🎵' },
+          { id:'edit', n:'✂️ עריכה מתקדמת', d:'הסרת רעשים, איזון קולות, הוספת אפקטים.', p:199, o:350, save:'₪151 חסכון', featured:false, ico:'✂️' },
+          { id:'thumb', n:'🖼️ תמונת פרק', d:'עיצוב תמונה מקצועית לפרק לסושיאל.', p:149, o:250, save:'₪101 חסכון', featured:false, ico:'🖼️' }
+        ],
+        includes: ['הקלטה באולפן שקט עם ציוד מקצועי', 'עריכה בסיסית: הסרת רעשים ופאוזות', 'מסטרינג לאופטימיזציה לפלטפורמות', 'הדרכה להעלאה לספוטיפיי/אפל']
+      },
+      // Add more types as needed
+    };
+
+    // ══ URL PARAMS ══
+    const gp = k => { const v = new URLSearchParams(location.search).get(k); return v ? decodeURIComponent(v) : null; };
+    const P = {
+      name: gp('c')?.replace(/_/g, ' ') || null,
+      type: gp('type') || 'song',
+      price: parseInt(gp('p') || '1480', 10),
+      pkg: gp('pkg') || 'Silver',
+      payLink: gp('pay') || '',
+      calLink: gp('cal') || CFG.KOA,
+      wifi: gp('wifi') ? gp('wifi').split('|') : ['StudioNet', 'Studio2026!'],
+      phone: gp('phone') || '' // 🔑 קריטי: מספר טלפון לאימות
+    };
+    const CT = CM[P.type] || CM.song;
+
+    // ══ STATE ══
+    const STATE = {
+      agreed: false,
+      step: 1,
+      cart: {},
+      submitted: false,
+      wifiVis: false,
+      recording: false,
+      mediaRecorder: null,
+      audioChunks: [],
+      uploadedImg: null
+    };
+
+    // ══ INIT ══
+    function init() {
+      // Demo mode check
+      if (!gp('c') && !gp('type') && !gp('pay')) {
+        document.getElementById('demoNotice').classList.add('show');
+        P.name = P.name || 'לקוח להדגמה';
+      }
+      
+      // Auth check - if no phone, show error
+      if (!P.phone && !gp('c')) {
+        document.getElementById('errScreen').classList.add('show');
+        document.getElementById('portalMain').style.display = 'none';
+        document.getElementById('errWa').href = `https://wa.me/${CFG.WA}`;
+        return;
+      }
+
+      const ps = '₪' + P.price.toLocaleString('he-IL');
+
+      // Populate UI
+      document.getElementById('tbName').textContent = P.name?.split(' ')[0] || 'אורח';
+      document.getElementById('tbAvatar').textContent = (P.name?.[0] || 'י');
+      document.getElementById('heroName').textContent = `ברוך הבא, ${P.name?.split(' ')[0] || 'יקיר'} 👋`;
+      document.getElementById('heroSub').textContent = CT.tag;
+      
+      document.getElementById('upsellTitle').textContent = CT.upsellTitle;
+      document.getElementById('upsellLead').innerHTML = CT.upsellLead;
+      document.getElementById('csBase').textContent = ps;
+      document.getElementById('csBasePkg').textContent = P.pkg;
+      document.getElementById('pkgBadge').textContent = P.pkg;
+      
+      document.getElementById('includesList').innerHTML = CT.includes.map(i => `<li class="include-item">${i}</li>`).join('');
+      document.getElementById('wifiSSID').textContent = P.wifi[0] || 'StudioNet';
+      document.getElementById('calBtn').href = P.calLink;
+      
+      const waFinal = `היי יקיר! 👋 אני ${P.name}. עברתי על הפורטל, ויש לי שאלה קטנה...`;
+      document.getElementById('waBtnFinal').href = `https://wa.me/${CFG.WA}?text=${encodeURIComponent(waFinal)}`;
+
+      buildUpsells();
+      updateCart();
+      
+      // Show wizard nav after login (simulated)
+      if (P.phone || gp('c')) {
+        document.getElementById('wizardNav').classList.remove('hidden');
+      }
+    }
+
+    // ══ WIZARD NAVIGATION ══
+    function goStep(n) {
+      if (n === 2 && !STATE.agreed) {
+        toast('יש לאשר את חוקי האולפן כדי להמשיך');
+        const btn = document.getElementById('step1Btn');
+        btn.style.animation = 'none';
+        btn.offsetHeight; // reflow
+        btn.style.animation = 'shake 0.4s ease';
+        return;
+      }
+
+      [1,2,3].forEach(i => {
+        document.getElementById('step-'+i).classList.toggle('active', i === n);
+      });
+      [0,1,2].forEach(i => {
+        const s = document.getElementById('ws'+i);
+        s.classList.remove('active','done');
+        if (i+1 < n) s.classList.add('done');
+        if (i+1 === n) s.classList.add('active');
+      });
+      STATE.step = n;
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    // ══ AGREEMENT ══
+    function toggleAgree() {
+      STATE.agreed = !STATE.agreed;
+      document.getElementById('agreeRow').classList.toggle('on', STATE.agreed);
+      document.getElementById('step1Btn').disabled = !STATE.agreed;
+    }
+
+    // ══ UPSELLS ══
+    function buildUpsells() {
+      const wrap = document.getElementById('upsellCards');
+      wrap.innerHTML = CT.upsells.map(u => `
+        <div id="up_${u.id}" class="upsell-card" onclick="toggleCart('${u.id}', ${u.p}, '${u.n}')">
+          ${u.featured ? '<span class="upsell-badge">⭐ המלצת האולפן</span>' : ''}
+          <div class="upsell-icon">${u.ico}</div>
+          <div class="upsell-name">${u.n}</div>
+          <div class="upsell-desc">${u.d}</div>
+          <div class="upsell-price">
+            <span class="upsell-price-main">₪${u.p.toLocaleString('he-IL')}</span>
+            ${u.o ? `<span class="upsell-price-old">₪${u.o.toLocaleString('he-IL')}</span>` : ''}
+            ${u.save ? `<span class="upsell-save">${u.save}</span>` : ''}
+          </div>
+          <button id="btn_${u.id}" class="upsell-btn">הוסף +</button>
+        </div>
+      `).join('');
+    }
+
+    function toggleCart(id, price, name) {
+      if (STATE.cart[id]) {
+        delete STATE.cart[id];
+      } else {
+        STATE.cart[id] = { price, name };
+      }
+      const card = document.getElementById('up_'+id);
+      const btn = document.getElementById('btn_'+id);
+      const sel = !!STATE.cart[id];
+      card.classList.toggle('selected', sel);
+      btn.textContent = sel ? '✓ הוסר' : 'הוסף +';
+      updateCart();
+    }
+
+    function updateCart() {
+      const items = Object.values(STATE.cart);
+      const extra = items.reduce((s, it) => s + it.price, 0);
+      const total = P.price + extra;
+
+      const csItems = document.getElementById('csItems');
+      csItems.innerHTML = items.length === 0 
+        ? 'לא נבחרו שדרוגים עדיין' 
+        : items.map(it => `<div>• ${it.name} ₪${it.price.toLocaleString('he-IL')}</div>`).join('');
+      
+      document.getElementById('csTotal').textContent = '₪' + total.toLocaleString('he-IL');
+    }
+
+    function skipUpsells() {
+      STATE.cart = {};
+      updateCart();
+      submitStep2();
+    }
+
+    // ══ SUBMIT STEP 2 ══
+    async function submitStep2() {
+      if (STATE.submitted) { goStep(3); return; }
+      
+      const btn = document.getElementById('step2Btn');
+      btn.disabled = true;
+      document.getElementById('step2BtnTxt').textContent = 'שולח...';
+
+      const items = Object.values(STATE.cart);
+      const extra = items.reduce((s, it) => s + it.price, 0);
+      const total = P.price + extra;
+      const upsellStr = items.length ? items.map(it => `${it.name} (₪${it.price})`).join(' | ') : 'ללא שדרוגים';
+
+      const payload = {
+        access_key: CFG.W3F_KEY,
+        subject: `🎙 ${P.name} השלים פורטל - ${CT.label}`,
+        from_name: P.name || 'לקוח',
+        to_email: CFG.W3F_EMAIL,
+        'שם': P.name || '-',
+        'שירות': CT.label,
+        'חבילה': P.pkg || '-',
+        'מחיר בסיסי': '₪' + P.price,
+        'שדרוגים שנבחרו': upsellStr,
+        'סה"כ משוער': '₪' + total,
+        'טלפון': P.phone || '-',
+        'תמונה': STATE.uploadedImg || '-',
+        'הערות קוליות': 'יישלח בנפרד דרך Claude API',
+        botcheck: ''
+      };
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (!data.success) throw new Error('fail');
+        STATE.submitted = true;
+        toast('✅ יקיר קיבל התראה!');
+        setTimeout(() => goStep(3), 900);
+      } catch (err) {
+        // Fallback to WhatsApp
+        const msg = `היי יקיר! 🎙\n${P.name} השלים פורטל\n${CT.label} · ${P.pkg}\nשדרוגים: ${upsellStr}\nסה"כ: ₪${total}`;
+        window.open(`https://wa.me/${CFG.WA}?text=${encodeURIComponent(msg)}`, '_blank');
+        toast('פותח WhatsApp כגיבוי...');
+        STATE.submitted = true;
+        setTimeout(() => goStep(3), 1400);
+      } finally {
+        btn.disabled = false;
+        document.getElementById('step2BtnTxt').textContent = 'אני מוכן - המשך לתיאום 🗓';
+      }
+    }
+
+    // ══ WIFI ══
+    function revPass() {
+      const passEl = document.getElementById('wifiPass');
+      const btn = document.getElementById('wifiRevBtn');
+      if (!STATE.wifiVis) {
+        passEl.textContent = P.wifi[1] || '';
+        passEl.classList.remove('hidden');
+        btn.textContent = 'העתק';
+        STATE.wifiVis = true;
+        return;
+      }
+      navigator.clipboard.writeText(P.wifi[1] || '').then(() => {
+        btn.textContent = '✓';
+        btn.classList.add('ok');
+        toast('🔐 סיסמת WiFi הועתקה!');
+        setTimeout(() => { btn.textContent = 'העתק'; btn.classList.remove('ok'); }, 2000);
+      });
+    }
+
+    // ══ IMAGE UPLOAD ══
+    function handleImageUpload(input) {
+      const file = input.files[0];
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = e => {
+        document.getElementById('imgPreview').innerHTML = `<img src="${e.target.result}" alt="תמונה">`;
+        // 🔑 כאן תוסיף העלאה ל-Drive API
+        // STATE.uploadedImg = driveUrl;
+        toast('📷 תמונה נטענה בהצלחה!');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // ══ VOICE RECORDING ══
+    async function toggleRecording() {
+      const btn = document.getElementById('voiceBtn');
+      const status = document.getElementById('voiceStatus');
+      
+      if (!STATE.recording) {
+        // Start recording
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          STATE.mediaRecorder = new MediaRecorder(stream);
+          STATE.audioChunks = [];
+          
+          STATE.mediaRecorder.ondataavailable = e => STATE.audioChunks.push(e.data);
+          STATE.mediaRecorder.onstop = async () => {
+            const audioBlob = new Blob(STATE.audioChunks, { type: 'audio/wav' });
+            // 🔑 כאן תשלח ל-Claude API לתמלול
+            // const transcript = await sendToClaude(audioBlob);
+            // saveToSheets({ voice_notes: transcript });
+            toast('🎤 ההקלטה נשמרה!');
+            stream.getTracks().forEach(t => t.stop());
+          };
+          
+          STATE.mediaRecorder.start();
+          STATE.recording = true;
+          btn.classList.add('recording');
+          btn.textContent = '⏹';
+          status.textContent = 'מקליט... לחץ שוב לעצירה';
+          
+        } catch (err) {
+          toast('❌ לא ניתן לגשת למיקרופון');
+          console.error(err);
+        }
+      } else {
+        // Stop recording
+        STATE.mediaRecorder.stop();
+        STATE.recording = false;
+        btn.classList.remove('recording');
+        btn.textContent = '🎤';
+        status.textContent = '✅ ההקלטה הושלמה';
+      }
+    }
+
+    // ══ VIRAL SHARE ══
+    function sendToFriend() {
+      const phone = document.getElementById('friendPhone').value.replace(/\D/g, '');
+      if (!phone || phone.length < 10) {
+        toast('📱 הזן מספר טלפון תקין');
+        return;
+      }
+      const msg = `היי! ${P.name} סיים הרגע סשן VIP אצל יקיר כהן ושלח לך מתנה: שובר לקליפ במתנה בסשן הבא שלך! לצפייה: ${location.origin}/view.html?code=NOY-2026-XXXX`;
+      window.open(`https://wa.me/972${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+      toast('🎁 נשלח ב-WhatsApp!');
+      
+      // 🔑 כאן תעדכן Sheets עם Friend_Phone
+      // updateSheets({ friend_phone: phone });
+    }
+
+    // ══ GAL ASSISTANT ══
+    function toggleGal() {
+      document.getElementById('galPanel').classList.toggle('active');
+    }
+    
+    function toggleFaq(el) {
+      el.classList.toggle('active');
+    }
+
+    // ══ UTILS ══
+    let _tt;
+    function toast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(_tt);
+      _tt = setTimeout(() => el.classList.remove('show'), 2800);
+    }
+
+    function showURLGuide() {
+      const ex = `${location.origin}${location.pathname}?c=שם_הלקוח&type=song&p=1480&pkg=Silver&pay=https://invoiceguru.co.il/pay/XXX&phone=0501234567&wifi=StudioNet|סיסמה`;
+      navigator.clipboard?.writeText(ex);
+      alert('🔗 URL לדוגמה:\n\n' + ex + '\n\nפרמטרים:\n• c = שם (רווחים כ-_)\n• type = song|podcast|voiceover|kids\n• p = מחיר בסיסי\n• pkg = Silver|Gold|Platinum\n• pay = לינק תשלום\n• phone = מספר טלפון (חובה!)\n• wifi = SSID|סיסמה');
+    }
+
+    // ══ GOOGLE SHEETS INTEGRATION (js/sheets.js inline for now) ══
+    async function fetchClientData(phone) {
+      try {
+        const url = `${CFG.SHEETS_API}?key=${CFG.SHEETS_KEY}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        const rows = data.values || [];
+        // Find client by phone (column A)
+        return rows.find(row => row[0] === phone) || null;
+      } catch (err) {
+        console.error('Sheets error:', err);
+        return null;
+      }
+    }
+
+    async function updateClientData(phone, updates) {
+      // 🔑 זה דורש Service Account או Apps Script Web App
+      // לדוגמה: POST ל-https://script.google.com/macros/s/YOUR_SCRIPT/exec
+      console.log('Updating Sheets for', phone, updates);
+      // Implement based on your Make.com/Apps Script setup
+    }
+
+    // ══ CLAUDE API INTEGRATION ══
+    async function sendToClaude(audioBlob) {
+      // 🔑 דורש API Key ו-Proxy צד-שרת לאבטחה
+      const formData = new FormData();
+      formData.append('file', audioBlob, 'voice.wav');
+      // Implement based on your backend setup
+      console.log('Sending to Claude:', audioBlob);
+      return 'תמלול לדוגמה - יישלח דרך ה-Proxy שלך';
+    }
+
+    // ══ INIT ══
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

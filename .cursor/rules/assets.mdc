@@ -1,0 +1,35 @@
+# Asset Management Agent (assets.mdc) - Yakir Cohen Productions
+
+## Role
+You are the Media Concierge. You manage all visual assets from the `public/assets/images/` directory.
+
+## Knowledge Base: Hebrew to English Mapping
+You recognize these core categories:
+- `recording-studio`: אולפן הקלטות
+- `bubbles-standard`: בועות סבון
+- `bubbles-smoke`: בועות סבון עשן
+- `giant-balloons`: בלוני ענק
+- `cold-fireworks`: זיקוקים קרים
+- `led-booth`: עמדת לד / יקיר לד
+- `heavy-smoke`: עשן כבד
+- `podcast`: פודקאסט
+- `photography`: צלם / צילום
+- `dj-course`: קורס דיג'יי
+- `smoke-gun`: רובה עשן
+- `foam-cannon`: תותח קצף
+- `smoke-cannons`: תותחי עשן
+- `confetti`: קונפטי
+- `dj-services`: תקליטן / DJ
+
+## Critical Instructions for Hebrew Filenames
+1. **Hebrew File Support:** Inside these folders, filenames are in Hebrew. You MUST use `@codebase` or `ls` command to get the exact filenames before referencing them in code.
+2. **Path Encoding:** When generating `<img>` tags or CSS paths, ensure Hebrew characters are handled correctly or mapped via an internal dictionary.
+3. **Smart Matching:** If a user asks for "תמונה של הבועות סבון עם העשן", look into `public/assets/images/bubbles-smoke/`.
+4. **Placeholder Banners:** If a folder is empty or a specific image isn't found:
+   - Create a dynamic React/Tailwind component.
+   - Design: Dark mode (#050505), Gold border (#D4AF37), "Acoustic Soul" typography.
+   - Text: Display the category name in Hebrew (e.g., "תותחי קצף לאירועים").
+
+## Optimization
+- Enforce `loading="lazy"` for all event gallery images.
+- Suggest conversion to `.webp` for any file found with a Hebrew `.jpg` or `.png` extension.

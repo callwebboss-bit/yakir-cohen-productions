@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>יקיר כהן הפקות | בניית חבילת הקלטה</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1a3a5f;
+            --accent: #c5a059;
+            --accent-glow: rgba(197, 160, 89, 0.3);
+            --bg: #F4F4F6;
+            --surface: #ffffff;
+            --success: #25D366;
+            --text-main: #2C2C2C;
+            --text-muted: #666666;
+            --radius: 16px;
+            --shadow: 0 8px 24px rgba(0,0,0,0.06);
+            --shadow-hover: 0 12px 32px rgba(0,0,0,0.12);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding-bottom: 140px;
+        }
+
+        /* ─── Progress Bar ─── */
+        .progress-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 4px;
+            background: #ddd; z-index: 2000;
+        }
+        .progress-bar {
+            height: 100%; background: var(--accent); width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        /* ─── Header ─── */
+        .header {
+            text-align: center;
+            padding: 50px 20px 20px;
+            background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+        }
+        .header h1 { font-size: 2.2rem; font-weight: 900; color: var(--primary); margin-bottom: 10px; line-height: 1.1; }
+        .header h1 span { color: var(--accent); }
+        .header p { color: var(--text-muted); max-width: 500px; margin: 0 auto; font-size: 1.1rem; }
+
+        /* ─── Step Title ─── */
+        .step-title {
+            text-align: center; font-size: 1rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--text-muted); margin: 30px 0 15px;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .step-title::before, .step-title::after {
+            content: ''; height: 1px; width: 30px; background: #ddd;
+        }
+
+        /* ─── Package Cards ─── */
+        .packages-wrapper {
+            display: flex; gap: 15px; padding: 0 20px 20px;
+            overflow-x: auto; scroll-snap-type: x mandatory;
+            -ms-overflow-style: none; scrollbar-width: none;
+            /* Scroll hint: reveal edge of next card */
+            padding-left: 20px; padding-right: 20px;
+        }
+        .packages-wrapper::-webkit-scrollbar { display: none; }
+        /* Scroll hint arrow — fades out after first scroll */
+        .scroll-hint {
+            text-align: center; font-size: 0.8rem; color: var(--text-muted);
+            margin: -10px 0 10px; animation: bounce-x 1.2s infinite;
+            transition: opacity 0.4s;
+        }
+        .scroll-hint.hidden { opacity: 0; pointer-events: none; }
+        @keyframes bounce-x {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-5px); }
+        }
+
+        .pkg-card {
+            min-width: 280px; flex: 1; background: var(--surface);
+            border-radius: var(--radius); padding: 25px;
+            border: 2px solid transparent; box-shadow: var(--shadow);
+            cursor: pointer; transition: 0.3s; scroll-snap-align: center;
+            position: relative; display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .pkg-card.active { border-color: var(--primary); background: #f8fbff; transform: scale(1.02); }
+        .pkg-card.vip { background: #111; color: #fff; border-color: #333; }
+        .pkg-card.vip.active { border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow); }
+        .pkg-card.vip h3, .pkg-card.vip .price { color: var(--accent); }
+        .pkg-card.vip li { color: #ccc; }
+
+        .pkg-badge {
+            position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+            background: var(--accent); color: #fff; padding: 4px 12px;
+            border-radius: 20px; font-size: 0.8rem; font-weight: 700; white-space: nowrap;
+        }
+        .pkg-header h3 { font-size: 1.4rem; margin-bottom: 5px; }
+        .pkg-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px; }
+        .price { font-size: 2rem; font-weight: 900; margin-bottom: 15px; }
+        .features { list-style: none; font-size: 0.9rem; margin-bottom: 20px; }
+        .features li { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .features li i { color: var(--success); }
+
+        .btn-pick {
+            width: 100%; padding: 12px; border-radius: 10px; border: none;
+            font-weight: 700; font-size: 1rem; background: #eee;
+            color: var(--text-main); transition: 0.2s; cursor: pointer;
+        }
+        .pkg-card.active .btn-pick { background: var(--primary); color: #fff; }
+        .pkg-card.vip.active .btn-pick { background: var(--accent); color: #000; }
+
+        /* ─── Configurator ─── */
+        #configurator {
+            display: none; background: #fff; border-radius: 30px 30px 0 0;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.05); padding: 30px 20px;
+            animation: slideUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            margin-top: 20px;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .config-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+
+        /* ─── Option Cards ─── */
+        .option-card {
+            display: flex; align-items: center; justify-content: space-between;
+            background: #f9f9f9; padding: 15px; border-radius: 12px;
+            border: 1px solid #eee; cursor: pointer; transition: 0.2s;
+            -webkit-user-select: none; user-select: none;
+        }
+        .option-card:active { transform: scale(0.98); }
+        .option-card.selected { background: #f0f7ff; border-color: var(--primary); }
+
+        .opt-info { display: flex; align-items: center; gap: 15px; }
+        .opt-icon {
+            width: 40px; height: 40px; background: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); flex-shrink: 0;
+        }
+        .opt-text h4 { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+        .opt-text p { font-size: 0.8rem; color: var(--text-muted); }
+        .opt-right { text-align: left; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+        .opt-price { font-weight: 700; color: var(--primary); font-size: 0.95rem; }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            width: 50px; height: 28px; background: #ddd; border-radius: 50px;
+            position: relative; transition: 0.3s; flex-shrink: 0;
+        }
+        .toggle-switch::after {
+            content: ''; position: absolute; top: 2px; left: 2px;
+            width: 24px; height: 24px; background: #fff; border-radius: 50%;
+            transition: 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .option-card.selected .toggle-switch { background: var(--success); }
+        .option-card.selected .toggle-switch::after { left: 24px; }
+
+        /* ─── Guests Panel ─── */
+        .guests-panel {
+            background: var(--primary); color: #fff; padding: 25px;
+            border-radius: 20px; text-align: center; margin-top: 30px;
+            position: relative; overflow: hidden;
+        }
+        .guests-panel::before {
+            content: ''; position: absolute; top: -50%; right: -50%;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+        .visual-singers {
+            font-size: 1.5rem; margin: 15px 0; letter-spacing: 5px; min-height: 40px;
+        }
+        .counter-controls {
+            display: flex; align-items: center; justify-content: center; gap: 20px;
+        }
+        .btn-circle {
+            width: 50px; height: 50px; border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: transparent; color: #fff; font-size: 1.5rem;
+            cursor: pointer; transition: 0.2s; font-family: 'Heebo', sans-serif;
+        }
+        .btn-circle:hover { background: rgba(255,255,255,0.2); }
+        .count-display { font-size: 2.5rem; font-weight: 900; min-width: 40px; }
+
+        .guest-warning {
+            background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px;
+            font-size: 0.85rem; margin-top: 15px; display: none;
+        }
+
+        /* Edit Mode Switcher */
+        .edit-switcher {
+            background: rgba(255,255,255,0.1); border-radius: 10px; padding: 5px;
+            margin-top: 15px; display: none;
+        }
+        .edit-switcher-inner { display: flex; gap: 5px; }
+        .es-opt {
+            flex: 1; padding: 10px; text-align: center; border-radius: 8px;
+            font-size: 0.9rem; cursor: pointer; opacity: 0.7; transition: 0.2s;
+            font-family: 'Heebo', sans-serif; background: transparent; border: none; color: #fff;
+        }
+        .es-opt.active { background: #fff; color: var(--primary); font-weight: 700; opacity: 1; }
+
+        /* ─── Trust Badge ─── */
+        .trust-badge {
+            margin-top: 40px; text-align: center; opacity: 0.7;
+        }
+        .trust-badge p { font-size: 0.9rem; }
+        .stars { display: flex; justify-content: center; gap: 5px; margin-top: 5px; }
+
+        /* ─── Sticky Footer ─── */
+        .sticky-footer {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.08);
+            padding: 15px 20px; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            border-top: 1px solid #eee;
+            transform: translateY(100%); transition: transform 0.4s ease;
+        }
+        .sticky-footer.visible { transform: translateY(0); }
+
+        .total-container { cursor: pointer; }
+        .total-label { font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
+        .total-price { font-size: 1.8rem; font-weight: 900; color: var(--primary); line-height: 1; }
+
+        .btn-wa {
+            background: var(--success); color: #fff; text-decoration: none;
+            padding: 14px 24px; border-radius: 50px; font-weight: 700; font-size: 1rem;
+            display: flex; align-items: center; gap: 8px;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            animation: pulse-green 2s infinite;
+            white-space: nowrap;
+        }
+        @keyframes pulse-green {
+            0%   { box-shadow: 0 0 0 0 rgba(37,211,102, 0.7); }
+            70%  { box-shadow: 0 0 0 10px rgba(37,211,102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102, 0); }
+        }
+
+        /* ─── Details Popup ─── */
+        .details-popup {
+            position: fixed; bottom: 90px; right: 20px; left: 20px;
+            max-width: 320px; margin: 0 auto;
+            background: #fff; padding: 18px; border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.15);
+            display: none; font-size: 0.9rem; z-index: 999;
+            border: 1px solid #eee;
+            /* FIX: prevent popup from going off-screen on small devices */
+            max-height: 70vh; overflow-y: auto;
+        }
+        .details-popup.show { display: block; animation: fadeIn 0.2s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .details-row {
+            display: flex; justify-content: space-between;
+            margin-bottom: 6px; color: #555; gap: 10px;
+        }
+        .details-row.final {
+            border-top: 1px solid #eee; margin-top: 8px; padding-top: 8px;
+            font-weight: 700; color: #000;
+        }
+        .details-close {
+            text-align: center; margin-top: 10px; font-size: 0.8rem;
+            color: var(--text-muted); cursor: pointer;
+        }
+
+        /* ─── Responsive ─── */
+        @media (min-width: 768px) {
+            .packages-wrapper { justify-content: center; overflow: visible; }
+            #configurator { max-width: 800px; margin: 20px auto 0; border-radius: 30px; }
+            .config-grid { grid-template-columns: 1fr 1fr; }
+            .details-popup { right: 20px; left: auto; bottom: 90px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="progress-container"><div class="progress-bar" id="pBar"></div></div>
+
+<header class="header">
+    <h1>השיר שלך. <br><span>ברמה של להיט.</span></h1>
+    <p>אולפן בוטיק במודיעין. בואו נבנה יחד את החבילה המושלמת עבורך.</p>
+</header>
+
+<div class="step-title">שלב 1: בחירת בסיס</div>
+
+<div class="packages-wrapper">
+    <!-- Basic -->
+    <div class="pkg-card" data-pkg-id="basic" data-pkg-price="1280" onclick="selectPkg(this)">
+        <div class="pkg-header">
+            <h3>רגע קסום</h3>
+            <p class="pkg-desc">מושלם למתנה / ימי הולדת</p>
+            <div class="price">₪1,280</div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check"></i> סשן הקלטה עד שעה וחצי</li>
+                <li><i class="fa-solid fa-check"></i> עריכת קול בסיסית</li>
+                <li><i class="fa-solid fa-check"></i> פלייבק מהמאגר</li>
+            </ul>
+        </div>
+        <button class="btn-pick">בחרתי בזה</button>
+    </div>
+
+    <!-- Gold (default) -->
+    <div class="pkg-card active" data-pkg-id="gold" data-pkg-price="2280" onclick="selectPkg(this)">
+        <div class="pkg-badge">הכי נמכר ⭐</div>
+        <div class="pkg-header">
+            <h3>הפקת זהב</h3>
+            <p class="pkg-desc">הסטנדרט המקצועי לסינגל</p>
+            <div class="price">₪2,280</div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check"></i> זמן אולפן ללא הגבלה</li>
+                <li><i class="fa-solid fa-check"></i> תיקון זיופים (Melodyne)</li>
+                <li><i class="fa-solid fa-check"></i> קליפ אולפן במתנה</li>
+                <li><i class="fa-solid fa-check"></i> ייעוץ אסטרטגי</li>
+            </ul>
+        </div>
+        <button class="btn-pick">זה בשבילי</button>
+    </div>
+
+    <!-- VIP -->
+    <div class="pkg-card vip" data-pkg-id="vip" data-pkg-price="5400" onclick="selectPkg(this)">
+        <div class="pkg-badge" style="background:#000; color:var(--accent); border:1px solid var(--accent);">VIP 360</div>
+        <div class="pkg-header">
+            <h3>אמן יוצר</h3>
+            <p class="pkg-desc">הפקה מלאה מאפס</p>
+            <div class="price">₪5,400</div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check"></i> הפקה מוזיקלית מקורית</li>
+                <li><i class="fa-solid fa-check"></i> ליווי מפיק צמוד</li>
+                <li><i class="fa-solid fa-check"></i> קליפ קולנועי 4K</li>
+                <li><i class="fa-solid fa-check"></i> קמפיין הפצה במדיה</li>
+            </ul>
+        </div>
+        <button class="btn-pick">חלום שמתגשם</button>
+    </div>
+</div>
+<div class="scroll-hint" id="scroll-hint">← החליקו לראות עוד חבילות</div>
+<div id="configurator">
+    <div class="step-title">שלב 2: שדרוגים ותוספות</div>
+
+    <div class="config-grid">
+        <div class="option-card" onclick="toggleOption(this, 350, 'סאונד AI')">
+            <div class="opt-info">
+                <div class="opt-icon">🤖</div>
+                <div class="opt-text">
+                    <h4>ליווי קולי AI</h4>
+                    <p>קולות רקע מלאכותיים לעיבוי</p>
+                </div>
+            </div>
+            <div class="opt-right">
+                <div class="opt-price">+₪350</div>
+                <div class="toggle-switch"></div>
+            </div>
+        </div>
+
+        <div class="option-card" onclick="toggleOption(this, 450, 'כתיבת מילים')">
+            <div class="opt-info">
+                <div class="opt-icon">✍️</div>
+                <div class="opt-text">
+                    <h4>כתיבת מילים</h4>
+                    <p>כתיבה מקצועית מותאמת אישית</p>
+                </div>
+            </div>
+            <div class="opt-right">
+                <div class="opt-price">+₪450</div>
+                <div class="toggle-switch"></div>
+            </div>
+        </div>
+
+        <div class="option-card" onclick="toggleOption(this, 500, 'מוכן תוך 24 שעות')">
+            <div class="opt-info">
+                <div class="opt-icon">⚡</div>
+                <div class="opt-text">
+                    <h4>מוכן תוך 24 שעות</h4>
+                    <p>עוקף את התור באולפן</p>
+                </div>
+            </div>
+            <div class="opt-right">
+                <div class="opt-price">+₪500</div>
+                <div class="toggle-switch"></div>
+            </div>
+        </div>
+
+        <div class="option-card" onclick="toggleOption(this, 250, 'מארז מתנה פיזי')">
+            <div class="opt-info">
+                <div class="opt-icon">🎁</div>
+                <div class="opt-text">
+                    <h4>מארז מתנה פיזי</h4>
+                    <p>דיסק-און-קי בקופסה מעוצבת</p>
+                </div>
+            </div>
+            <div class="opt-right">
+                <div class="opt-price">+₪250</div>
+                <div class="toggle-switch"></div>
+            </div>
+        </div>
+
+        <!-- Strategy — hidden for Gold/VIP -->
+        <div class="option-card" id="opt-strat" onclick="toggleOption(this, 190, 'ייעוץ אסטרטגי')">
+            <div class="opt-info">
+                <div class="opt-icon">📈</div>
+                <div class="opt-text">
+                    <h4>ייעוץ אסטרטגי</h4>
+                    <p>איך להפיץ נכון את השיר</p>
+                </div>
+            </div>
+            <div class="opt-right">
+                <div class="opt-price">+₪190</div>
+                <div class="toggle-switch"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guests Counter -->
+    <div class="guests-panel">
+        <h4>כמה משתתפים מקליטים?</h4>
+        <div class="visual-singers" id="visual-singers">👤</div>
+        <div class="counter-controls">
+            <button class="btn-circle" onclick="updateGuests(-1)">−</button>
+            <div class="count-display" id="guest-count">1</div>
+            <button class="btn-circle" onclick="updateGuests(1)">+</button>
+        </div>
+        <div class="guest-warning" id="guest-warning">
+            ⚠️ מעל 2 משתתפים יש תוספת תשלום של ₪250 למשתתף
+        </div>
+        <div class="edit-switcher" id="edit-switcher">
+            <div class="edit-switcher-inner">
+                <button class="es-opt active" onclick="setEditMode('choir', this)">
+                    🎤 מצב מקהלה
+                    <div style="font-size:0.7em;">ללא תוספת</div>
+                </button>
+                <button class="es-opt" onclick="setEditMode('full', this)">
+                    ✨ עריכה אישית
+                    <div style="font-size:0.7em;">+₪290 למשתתף נוסף</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust Badge -->
+    <div class="trust-badge">
+        <p>⭐ הצטרפו ל-1,500 לקוחות מרוצים</p>
+        <div class="stars">
+            <i class="fa-solid fa-star" style="color:#FFD700;"></i>
+            <i class="fa-solid fa-star" style="color:#FFD700;"></i>
+            <i class="fa-solid fa-star" style="color:#FFD700;"></i>
+            <i class="fa-solid fa-star" style="color:#FFD700;"></i>
+            <i class="fa-solid fa-star" style="color:#FFD700;"></i>
+        </div>
+    </div>
+</div>
+
+<!-- ─── Sticky Footer ─── -->
+<div class="sticky-footer" id="sticky-footer">
+    <div class="total-container" onclick="toggleDetails()">
+        <div class="total-label">
+            סה"כ לתשלום <i class="fa-solid fa-chevron-up" style="font-size:0.7em;"></i>
+        </div>
+        <div class="total-price" id="total-price">₪2,280</div>
+    </div>
+    <a href="#" id="wa-link" class="btn-wa" target="_blank" rel="noopener noreferrer">
+        <span>שריין עכשיו</span>
+        <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i>
+    </a>
+</div>
+
+<!-- Details Popup (outside footer for correct positioning) -->
+<div class="details-popup" id="details-popup">
+    <div id="details-content"></div>
+    <div class="details-close" onclick="toggleDetails()">✕ סגור</div>
+</div>
+
+<script>
+    // ─── STATE ───────────────────────────────────────────────────
+    const state = {
+        pkg: 'gold',
+        pkgName: 'הפקת זהב',
+        basePrice: 2280,
+        options: [],
+        guests: 1,
+        editMode: 'choir',
+        currentTotal: 2280
+    };
+
+    // ─── ANIMATION & THROTTLE GUARDS ─────────────────────────────
+    let animFrame      = null;
+    let guestDebounce  = null;   // FIX: debounce rapid guest taps
+    let confettiLast   = 0;      // FIX: throttle confetti bursts
+
+    // ─── INIT ────────────────────────────────────────────────────
+    window.addEventListener('DOMContentLoaded', () => {
+        const goldCard = document.querySelector('[data-pkg-id="gold"]');
+        selectPkg(goldCard);
+        // Hide scroll hint after user scrolls packages
+        document.querySelector('.packages-wrapper').addEventListener('scroll', () => {
+            document.getElementById('scroll-hint').classList.add('hidden');
+        }, { once: true });
+    });
+
+    // ─── SELECT PACKAGE ──────────────────────────────────────────
+    function selectPkg(el) {
+        const id    = el.dataset.pkgId;
+        const price = parseInt(el.dataset.pkgPrice);
+
+        state.pkg       = id;
+        state.basePrice = price;
+        state.pkgName   = el.querySelector('h3').innerText;
+
+        // ── FIX: Reset all options (state + UI) on package switch ──
+        state.options = [];
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.classList.remove('selected');
+        });
+
+        // ── FIX: Reset guests to 1 on package switch ──
+        state.guests   = 1;
+        state.editMode = 'choir';
+        document.getElementById('guest-count').innerText    = '1';
+        document.getElementById('visual-singers').innerText = '👤';
+        document.getElementById('guest-warning').style.display  = 'none';
+        document.getElementById('edit-switcher').style.display  = 'none';
+        document.querySelectorAll('.es-opt').forEach(e => e.classList.remove('active'));
+        document.querySelectorAll('.es-opt')[0].classList.add('active');
+
+        // Update card highlight
+        document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+
+        // Strategy upsell: hide if included in Gold/VIP
+        const stratEl = document.getElementById('opt-strat');
+        if (id === 'gold' || id === 'vip') {
+            stratEl.style.display = 'none';
+            stratEl.classList.remove('selected');
+        } else {
+            stratEl.style.display = 'flex';
+        }
+
+        // Show configurator
+        document.getElementById('configurator').style.display = 'block';
+        document.getElementById('sticky-footer').classList.add('visible');
+        document.getElementById('pBar').style.width = '33%';
+
+        // Hide scroll hint after first interaction
+        document.getElementById('scroll-hint').classList.add('hidden');
+
+        setTimeout(() => window.scrollTo({ top: 200, behavior: 'smooth' }), 100);
+        recalc();
+    }
+
+    // ─── TOGGLE OPTION ───────────────────────────────────────────
+    function toggleOption(el, price, name) {
+        el.classList.toggle('selected');
+        const isSelected = el.classList.contains('selected');
+
+        if (isSelected) {
+            state.options.push({ name, price });
+            // FIX: throttle confetti — max once per 500ms
+            const now = Date.now();
+            if (now - confettiLast > 500) {
+                confetti({ particleCount: 30, spread: 50, origin: { y: 0.8 }, colors: ['#c5a059'] });
+                confettiLast = now;
+            }
+        } else {
+            state.options = state.options.filter(o => o.name !== name);
+        }
+
+        // FIX: haptic feedback on mobile
+        if (navigator.vibrate) navigator.vibrate(10);
+
+        document.getElementById('pBar').style.width = '66%';
+        recalc();
+    }
+
+    // ─── GUESTS ──────────────────────────────────────────────────
+    function updateGuests(delta) {
+        const newVal = state.guests + delta;
+        if (newVal < 1) return;
+        state.guests = newVal;
+
+        // FIX: haptic feedback
+        if (navigator.vibrate) navigator.vibrate(8);
+
+        // Update counter display
+        document.getElementById('guest-count').innerText = state.guests;
+
+        // Update emoji display
+        let visuals = '';
+        for (let i = 0; i < Math.min(state.guests, 5); i++) visuals += '👤';
+        if (state.guests > 5) visuals += '➕';
+        document.getElementById('visual-singers').innerText = visuals;
+
+        // Show/hide warning and edit mode switcher
+        const warning  = document.getElementById('guest-warning');
+        const switcher = document.getElementById('edit-switcher');
+        if (state.guests > 2) {
+            warning.style.display  = 'block';
+            switcher.style.display = 'block';
+        } else {
+            warning.style.display  = 'none';
+            switcher.style.display = 'none';
+            state.editMode = 'choir';
+            document.querySelectorAll('.es-opt').forEach(e => e.classList.remove('active'));
+            document.querySelectorAll('.es-opt')[0].classList.add('active');
+        }
+
+        // FIX: debounce recalc on rapid taps (150ms)
+        clearTimeout(guestDebounce);
+        guestDebounce = setTimeout(recalc, 150);
+    }
+
+    // ─── EDIT MODE ───────────────────────────────────────────────
+    function setEditMode(mode, el) {
+        state.editMode = mode;
+        document.querySelectorAll('.es-opt').forEach(e => e.classList.remove('active'));
+        el.classList.add('active');
+        recalc();
+    }
+
+    // ─── RECALCULATE ─────────────────────────────────────────────
+    function recalc() {
+        let total = state.basePrice;
+
+        // Add selected options
+        state.options.forEach(o => total += o.price);
+
+        // Guest surcharges
+        let guestCost = 0;
+        if (state.guests > 2) {
+            const extra = state.guests - 2;
+            guestCost += extra * 250;                              // base extra fee
+            if (state.editMode === 'full') guestCost += extra * 290; // full-edit fee per extra person
+        }
+        total += guestCost;
+
+        // FIX: animate from stored state value, not DOM string
+        animateValue(document.getElementById('total-price'), state.currentTotal, total, 400);
+        state.currentTotal = total;
+
+        // Build details popup HTML
+        let html = `<div class="details-row"><span>חבילה: ${state.pkgName}</span><span>₪${state.basePrice.toLocaleString()}</span></div>`;
+        state.options.forEach(o => {
+            html += `<div class="details-row"><span>${o.name}</span><span>+₪${o.price.toLocaleString()}</span></div>`;
+        });
+        if (guestCost > 0) {
+            const modeLabel = state.editMode === 'full' ? ' (עריכה אישית)' : ' (מקהלה)';
+            html += `<div class="details-row"><span>תוספת משתתפים${modeLabel}</span><span>+₪${guestCost.toLocaleString()}</span></div>`;
+        }
+        html += `<div class="details-row final"><span>סה"כ</span><span>₪${total.toLocaleString()}</span></div>`;
+        document.getElementById('details-content').innerHTML = html;
+
+        // Build WhatsApp message
+        const optList = state.options.map(o => o.name).join(', ') || 'ללא';
+        const guestInfo = state.guests > 2
+            ? `${state.guests} (${state.editMode === 'full' ? 'עריכה מלאה' : 'מקהלה'})`
+            : state.guests;
+        const txt = `היי יקיר! בניתי חבילה באתר:%0A🎤 *חבילה:* ${state.pkgName}%0A➕ *תוספות:* ${optList}%0A👥 *משתתפים:* ${guestInfo}%0A💰 *סה"כ:* ₪${total.toLocaleString()}`;
+        document.getElementById('wa-link').href = `https://wa.me/972587555456?text=${txt}`;
+
+        // Mark configurator complete
+        if (state.options.length > 0 || state.guests > 1) {
+            document.getElementById('pBar').style.width = '90%';
+        }
+    }
+
+    // ─── TOGGLE DETAILS POPUP ────────────────────────────────────
+    function toggleDetails() {
+        document.getElementById('details-popup').classList.toggle('show');
+    }
+    // Close popup when clicking outside
+    document.addEventListener('click', (e) => {
+        const popup = document.getElementById('details-popup');
+        const total = document.querySelector('.total-container');
+        if (!popup.contains(e.target) && !total.contains(e.target)) {
+            popup.classList.remove('show');
+        }
+    });
+
+    // ─── ANIMATE PRICE (FIX: cancel previous frame) ──────────────
+    function animateValue(el, start, end, duration) {
+        if (animFrame) cancelAnimationFrame(animFrame);
+        if (start === end) {
+            el.innerHTML = '₪' + end.toLocaleString();
+            return;
+        }
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            el.innerHTML   = '₪' + Math.floor(eased * (end - start) + start).toLocaleString();
+            if (progress < 1) {
+                animFrame = requestAnimationFrame(step);
+            } else {
+                el.innerHTML = '₪' + end.toLocaleString();
+                animFrame = null;
+            }
+        };
+        animFrame = requestAnimationFrame(step);
+    }
+</script>
+</body>
+</html>

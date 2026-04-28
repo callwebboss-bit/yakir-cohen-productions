@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פיק מומנטס · אטרקציות ואפקטים פרימיום לאירועים | מודיעין והסביבה</title>
+<meta name="description" content="עשן כבד, זיקוקים קרים, תותחי קונפטי ותא הקלטה לאירועים - חבילות פרימיום מ-1,750 ₪ | מודיעין, תל אביב והמרכז">
+<meta name="keywords" content="אטרקציות לאירועים, עשן כבד לחתונה, זיקוקים קרים בר מצווה, תותח קונפטי אירוע, אפקטים מיוחדים למסיבה, מודיעין">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://peak-moments.co.il">
+
+<!-- Open Graph -->
+<meta property="og:title" content="פיק מומנטס · אפקטים ואטרקציות פרימיום לאירועים">
+<meta property="og:description" content="עצבו את רגעי השיא שלכם - אפקטים ייחודיים מ-1,750 ₪">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "פיק מומנטס",
+  "description": "הפקת אטרקציות ואפקטים פרימיום לאירועים - עשן כבד, זיקוקים קרים, תותחי קונפטי, תא הקלטה ועוד",
+  "telephone": "+972587555456",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "מודיעין מכבים רעות",
+    "addressRegion": "מרכז",
+    "addressCountry": "IL"
+  },
+  "areaServed": ["מודיעין","תל אביב","ירושלים","רחובות","ראשון לציון","פתח תקווה","הרצליה"],
+  "priceRange": "₪₪₪",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "חבילות אטרקציות לאירועים",
+    "itemListElement": [
+      {"@type":"Offer","name":"אטרקציה בודדת","price":"1750","priceCurrency":"ILS"},
+      {"@type":"Offer","name":"חבילה כפולה","price":"3200","priceCurrency":"ILS"},
+      {"@type":"Offer","name":"חבילה מורחבת","price":"4450","priceCurrency":"ILS"},
+      {"@type":"Offer","name":"חבילת פרימיום (4+)","price":"5500","priceCurrency":"ILS","description":"כולל קליפ הייליילטס מתנה"}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "כמה עולה אטרקציה אחת?",
+      "acceptedAnswer": {"@type": "Answer", "text": "אטרקציה בודדת מתחילה מ-1,750 ₪. רכישת חבילה של 2 אטרקציות עולה 3,200 ₪, 3 אטרקציות 4,450 ₪, ו-4 אטרקציות ומעלה במחיר פיקס של 5,500 ₪ כולל קליפ Highlights מתנה."}
+    },
+    {
+      "@type": "Question",
+      "name": "אילו אזורים אתם מכסים?",
+      "acceptedAnswer": {"@type": "Answer", "text": "אנו פועלים במרכז הארץ ללא תוספת, בצפון ובדרום בתוספת 800 ₪, ובאזור אילת וגולן בתוספת 1,800 ₪."}
+    },
+    {
+      "@type": "Question",
+      "name": "מה כוללת חבילת הפרימיום?",
+      "acceptedAnswer": {"@type": "Answer", "text": "חבילת פרימיום (4 אטרקציות ומעלה) כוללת את כל האטרקציות שבחרתם ב-5,500 ₪ קבועים, בתוספת קליפ Highlights של 60 שניות כמתנה."}
+    },
+    {
+      "@type": "Question",
+      "name": "האם ניתן לפרוס את התשלום?",
+      "acceptedAnswer": {"@type": "Answer", "text": "כן, ניתן לפרוס לעד 12 תשלומים ללא ריבית."}
+    }
+  ]
+}
+</script>
+
+<!-- Fonts - preload for LCP -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Heebo:wght@300;400;500;600;700;800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Font Awesome removed - all icons are inline SVGs for performance -->
+
+
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --w:     #FFFFFF;
+  --off:   #FAFAF8;
+  --blk:   #0A0A0A;
+  --blk2:  #1A1A1A;
+  --red:   #B80000;
+  --red2:  #950000;
+  --red-t: rgba(184,0,0,.07);
+  --red-p: rgba(184,0,0,.18);
+  --border:#E5E0DB;
+  --muted: #6A6560;
+  --soft:  #F7F5F2;
+  --green: #15803d;
+  --green-t:rgba(21,128,61,.08);
+  --r: 14px;
+  --shadow: 0 12px 40px -6px rgba(184,0,0,.16);
+  --shadow-sm: 0 3px 14px rgba(0,0,0,.07);
+  --space: 32px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Heebo', sans-serif;
+  background: var(--w);
+  color: var(--blk);
+  direction: rtl;
+  line-height: 1.7;
+  background-image: radial-gradient(circle, rgba(184,0,0,.028) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+
+/* ─── PANELS ─── */
+.panel { display: none; }
+.panel.active { display: block; animation: fadeUp .42s cubic-bezier(.22,.61,.36,1) both; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* ─── PROGRESS ─── */
+#progress { display:flex; align-items:center; }
+.pn { display:flex; flex-direction:column; align-items:center; cursor:pointer; flex-shrink:0; }
+.pn-num { width:34px;height:34px;border-radius:50%;border:2px solid var(--border);background:var(--w);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#bbb;transition:all .3s; }
+.pn.done  .pn-num { background:var(--red);border-color:var(--red);color:#fff; }
+.pn.active .pn-num { background:var(--blk);border-color:var(--blk);color:#fff;box-shadow:0 0 0 4px rgba(0,0,0,.1); }
+.pn-lbl { font-size:10.5px;color:#bbb;margin-top:5px;white-space:nowrap; }
+.pn.done  .pn-lbl { color:var(--red); }
+.pn.active .pn-lbl { color:var(--blk);font-weight:700; }
+.pn-line { flex:1;height:2px;background:var(--border);transition:background .4s;margin-bottom:18px; }
+.pn-line.done { background:var(--red); }
+@media(max-width:600px){.pn-lbl{display:none}}
+
+/* ─── GIFT / BONUS PROGRESS BAR ─── */
+#gift-wrap {
+  background: #fff8f8; border: 1.5px solid rgba(184,0,0,.18);
+  border-radius: 13px; padding: 15px 18px; margin-bottom: 28px;
+}
+#gift-track { height:9px;background:var(--border);border-radius:5px;overflow:hidden;margin:9px 0 5px; }
+#gift-fill  { height:100%;background:linear-gradient(to left,var(--red),#e85555);border-radius:5px;transition:width .75s cubic-bezier(.34,1.56,.64,1);width:0; }
+
+/* ─── EVENT CARDS ─── */
+.ev-card {
+  border:2px solid var(--border);border-radius:var(--r);padding:22px 14px;
+  text-align:center;cursor:pointer;transition:all .22s;background:var(--w);
+}
+.ev-card:hover  { border-color:#bbb;box-shadow:var(--shadow-sm);transform:translateY(-2px); }
+.ev-card.sel    { border-color:var(--red);background:var(--red-t);box-shadow:var(--shadow); }
+.ev-card:focus-visible { outline:3px solid var(--red);outline-offset:3px; }
+
+/* ─── ATTRACTION CARDS ─── */
+.ac {
+  border:2px solid var(--border);border-radius:var(--r);padding:20px;
+  cursor:pointer;transition:all .25s;background:var(--w);
+  display:flex;gap:14px;align-items:flex-start;position:relative;
+}
+.ac:hover  { border-color:#bbb;box-shadow:var(--shadow-sm); }
+.ac.sel {
+  border-color:var(--red);background:var(--red-t);
+  box-shadow:0 0 0 1px var(--red), var(--shadow);
+}
+.ac.sel .ac-icon { background:var(--red); }
+.ac.sel .ac-icon i { color:#fff; }
+.ac:active  { transform:scale(.982); }
+.ac:focus-visible { outline:3px solid var(--red);outline-offset:3px; }
+.ac-icon { width:42px;height:42px;min-width:42px;border-radius:11px;background:var(--red-t);display:flex;align-items:center;justify-content:center;transition:all .25s; }
+.ac-icon i { color:var(--red);font-size:17px;transition:color .25s; }
+.ac-chk { width:24px;height:24px;min-width:24px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .25s;flex-shrink:0;margin-top:1px; }
+.ac.sel .ac-chk { background:var(--red);border-color:var(--red);transform:scale(1.1); }
+
+/* Sub-options */
+.sub-wrap { display:none;margin-top:15px;padding-top:15px;border-top:1px dashed var(--border); }
+.ac.sel .sub-wrap { display:block; }
+.sub-btn { display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;transition:all .2s;background:var(--w);margin:4px 4px 0 0;font-family:'Heebo',sans-serif; }
+.sub-btn:hover { border-color:var(--red); }
+.sub-btn.sel   { border-color:var(--red);background:var(--red-t);color:var(--red); }
+
+/* ─── CROSS-SELL / UPGRADE CARDS ─── */
+.up-card { border:2px dashed var(--border);border-radius:var(--r);padding:17px;cursor:pointer;transition:all .22s;display:flex;gap:12px;align-items:flex-start;background:var(--w); }
+.up-card:hover { border-style:solid;border-color:#bbb;box-shadow:var(--shadow-sm); }
+.up-card.sel   { border-style:solid;border-color:var(--red);background:var(--red-t); }
+.up-card:active{ transform:scale(.98); }
+.up-card:focus-visible { outline:3px solid var(--red);outline-offset:3px; }
+.up-ico { width:38px;height:38px;min-width:38px;border-radius:10px;background:var(--red-t);display:flex;align-items:center;justify-content:center; }
+.up-ico i { color:var(--red);font-size:15px; }
+
+/* ─── BUTTONS ─── */
+.btn { font-family:'Heebo',sans-serif;font-weight:800;border:none;border-radius:12px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:all .22s;padding:14px 24px;font-size:15px; }
+.btn-dark   { background:var(--blk);color:#fff; }
+.btn-dark:hover  { background:#000;transform:translateY(-1px);box-shadow:0 7px 22px rgba(0,0,0,.25); }
+.btn-dark:disabled { opacity:.5;cursor:not-allowed;transform:none!important; }
+.btn-red    { background:var(--red);color:#fff; }
+.btn-red:hover { background:var(--red2);transform:translateY(-1px); }
+.btn-outline{ background:var(--w);color:var(--blk);border:2px solid var(--blk); }
+.btn-outline:hover { background:var(--soft); }
+.btn-wa     { background:#22c55e;color:#fff; }
+.btn-wa:hover { background:#16a34a;transform:translateY(-1px); }
+.btn-w { width:100%;padding:16px;font-size:16px; }
+
+/* ─── INPUTS ─── */
+input[type=text],input[type=date],input[type=number],input[type=tel],input[type=email],select,textarea {
+  font-family:'Heebo',sans-serif;font-size:14px;border:2px solid var(--border);background:var(--w);
+  color:var(--blk);padding:12px 15px;border-radius:10px;width:100%;transition:border-color .2s;
+  -webkit-appearance:none;appearance:none;
+}
+/* iOS Safari zoom fix: min 16px on small screens */
+@media(max-width:639px){
+  input[type=text],input[type=date],input[type=number],input[type=tel],input[type=email],select,textarea {
+    font-size:16px;
+  }
+}
+input:focus,select:focus,textarea:focus { outline:none;border-color:var(--red); }
+.err { border-color:#dc2626!important;animation:shake .3s ease; }
+.err-msg { display:none;font-size:11px;color:#dc2626;margin-top:4px;font-weight:600; }
+.err-visible { display:block; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+
+/* ─── BADGES ─── */
+.badge { display:inline-block;font-size:11px;font-weight:800;padding:3px 9px;border-radius:5px;letter-spacing:.3px; }
+@keyframes spin { to{transform:rotate(360deg)} }
+@media(prefers-reduced-motion:reduce){
+  .pulse{animation:none!important}
+  .panel.active{animation:none!important}
+  #gift-fill{transition:none!important}
+  .price-pop{animation:none!important}
+  .toast{animation:none!important}
+}
+.badge-red   { background:var(--red);color:#fff; }
+.badge-blk   { background:var(--blk);color:#fff; }
+.badge-green { background:var(--green);color:#fff; }
+.badge-gold  { background:linear-gradient(135deg,#B8860B,#DAA520);color:#fff; }
+
+/* ─── SECTION LABELS ─── */
+.cat-head {
+  display:flex;align-items:center;gap:10px;
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:700;
+  margin-bottom:16px;color:var(--blk);
+}
+.cat-head i { color:var(--red);font-size:18px; }
+.cat-head::after { content:'';flex:1;height:1.5px;background:var(--border); }
+
+/* ─── SUMMARY TABLE ─── */
+.sum-row { display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px; }
+.sum-row:last-child { border:none; }
+.sum-row.neg  { color:var(--green); }
+.sum-row.gift { color:var(--red);font-style:italic; }
+.sum-cat { font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding:13px 0 5px; }
+.sum-total { display:flex;justify-content:space-between;align-items:center;padding:16px 0 0;border-top:2.5px solid var(--blk);font-family:'Playfair Display',serif;font-size:24px;font-weight:700; }
+
+/* ─── STICKY PRICE BAR ─── */
+#price-bar {
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:var(--blk);color:#fff;padding:13px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  box-shadow:0 -4px 26px rgba(0,0,0,.3);
+}
+.pb-label { font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.5px; }
+.pb-total { font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--red);transition:all .3s; }
+.pb-save  { font-size:11px;color:#4ade80;min-height:14px; }
+@media(min-width:640px){
+  #price-bar{left:auto;right:26px;bottom:26px;border-radius:18px;max-width:210px;flex-direction:column;align-items:flex-start;}
+}
+
+/* ─── MOBILE STICKY NAV ─── */
+#mob-nav { display:none; }
+@media(max-width:639px){
+  #mob-nav { display:flex;position:fixed;bottom:0;left:0;right:0;z-index:110;background:var(--blk);padding:10px 16px 18px;align-items:center;gap:12px;box-shadow:0 -4px 22px rgba(0,0,0,.35); }
+  #price-bar { display:none!important; }
+  main { padding-bottom:125px!important; }
+}
+
+/* ─── TOAST ─── */
+#toast-wrap { position:fixed;top:72px;left:50%;transform:translateX(-50%);z-index:500;display:flex;flex-direction:column;gap:8px;pointer-events:none;min-width:280px;max-width:360px; }
+.toast { background:var(--blk);color:#fff;border-radius:11px;padding:12px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:9px;box-shadow:0 6px 24px rgba(0,0,0,.22);pointer-events:auto;animation:tIn .35s cubic-bezier(.22,.61,.36,1); }
+.toast.success { background:#155e32; }
+.toast.error   { background:var(--red); }
+.toast.info    { background:#1e3a5f; }
+@keyframes tIn  { from{opacity:0;transform:translateY(-14px) scale(.95)} to{opacity:1;transform:translateY(0) scale(1)} }
+@keyframes tOut { to{opacity:0;transform:translateY(-10px)} }
+
+/* ─── SMART ALERT ─── */
+#smart-alert {
+  position:fixed;bottom:85px;left:16px;right:16px;max-width:360px;z-index:150;
+  background:var(--w);border:2px solid var(--red);border-radius:14px;
+  padding:14px 18px;box-shadow:var(--shadow);display:none;
+  animation:slideIn .3s ease;
+}
+#smart-alert.open { display:flex;gap:10px;align-items:flex-start; }
+@keyframes slideIn { from{opacity:0;transform:translateX(-10px)} to{opacity:1;transform:translateX(0)} }
+@media(min-width:640px){#smart-alert{right:auto;}}
+
+/* ─── EXIT INTENT MODAL ─── */
+#exit-modal {
+  position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+#exit-modal.open { display:flex; }
+#exit-box {
+  background:var(--w);border-radius:22px;padding:40px 32px;max-width:420px;width:100%;
+  text-align:center;position:relative;box-shadow:0 28px 80px rgba(0,0,0,.25);
+  animation:fadeUp .4s ease;
+}
+
+/* ─── SUCCESS MODAL ─── */
+#modal-overlay { position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:300;display:none;align-items:center;justify-content:center;padding:20px; }
+#modal-overlay.open { display:flex; }
+.modal-box { background:var(--w);border-radius:22px;padding:42px 36px;max-width:400px;width:100%;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.22); }
+
+/* ─── PRICE POP ─── */
+.price-pop { position:fixed;bottom:95px;left:30px;z-index:200;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;pointer-events:none;animation:pPop 1.2s ease forwards; }
+@keyframes pPop { 0%{opacity:0;transform:translateY(0)} 20%{opacity:1} 80%{opacity:1;transform:translateY(-48px)} 100%{opacity:0;transform:translateY(-60px)} }
+
+/* ─── PULSE ─── */
+@keyframes pulse-r { 0%{box-shadow:0 0 0 0 rgba(184,0,0,.4)} 70%{box-shadow:0 0 0 12px rgba(184,0,0,0)} 100%{box-shadow:0 0 0 0 rgba(184,0,0,0)} }
+.pulse { animation:pulse-r 2.2s ease-in-out infinite; }
+
+/* ─── RECOMMENDED BADGE on card ─── */
+.card-recommended { position:absolute;top:-12px;right:16px; }
+
+/* ─── LEGAL ─── */
+.legal-row { display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.7;padding:10px 0;border-bottom:1px solid var(--border); }
+.legal-row:last-child { border:none; }
+.legal-row input[type=checkbox] { width:19px;height:19px;min-width:19px;accent-color:var(--red);margin-top:3px;padding:0;border:none; }
+
+/* ─── MISC ─── */
+@keyframes flash { 0%,100%{color:var(--red)} 50%{color:#d43030} }
+.flash { animation:flash .4s ease; }
+/* Screen reader only - accessible but visually hidden */
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+@media print { #price-bar,#smart-alert,#mob-nav,.no-print{display:none!important} }
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div id="toast-wrap"></div>
+
+<!-- MOBILE NAV -->
+<div id="mob-nav" class="no-print">
+  <div style="flex:1;">
+    <div style="font-size:9px;color:#666;text-transform:uppercase;letter-spacing:.5px;">השקעה מתוכננת</div>
+    <div id="mob-price" style="font-family:'Playfair Display',serif;font-size:23px;font-weight:900;color:var(--red);line-height:1;">0 ₪</div>
+  </div>
+  <button class="btn btn-dark pulse" style="flex:2;padding:14px;" onclick="APP.mobileNext()">
+    המשך <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M5 12l6 6M5 12l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</div>
+
+<!-- EXIT INTENT MODAL -->
+<div id="exit-modal">
+  <div id="exit-box">
+    <button onclick="APP.closeExitModal()" style="position:absolute;top:14px;left:14px;background:none;border:none;cursor:pointer;font-size:22px;color:#aaa;">×</button>
+    <div style="font-size:52px;margin-bottom:14px;">⏳</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:10px;">רגע לפני שאתם עוזבים...</h3>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:20px;line-height:1.7;">
+      ההצעה שלכם <strong style="color:var(--red);">נשמרה ל-48 שעות בלבד</strong>.<br>
+      אנחנו מחזיקים את המחירים האלה עבורכם - אבל האטרקציות עשויות להיות תפוסות.
+    </p>
+    <button class="btn btn-red btn-w" onclick="APP.closeExitModal()" style="margin-bottom:10px;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M1 4v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.51 15a9 9 0 1 0 .49-8.7L1 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> חזרו לתכנון
+    </button>
+    <button class="btn btn-wa btn-w" onclick="APP.sendWhatsApp(); APP.closeExitModal();">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.374 0 12c0 2.124.549 4.12 1.508 5.853L.058 23.5c-.12.492.292.942.792.942.122 0 .244-.025.36-.075l5.879-2.341C8.615 23.323 10.268 24 12 24c6.626 0 12-5.374 12-12S18.626 0 12 0zm0 22c-1.7 0-3.3-.446-4.699-1.232l-.336-.196-3.484 1.386 1.41-3.397-.216-.35C3.635 16.86 3 14.5 3 12 3 6.486 7.486 2 12 2s9 4.486 9 10-4.486 10-9 10z"/></svg> שלחו ב-WhatsApp עכשיו
+    </button>
+    <p style="font-size:11px;color:var(--muted);margin-top:10px;">ללא התחייבות · תשובה תוך שעה</p>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div id="modal-overlay">
+  <div class="modal-box">
+    <button onclick="APP.closeModal()" style="position:absolute;top:14px;left:14px;background:none;border:none;cursor:pointer;font-size:22px;color:#aaa;">×</button>
+    <div style="font-size:54px;margin-bottom:14px;">🎉</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:8px;">ההצעה נשלחה!</h3>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:8px;">ניצור אתכם קשר תוך שעה לאישור הפרטים ושריון התאריך</p>
+    <p style="font-size:12px;color:var(--red);font-weight:700;margin-bottom:22px;">פיק מומנטס · אטרקציות פרימיום · מודיעין והסביבה</p>
+    <button class="btn btn-dark btn-w" onclick="APP.closeModal()">סגור</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="no-print" style="background:var(--blk);padding:11px 24px;position:sticky;top:0;z-index:50;border-bottom:1px solid #1c1c1c;">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <!-- Inline SVG star logo -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
+        <path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z" fill="#B80000"/>
+      </svg>
+      <span style="font-family:'Playfair Display',serif;color:#fff;font-size:17px;font-weight:700;">פיק מומנטס</span>
+      <span style="background:var(--red);color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:4px;letter-spacing:.7px;">PREMIUM EVENTS</span>
+    </div>
+    <a href="tel:0587555456" style="color:#777;font-size:13px;text-decoration:none;display:flex;align-items:center;gap:7px;" aria-label="חייגו לפיק מומנטס">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color:var(--red);" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.37 19a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 3.12 4.18 2 2 0 0 1 5.08 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>058-755-5456
+    </a>
+  </div>
+</header>
+
+<main style="max-width:860px;margin:0 auto;padding:40px 18px 150px;">
+
+  <!-- HERO -->
+  <section style="text-align:center;margin-bottom:48px;" aria-label="כותרת ראשית">
+    <div style="display:inline-block;background:var(--red-t);color:var(--red);font-size:11px;font-weight:800;padding:5px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.8px;text-transform:uppercase;">
+      עיצוב חוויות · תמחור שקוף בזמן אמת
+    </div>
+    <h1 id="main-greeting" style="font-size:clamp(30px,5.5vw,52px);font-weight:900;line-height:1.15;margin-bottom:12px;">
+      עצבו את <span style="color:var(--red);">רגעי השיא</span> שלכם
+    </h1>
+    <p style="font-size:15px;color:var(--muted);max-width:500px;margin:0 auto 8px;">
+      בחרו אטרקציות · קבלו הצעה מיידית · שריינו תאריך
+    </p>
+    <p style="font-size:13px;color:var(--muted);">
+      <strong style="color:var(--blk);">אטרקציה מ-1,750 ₪</strong> · חבילות עד 5,500 ₪ · ניתן לפריסה ל-12 תשלומים ללא ריבית
+    </p>
+  </section>
+
+  <!-- BONUS PROGRESS BAR -->
+  <div id="gift-wrap" aria-label="מד בונוס">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;">
+      <div id="gift-txt" style="font-size:13px;font-weight:700;"></div>
+      <div id="gift-badge"></div>
+    </div>
+    <div id="gift-track" role="progressbar" aria-valuemin="0" aria-valuemax="4">
+      <div id="gift-fill"></div>
+    </div>
+    <div id="gift-sub" style="font-size:11px;color:var(--muted);"></div>
+  </div>
+
+  <!-- PROGRESS NAV -->
+  <nav id="progress" class="no-print" style="margin-bottom:48px;" aria-label="שלבי התהליך"></nav>
+
+  <!-- ═══════════════════════════
+       שלב 1 - פרטי האירוע
+  ═══════════════════════════ -->
+  <section id="step-1" class="panel active" aria-label="שלב 1 – פרטי האירוע">
+
+    <h2 style="font-size:28px;font-weight:700;margin-bottom:5px;">פרטי האירוע שלכם</h2>
+    <p style="color:var(--muted);margin-bottom:28px;font-size:15px;">
+      כל אירוע הוא עולם בפני עצמו - נתחיל מהבסיס
+    </p>
+
+    <fieldset style="border:none;padding:0;margin:0;">
+      <legend class="sr-only">בחרו סוג אירוע</legend>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:30px;" role="group" aria-label="סוג האירוע">
+
+      <div class="ev-card" id="ev-wedding"
+           onclick="APP.pickEvent(this,'wedding','חתונה')"
+           tabindex="0" role="radio" aria-checked="false"
+           onkeydown="if(event.key==='Enter'||event.key===' ')APP.pickEvent(this,'wedding','חתונה')">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style="display:block;margin:0 auto 10px;" aria-hidden="true"><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#B80000" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="10" r="1.2" fill="#B80000"/><circle cx="15" cy="10" r="1.2" fill="#B80000"/><path d="M5.5 3C4 5 3 7.5 3 12c0 5 4 9 9 9s9-4 9-9c0-4.5-1-7-2.5-9" stroke="#B80000" stroke-width="1.8" stroke-linecap="round"/><path d="M12 2c0 0-2 2-2 4s2 3 2 3 2-1 2-3-2-4-2-4z" fill="#B80000"/></svg>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;">חתונה</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">Wedding · Ceremony</div>
+        <div style="font-size:10px;color:var(--red);margin-top:6px;font-weight:800;">💍 הפופולרי ביותר</div>
+      </div>
+
+      <div class="ev-card" id="ev-barmitzvah"
+           onclick="APP.pickEvent(this,'barmitzvah','בר / בת מצווה')"
+           tabindex="0" role="radio" aria-checked="false"
+           onkeydown="if(event.key==='Enter'||event.key===' ')APP.pickEvent(this,'barmitzvah','בר / בת מצווה')">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style="display:block;margin:0 auto 10px;" aria-hidden="true"><path d="M12 2l2.5 6.5 7 .5-5.5 4.5 2 7-6-3.5-6 3.5 2-7L2 9l7-.5z" stroke="#B80000" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;">בר / בת מצווה</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">Bar · Bat Mitzvah</div>
+        <div style="font-size:10px;color:var(--red);margin-top:6px;font-weight:800;">✡️ אנרגיה מיוחדת</div>
+      </div>
+
+      <div class="ev-card" id="ev-birthday"
+           onclick="APP.pickEvent(this,'birthday','יום הולדת / מסיבה')"
+           tabindex="0" role="radio" aria-checked="false"
+           onkeydown="if(event.key==='Enter'||event.key===' ')APP.pickEvent(this,'birthday','יום הולדת / מסיבה')">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style="display:block;margin:0 auto 10px;" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2" stroke="#B80000" stroke-width="1.7"/><path d="M8 11V9a4 4 0 0 1 8 0v2" stroke="#B80000" stroke-width="1.7"/><path d="M12 2v3M8 3l2 2M16 3l-2 2" stroke="#B80000" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;">יום הולדת</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">Birthday · Party</div>
+        <div style="font-size:10px;color:var(--red);margin-top:6px;font-weight:800;">🎉 פינוי אנרגיה</div>
+      </div>
+
+      <div class="ev-card" id="ev-corporate"
+           onclick="APP.pickEvent(this,'corporate','אירוע חברה / כנס')"
+           tabindex="0" role="radio" aria-checked="false"
+           onkeydown="if(event.key==='Enter'||event.key===' ')APP.pickEvent(this,'corporate','אירוע חברה / כנס')">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style="display:block;margin:0 auto 10px;" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#B80000" stroke-width="1.7"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" stroke="#B80000" stroke-width="1.7"/><line x1="12" y1="12" x2="12" y2="16" stroke="#B80000" stroke-width="1.7" stroke-linecap="round"/><line x1="8" y1="14" x2="16" y2="14" stroke="#B80000" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;">אירוע עסקי</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">Corporate · Conference</div>
+        <div style="font-size:10px;color:var(--red);margin-top:6px;font-weight:800;">🏢 רושם בלתי נשכח</div>
+      </div>
+
+      <div class="ev-card" id="ev-other"
+           onclick="APP.pickEvent(this,'other','אירוע מיוחד')"
+           tabindex="0" role="radio" aria-checked="false"
+           onkeydown="if(event.key==='Enter'||event.key===' ')APP.pickEvent(this,'other','אירוע מיוחד')">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style="display:block;margin:0 auto 10px;" aria-hidden="true"><path d="M12 2l1 4h4l-3 2.5 1 4L12 10l-3 2.5 1-4L7 6h4z" fill="#B80000"/><circle cx="12" cy="12" r="9" stroke="#B80000" stroke-width="1.7"/></svg>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;">אחר</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">Special Event</div>
+        <div style="font-size:10px;color:var(--red);margin-top:6px;font-weight:800;">✨ הכל אפשרי</div>
+      </div>
+
+      </div>
+    </fieldset>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px;">
+      <div>
+        <label for="ev-date" style="display:block;font-size:11px;font-weight:800;margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px;">תאריך האירוע *</label>
+        <input type="date" id="ev-date" onchange="APP.state.eventDate=this.value;APP.runAlerts();" aria-required="true">
+      </div>
+      <div>
+        <label for="ev-guests" style="display:block;font-size:11px;font-weight:800;margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px;">מספר אורחים</label>
+        <input type="number" id="ev-guests" placeholder="150" min="0" oninput="APP.state.guests=parseInt(this.value)||0;APP.runAlerts();" aria-label="מספר אורחים משוערים">
+      </div>
+      <div>
+        <label for="ev-loc" style="display:block;font-size:11px;font-weight:800;margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px;">אזור</label>
+        <select id="ev-loc" onchange="APP.state.locationFee=parseInt(this.value);APP.renderPrice();">
+          <option value="0">מרכז (ללא תוספת)</option>
+          <option value="800">צפון / דרום (+800 ₪)</option>
+          <option value="1800">אילת / גולן (+1,800 ₪)</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px;">
+      <div>
+        <label for="c-name-1" style="display:block;font-size:11px;font-weight:800;margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px;">שם מלא *</label>
+        <input type="text" id="c-name-1" placeholder="ישראל ישראלי" oninput="APP.state.contact.name=this.value;APP.saveLS();" autocomplete="name">
+        <div id="c-name-s1-err" class="err-msg">שדה חובה - נא הזינו שם מלא</div>
+      </div>
+      <div>
+        <label for="c-phone-1" style="display:block;font-size:11px;font-weight:800;margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px;">טלפון *</label>
+        <input type="tel" id="c-phone-1" placeholder="05X-XXXXXXX" oninput="APP.state.contact.phone=this.value;APP.saveLS();" inputmode="tel" autocomplete="tel">
+        <div id="c-phone-s1-err" class="err-msg">נא הזינו מספר טלפון ישראלי תקין</div>
+      </div>
+    </div>
+
+    <!-- Context-based AI recommendation hint -->
+    <div id="ctx-hint" style="display:none;background:var(--soft);border-right:3px solid var(--red);border-radius:9px;padding:13px 16px;margin-bottom:24px;font-size:13px;color:var(--muted);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color:var(--red);flex-shrink:0;" aria-hidden="true"><path d="M9 21h6M12 3a6 6 0 0 1 6 6c0 2.22-1.206 4.16-3 5.197V17H9v-2.803A6 6 0 0 1 6 9a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="ctx-hint-txt"></span>
+    </div>
+
+    <button class="btn btn-dark btn-w pulse" id="next-1" onclick="APP.next()">
+      שריינו את האפקט המושלם שלכם <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M5 12l6 6M5 12l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+  </section>
+
+  <!-- ═══════════════════════════
+       שלב 2 - בחירת אטרקציות
+  ═══════════════════════════ -->
+  <section id="step-2" class="panel" aria-label="שלב 2 – בחירת אטרקציות">
+
+    <h2 style="font-size:28px;font-weight:700;margin-bottom:5px;">בחרו את האטרקציות שלכם</h2>
+    <p style="color:var(--muted);margin-bottom:10px;font-size:15px;">
+      כל אטרקציה היא חוויה - בחרו את האפקטים שיהפכו את הרגע לבלתי נשכח
+    </p>
+
+    <!-- Bundle hint -->
+    <div style="background:var(--soft);border:1px solid var(--border);border-radius:12px;padding:15px 18px;margin-bottom:32px;" aria-label="לוגיקת חבילות">
+      <div style="font-weight:800;font-size:13px;margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 7H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1z" stroke="#B80000" stroke-width="1.8"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" stroke="#B80000" stroke-width="1.8"/></svg>
+        לוגיקת חבילות חכמה - ככל שבוחרים יותר, חוסכים יותר:
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:9px;font-size:13px;">
+        <div style="padding:9px 12px;background:var(--w);border-radius:9px;border:1px solid var(--border);">אטרקציה 1<br><strong style="font-size:16px;">1,750 ₪</strong></div>
+        <div style="padding:9px 12px;background:var(--w);border-radius:9px;border:1px solid var(--border);">2 אטרקציות<br><strong style="font-size:16px;">3,200 ₪</strong> <span style="color:var(--green);font-size:11px;">חיסכון 300 ₪</span></div>
+        <div style="padding:9px 12px;background:var(--w);border-radius:9px;border:1px solid var(--border);">3 אטרקציות<br><strong style="font-size:16px;">4,450 ₪</strong> <span style="color:var(--green);font-size:11px;">חיסכון 800 ₪</span></div>
+        <div style="padding:9px 12px;background:#fff8f8;border-radius:9px;border:1.5px solid rgba(184,0,0,.25);">4+ אטרקציות<br><strong style="font-size:16px;color:var(--red);">5,500 ₪ פיקס</strong> <span style="color:var(--red);font-size:11px;font-weight:800;">+ קליפ מתנה 🎁</span></div>
+      </div>
+    </div>
+
+    <!-- קטגוריה 1: אפקטי אווירה -->
+    <div class="cat-head" role="heading" aria-level="3">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8c0 0 2-2 5-1s4 3 7 2 5-3 5-3" stroke="#B80000" stroke-width="1.8" stroke-linecap="round"/><path d="M3 13c0 0 2-2 5-1s4 3 7 2 5-3 5-3" stroke="#B80000" stroke-width="1.8" stroke-linecap="round"/><path d="M3 18c0 0 2-2 5-1s4 3 7 2 5-3 5-3" stroke="#B80000" stroke-width="1.8" stroke-linecap="round"/></svg>
+      אפקטי אווירה
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:13px;margin-bottom:30px;">
+
+      <!-- עשן כבד - RECOMMENDED default -->
+      <div class="ac" id="ac-smoke" role="checkbox" aria-checked="false" tabindex="0"
+           onclick="APP.toggleAttr('smoke',this)"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAttr('smoke',this);}">
+        <div class="card-recommended"><span class="badge badge-red">⭐ מומלץ</span></div>
+        <div class="ac-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 19c0-4 2-6 4-8 2 2 4 4 4 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 11C12 7 9 4 9 4s-3 3-3 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 11c0-4 3-7 3-7s3 3 3 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:14px;margin-bottom:2px;">עשן כבד לרחבה</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">ערפל מרהיב שיוצר תמונות שיישארו לכל החיים</div>
+          <div class="sub-wrap">
+            <div style="font-size:11px;font-weight:700;margin-bottom:7px;color:var(--muted);">בחרו סוג:</div>
+            <button class="sub-btn sel" onclick="APP.setSub(event,'smoke','large')" data-k="smoke" data-v="large" type="button">אירועים גדולים</button>
+            <button class="sub-btn" onclick="APP.setSub(event,'smoke','slow')" data-k="smoke" data-v="slow" type="button">סלאו מוציה</button>
+            <button class="sub-btn" onclick="APP.setSub(event,'smoke','chupa')" data-k="smoke" data-v="chupa" type="button">אפקט חופה</button>
+          </div>
+        </div>
+        <div class="ac-chk" id="chk-smoke" aria-hidden="true"></div>
+      </div>
+
+      <!-- תותחי CO2 -->
+      <div class="ac" id="ac-co2" role="checkbox" aria-checked="false" tabindex="0"
+           onclick="APP.toggleAttr('co2',this)"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAttr('co2',this);}">
+        <div class="ac-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3v6m-4-4l3 3m5-3l-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M5 13h14l-2 7H7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:14px;margin-bottom:2px;">תותחי עשן CO₂</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">עשן לחץ חזק - הרגע שכולם מצלמים</div>
+          <div class="sub-wrap">
+            <div style="font-size:11px;font-weight:700;margin-bottom:7px;color:var(--muted);">בחרו סוג:</div>
+            <button class="sub-btn sel" onclick="APP.setSub(event,'co2','color')" data-k="co2" data-v="color" type="button">צבעוני לרחבה</button>
+            <button class="sub-btn" onclick="APP.setSub(event,'co2','white')" data-k="co2" data-v="white" type="button">לבן לשבירת כוס</button>
+          </div>
+        </div>
+        <div class="ac-chk" id="chk-co2" aria-hidden="true"></div>
+      </div>
+
+      <!-- מערכת בועות -->
+      <div class="ac" id="ac-bubbles" role="checkbox" aria-checked="false" tabindex="0"
+           onclick="APP.toggleAttr('bubbles',this)"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAttr('bubbles',this);}">
+        <div class="ac-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="14" r="4" stroke="currentColor" stroke-width="1.7"/><circle cx="16" cy="10" r="3" stroke="currentColor" stroke-width="1.7"/><circle cx="13" cy="18" r="2" stroke="currentColor" stroke-width="1.7"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:14px;margin-bottom:2px;">מערכת בועות עשן Cinematic</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">בועות ענק שיוצרות קסם ומרגשות כל גיל</div>
+          <div class="sub-wrap">
+            <div style="font-size:11px;font-weight:700;margin-bottom:7px;color:var(--muted);">בחרו מערכת:</div>
+            <button class="sub-btn sel" onclick="APP.setSub(event,'bubbles','soap')" data-k="bubbles" data-v="soap" type="button">בועות סבון מקצועיות</button>
+            <button class="sub-btn" onclick="APP.setSub(event,'bubbles','wow')" data-k="bubbles" data-v="wow" type="button">בועות עשן WOW</button>
+            <button class="sub-btn" onclick="APP.setSub(event,'bubbles','led2')" data-k="bubbles" data-v="led2" type="button">2 תותחי LED בועות</button>
+          </div>
+        </div>
+        <div class="ac-chk" id="chk-bubbles" aria-hidden="true"></div>
+      </div>
+
+    </div>
+
+    <!-- קטגוריה 2: פירוטכניקה וקונפטי -->
+    <div class="cat-head" role="heading" aria-level="3">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="#B80000" stroke-width="1.8" stroke-linecap="round"/></svg>
+      פירוטכניקה וגשם קונפטי יוקרתי
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:13px;margin-bottom:30px;">
+
+      <!-- זיקוקים קרים -->
+      <div class="ac" id="ac-sparks" role="checkbox" aria-checked="false" tabindex="0"
+           onclick="APP.toggleAttr('sparks',this)"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAttr('sparks',this);}">
+        <div class="ac-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 5h5l-4 3 1.5 5-4-3-4 3 1.5-5-4-3h5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:14px;margin-bottom:2px;">זיקוקים קרים בטוחים</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">ניצוצות קרים מרהיבים - לרגע כניסת הזוג</div>
+          <div class="sub-wrap">
+            <div style="font-size:11px;font-weight:700;margin-bottom:7px;color:var(--muted);">בחרו כמות:</div>
+            <button class="sub-btn sel" onclick="APP.setSub(event,'sparks','4u')" data-k="sparks" data-v="4u" type="button">4 יחידות (סטנדרט)</button>
+            <button class="sub-btn" onclick="APP.setSub(event,'sparks','8u')" data-k="sparks" data-v="8u" type="button">8 יחידות (+600 ₪) 🔥</button>
+          </div>
+        </div>
+        <div class="ac-chk" id="chk-sparks" aria-hidden="true"></div>
+      </div>
+
+      <!-- קונפטי -->
+      <div class="ac" id="ac-confetti" role="checkbox" aria-checked="false" tabindex="0"
+           onclick="APP.toggleAttr('confetti',this)"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAttr('confetti',this);}">
+        <div class="ac-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M8 4l-4 4M4 8l4 4M12 4l-4 8M4 12l4-4M16 20l4-4M20 16l-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:14px;margin-bottom:2px;">גשם של קונפטי יוקרתי</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">הרגע הכי מצולם - שכולם עוצרים לתמונה</div>
+          <div class="sub-wrap">
+            <div style="font-size:11px;font-weight:700;margin-bottom:7px;color:var(--muted);">גודל:</div>
+            <button class="sub-btn sel" onclick="APP.setSub(event,'confetti','mega')" data-k="confetti" data-v="mega" type="button">אירוע ענק (1 תותח)</button>
+            <button class="sub-btn" onclick="APP.setSub(event,'confetti','dual')" data-k="confetti" data-v="dual" type="button">2 תותחים סטנדרטיים</button>
+            <div style="font-size:11px;font-weight:700;margin-top:11px;margin-bottom:7px;color:var(--muted);">סוג נייר:</div>
+            <button class="sub-btn sel" onclick="APP.setSub(event,'confetti-paper','white')" data-k="confetti-paper" data-v="white" type="button">נייר לבן</button>
+            <button class="sub-btn" onclick="APP.setSub(event,'confetti-paper','color')" data-k="confetti-paper" data-v="color" type="button">נייר צבעוני</button>
+          </div>
+        </div>
+        <div class="ac-chk" id="chk-confetti" aria-hidden="true"></div>
+      </div>
+
+    </div>
+
+    <!-- קטגוריה 3: טכנולוגיה ותוכן -->
+    <div class="cat-head" role="heading" aria-level="3">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#B80000" stroke-width="1.7"/><path d="M8 21h8M12 17v4" stroke="#B80000" stroke-width="1.7" stroke-linecap="round"/></svg>
+      טכנולוגיה ותוכן
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:13px;margin-bottom:30px;">
+
+      <!-- תא הקלטה -->
+      <div class="ac" id="ac-backstage" role="checkbox" aria-checked="false" tabindex="0"
+           onclick="APP.toggleAttr('backstage',this)"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAttr('backstage',this);}">
+        <div class="ac-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="11" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M8 11v1a4 4 0 0 0 8 0v-1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M12 17v4M9 21h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:7px;margin-bottom:2px;">
+            <div style="font-weight:700;font-size:14px;">תא הקלטה "Backstage"</div>
+            <span class="badge badge-red" style="font-size:9px;">הלהיט!</span>
+          </div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:4px;">האורחים מברכים - החוגג מקבל סרטון ערוך עם סאונד מקצועי</div>
+          <div class="sub-wrap">
+            <div style="font-size:11px;font-weight:700;margin-bottom:7px;color:var(--muted);">סגנון הסרטון:</div>
+            <button class="sub-btn sel" onclick="APP.setSub(event,'backstage','fun')" data-k="backstage" data-v="fun" type="button">הומוריסטי 😂</button>
+            <button class="sub-btn" onclick="APP.setSub(event,'backstage','emotional')" data-k="backstage" data-v="emotional" type="button">מרגש 🥹</button>
+            <button class="sub-btn" onclick="APP.setSub(event,'backstage','light')" data-k="backstage" data-v="light" type="button">קליל 🎉</button>
+          </div>
+        </div>
+        <div class="ac-chk" id="chk-backstage" aria-hidden="true"></div>
+      </div>
+
+      <!-- פודקאסט לייב -->
+      <div class="ac" id="ac-podcast" role="checkbox" aria-checked="false" tabindex="0"
+           onclick="APP.toggleAttr('podcast',this)"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAttr('podcast',this);}">
+        <div class="ac-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:14px;margin-bottom:2px;">פודקאסט לייב מהרחבה</div>
+          <div style="font-size:12px;color:var(--muted);">שיחות ורגעים מוקלטים בזמן אמת - תוכן לשיתוף</div>
+        </div>
+        <div class="ac-chk" id="chk-podcast" aria-hidden="true"></div>
+      </div>
+
+      <!-- עמדת LED -->
+      <div class="ac" id="ac-led" role="checkbox" aria-checked="false" tabindex="0"
+           onclick="APP.toggleAttr('led',this)"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAttr('led',this);}">
+        <div class="ac-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 20h8M12 18v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 9h10M7 12h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:14px;margin-bottom:2px;">עמדת LED - לוגו ואנימציות</div>
+          <div style="font-size:12px;color:var(--muted);">הלוגו שלכם מוקרן על מסך LED לאורך כל הערב</div>
+        </div>
+        <div class="ac-chk" id="chk-led" aria-hidden="true"></div>
+      </div>
+
+    </div>
+
+    <!-- קטגוריה 4: הפקה משלימה -->
+    <div class="cat-head" role="heading" aria-level="3">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18V5l12-2v13" stroke="#B80000" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" stroke="#B80000" stroke-width="1.7"/><circle cx="18" cy="16" r="3" stroke="#B80000" stroke-width="1.7"/></svg>
+      הפקה משלימה
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:13px;margin-bottom:32px;">
+
+      <!-- הגברה -->
+      <div class="ac" id="ac-sound" role="checkbox" aria-checked="false" tabindex="0"
+           onclick="APP.toggleAttr('sound',this)"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAttr('sound',this);}">
+        <div class="ac-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:14px;margin-bottom:2px;">הגברה מקצועית מלאה</div>
+          <div style="font-size:12px;color:var(--muted);">2 RCF + סאב · עד 250 איש · התקנה כלולה</div>
+        </div>
+        <div class="ac-chk" id="chk-sound" aria-hidden="true"></div>
+      </div>
+
+      <!-- הקלטת שיר -->
+      <div class="ac" id="ac-studio" role="checkbox" aria-checked="false" tabindex="0"
+           onclick="APP.toggleAttr('studio',this)"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAttr('studio',this);}">
+        <div class="ac-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 18V5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="6" y="5" width="6" height="9" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M5 17c0 3.3 2.7 6 6 6s6-2.7 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:14px;margin-bottom:2px;">הקלטת שיר / קליפ באולפן</div>
+          <div style="font-size:12px;color:var(--muted);">תוצר מקצועי שיישמע ברדיו - מתנה שלא נשכחת</div>
+        </div>
+        <div class="ac-chk" id="chk-studio" aria-hidden="true"></div>
+      </div>
+
+    </div>
+
+    <div style="display:flex;gap:12px;">
+      <button class="btn btn-outline" style="flex:1;" onclick="APP.prev()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M19 12l-6 6M19 12l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> חזרה
+      </button>
+      <button class="btn btn-dark" style="flex:2;" onclick="APP.next()">
+        המשך לשדרוגים <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M5 12l6 6M5 12l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════
+       שלב 3 - שדרוגים ושותפים
+  ═══════════════════════════ -->
+  <section id="step-3" class="panel" aria-label="שלב 3 – שדרוגים ושותפים">
+
+    <h2 style="font-size:28px;font-weight:700;margin-bottom:5px;">השלמת החוויה</h2>
+    <p style="color:var(--muted);margin-bottom:28px;font-size:15px;">
+      שדרוגים ושותפים מומחים שיהפכו את האירוע לעוד יותר מושלם
+    </p>
+
+    <!-- שדרוגים -->
+    <div class="cat-head" role="heading" aria-level="3">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12l7-7 7 7" stroke="#B80000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      שדרוגים ותוספות
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:13px;margin-bottom:30px;">
+
+      <div class="up-card" id="up-hazer" onclick="APP.toggleExtra('hazer',600,this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();APP.toggleExtra('hazer',600,this);}">
+        <div class="up-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 10c3 0 5-2 9-2s6 2 9 2M3 14c3 0 5-2 9-2s6 2 9 2" stroke="#B80000" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:13px;margin-bottom:2px;">מכונת ערפל רחבה</div>
+          <div style="font-size:11px;color:var(--muted);">ריקוד על עננים - לפתיחת הזוג</div>
+        </div>
+        <div style="font-weight:800;color:var(--red);font-size:13px;white-space:nowrap;">600 ₪</div>
+      </div>
+
+      <div class="up-card" id="up-laser" onclick="APP.toggleExtra('laser',1100,this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();APP.toggleExtra('laser',1100,this);}">
+        <div class="up-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M20 6l-3 3M22 14h-4M20 20l-3-3M12 20v-4M6 20l3-3M2 14h4M6 6l3 3" stroke="#B80000" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:13px;margin-bottom:2px;">מערכת לייזרים מקצועית</div>
+          <div style="font-size:11px;color:var(--muted);">קרני RGB מסנכרנות למוזיקה - תוצאה קולנועית</div>
+        </div>
+        <div style="font-weight:800;color:var(--red);font-size:13px;white-space:nowrap;">1,100 ₪</div>
+      </div>
+
+      <div class="up-card" id="up-early" onclick="APP.toggleExtra('early',800,this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();APP.toggleExtra('early',800,this);}">
+        <div class="up-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#B80000" stroke-width="1.7"/><path d="M12 7v5l3 3" stroke="#B80000" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:13px;margin-bottom:2px;">הגדרה מוקדמת (שעה נוספת)</div>
+          <div style="font-size:11px;color:var(--muted);">הגעה שעה לפני - התקנה רגועה ומושלמת</div>
+        </div>
+        <div style="font-weight:800;color:var(--red);font-size:13px;white-space:nowrap;">800 ₪</div>
+      </div>
+
+      <div class="up-card" id="up-clip" onclick="APP.toggleExtra('clip',950,this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();APP.toggleExtra('clip',950,this);}">
+        <div class="up-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.869v6.262a1 1 0 0 1-1.447.894L15 14M3 8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z" stroke="#B80000" stroke-width="1.7"/></svg></div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:13px;margin-bottom:2px;">קליפ Highlights - 60 שניות</div>
+          <div style="font-size:11px;color:var(--muted);">מוכן לשיתוף ב-24 שעות - לאינסטגרם ולוואטסאפ</div>
+        </div>
+        <div style="font-weight:800;color:var(--red);font-size:13px;white-space:nowrap;">950 ₪</div>
+      </div>
+
+    </div>
+
+    <!-- שותפים לחתונה -->
+    <div id="wedding-cs" style="display:none;background:linear-gradient(135deg,#fff8f8,#fff3f3);border:2px solid rgba(184,0,0,.18);border-radius:var(--r);padding:22px;margin-bottom:28px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="#B80000" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;">שותפים מומחים לחתונה שלכם</span>
+        <span class="badge badge-blk">המלצה חמה</span>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+        הדיג'ייז שלנו יודעים להקפיץ את האפקטים בדיוק בשיא שלכם - רוצים הצעה משולבת?
+      </p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="up-card" id="cs-photo" onclick="APP.toggleCS('photo',this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();APP.toggleCS('photo',this);}">
+          <div class="up-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" stroke="#B80000" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="13" r="4" stroke="#B80000" stroke-width="1.7"/></svg></div>
+          <div>
+            <div style="font-weight:700;font-size:13px;margin-bottom:2px;">צלם אמנותי פרימיום</div>
+            <div style="font-size:11px;color:var(--muted);">הצלם המוביל שלנו - הצעה משולבת</div>
+            <div style="font-size:10px;color:var(--red);margin-top:4px;font-weight:800;">ללא עלות נוספת - ניצור קשר ✓</div>
+          </div>
+        </div>
+        <div class="up-card" id="cs-dj" onclick="APP.toggleCS('dj',this)" tabindex="0" role="checkbox" aria-checked="false" onkeydown="if(event.key===' '){event.preventDefault();APP.toggleCS('dj',this);}">
+          <div class="up-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 18v-6a9 9 0 0 1 18 0v6" stroke="#B80000" stroke-width="1.7" stroke-linecap="round"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z" stroke="#B80000" stroke-width="1.7"/></svg></div>
+          <div>
+            <div style="font-weight:700;font-size:13px;margin-bottom:2px;">דיג'יי מומחה לחתונות</div>
+            <div style="font-size:11px;color:var(--muted);">מוזיקת עולם + Mainstream - שילוב מושלם</div>
+            <div style="font-size:10px;color:var(--red);margin-top:4px;font-weight:800;">ללא עלות נוספת - ניצור קשר ✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- "לקוחות דומים בחרו גם" -->
+    <div id="also-chose" style="background:var(--soft);border-radius:12px;padding:16px 18px;margin-bottom:28px;font-size:13px;display:none;">
+      <div style="font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:7px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#B80000" stroke-width="1.7"/><circle cx="9" cy="7" r="4" stroke="#B80000" stroke-width="1.7"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="#B80000" stroke-width="1.7" stroke-linecap="round"/></svg>
+        לקוחות דומים בחרו גם:
+      </div>
+      <div id="also-chose-txt" style="color:var(--muted);"></div>
+    </div>
+
+    <div style="display:flex;gap:12px;">
+      <button class="btn btn-outline" style="flex:1;" onclick="APP.prev()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M19 12l-6 6M19 12l-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> חזרה
+      </button>
+      <button class="btn btn-dark" style="flex:2;" onclick="APP.next()">
+        לסיכום הסופי <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M5 12l6 6M5 12l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════
+       שלב 4 - סיכום ושריון
+  ═══════════════════════════ -->
+  <section id="step-4" class="panel" aria-label="שלב 4 – סיכום ושריון">
+
+    <h2 style="font-size:28px;font-weight:700;margin-bottom:5px;">הצעת המחיר האישית שלכם מוכנה</h2>
+    <p style="color:var(--muted);margin-bottom:20px;font-size:15px;">פירוט מלא · תמחור שקוף · זמין בתיאום מראש בלבד</p>
+
+    <!-- Urgency -->
+    <div style="background:linear-gradient(135deg,#1a0000,#2c0000);border-radius:12px;padding:13px 18px;margin-bottom:24px;display:flex;align-items:center;gap:11px;font-size:13px;color:#fca5a5;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#f87171" stroke-width="1.8"/><path d="M12 7v5l3 3" stroke="#f87171" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span><strong style="color:#fca5a5;">⚡ המחיר מובטח ל-48 שעות הקרובות בלבד</strong> · נותרו תאריכים ספורים לעונה הקרובה</span>
+    </div>
+
+    <!-- Summary -->
+    <div id="summary-box" style="border:2px solid var(--border);border-radius:var(--r);padding:28px;margin-bottom:26px;"></div>
+
+    <!-- Contact -->
+    <div style="background:var(--soft);border-radius:var(--r);padding:24px;margin-bottom:24px;">
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:15px;display:flex;align-items:center;gap:9px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#B80000" stroke-width="1.7"/><circle cx="12" cy="7" r="4" stroke="#B80000" stroke-width="1.7"/></svg>
+        פרטי קשר
+      </h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px;">
+        <div>
+          <label for="c-name" style="display:block;font-size:11px;font-weight:800;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">שם מלא *</label>
+          <input type="text" id="c-name" placeholder="ישראל ישראלי" oninput="APP.state.contact.name=this.value;APP.saveLS();" autocomplete="name">
+          <div id="c-name-err" class="err-msg">שדה חובה - נא הזינו שם</div>
+        </div>
+        <div>
+          <label for="c-phone" style="display:block;font-size:11px;font-weight:800;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">טלפון *</label>
+          <input type="tel" id="c-phone" placeholder="05X-XXXXXXX" oninput="APP.state.contact.phone=this.value;APP.saveLS();" inputmode="tel" autocomplete="tel">
+          <div id="c-phone-err" class="err-msg">נא הזינו מספר טלפון ישראלי תקין</div>
+        </div>
+      </div>
+      <div style="margin-bottom:13px;">
+        <label for="c-email" style="display:block;font-size:11px;font-weight:800;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">אימייל <span style="font-weight:400;text-transform:none;letter-spacing:0;">(לקבלת הצעה רשמית)</span></label>
+        <input type="email" id="c-email" placeholder="your@email.com" oninput="APP.state.contact.email=this.value;">
+      </div>
+      <div>
+        <label for="c-notes" style="display:block;font-size:11px;font-weight:800;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;">בקשות מיוחדות <span style="font-weight:400;text-transform:none;letter-spacing:0;">(יש לכם בקשה? אנחנו אוהבים אתגרים 😊)</span></label>
+        <textarea id="c-notes" rows="3" style="resize:vertical;" placeholder="מיקום האולם, בקשות מיוחדות, שאלות..." oninput="APP.state.contact.notes=this.value;"></textarea>
+      </div>
+    </div>
+
+    <!-- Legal -->
+    <div style="border:2px solid var(--border);border-radius:var(--r);padding:22px;margin-bottom:26px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
+        <h3 style="font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#B80000" stroke-width="1.7"/></svg>
+          אישורים ותנאי שירות
+        </h3>
+        <button class="btn btn-outline" style="padding:6px 14px;font-size:12px;" onclick="APP.checkAllLegal()">סמן הכל ✓</button>
+      </div>
+      <div class="legal-row">
+        <input type="checkbox" id="l1"><label for="l1"><strong>הצעה ראשונית:</strong> מסמך זה מהווה הצעת מחיר בלבד. המחיר הסופי ייקבע לאחר שיחת ייעוץ וחתימה.</label>
+      </div>
+      <div class="legal-row">
+        <input type="checkbox" id="l2"><label for="l2"><strong>אחריות טכנית:</strong> פיק מומנטס מתחייבת לפעילות תקינה של כל הציוד. במקרה תקלה - פתרון חלופי ללא עלות.</label>
+      </div>
+      <div class="legal-row">
+        <input type="checkbox" id="l3"><label for="l3"><strong>ביטולים:</strong> עד 60 יום - החזר מלא. עד 30 יום - 50%. פחות מ-30 יום - ללא החזר.</label>
+      </div>
+      <div class="legal-row">
+        <input type="checkbox" id="l4"><label for="l4"><strong>אישור:</strong> קראתי את התנאים והפרטים נכונים.</label>
+      </div>
+    </div>
+
+    <!-- CTAs -->
+    <button class="btn btn-wa btn-w" onclick="APP.sendWhatsApp()" style="margin-bottom:13px;font-size:17px;padding:18px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.374 0 12c0 2.124.549 4.12 1.508 5.853L.058 23.5c-.12.492.292.942.792.942.122 0 .244-.025.36-.075l5.879-2.341C8.615 23.323 10.268 24 12 24c6.626 0 12-5.374 12-12S18.626 0 12 0zm0 22c-1.7 0-3.3-.446-4.699-1.232l-.336-.196-3.484 1.386 1.41-3.397-.216-.35C3.635 16.86 3 14.5 3 12 3 6.486 7.486 2 12 2s9 4.486 9 10-4.486 10-9 10z"/></svg>
+      שריינו לי את התאריך והחבילה ✅
+    </button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+      <button class="btn btn-red btn-w" id="submit-btn" onclick="APP.submitForm()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        שלח הצעה רשמית
+      </button>
+      <button class="btn btn-outline" style="padding:14px;" onclick="APP.downloadPDF()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#B80000" stroke-width="1.7"/><polyline points="14 2 14 8 20 8" stroke="#B80000" stroke-width="1.7" stroke-linejoin="round"/><line x1="12" y1="18" x2="12" y2="12" stroke="#B80000" stroke-width="1.7" stroke-linecap="round"/><polyline points="9 15 12 18 15 15" stroke="#B80000" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        הורד PDF
+      </button>
+    </div>
+    <button class="btn btn-outline" style="width:100%;padding:13px;margin-bottom:8px;" onclick="APP.copyQuote()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" stroke="#0A0A0A" stroke-width="1.7"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke="#0A0A0A" stroke-width="1.7"/></svg>
+      העתק הצעה מלאה (לשליחה ללקוח)
+    </button>
+    <button class="btn btn-outline" style="width:100%;padding:13px;" onclick="APP.prev()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      חזרה לשדרוגים
+    </button>
+
+  </section>
+
+</main>
+
+<!-- PRICE BAR -->
+<div id="price-bar" class="no-print" aria-live="polite" aria-label="מחיר משוער">
+  <div>
+    <div class="pb-label">השקעה ברגעי השיא</div>
+    <div class="pb-total" id="pb-total">0 ₪</div>
+    <div class="pb-save"  id="pb-save"></div>
+  </div>
+</div>
+
+<!-- SMART ALERT -->
+<div id="smart-alert" class="no-print" role="alert">
+  <div id="alert-body" style="font-size:13px;line-height:1.6;flex:1;"></div>
+  <button onclick="APP.closeAlert()" style="background:none;border:none;cursor:pointer;color:#aaa;font-size:20px;line-height:1;padding:0;flex-shrink:0;" aria-label="סגור התראה">×</button>
+</div>
+
+<script>
+/* ================================================================
+   פיק מומנטס - מנהל מצב מרכזי
+================================================================ */
+const APP = (() => {
+
+  const LS_KEY = 'peak_moments_v3'; // bump version to invalidate stale state
+
+  // ── STATE ─────────────────────────────────────────────────────
+  const state = {
+    currentStep: 1,
+    eventType:   null,
+    eventLabel:  '',
+    eventDate:   '',
+    guests:      0,
+    locationFee: 0,
+    contact:     { name:'', phone:'', email:'', notes:'' },
+    attractions: {
+      smoke:false, co2:false, bubbles:false, sparks:false, confetti:false,
+      backstage:false, podcast:false, led:false, sound:false, studio:false
+    },
+    subs: {
+      smoke:'large', co2:'color', bubbles:'soap', sparks:'4u',
+      confetti:'mega', 'confetti-paper':'white', backstage:'fun'
+    },
+    extras:     { hazer:false, laser:false, early:false, clip:false },
+    extraPrices:{ hazer:600, laser:1100, early:800, clip:950 },
+    crossSell:  { photo:false, dj:false }
+  };
+
+  // ── LOCAL STORAGE ─────────────────────────────────────────────
+  function saveLS() {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify({
+        eventType: state.eventType, eventLabel: state.eventLabel,
+        eventDate: state.eventDate, guests: state.guests,
+        locationFee: state.locationFee, contact: state.contact,
+        attractions: state.attractions, subs: state.subs,
+        extras: state.extras, crossSell: state.crossSell,
+        currentStep: state.currentStep
+      }));
+    } catch(e) {}
+  }
+
+  function loadLS() {
+    try {
+      const raw = localStorage.getItem(LS_KEY);
+      if (!raw) return;
+      const d = JSON.parse(raw);
+      if (!d || typeof d !== 'object') return; // corrupt data guard
+      if (d.eventType)  { state.eventType = d.eventType; state.eventLabel = d.eventLabel || ''; }
+      if (d.eventDate)  state.eventDate = d.eventDate;
+      if (d.guests)     state.guests = d.guests;
+      if (d.locationFee)state.locationFee = d.locationFee;
+      if (d.contact)    Object.assign(state.contact, d.contact);
+      if (d.attractions)Object.assign(state.attractions, d.attractions);
+      if (d.subs)       Object.assign(state.subs, d.subs);
+      if (d.extras)     Object.assign(state.extras, d.extras);
+      if (d.crossSell)  Object.assign(state.crossSell, d.crossSell);
+      // Restore UI
+      restoreUI();
+      if (d.currentStep > 1) {
+        state.currentStep = d.currentStep;
+        showStep(state.currentStep);
+        toast('ברוכים השבים! ממשיכים מהמקום שעצרתם 💾', 'info', 4000);
+      }
+    } catch(e) {}
+  }
+
+  function restoreUI() {
+    // Event type
+    if (state.eventType) {
+      const el = document.getElementById('ev-' + state.eventType);
+      if (el) el.classList.add('sel');
+    }
+    // Date, guests, location
+    const evDate = document.getElementById('ev-date');
+    if (evDate && state.eventDate) evDate.value = state.eventDate;
+    const evGuests = document.getElementById('ev-guests');
+    if (evGuests && state.guests) evGuests.value = state.guests;
+    const evLoc = document.getElementById('ev-loc');
+    if (evLoc && state.locationFee) evLoc.value = state.locationFee;
+    // Contact
+    const cn1 = document.getElementById('c-name-1');
+    if (cn1 && state.contact.name) cn1.value = state.contact.name;
+    const cp1 = document.getElementById('c-phone-1');
+    if (cp1 && state.contact.phone) cp1.value = state.contact.phone;
+    // Attractions
+    Object.entries(state.attractions).forEach(([k, v]) => {
+      if (!v) return;
+      const el = document.getElementById('ac-' + k);
+      if (el) {
+        el.classList.add('sel');
+        el.setAttribute('aria-checked', 'true');
+        updateChk(k, true);
+      }
+    });
+    // Subs
+    Object.entries(state.subs).forEach(([k, v]) => {
+      document.querySelectorAll(`.sub-btn[data-k="${k}"]`).forEach(b => {
+        b.classList.toggle('sel', b.dataset.v === v);
+      });
+    });
+    // Extras
+    Object.entries(state.extras).forEach(([k, v]) => {
+      if (!v) return;
+      const el = document.getElementById('up-' + k);
+      if (el) { el.classList.add('sel'); el.setAttribute('aria-checked','true'); }
+    });
+  }
+
+  // ── PRICING ──────────────────────────────────────────────────
+  const TIER = [0, 1750, 3200, 4450, 5500];
+
+  function attrCount() {
+    return Object.values(state.attractions).filter(Boolean).length;
+  }
+
+  function calcPrice() {
+    const items = [];
+    let total = 0;
+    const add = (label, price, type='add') => { items.push({label, price, type}); total += price; };
+
+    const n = attrCount();
+    if (n > 0) {
+      // First 4 attractions: tiered pricing (4+ = 5500 fixed)
+      const baseCount = Math.min(n, 4);
+      const base      = TIER[baseCount]; // TIER[4]=5500
+      const list      = baseCount * 1750;
+      const saving    = list - base;
+      const packName  = baseCount >= 4 ? 'פרימיום (4)' : baseCount === 3 ? 'מורחבת (3)' : baseCount === 2 ? 'כפולה (2)' : 'בסיס (1)';
+      add(`${baseCount} אטרקציות - חבילת ${packName}`, base, 'base');
+      if (saving > 0) add('חיסכון חבילה', -saving, 'discount');
+      // Extra attractions beyond 4 - charged individually at full price
+      if (n > 4) {
+        const extras = n - 4;
+        add(`${extras} אטרקציות נוספות (מעל לחבילה)`, extras * 1750);
+      }
+    }
+
+    // Sparks extra
+    if (state.attractions.sparks && state.subs.sparks === '8u') add('זיקוקים קרים - 8 יחידות (שדרוג)', 600);
+
+    // Location
+    if (state.locationFee > 0) add('תוספת נסיעה', state.locationFee);
+
+    // Extras
+    Object.entries(state.extras).forEach(([k, v]) => {
+      if (v) add(EXTRA_HEB[k], state.extraPrices[k]);
+    });
+
+    // Gift at 4+
+    if (n >= 4) items.push({ label:'🎁 קליפ Highlights - מתנה', price:0, type:'gift' });
+
+    return { items, final: total };
+  }
+
+  const EXTRA_HEB = {
+    hazer: 'מכונת ערפל רחבה',
+    laser: 'מערכת לייזרים מקצועית',
+    early: 'הגדרה מוקדמת (שעה נוספת)',
+    clip:  'קליפ Highlights 60 שניות'
+  };
+
+  const ATTR_HEB = {
+    smoke:'עשן כבד לרחבה', co2:'תותחי עשן CO₂', bubbles:'מערכת בועות Cinematic',
+    sparks:'זיקוקים קרים', confetti:'גשם קונפטי יוקרתי', backstage:'תא הקלטה Backstage',
+    podcast:'פודקאסט לייב', led:'עמדת LED', sound:'הגברה מקצועית', studio:'הקלטת שיר / קליפ'
+  };
+
+  const SUB_HEB = {
+    'smoke:large':'אירועים גדולים','smoke:slow':'סלאו מוציה','smoke:chupa':'אפקט חופה',
+    'co2:color':'צבעוני לרחבה','co2:white':'לבן לשבירת כוס',
+    'bubbles:soap':'בועות סבון','bubbles:wow':'בועות עשן WOW','bubbles:led2':'2 תותחי LED',
+    'sparks:4u':'4 יחידות','sparks:8u':'8 יחידות',
+    'confetti:mega':'אירוע ענק','confetti:dual':'2 תותחים',
+    'confetti-paper:white':'נייר לבן','confetti-paper:color':'נייר צבעוני',
+    'backstage:fun':'הומוריסטי','backstage:emotional':'מרגש','backstage:light':'קליל'
+  };
+
+  // ── RENDER PRICE ──────────────────────────────────────────────
+  function renderPrice() {
+    const { final } = calcPrice();
+    const el = document.getElementById('pb-total');
+    if (!el) return;
+    el.textContent = final.toLocaleString() + ' ₪';
+    el.classList.add('flash');
+    setTimeout(() => el.classList.remove('flash'), 400);
+    const mob = document.getElementById('mob-price');
+    if (mob) mob.textContent = final.toLocaleString() + ' ₪';
+    saveLS();
+  }
+
+  // ── GIFT BAR ──────────────────────────────────────────────────
+  function renderGiftBar() {
+    const n   = attrCount();
+    const pct = Math.min((n / 4) * 100, 100);
+    document.getElementById('gift-fill').style.width = pct + '%';
+    document.getElementById('gift-fill').parentElement.setAttribute('aria-valuenow', n);
+    const txt = document.getElementById('gift-txt');
+    const sub = document.getElementById('gift-sub');
+    const bdg = document.getElementById('gift-badge');
+    if (n >= 4) {
+      txt.innerHTML = '<span style="color:var(--green);font-weight:800">🎁 מדהים! קליפ Highlights נוסף לחבילתכם בחינם!</span>';
+      sub.textContent = ''; bdg.innerHTML = '<span class="badge badge-red">GIFT UNLOCKED ✦</span>';
+    } else {
+      const need = 4 - n;
+      txt.innerHTML = `עוד <strong>${need} אטרקציה${need !== 1 ? 'ות' : ''}</strong> - וה<strong>קליפ ב-950 ₪ יהיה שלכם במתנה! 🎁</strong>`;
+      sub.textContent = `נבחרו ${n}/4 · חיסכון עד 1,500 ₪ בחבילת פרימיום`;
+      bdg.innerHTML = '';
+    }
+  }
+
+  // ── PROGRESS BAR ──────────────────────────────────────────────
+  function renderProgress() {
+    const labels = ['פרטי האירוע','אטרקציות','שדרוגים','סיכום ושריון'];
+    let html = '';
+    for (let i = 1; i <= 4; i++) {
+      const done = i < state.currentStep, active = i === state.currentStep;
+      html += `<div class="pn ${done?'done':''} ${active?'active':''}" onclick="APP.goTo(${i})" tabindex="0" onkeydown="if(event.key==='Enter')APP.goTo(${i})" title="${labels[i-1]}" role="button" aria-current="${active?'step':'false'}">
+        <div class="pn-num">${done ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' : i}</div>
+        <div class="pn-lbl">${labels[i-1]}</div>
+      </div>`;
+      if (i < 4) html += `<div class="pn-line ${done?'done':''}"></div>`;
+    }
+    document.getElementById('progress').innerHTML = html;
+  }
+
+  // ── SHOW STEP ─────────────────────────────────────────────────
+  function showStep(n) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById('step-' + n);
+    if (panel) panel.classList.add('active');
+    renderProgress();
+    renderPrice();
+    renderGiftBar();
+    // Wedding cross-sell
+    const wcs = document.getElementById('wedding-cs');
+    if (wcs) wcs.style.display = (state.eventType === 'wedding' && n === 3) ? 'block' : 'none';
+    // Also-chose
+    renderAlsoChose(n);
+    if (n === 4) renderSummary();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── NAVIGATION ────────────────────────────────────────────────
+  // Inline field error helper (module-scoped so no hoisting issue)
+  function showFieldErr(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.add('err');
+      el.addEventListener('input', () => {
+        el.classList.remove('err');
+        const m = document.getElementById(id + '-err');
+        if (m) m.classList.remove('err-visible');
+      }, { once: true });
+    }
+    const errEl = document.getElementById(id + '-err');
+    if (errEl) errEl.classList.add('err-visible');
+  }
+
+  function next() {
+    if (state.currentStep === 1) {
+      const name  = document.getElementById('c-name-1')?.value.trim() || '';
+      const phone = document.getElementById('c-phone-1')?.value.trim() || '';
+      let hasErr = false;
+
+      if (!state.eventType) {
+        flashAlert('אנא בחרו סוג אירוע לפני המשך ⚠️'); return;
+      }
+      if (!state.eventDate) {
+        const el = document.getElementById('ev-date');
+        if (el) { el.classList.add('err'); setTimeout(()=>el.classList.remove('err'), 1500); }
+        flashAlert('אנא בחרו תאריך האירוע 📅'); return;
+      }
+      if (!name) {
+        showFieldErr('c-name-s1');
+        hasErr = true;
+      }
+      if (!phone) {
+        showFieldErr('c-phone-s1');
+        hasErr = true;
+      } else if (!validatePhone(phone)) {
+        showFieldErr('c-phone-s1');
+        const el = document.getElementById('c-phone-1');
+        if (el) { el.classList.add('err'); setTimeout(()=>el.classList.remove('err'), 2000); }
+        hasErr = true;
+        flashAlert('מספר טלפון לא תקין ⚠️'); return;
+      }
+      if (hasErr) { flashAlert('אנא מלאו שם וטלפון לפני המשך ⚠️'); return; }
+      // Sync contact state from step 1 fields
+      state.contact.name  = name;
+      state.contact.phone = phone;
+      saveLS();
+    }
+    if (state.currentStep === 2 && attrCount() === 0) {
+      flashAlert('אנא בחרו לפחות אטרקציה אחת 🎭'); return;
+    }
+    if (state.currentStep < 4) { state.currentStep++; showStep(state.currentStep); }
+  }
+
+  function prev() {
+    if (state.currentStep > 1) { state.currentStep--; showStep(state.currentStep); }
+  }
+
+  function goTo(n) {
+    if (n <= state.currentStep) { state.currentStep = n; showStep(n); }
+  }
+
+  function mobileNext() { next(); }
+
+  // ── STEP 1 ────────────────────────────────────────────────────
+  function pickEvent(el, type, label) {
+    state.eventType  = type;
+    state.eventLabel = label;
+    document.querySelectorAll('.ev-card').forEach(c => { c.classList.remove('sel'); c.setAttribute('aria-checked','false'); });
+    el.classList.add('sel');
+    el.setAttribute('aria-checked', 'true');
+    showContextHint(type);
+    renderPrice();
+    saveLS();
+  }
+
+  function showContextHint(type) {
+    const hints = {
+      wedding:    'לחתונות - אנו ממליצים בחום על זיקוקים קרים לכניסת הזוג + עשן כבד לסלאו. שתי האטרקציות הפופולריות ביותר שלנו!',
+      barmitzvah: 'לבר/בת מצווה - תא ההקלטה "Backstage" הוא להיט מוחלט - האורחים מברכים, החוגג מקבל סרטון שיישמר לנצח.',
+      birthday:   'ליום הולדת - גשם קונפטי יוקרתי + תותחי CO₂ יוצרים תמונות שכולם ישתפו ברשתות.',
+      corporate:  'לאירוע עסקי - עמדת LED עם לוגו החברה + הגברה מקצועית משדרים מקצועיות ורושם בלתי נשכח.',
+      other:      'נשמח לייעץ ולהתאים את האטרקציות לאירוע הייחודי שלכם - בחרו ונסביר!'
+    };
+    const wrap = document.getElementById('ctx-hint');
+    const txt  = document.getElementById('ctx-hint-txt');
+    if (!wrap || !txt) return;
+    if (hints[type]) {
+      txt.textContent = hints[type];
+      wrap.style.display = 'block';
+      wrap.style.animation = 'fadeUp .3s ease';
+    } else {
+      wrap.style.display = 'none';
+    }
+  }
+
+  // ── STEP 2: ATTRACTIONS ───────────────────────────────────────
+  function updateChk(key, active) {
+    const chk = document.getElementById('chk-' + key);
+    if (!chk) return;
+    if (active) {
+      chk.style.background  = 'var(--red)';
+      chk.style.borderColor = 'var(--red)';
+      chk.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    } else {
+      chk.style.background  = '';
+      chk.style.borderColor = '';
+      chk.innerHTML = '';
+    }
+  }
+
+  function toggleAttr(key, el) {
+    state.attractions[key] = !state.attractions[key];
+    el.classList.toggle('sel');
+    el.setAttribute('aria-checked', String(state.attractions[key]));
+    updateChk(key, state.attractions[key]);
+    pricePop(state.attractions[key] ? 1750 : -1750);
+    renderPrice();
+    renderGiftBar();
+    saveLS();
+  }
+
+  function setSub(e, key, val) {
+    e.stopPropagation();
+    state.subs[key] = val;
+    document.querySelectorAll(`.sub-btn[data-k="${key}"]`).forEach(b => b.classList.toggle('sel', b.dataset.v === val));
+    renderPrice();
+    saveLS();
+  }
+
+  // ── STEP 3: EXTRAS + CROSS-SELL ──────────────────────────────
+  function toggleExtra(key, price, el) {
+    state.extras[key] = !state.extras[key];
+    el.classList.toggle('sel');
+    el.setAttribute('aria-checked', String(state.extras[key]));
+    pricePop(state.extras[key] ? price : -price);
+    renderPrice();
+    renderGiftBar();
+    saveLS();
+  }
+
+  function toggleCS(key, el) {
+    state.crossSell[key] = !state.crossSell[key];
+    el.classList.toggle('sel');
+    el.setAttribute('aria-checked', String(state.crossSell[key]));
+    if (state.crossSell[key]) {
+      const who = key === 'photo' ? 'הצלם' : 'הדיג\'יי';
+      toast(`מעולה! ניצור קשר עם ${who} המובילים שלנו לתיאום 📞`, 'success', 4500);
+    }
+    saveLS();
+  }
+
+  // ── "לקוחות דומים בחרו גם" ───────────────────────────────────
+  function renderAlsoChose(step) {
+    if (step !== 3) return;
+    const box = document.getElementById('also-chose');
+    const txt = document.getElementById('also-chose-txt');
+    if (!box || !txt) return;
+    const selected = Object.entries(state.attractions).filter(([,v])=>v).map(([k])=>k);
+    const suggestions = [];
+    if (selected.includes('smoke') && !selected.includes('sparks'))      suggestions.push('זיקוקים קרים (מרהיב עם עשן כבד!)');
+    if (selected.includes('sparks') && !selected.includes('smoke'))      suggestions.push('עשן כבד לסלאו (שילוב קלאסי!)');
+    if (selected.includes('backstage') && !selected.includes('confetti'))suggestions.push('גשם קונפטי (הרגע המצולם!)');
+    if (selected.includes('co2') && !selected.includes('laser'))         suggestions.push('מערכת לייזרים (מכפיל אפקט!)');
+    if (selected.length >= 2 && !state.extras.hazer)                     suggestions.push('מכונת ערפל - ריקוד על עננים');
+    if (suggestions.length === 0) { box.style.display='none'; return; }
+    txt.textContent = suggestions.slice(0,2).join(' · ');
+    box.style.display = 'block';
+  }
+
+  // ── PRICE POP ─────────────────────────────────────────────────
+  function pricePop(diff) {
+    if (!diff) return;
+    const el = document.createElement('div');
+    el.className = 'price-pop';
+    el.textContent = (diff > 0 ? '+' : '') + diff.toLocaleString() + ' ₪';
+    el.style.color = diff > 0 ? 'var(--red)' : 'var(--green)';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1300);
+  }
+
+  // ── TOAST ─────────────────────────────────────────────────────
+  function toast(msg, type='info', dur=3500) {
+    const w = document.getElementById('toast-wrap');
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    const icons = { success:'✅', error:'⚠️', info:'ℹ️' };
+    el.innerHTML = `<span>${icons[type]||''}</span><span>${msg}</span>`;
+    w.appendChild(el);
+    setTimeout(() => { el.style.animation='tOut .3s ease forwards'; setTimeout(()=>el.remove(),300); }, dur);
+  }
+
+  // ── SMART ALERTS ──────────────────────────────────────────────
+  let alertTimer = null;
+
+  function showAlert(html) {
+    clearTimeout(alertTimer);
+    document.getElementById('alert-body').innerHTML = html;
+    document.getElementById('smart-alert').classList.add('open');
+    alertTimer = setTimeout(closeAlert, 7000);
+  }
+
+  function closeAlert() {
+    document.getElementById('smart-alert').classList.remove('open');
+  }
+
+  function flashAlert(msg, type='error') {
+    toast(msg, type);
+    showAlert(msg);
+    clearTimeout(alertTimer);
+    alertTimer = setTimeout(closeAlert, 4000);
+  }
+
+  function runAlerts() {
+    if (state.guests > 500) {
+      showAlert('<strong>500+ אורחים:</strong> לאירוע גדול נמליץ על ציוד נוסף - ניצור קשר ונתאים.');
+      return;
+    }
+    closeAlert();
+  }
+
+  // ── EXIT INTENT ───────────────────────────────────────────────
+  let exitShown = false;
+  function initExitIntent() {
+    document.addEventListener('mouseleave', (e) => {
+      if (e.clientY < 5 && !exitShown && state.currentStep >= 3) {
+        exitShown = true;
+        document.getElementById('exit-modal').classList.add('open');
+      }
+    });
+  }
+
+  function closeExitModal() {
+    document.getElementById('exit-modal').classList.remove('open');
+  }
+
+  // ── PERSONALIZED GREETING ─────────────────────────────────────
+  function setGreeting() {
+    const h = new Date().getHours();
+    const el = document.getElementById('main-greeting');
+    if (!el) return;
+    let greet = '';
+    if (h >= 5 && h < 12)       greet = 'בוקר טוב! ';
+    else if (h >= 12 && h < 17) greet = 'צהריים טובים! ';
+    else if (h >= 17 && h < 21) greet = 'ערב טוב! ';
+    else                         greet = '';
+    if (greet) el.innerHTML = `${greet}עצבו את <span style="color:var(--red);">רגעי השיא</span> שלכם`;
+  }
+
+  // ── PHONE VALIDATION ──────────────────────────────────────────
+  function validatePhone(phone) {
+    const clean = phone.replace(/[\s\-\(\)]/g, '');
+    return /^(0[5][0-9]{8}|0[2-4,8-9][0-9]{7}|\+972[5][0-9]{8})$/.test(clean);
+  }
+
+  // ── SUMMARY ───────────────────────────────────────────────────
+  function renderSummary() {
+    const { items, final } = calcPrice();
+    const n = attrCount();
+    const dateStr = state.eventDate
+      ? new Date(state.eventDate).toLocaleDateString('he-IL', { day:'numeric', month:'long', year:'numeric' })
+      : 'לא נבחר';
+
+    const attrDetail = Object.entries(state.attractions).filter(([,v])=>v)
+      .map(([k]) => {
+        let s = ATTR_HEB[k];
+        const sub = state.subs[k];
+        if (sub) s += ` (${SUB_HEB[k+':'+sub]||sub})`;
+        if (k === 'confetti') { const p = state.subs['confetti-paper']; if(p) s += ` · ${SUB_HEB['confetti-paper:'+p]||p}`; }
+        return s;
+      }).join(' / ');
+
+    const csText = Object.entries(state.crossSell).filter(([,v])=>v)
+      .map(([k])=>k==='photo'?'צלם פרימיום':'דיג\'יי מומחה').join(', ');
+
+    let html = `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;margin-bottom:22px;">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:21px;font-weight:700;">סיכום החבילה שלכם</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:3px;">${state.eventLabel||'אירוע'} · ${dateStr} · ${state.guests||'N/A'} אורחים</div>
+        </div>
+        <div style="text-align:left;">
+          <div style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px;">השקעה ברגעי השיא</div>
+          <div style="font-family:'Playfair Display',serif;font-size:38px;font-weight:900;color:var(--red);line-height:1.1;">${final.toLocaleString()} ₪</div>
+          ${n>=4?'<div style="font-size:12px;color:var(--green);font-weight:800;">🎁 קליפ Highlights כלול - חינם!</div>':''}
+        </div>
+      </div>`;
+
+    html += `<div class="sum-cat">אטרקציות שנבחרו ✓</div>`;
+    items.filter(i=>i.type==='base').forEach(it => {
+      html += `<div class="sum-row"><span>${it.label}</span><span style="font-weight:800;">${it.price.toLocaleString()} ₪</span></div>`;
+    });
+    if (attrDetail) html += `<div class="sum-row" style="font-size:12px;color:var(--muted);"><span style="flex:1;">${attrDetail}</span></div>`;
+
+    const discounts = items.filter(i=>i.type==='discount');
+    if (discounts.length) {
+      html += `<div class="sum-cat">חיסכון חבילה 🎉</div>`;
+      discounts.forEach(it => {
+        html += `<div class="sum-row neg"><span>${it.label}</span><span style="font-weight:800;">−${Math.abs(it.price).toLocaleString()} ₪</span></div>`;
+      });
+    }
+
+    const adds = items.filter(i=>i.type==='add');
+    if (adds.length) {
+      html += `<div class="sum-cat">שדרוגים ותוספות</div>`;
+      adds.forEach(it => {
+        html += `<div class="sum-row"><span>${it.label}</span><span style="font-weight:800;">${it.price.toLocaleString()} ₪</span></div>`;
+      });
+    }
+
+    const gifts = items.filter(i=>i.type==='gift');
+    if (gifts.length) {
+      html += `<div class="sum-cat">מתנות בחבילה ✦</div>`;
+      gifts.forEach(it => {
+        html += `<div class="sum-row gift"><span>${it.label}</span><span style="font-weight:800;color:var(--green);">חינם!</span></div>`;
+      });
+    }
+
+    if (csText) {
+      html += `<div class="sum-cat">שיתופי פעולה (ניצור קשר)</div>
+        <div class="sum-row"><span>${csText}</span><span style="font-size:11px;color:var(--muted);">📞 בתיאום אישי</span></div>`;
+    }
+
+    html += `<div class="sum-total"><span>סה״כ לתשלום</span><span style="color:var(--red);">${final.toLocaleString()} ₪</span></div>`;
+
+    html += `<div style="background:var(--green-t);border:1px solid rgba(21,128,61,.2);border-radius:10px;padding:12px 16px;margin-top:15px;font-size:13px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:9px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M1 10h22" stroke="currentColor" stroke-width="1.8"/></svg>
+      פריסה נוחה: ${Math.round(final/12).toLocaleString()} ₪ לחודש × 12 תשלומים ללא ריבית
+    </div>`;
+
+    document.getElementById('summary-box').innerHTML = html;
+
+    // Pre-fill contact from step 1
+    const n1 = document.getElementById('c-name-1'), n2 = document.getElementById('c-name');
+    const p1 = document.getElementById('c-phone-1'), p2 = document.getElementById('c-phone');
+    if (n1 && n2 && !n2.value) n2.value = n1.value;
+    if (p1 && p2 && !p2.value) p2.value = p1.value;
+  }
+
+  // ── LEGAL ─────────────────────────────────────────────────────
+  function checkAllLegal() {
+    for (let i=1;i<=4;i++) { const el=document.getElementById('l'+i); if(el) el.checked=true; }
+  }
+
+  function validateLegal() {
+    for (let i=1;i<=4;i++) {
+      const el=document.getElementById('l'+i);
+      if (!el||!el.checked) { flashAlert('אנא אשרו את כל הסעיפים ✅'); if(el) el.scrollIntoView({behavior:'smooth',block:'center'}); return false; }
+    }
+    return true;
+  }
+
+  // ── BUILD FULL DETAILS ────────────────────────────────────────
+  function buildDetails() {
+    const { items, final } = calcPrice();
+    const n = attrCount();
+    const attrList = Object.entries(state.attractions).filter(([,v])=>v).map(([k])=>{
+      let s='• '+ATTR_HEB[k];
+      const sub=state.subs[k];
+      if(sub) s+=` - ${SUB_HEB[k+':'+sub]||sub}`;
+      if(k==='confetti'){const p=state.subs['confetti-paper'];if(p) s+=` · נייר: ${SUB_HEB['confetti-paper:'+p]||p}`;}
+      return s;
+    }).join('\n');
+    const extrasList = Object.entries(state.extras).filter(([,v])=>v).map(([k])=>'• '+EXTRA_HEB[k]).join('\n')||'ללא';
+    const csText = Object.entries(state.crossSell).filter(([,v])=>v).map(([k])=>k==='photo'?'צלם פרימיום':'דיג\'יי מומחה').join(', ')||'ללא';
+    const breakdown = items.map(it=>`${it.label}: ${it.price>0?'+':it.price<0?'−':''}${Math.abs(it.price).toLocaleString()} ₪`).join('\n');
+    return { attrList, extrasList, csText, breakdown, final, n };
+  }
+
+  // ── WHATSAPP ──────────────────────────────────────────────────
+  function sendWhatsApp() {
+    const { attrList, extrasList, csText, final, n } = buildDetails();
+    const name  = (document.getElementById('c-name')?.value || document.getElementById('c-name-1')?.value || '').trim();
+    // Sentiment adaptation by event type
+    const tones = {
+      wedding:    'היי פיק מומנטס! 💍 בניתי חבילה לחתונה שלנו והמחיר המדהים שלכם ממש הרגיש לנו נכון!',
+      barmitzvah: 'היי פיק מומנטס! ✡️ בניתי חבילת אטרקציות לבר המצווה שלנו - אנרגיה מדהימה!',
+      birthday:   'היי פיק מומנטס! 🎉 בניתי חבילה לחגיגה - תאריך שמור לנו!',
+      corporate:  'היי פיק מומנטס! 🏢 בניתי הצעה לאירוע החברה שלנו - נשמח לתיאום.',
+      other:      'היי פיק מומנטס! ✨ בניתי חבילה לאירוע מיוחד - אשמח לשמוע ממכם!'
+    };
+    const opener = tones[state.eventType] || 'היי פיק מומנטס! 🌟';
+    const msg =
+      `${opener}\n${name ? `שמי ${name}.` : ''}\n\n` +
+      `🎊 סוג אירוע: ${state.eventLabel||'לא נבחר'}\n` +
+      `📅 תאריך: ${state.eventDate||'לא נבחר'}\n` +
+      `👥 אורחים: ${state.guests||'לא צוין'}\n\n` +
+      `🎭 אטרקציות שנבחרו (${n}):\n${attrList||'טרם נבחרו'}\n\n` +
+      `➕ שדרוגים: ${extrasList}\n` +
+      `🤝 שיתופי פעולה: ${csText}\n\n` +
+      `💰 השקעה ברגעי השיא: ${final.toLocaleString()} ₪\n` +
+      `${n>=4?'🎁 כולל קליפ Highlights במתנה!\n':''}` +
+      `\nאשמח לאישור זמינות ולשריון התאריך - ממתין/ה לתשובתכם! 🙏`;
+    window.open(`https://wa.me/972587555456?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  // ── SUBMIT ────────────────────────────────────────────────────
+  async function submitForm() {
+    if (!validateLegal()) return;
+    const name  = (document.getElementById('c-name')?.value || document.getElementById('c-name-1')?.value || '').trim();
+    const phone = (document.getElementById('c-phone')?.value || document.getElementById('c-phone-1')?.value || '').trim();
+    if (!name || !phone) {
+      if (!name) showFieldErr('c-name', 'שדה חובה');
+      if (!phone) showFieldErr('c-phone', 'שדה חובה');
+      flashAlert('אנא מלאו שם וטלפון ⚠️'); return;
+    }
+    if (!validatePhone(phone)) {
+      const el = document.getElementById('c-phone');
+      if(el){el.classList.add('err');setTimeout(()=>el.classList.remove('err'),2000);}
+      flashAlert('מספר טלפון לא תקין - נא הזינו מספר ישראלי ⚠️'); return;
+    }
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="animation:spin .8s linear infinite;flex-shrink:0;"><circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,.3)" stroke-width="2"/><path d="M21 12a9 9 0 0 0-9-9" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg> שולח...';
+    const { attrList, extrasList, csText, breakdown, final, n } = buildDetails();
+    const payload = {
+      access_key: '636e046c-45b4-4011-a947-1ffe575b5bb1',
+      botcheck: '',  // honeypot - bots fill this, humans don't
+      subject:    `פיק מומנטס - הצעת מחיר - ${state.eventLabel||'אירוע'} - ${name}`,
+      name, phone,
+      'אימייל':          document.getElementById('c-email')?.value||'לא צוין',
+      'סוג אירוע':       state.eventLabel||'לא נבחר',
+      'תאריך':           state.eventDate||'לא נבחר',
+      'אורחים':          state.guests||'לא צוין',
+      'מספר אטרקציות':   n,
+      'אטרקציות':        attrList||'ללא',
+      'שדרוגים':         extrasList,
+      'שיתופי פעולה':    csText,
+      'עלות סופית':      final.toLocaleString()+' ₪',
+      'קליפ מתנה':       n>=4?'כן ✓':'לא',
+      'פירוט מחיר':      breakdown,
+      'הערות':           document.getElementById('c-notes')?.value||'ללא'
+    };
+    try {
+      const res = await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const data = await res.json();
+      if(data.success){ document.getElementById('modal-overlay').classList.add('open'); toast('ההצעה נשלחה! PDF מורד 📄','success',5000); downloadPDF(); clearPII(); }
+      else throw new Error(data.message||'Error');
+    } catch(err){ console.error(err); flashAlert('שגיאה בשליחה. אנא נסו שנית.'); }
+    finally { btn.disabled=false; btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> שלח הצעה רשמית'; }
+  }
+
+  // ── PDF - print-window (full Hebrew support, no jsPDF gibberish) ─
+  function downloadPDF() {
+    const { items, final } = calcPrice();
+    const n = attrCount();
+    const name  = (document.getElementById('c-name')?.value  || document.getElementById('c-name-1')?.value  || '').trim() || 'לא הוזן';
+    const phone = (document.getElementById('c-phone')?.value || document.getElementById('c-phone-1')?.value || '').trim() || 'לא הוזן';
+    const email = document.getElementById('c-email')?.value || '';
+    const notes = document.getElementById('c-notes')?.value || '';
+
+    const dateStr = state.eventDate
+      ? new Date(state.eventDate).toLocaleDateString('he-IL', { day:'numeric', month:'long', year:'numeric' })
+      : 'לא נבחר';
+
+    const attrRows = Object.entries(state.attractions).filter(([,v])=>v).map(([k])=>{
+      let s = ATTR_HEB[k];
+      const sub = state.subs[k];
+      if (sub) s += ` - ${SUB_HEB[k+':'+sub]||sub}`;
+      if (k==='confetti'){ const p=state.subs['confetti-paper']; if(p) s+=` · נייר: ${SUB_HEB['confetti-paper:'+p]||p}`; }
+      return `<tr><td>${s}</td><td style="text-align:left;">כלול בחבילה</td></tr>`;
+    }).join('');
+
+    const extraRows = Object.entries(state.extras).filter(([,v])=>v)
+      .map(([k]) => `<tr><td>${EXTRA_HEB[k]}</td><td style="text-align:left;">${state.extraPrices[k].toLocaleString()} ₪</td></tr>`)
+      .join('') || '';
+
+    const csRows = Object.entries(state.crossSell).filter(([,v])=>v)
+      .map(([k]) => `<tr><td>${k==='photo'?'צלם פרימיום - הצעה משולבת':'דיג\'יי מומחה - הצעה משולבת'}</td><td style="text-align:left;">📞 בתיאום</td></tr>`)
+      .join('') || '';
+
+    const priceRows = items.map((it, i) => {
+      const neg = it.price < 0;
+      const free = it.price === 0;
+      const val = free ? '<span style="color:#15803d;font-weight:700;">חינם ✓</span>'
+                : neg  ? `<span style="color:#15803d;">−${Math.abs(it.price).toLocaleString()} ₪</span>`
+                :         `${it.price.toLocaleString()} ₪`;
+      const bg = i % 2 === 0 ? '#f9f8f6' : '#ffffff';
+      return `<tr style="background:${bg};"><td>${it.label}</td><td style="text-align:left;font-weight:600;">${val}</td></tr>`;
+    }).join('');
+
+    const installment = Math.round(final / 12).toLocaleString();
+
+    const html = `<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>הצעת מחיר - פיק מומנטס</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Heebo', Arial, sans-serif; direction: rtl; color: #1a1a1a; background: #fff; font-size: 14px; line-height: 1.6; }
+  .page { max-width: 750px; margin: 0 auto; padding: 40px 36px; }
+
+  /* Header */
+  .header { border-bottom: 3px solid #1a1a1a; padding-bottom: 22px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: flex-start; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-star { width: 32px; height: 32px; background: #B80000; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .brand-name { font-size: 22px; font-weight: 800; letter-spacing: -.3px; }
+  .brand-sub  { font-size: 11px; color: #666; margin-top: 2px; letter-spacing: .5px; text-transform: uppercase; }
+  .quote-meta { text-align: left; font-size: 12px; color: #555; }
+  .quote-meta strong { display: block; font-size: 15px; color: #1a1a1a; margin-bottom: 3px; }
+
+  /* Client card */
+  .client-card { background: #f7f5f2; border-radius: 10px; padding: 16px 20px; margin-bottom: 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+  .client-row  { font-size: 13px; }
+  .client-row span { color: #888; font-size: 11px; display: block; text-transform: uppercase; letter-spacing: .4px; }
+
+  /* Section heading */
+  .sec-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #888; margin: 22px 0 8px; padding-bottom: 5px; border-bottom: 1.5px solid #e8e4df; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #1a1a1a; color: #fff; padding: 9px 12px; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; }
+  td { padding: 9px 12px; border-bottom: 1px solid #eee; }
+
+  /* Price total */
+  .total-row { margin-top: 16px; border-top: 2.5px solid #1a1a1a; padding-top: 14px; display: flex; justify-content: space-between; align-items: baseline; }
+  .total-label { font-size: 16px; font-weight: 700; }
+  .total-amount { font-size: 34px; font-weight: 800; color: #B80000; }
+
+  /* Gift */
+  .gift-row { background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 8px; padding: 10px 14px; margin-top: 10px; font-size: 13px; color: #15803d; font-weight: 600; }
+
+  /* Installment */
+  .installment { background: #f7f5f2; border-radius: 8px; padding: 10px 14px; margin-top: 10px; font-size: 13px; color: #555; }
+
+  /* Footer */
+  .footer { margin-top: 36px; padding-top: 16px; border-top: 1px solid #e0dbd5; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #aaa; }
+  .validity { background: #fff8e6; border: 1px solid #fde68a; border-radius: 6px; padding: 6px 12px; color: #92400e; font-weight: 700; font-size: 11px; }
+
+  @media print {
+    body { font-size: 12px; }
+    .page { padding: 20px 24px; }
+    .no-print { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="brand">
+        <div class="brand-star"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></div>
+        <div>
+          <div class="brand-name">פיק מומנטס</div>
+          <div class="brand-sub">Premium Events · אטרקציות לאירועים</div>
+        </div>
+      </div>
+    </div>
+    <div class="quote-meta">
+      <strong>הצעת מחיר</strong>
+      ${new Date().toLocaleDateString('he-IL', { day:'numeric', month:'long', year:'numeric' })}<br>
+      058-755-5456<br>
+      peak-moments.co.il
+    </div>
+  </div>
+
+  <!-- CLIENT -->
+  <div class="client-card">
+    <div class="client-row"><span>שם הלקוח</span>${name}</div>
+    <div class="client-row"><span>טלפון</span>${phone}</div>
+    <div class="client-row"><span>סוג האירוע</span>${state.eventLabel || 'לא צוין'}</div>
+    <div class="client-row"><span>תאריך האירוע</span>${dateStr}</div>
+    <div class="client-row"><span>מספר אורחים</span>${state.guests || 'לא צוין'}</div>
+    ${email ? `<div class="client-row"><span>אימייל</span>${email}</div>` : ''}
+  </div>
+
+  <!-- ATTRACTIONS -->
+  ${attrRows ? `
+  <div class="sec-title">אטרקציות שנבחרו (${n})</div>
+  <table>
+    <tr><th>אטרקציה / פירוט</th><th style="text-align:left;">מחיר</th></tr>
+    ${attrRows}
+  </table>` : ''}
+
+  <!-- EXTRAS -->
+  ${extraRows ? `
+  <div class="sec-title">שדרוגים ותוספות</div>
+  <table>
+    <tr><th>שדרוג</th><th style="text-align:left;">מחיר</th></tr>
+    ${extraRows}
+  </table>` : ''}
+
+  <!-- CROSS-SELL -->
+  ${csRows ? `
+  <div class="sec-title">שיתופי פעולה (בתיאום אישי)</div>
+  <table>
+    <tr><th>שירות</th><th style="text-align:left;"></th></tr>
+    ${csRows}
+  </table>` : ''}
+
+  <!-- PRICE BREAKDOWN -->
+  <div class="sec-title">פירוט מחיר</div>
+  <table>
+    <tr><th>פריט</th><th style="text-align:left;">סכום</th></tr>
+    ${priceRows}
+  </table>
+
+  <div class="total-row">
+    <div class="total-label">סה״כ לתשלום</div>
+    <div class="total-amount">${final.toLocaleString()} ₪</div>
+  </div>
+
+  ${n >= 4 ? `<div class="gift-row">🎁 קליפ Highlights (60 שניות) - כלול בחינם בחבילת פרימיום!</div>` : ''}
+
+  <div class="installment">
+    💳 אפשרות פריסה: ${installment} ₪ לחודש × 12 תשלומים ללא ריבית
+  </div>
+
+  ${notes ? `<div class="sec-title">הערות</div><p style="font-size:13px;color:#555;">${notes}</p>` : ''}
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>פיק מומנטס · אטרקציות ואפקטים פרימיום לאירועים · מודיעין והסביבה<br>058-755-5456 · peak-moments.co.il</div>
+    <div class="validity">⏳ תקף 48 שעות</div>
+  </div>
+
+</div>
+
+<div class="no-print" style="position:fixed;bottom:0;left:0;right:0;background:#1a1a1a;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+  <span style="color:#fff;font-size:14px;font-family:Heebo,Arial,sans-serif;">הצעת המחיר מוכנה להדפסה / שמירה כ-PDF</span>
+  <div style="display:flex;gap:10px;">
+    <button onclick="window.print()" style="background:#B80000;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-family:Heebo,Arial,sans-serif;font-size:14px;font-weight:700;cursor:pointer;">🖨 הדפס / שמור PDF</button>
+    <button onclick="window.close()" style="background:transparent;color:#aaa;border:1px solid #444;padding:10px 16px;border-radius:8px;font-family:Heebo,Arial,sans-serif;font-size:13px;cursor:pointer;">סגור</button>
+  </div>
+</div>
+<div style="height:60px;" class="no-print"></div>
+
+</body>
+</html>`;
+
+    const w = window.open('', '_blank', 'width=820,height=900');
+    if (w) {
+      w.document.write(html);
+      w.document.close();
+    } else {
+      toast('אנא אפשרו פתיחת חלון חדש בדפדפן', 'error', 5000);
+    }
+  }
+
+  // ── COPY QUOTE (rich, WhatsApp-ready) ────────────────────────
+  function copyQuote() {
+    const { items, final } = calcPrice();
+    const n = attrCount();
+    const name  = (document.getElementById('c-name')?.value  || document.getElementById('c-name-1')?.value  || '').trim();
+    const phone = (document.getElementById('c-phone')?.value || document.getElementById('c-phone-1')?.value || '').trim();
+    const email = document.getElementById('c-email')?.value || '';
+    const notes = document.getElementById('c-notes')?.value || '';
+    const dateStr = state.eventDate
+      ? new Date(state.eventDate).toLocaleDateString('he-IL', { day:'numeric', month:'long', year:'numeric' })
+      : 'לא נבחר';
+    const installment = Math.round(final / 12).toLocaleString();
+
+    // Attractions with sub-options
+    const attrLines = Object.entries(state.attractions).filter(([,v])=>v).map(([k])=>{
+      let s = ATTR_HEB[k];
+      const sub = state.subs[k];
+      if (sub) s += ` (${SUB_HEB[k+':'+sub]||sub})`;
+      if (k==='confetti'){ const p=state.subs['confetti-paper']; if(p) s+=` · נייר ${SUB_HEB['confetti-paper:'+p]||p}`; }
+      return '   ✅ ' + s;
+    }).join('\n');
+
+    const extraLines = Object.entries(state.extras).filter(([,v])=>v)
+      .map(([k]) => `   ➕ ${EXTRA_HEB[k]} - ${state.extraPrices[k].toLocaleString()} ₪`)
+      .join('\n');
+
+    const csLines = Object.entries(state.crossSell).filter(([,v])=>v)
+      .map(([k]) => `   🤝 ${k==='photo' ? 'צלם פרימיום' : 'דיג\'יי מומחה'} - הצעה משולבת`)
+      .join('\n');
+
+    // Price breakdown
+    const priceLines = items.map(it => {
+      if (it.price === 0) return `   🎁 ${it.label} - חינם!`;
+      const prefix = it.price < 0 ? '   💚 ' : '   💰 ';
+      const sign   = it.price < 0 ? '−' : '';
+      return `${prefix}${it.label}: ${sign}${Math.abs(it.price).toLocaleString()} ₪`;
+    }).join('\n');
+
+    const sep = '─'.repeat(32);
+
+    let txt = `🌟 *הצעת מחיר - פיק מומנטס* 🌟\n${sep}\n\n`;
+    txt += `👤 *פרטי הלקוח*\n`;
+    txt += `   שם: ${name || 'לא הוזן'}\n`;
+    txt += `   טלפון: ${phone || 'לא הוזן'}\n`;
+    if (email) txt += `   אימייל: ${email}\n`;
+    txt += `\n🎊 *פרטי האירוע*\n`;
+    txt += `   סוג: ${state.eventLabel || 'לא נבחר'}\n`;
+    txt += `   תאריך: ${dateStr}\n`;
+    txt += `   אורחים: ${state.guests || 'לא צוין'}\n`;
+    if (state.locationFee > 0) txt += `   אזור: תוספת נסיעה ${state.locationFee.toLocaleString()} ₪\n`;
+
+    if (attrLines) {
+      txt += `\n🎭 *אטרקציות שנבחרו (${n})*\n${attrLines}\n`;
+    }
+    if (extraLines) {
+      txt += `\n⬆️ *שדרוגים ותוספות*\n${extraLines}\n`;
+    }
+    if (csLines) {
+      txt += `\n🤝 *שיתופי פעולה מבוקשים*\n${csLines}\n`;
+    }
+
+    txt += `\n💵 *פירוט מחיר*\n${priceLines}\n`;
+    txt += `\n${sep}\n`;
+    txt += `💰 *סה״כ לתשלום: ${final.toLocaleString()} ₪*\n`;
+    if (n >= 4) txt += `🎁 *קליפ Highlights כלול בחינם!*\n`;
+    txt += `💳 פריסה: ${installment} ₪ × 12 תשלומים ללא ריבית\n`;
+    if (notes) txt += `\n📝 הערות: ${notes}\n`;
+    txt += `\n${sep}\n`;
+    txt += `⏳ *הצעה תקפה ל-48 שעות בלבד*\n`;
+    txt += `📞 לאישור ושריון: 058-755-5456\n`;
+    txt += `🌐 peak-moments.co.il`;
+
+    navigator.clipboard.writeText(txt)
+      .then(() => toast('✅ הצעה מפורטת הועתקה - מוכן לשליחה ב-WhatsApp ✓', 'success', 4000))
+      .catch(() => {
+        // Fallback: show in modal
+        const w = window.open('', '_blank', 'width=600,height=700');
+        if (w) {
+          w.document.write(`<pre dir="rtl" style="font-family:monospace;padding:20px;white-space:pre-wrap;">${txt}</pre>`);
+          w.document.close();
+        }
+      });
+  }
+
+  // ── CLEAR PII FROM LS AFTER SUBMIT ────────────────────────────
+  function clearPII() {
+    try {
+      const raw = localStorage.getItem(LS_KEY);
+      if (!raw) return;
+      const d = JSON.parse(raw);
+      if (d && d.contact) {
+        d.contact = { name:'', phone:'', email:'', notes:'' };
+        localStorage.setItem(LS_KEY, JSON.stringify(d));
+      }
+    } catch(e) {}
+  }
+
+  // ── MODALS ────────────────────────────────────────────────────
+  function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
+
+  // ── INIT ─────────────────────────────────────────────────────
+  function init() {
+    setGreeting();
+    renderProgress();
+    renderGiftBar();
+    renderPrice();
+    loadLS();
+    initExitIntent();
+    // Close modals on overlay click
+    document.getElementById('modal-overlay').addEventListener('click', e => {
+      if(e.target===document.getElementById('modal-overlay')) closeModal();
+    });
+    document.getElementById('exit-modal').addEventListener('click', e => {
+      if(e.target===document.getElementById('exit-modal')) closeExitModal();
+    });
+  }
+
+  return {
+    state,
+    next, prev, goTo, mobileNext,
+    pickEvent,
+    toggleAttr, setSub,
+    toggleExtra, toggleCS,
+    runAlerts, closeAlert,
+    checkAllLegal,
+    submitForm, sendWhatsApp, downloadPDF, copyQuote,
+    closeModal, closeExitModal,
+    renderPrice, saveLS, clearPII,
+    init
+  };
+
+})();
+
+document.addEventListener('DOMContentLoaded', () => APP.init());
+</script>
+</body>
+</html>

@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>סטודיו לומייר · בונה חבילת צילום בוטיק</title>
+<meta name="description" content="הרכיבו את חבילת הצילום הבוטיק שלכם - תמחור אישי בזמן אמת, ללא הפתעות">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+/* ─── DESIGN TOKENS ─── */
+:root {
+  --white:  #FFFFFF;
+  --black:  #0D0D0D;
+  --burg:   #8B0000;
+  --burg2:  #A50000;
+  --burg-t: rgba(139,0,0,.08);
+  --gold:   #B8973A;
+  --gold-t: rgba(184,151,58,.10);
+  --gold-b: rgba(184,151,58,.30);
+  --ai-bg:  #0F1117;
+  --ai-t:   rgba(15,17,23,.06);
+  --ai-b:   #1e2233;
+  --soft:   #F8F7F5;
+  --border: #E4E0DA;
+  --muted:  #6B6560;
+  --green:  #1a6b3c;
+  --green-t:rgba(26,107,60,.08);
+  --r: 12px;
+  --shadow: 0 8px 32px -6px rgba(139,0,0,.14);
+  --shadow-sm: 0 3px 12px rgba(0,0,0,.06);
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Heebo', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  direction: rtl;
+  line-height: 1.65;
+  background-image:
+    radial-gradient(circle, rgba(139,0,0,.035) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+
+/* ─── STEP PANELS ─── */
+.step-panel { display: none; }
+.step-panel.active {
+  display: block;
+  animation: fadeUp .4s cubic-bezier(.22,.61,.36,1) both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── PROGRESS BAR ─── */
+#progress { display: flex; align-items: center; }
+.pn { display: flex; flex-direction: column; align-items: center; cursor: pointer; flex-shrink: 0; }
+.pn-num {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 2px solid var(--border); background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: #aaa;
+  transition: all .3s;
+}
+.pn.done  .pn-num { background: var(--burg); border-color: var(--burg); color: #fff; }
+.pn.active .pn-num { background: var(--black); border-color: var(--black); color: #fff; box-shadow: 0 0 0 4px rgba(0,0,0,.1); }
+.pn-lbl { font-size: 10px; color: #bbb; margin-top: 4px; white-space: nowrap; }
+.pn.done  .pn-lbl { color: var(--burg); }
+.pn.active .pn-lbl { color: var(--black); font-weight: 700; }
+.pn-line { flex: 1; height: 2px; background: var(--border); transition: background .4s; margin-bottom: 16px; }
+.pn-line.done { background: var(--burg); }
+@media (max-width: 600px) { .pn-lbl { display: none; } }
+
+/* ─── EVENT TYPE CARDS (Step 1) ─── */
+.ev-card {
+  border: 2px solid var(--border); border-radius: var(--r);
+  padding: 24px 16px; text-align: center; cursor: pointer;
+  transition: all .22s; background: var(--white);
+}
+.ev-card:hover { border-color: #999; box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+.ev-card.sel { border-color: var(--burg); background: var(--burg-t); box-shadow: var(--shadow); }
+.ev-card:focus-visible { outline: 3px solid var(--burg); outline-offset: 3px; }
+
+/* ─── SERVICE TOGGLE CARDS (Step 2) ─── */
+.svc-card {
+  border: 2px solid var(--border); border-radius: var(--r);
+  padding: 18px; cursor: pointer; transition: all .22s; background: var(--white);
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.svc-card:hover { border-color: #999; box-shadow: var(--shadow-sm); }
+.svc-card.sel { border-color: var(--burg); background: var(--burg-t); box-shadow: var(--shadow); }
+.svc-card:focus-visible { outline: 3px solid var(--burg); outline-offset: 3px; }
+.svc-chk {
+  width: 22px; height: 22px; min-width: 22px;
+  border-radius: 50%; border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  transition: all .25s; flex-shrink: 0;
+}
+.svc-card.sel .svc-chk {
+  background: var(--burg); border-color: var(--burg);
+  transform: scale(1.12);
+}
+
+/* ─── HOUR PRESET CARDS (Step 3) ─── */
+.hr-card {
+  border: 2px solid var(--border); border-radius: var(--r);
+  padding: 20px 14px; text-align: center; cursor: pointer;
+  transition: all .22s; background: var(--white); position: relative;
+}
+.hr-card:hover { border-color: #999; box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+.hr-card.sel { border-color: var(--burg); background: var(--burg-t); box-shadow: var(--shadow); }
+.hr-card:focus-visible { outline: 3px solid var(--burg); outline-offset: 3px; }
+
+/* ─── HOUR SLIDER ─── */
+.hr-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 6px; border-radius: 3px;
+  background: var(--border); border: none; padding: 0;
+  cursor: pointer; outline: none;
+}
+.hr-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--burg); border: 3px solid var(--white);
+  box-shadow: 0 2px 8px rgba(139,0,0,.35); cursor: pointer;
+}
+.hr-slider::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--burg); border: 3px solid var(--white);
+  box-shadow: 0 2px 8px rgba(139,0,0,.35); cursor: pointer;
+}
+
+/* ─── UPSELL CARDS (Step 4) ─── */
+.up-card {
+  border: 2px dashed var(--border); border-radius: var(--r);
+  padding: 15px; cursor: pointer; transition: all .22s;
+  display: flex; gap: 12px; align-items: flex-start; background: var(--white);
+}
+.up-card:hover { border-style: solid; border-color: #999; box-shadow: var(--shadow-sm); }
+.up-card.sel { border-style: solid; border-color: var(--burg); background: var(--burg-t); }
+.up-card:focus-visible { outline: 3px solid var(--burg); outline-offset: 3px; }
+/* AI variant */
+.up-card.ai-card {
+  background: #f9f7ff;
+  border-color: var(--gold-b);
+}
+.up-card.ai-card:hover { border-style: solid; border-color: var(--gold); }
+.up-card.ai-card.sel { border-style: solid; border-color: var(--gold); background: var(--gold-t); }
+.up-card.ai-card .up-icon { background: var(--ai-bg); }
+.up-card.ai-card .up-icon i { color: #93c5fd; }
+
+/* ─── ICON BOX ─── */
+.up-icon {
+  width: 36px; height: 36px; min-width: 36px; border-radius: 9px;
+  background: var(--burg-t); display: flex; align-items: center; justify-content: center;
+}
+.up-icon i { color: var(--burg); font-size: 14px; }
+
+/* ─── BUTTONS ─── */
+.btn {
+  font-family: 'Heebo', sans-serif; font-weight: 700;
+  border: none; border-radius: 10px; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; transition: all .22s; padding: 14px 22px; font-size: 15px;
+}
+.btn-dark { background: var(--black); color: #fff; }
+.btn-dark:hover { background: #000; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+.btn-dark:disabled { opacity: .5; cursor: not-allowed; transform: none !important; }
+.btn-outline { background: var(--white); color: var(--black); border: 2px solid var(--black); }
+.btn-outline:hover { background: var(--soft); }
+.btn-wa { background: #22c55e; color: #fff; }
+.btn-wa:hover { background: #16a34a; transform: translateY(-1px); }
+.btn-burg { background: var(--burg); color: #fff; }
+.btn-burg:hover { background: var(--burg2); transform: translateY(-1px); }
+.btn-w100 { width: 100%; padding: 16px; font-size: 16px; }
+
+/* ─── FORM INPUTS ─── */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="email"],
+input[type="tel"],
+select, textarea {
+  font-family: 'Heebo', sans-serif; font-size: 14px;
+  border: 2px solid var(--border); background: var(--white);
+  color: var(--black); padding: 11px 14px; border-radius: 9px;
+  width: 100%; transition: border-color .2s;
+  -webkit-appearance: none; appearance: none;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none; border-color: var(--burg);
+}
+.field-err { border-color: #dc2626 !important; background: rgba(220,38,38,.04) !important; }
+label { cursor: pointer; }
+
+/* ─── BADGES ─── */
+.badge {
+  display: inline-block; font-size: 10px; font-weight: 800;
+  padding: 2px 8px; border-radius: 4px; letter-spacing: .4px;
+}
+.badge-red  { background: var(--burg); color: #fff; }
+.badge-gold { background: linear-gradient(135deg,#C9A84C,#e8c96c); color: #3a2000; }
+.badge-green{ background: var(--green); color: #fff; }
+.badge-ai   { background: var(--ai-bg); color: #93c5fd; letter-spacing: .6px; }
+
+/* ─── SUMMARY ─── */
+.sum-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.sum-row:last-child { border: none; }
+.sum-row.neg  { color: var(--green); }
+.sum-row.free { color: var(--gold); font-style: italic; }
+.sum-cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .9px; color: var(--muted); padding: 12px 0 4px; }
+.sum-total {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 0 0; border-top: 2px solid var(--black);
+  font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700;
+}
+
+/* ─── STICKY PRICE BAR ─── */
+#price-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  background: var(--black); color: #fff;
+  padding: 12px 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 -4px 24px rgba(0,0,0,.25);
+}
+#price-bar .pb-label { font-size: 11px; color: #777; }
+#price-bar .pb-total { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: var(--burg); transition: color .3s; }
+#price-bar .pb-save  { font-size: 11px; color: #4ade80; min-height: 14px; }
+@media (min-width: 640px) {
+  #price-bar { left: auto; right: 24px; bottom: 24px; border-radius: 16px; max-width: 210px; flex-direction: column; align-items: flex-start; }
+}
+
+/* ─── SMART ALERT ─── */
+#smart-alert {
+  position: fixed; bottom: 80px; left: 16px; right: 16px;
+  max-width: 340px; z-index: 150;
+  background: var(--white); border: 2px solid var(--burg); border-radius: 13px;
+  padding: 14px 18px; box-shadow: var(--shadow);
+  display: none;
+  animation: slideAlert .3s ease;
+}
+#smart-alert.visible { display: flex; gap: 10px; align-items: flex-start; }
+@keyframes slideAlert { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+@media (min-width: 640px) { #smart-alert { right: auto; } }
+
+/* ─── DISCOUNT PROGRESS BAR ─── */
+#disc-wrap {
+  background: var(--soft); border: 1px solid var(--border); border-radius: 10px;
+  padding: 13px 16px; margin-bottom: 20px;
+}
+#disc-track { height: 7px; background: var(--border); border-radius: 4px; overflow: hidden; margin: 8px 0 4px; }
+#disc-fill  { height: 100%; background: linear-gradient(to left, var(--burg), var(--gold)); border-radius: 4px; transition: width .7s cubic-bezier(.34,1.56,.64,1); width: 0%; }
+
+/* ─── MODAL ─── */
+#modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.55);
+  z-index: 300; display: none; align-items: center; justify-content: center; padding: 20px;
+}
+#modal-overlay.visible { display: flex; }
+.modal-box {
+  background: var(--white); border-radius: 20px; padding: 40px;
+  max-width: 400px; width: 100%; text-align: center;
+  position: relative; box-shadow: 0 24px 80px rgba(0,0,0,.2);
+}
+
+/* ─── PRICE FLOAT ANIMATION ─── */
+.price-pop {
+  position: fixed; bottom: 90px; left: 30px; z-index: 200;
+  font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700;
+  pointer-events: none;
+  animation: pricePop 1.2s ease forwards;
+}
+@keyframes pricePop {
+  0%   { opacity: 0; transform: translateY(0); }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; transform: translateY(-48px); }
+  100% { opacity: 0; transform: translateY(-60px); }
+}
+
+/* ─── LEGAL ─── */
+.legal-row { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; line-height: 1.65; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.legal-row:last-child { border: none; }
+.legal-row input[type="checkbox"] { width: 18px; height: 18px; min-width: 18px; accent-color: var(--burg); margin-top: 3px; padding: 0; border: none; }
+
+/* ─── MISC ─── */
+.divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+.section-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+@keyframes flash { 0%,100% { color: var(--burg); } 50% { color: #e03333; } }
+.flash { animation: flash .4s ease; }
+
+/* ─── PULSE (Next buttons) ─── */
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(139,0,0,.35); }
+  70%  { box-shadow: 0 0 0 10px rgba(139,0,0,0); }
+  100% { box-shadow: 0 0 0 0 rgba(139,0,0,0); }
+}
+.btn-pulse { animation: pulse-ring 2.2s ease-in-out infinite; }
+
+/* ─── AI GLOW ─── */
+@keyframes ai-glow {
+  0%,100% { box-shadow: 0 0 12px rgba(147,197,253,.25), 0 0 0 1px rgba(147,197,253,.2); }
+  50%     { box-shadow: 0 0 28px rgba(147,197,253,.55), 0 0 0 1px rgba(147,197,253,.4); }
+}
+.ai-glow { animation: ai-glow 2.8s ease-in-out infinite; }
+
+/* ─── TOAST NOTIFICATIONS ─── */
+#toast-container {
+  position: fixed; top: 72px; left: 50%; transform: translateX(-50%);
+  z-index: 500; display: flex; flex-direction: column; gap: 8px; pointer-events: none;
+}
+.toast {
+  background: var(--black); color: #fff; border-radius: 10px;
+  padding: 12px 20px; font-size: 13px; font-weight: 600;
+  display: flex; align-items: center; gap: 9px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.25); pointer-events: auto;
+  animation: toastIn .35s cubic-bezier(.22,.61,.36,1);
+  max-width: 340px; text-align: center;
+}
+.toast.success { background: #166534; }
+.toast.error   { background: var(--burg); }
+.toast.info    { background: #1e3a5f; }
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-14px) scale(.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes toastOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-10px); }
+}
+
+/* ─── MOBILE STICKY NAV (Next + Price) ─── */
+#mobile-sticky-nav {
+  display: none;
+}
+@media (max-width: 639px) {
+  #mobile-sticky-nav {
+    display: flex;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 110;
+    background: var(--black); padding: 10px 16px 14px;
+    align-items: center; gap: 12px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,.3);
+  }
+  #price-bar { display: none !important; }
+  /* Push main content above sticky nav */
+  main { padding-bottom: 90px !important; }
+}
+
+/* ─── URGENCY BANNER ─── */
+#urgency-bar {
+  background: linear-gradient(135deg, #1a0000, #2d0000);
+  border: 1px solid rgba(139,0,0,.4);
+  border-radius: 10px; padding: 10px 16px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px; font-size: 12px; color: #fca5a5;
+}
+
+/* ─── PREMIUM SOLO BANNER ─── */
+.promo-banner {
+  position: relative;
+  border: 2px solid var(--burg);
+  border-radius: 20px;
+  background: var(--white);
+  padding: 28px 24px 20px;
+  margin-bottom: 32px;
+  box-shadow: 0 15px 40px rgba(139,0,0,.10);
+  overflow: visible;
+  animation: fadeUp .5s .1s both;
+}
+.promo-badge {
+  position: absolute;
+  top: -14px;
+  right: 20px;
+  background: #f1c40f;
+  color: var(--burg);
+  padding: 4px 16px;
+  font-weight: 800;
+  font-size: 11px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  border: 1px solid var(--burg);
+  letter-spacing: .3px;
+}
+.promo-price-block {
+  text-align: center;
+  background: var(--soft);
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.promo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--black);
+}
+.promo-item i { margin-top: 2px; flex-shrink: 0; }
+.promo-wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #22c55e;
+  color: #fff;
+  text-decoration: none;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 800;
+  border-radius: 12px;
+  transition: background .2s, transform .2s;
+  font-family: 'Heebo', sans-serif;
+}
+.promo-wa-btn:hover { background: #16a34a; transform: translateY(-1px); }
+.promo-addon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+.promo-addon i { font-size: 18px; flex-shrink: 0; }
+
+@media print { #price-bar, #smart-alert, #mobile-sticky-nav, .no-print { display: none !important; } }
+</style>
+</head>
+
+<body>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container"></div>
+
+<!-- MOBILE STICKY NAV (bottom bar on phones) -->
+<div id="mobile-sticky-nav" class="no-print">
+  <div style="flex:1;">
+    <div style="font-size:9px; color:#666; text-transform:uppercase; letter-spacing:.5px;">השקעה משוערת</div>
+    <div id="msn-price" style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:var(--burg); line-height:1;">7,840 ₪</div>
+  </div>
+  <button id="msn-btn" class="btn btn-dark btn-pulse" style="flex:2; padding:14px;" onclick="APP.mobileNext()">
+    המשך <i class="fa-solid fa-arrow-left"></i>
+  </button>
+</div>
+
+<!-- ══════════════════════════════════════
+     TOPBAR
+══════════════════════════════════════ -->
+<header class="no-print" style="background:#0D0D0D; padding:11px 24px; position:sticky; top:0; z-index:50; border-bottom:1px solid #222;">
+  <div style="max-width:820px; margin:0 auto; display:flex; justify-content:space-between; align-items:center;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <i class="fa-solid fa-aperture" style="color:var(--gold); font-size:17px;"></i>
+      <span style="font-family:'Cormorant Garamond',serif; color:#fff; font-size:18px; font-weight:600; letter-spacing:.5px;">Studio Lumière</span>
+      <span style="background:var(--burg); color:#fff; font-size:9px; font-weight:800; padding:2px 7px; border-radius:3px; letter-spacing:.6px;">בוטיק</span>
+    </div>
+    <a href="tel:0587555456" style="color:#888; font-size:13px; text-decoration:none; display:flex; align-items:center; gap:7px;">
+      <i class="fa-solid fa-phone" style="color:var(--gold);"></i>058-755-5456
+    </a>
+  </div>
+</header>
+
+<main style="max-width:820px; margin:0 auto; padding:36px 18px 140px;">
+
+  <!-- HERO -->
+  <section style="text-align:center; margin-bottom:44px;">
+    <div style="display:inline-block; background:var(--burg-t); color:var(--burg); font-size:11px; font-weight:800; padding:5px 14px; border-radius:20px; margin-bottom:14px; letter-spacing:.8px; text-transform:uppercase;">
+      צילום בהתאמה אישית · תמחור בזמן אמת
+    </div>
+    <h1 style="font-size:clamp(32px,6vw,52px); font-weight:700; line-height:1.15; margin-bottom:10px;">
+      צרו את <span style="color:var(--burg);">הסיפור המושלם</span> שלכם
+    </h1>
+    <p style="font-size:16px; color:var(--muted); max-width:460px; margin:0 auto;">
+      תעריף אחיד ושקוף: <strong style="color:var(--black);">980 ₪ לשעת צלם</strong> · ללא הפתעות · ניתן לפריסה ל-12 תשלומים
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       PREMIUM SOLO BANNER
+  ══════════════════════════════════════ -->
+  <div class="promo-banner no-print" id="promo-banner">
+
+    <!-- Close button -->
+    <button onclick="document.getElementById('promo-banner').style.display='none'"
+      style="position:absolute;top:12px;left:12px;background:none;border:none;cursor:pointer;color:#bbb;font-size:18px;line-height:1;z-index:2;" title="סגור">×</button>
+
+    <!-- Time-limited badge -->
+    <div class="promo-badge">⚡ מבצע מוגבל בזמן</div>
+
+    <!-- Header -->
+    <div style="text-align:center; margin-bottom:20px;">
+      <h2 style="font-family:'Cormorant Garamond',serif; color:var(--burg); margin:0; font-size:clamp(1.5rem,4vw,2rem); font-weight:900; line-height:1.2;">
+        אירוע קטן. שמחה ענקית.
+      </h2>
+      <p style="color:var(--muted); font-size:14px; margin-top:7px;">
+        כל מה שהאירוע שלכם צריך - בחבילת פרימיום אחת, מחיר אחד שקוף
+      </p>
+    </div>
+
+    <!-- Price block -->
+    <div class="promo-price-block">
+      <div style="text-decoration:line-through; color:#aaa; font-size:13px; margin-bottom:3px;">
+        מחיר מחירון: 4,850 ₪
+      </div>
+      <div style="display:flex; align-items:baseline; justify-content:center; gap:8px; flex-wrap:wrap;">
+        <span style="font-family:'Cormorant Garamond',serif; color:var(--burg); font-size:clamp(2.2rem,6vw,3rem); font-weight:900; line-height:1;">
+          2,800 ₪
+        </span>
+        <span style="font-size:12px; color:var(--muted);">כולל מע"מ</span>
+      </div>
+      <div style="margin-top:8px;">
+        <span class="badge badge-green" style="font-size:11px; padding:3px 10px;">חיסכון של 2,050 ₪ · 42% הנחה</span>
+      </div>
+    </div>
+
+    <!-- Included items -->
+    <div style="margin-bottom:20px;">
+      <div style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:12px;">
+        חבילת Solo Premium כוללת:
+      </div>
+      <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:9px;">
+        <li class="promo-item"><i class="fa-solid fa-camera" style="color:var(--burg);"></i> <span>צילום סטילס אמנותי + עריכה מלאה</span></li>
+        <li class="promo-item"><i class="fa-solid fa-video" style="color:var(--burg);"></i> <span>וידאו קולנועי Cinematic</span></li>
+        <li class="promo-item"><i class="fa-brands fa-instagram" style="color:var(--burg);"></i> <span>קליפ Highlights לשיתוף</span></li>
+        <li class="promo-item"><i class="fa-solid fa-images" style="color:var(--burg);"></i> <span>גלריה דיגיטלית לאורחים</span></li>
+      </ul>
+    </div>
+
+    <!-- CTA -->
+    <a href="https://wa.me/972587555456?text=היי, אשמח לבדוק זמינות לחבילת Solo Premium (2,800 ₪)"
+       target="_blank" rel="noopener"
+       class="promo-wa-btn">
+      <i class="fa-brands fa-whatsapp" style="font-size:20px;"></i>
+      בדקו זמינות לתאריך שלכם ב-WhatsApp
+    </a>
+    <p style="text-align:center; font-size:11px; color:var(--muted); margin-top:8px;">
+      מענה מהיר מובטח · ללא התחייבות · ניתן לפריסה ל-12 תשלומים
+    </p>
+
+    <!-- Add-ons row -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; background:var(--soft); padding:14px; border-radius:10px; margin-top:6px;">
+      <div class="promo-addon">
+        <i class="fa-solid fa-magnet" style="color:var(--gold);"></i>
+        <div>
+          <div style="font-weight:800; font-size:12px;">מגנטים פרימיום</div>
+          <div style="color:var(--burg); font-weight:700; font-size:13px;">750 ₪</div>
+        </div>
+      </div>
+      <div class="promo-addon">
+        <i class="fa-solid fa-book-open" style="color:var(--gold);"></i>
+        <div>
+          <div style="font-weight:800; font-size:12px;">אלבום יוקרתי</div>
+          <div style="color:var(--burg); font-weight:700; font-size:13px;">650 ₪</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DISCOUNT BAR (hidden until enough is selected) -->
+  <div id="disc-wrap" style="display:none;">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+      <div id="disc-txt" style="font-size:13px; font-weight:600;"></div>
+      <div id="disc-badge"></div>
+    </div>
+    <div id="disc-track"><div id="disc-fill"></div></div>
+    <div id="disc-sub" style="font-size:11px; color:var(--muted);"></div>
+  </div>
+
+  <!-- PROGRESS NAV -->
+  <nav id="progress" class="no-print" style="margin-bottom:44px;"></nav>
+
+  <!-- ══════════════════════════════
+       STEP 1 · Event Context
+  ══════════════════════════════ -->
+  <section id="step-1" class="step-panel active" aria-label="שלב 1 – סוג האירוע">
+
+    <h2 style="font-size:28px; font-weight:700; margin-bottom:4px;">מהו האירוע שלכם?</h2>
+    <p style="color:var(--muted); margin-bottom:26px; font-size:15px;">
+      בחרו את קטגוריית האירוע - שפת ההמלצות תותאם אוטומטית
+    </p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:14px; margin-bottom:28px;">
+
+      <div class="ev-card" id="ev-wedding"
+           onclick="APP.pickEvent(this,'wedding','Wedding Ceremony')"
+           tabindex="0" role="button"
+           onkeydown="if(event.key==='Enter'||event.key===' ')APP.pickEvent(this,'wedding','Wedding Ceremony')">
+        <i class="fa-solid fa-ring" style="font-size:30px; color:var(--burg); display:block; margin-bottom:10px;"></i>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:700;">חתונה</div>
+        <div style="font-size:11px; color:var(--muted); margin-top:3px;">חתונה וטקס</div>
+        <div style="font-size:10px; color:var(--burg); margin-top:5px; font-weight:700;">❤️ 64 זוגות בחרו בנו החודש</div>
+      </div>
+
+      <div class="ev-card" id="ev-barmitzvah"
+           onclick="APP.pickEvent(this,'barmitzvah','Bar / Bat Mitzvah')"
+           tabindex="0" role="button"
+           onkeydown="if(event.key==='Enter'||event.key===' ')APP.pickEvent(this,'barmitzvah','Bar / Bat Mitzvah')">
+        <i class="fa-solid fa-star-of-david" style="font-size:30px; color:var(--burg); display:block; margin-bottom:10px;"></i>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:700;">בר / בת מצווה</div>
+        <div style="font-size:11px; color:var(--muted); margin-top:3px;">חגיגת בר/בת מצווה</div>
+        <div style="font-size:10px; color:var(--burg); margin-top:5px; font-weight:700;">✡️ הבחירה הפופולרית באזור המרכז</div>
+      </div>
+
+      <div class="ev-card" id="ev-corporate"
+           onclick="APP.pickEvent(this,'corporate','Corporate Event')"
+           tabindex="0" role="button"
+           onkeydown="if(event.key==='Enter'||event.key===' ')APP.pickEvent(this,'corporate','Corporate Event')">
+        <i class="fa-solid fa-briefcase" style="font-size:30px; color:var(--burg); display:block; margin-bottom:10px;"></i>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:700;">אירוע עסקי</div>
+        <div style="font-size:11px; color:var(--muted); margin-top:3px;">אירוע עסקי או כנס</div>
+        <div style="font-size:10px; color:var(--burg); margin-top:5px; font-weight:700;">🏆 נבחרנו ע"י 40+ חברות הייטק</div>
+      </div>
+
+      <div class="ev-card" id="ev-birthday"
+           onclick="APP.pickEvent(this,'birthday','Private Celebration')"
+           tabindex="0" role="button"
+           onkeydown="if(event.key==='Enter'||event.key===' ')APP.pickEvent(this,'birthday','Private Celebration')">
+        <i class="fa-solid fa-champagne-glasses" style="font-size:30px; color:var(--burg); display:block; margin-bottom:10px;"></i>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:700;">יום הולדת</div>
+        <div style="font-size:11px; color:var(--muted); margin-top:3px;">אירוע פרטי וחגיגות</div>
+        <div style="font-size:10px; color:var(--burg); margin-top:5px; font-weight:700;">🎉 ביקורות 5 כוכבים בגוגל</div>
+      </div>
+
+    </div>
+
+    <!-- Event details -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:14px;">
+      <div>
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px;">תאריך</label>
+        <input type="date" id="ev-date" onchange="APP.state.eventDate = this.value;">
+      </div>
+      <div>
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px;">אורחים משוערים</label>
+        <input type="number" id="ev-guests" placeholder="200" min="0" oninput="APP.state.guests = parseInt(this.value)||0; APP.runAlerts();">
+      </div>
+      <div>
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px;">אזור</label>
+        <select id="ev-location" onchange="APP.state.locationFee = parseInt(this.value); APP.render();">
+          <option value="0">מרכז הארץ (ללא תוספת)</option>
+          <option value="900">צפון / דרום (+900 ₪)</option>
+          <option value="2200">אילת / גולן (+2,200 ₪)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Outdoor flag -->
+    <label id="outdoor-wrap" style="display:flex; align-items:center; gap:12px; border:2px solid var(--border); border-radius:var(--r); padding:14px; cursor:pointer; transition:border-color .2s; margin-bottom:28px;">
+      <input type="checkbox" id="ev-outdoor" style="width:20px;height:20px;accent-color:var(--burg);"
+             onchange="APP.state.isOutdoor=this.checked; document.getElementById('outdoor-time').style.display=this.checked?'block':'none'; document.getElementById('outdoor-wrap').style.borderColor=this.checked?'var(--burg)':'var(--border)';">
+      <div>
+        <div style="font-weight:700; font-size:14px;">אירוע בטבע / חוץ</div>
+        <div style="font-size:12px; color:var(--muted);">להבטחת איכות צילום מיטבית (שעת הזהב), אירועים אלו יתואמו לשעות אור טבעי (עד 15:00) או יחייבו תוספת תאורה מקצועית</div>
+      </div>
+    </label>
+    <div id="outdoor-time" style="display:none; margin-top:-20px; margin-bottom:28px;">
+      <label style="display:block; font-size:12px; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px;">שעת תחילת האירוע</label>
+      <input type="time" id="ev-time" onchange="APP.state.startTime=this.value; APP.runAlerts();" style="max-width:200px;">
+      <p style="font-size:11px; color:var(--muted); margin-top:5px;">לאיכות תאורה מיטבית מומלץ לפני 15:00</p>
+    </div>
+
+    <button class="btn btn-dark btn-w100" id="next-1" onclick="APP.next()" style="position:relative;">
+      המשך לבחירת שירותים <i class="fa-solid fa-arrow-left"></i>
+    </button>
+
+  </section>
+
+  <!-- ══════════════════════════════
+       STEP 2 · Core Services
+  ══════════════════════════════ -->
+  <section id="step-2" class="step-panel" aria-label="שלב 2 – שירותי ליבה">
+
+    <h2 style="font-size:28px; font-weight:700; margin-bottom:4px;">שירותי ליבה</h2>
+    <p style="color:var(--muted); margin-bottom:26px; font-size:15px;">
+      צילום סטילס כלול תמיד · בחרו שירותי ליבה נוספים
+    </p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:28px;">
+
+      <!-- Stills - always on, read-only -->
+      <div class="svc-card sel" style="cursor:default; opacity:.85;">
+        <div style="display:flex; gap:12px; align-items:flex-start;">
+          <div style="width:38px;height:38px;min-width:38px;border-radius:9px;background:var(--burg-t);display:flex;align-items:center;justify-content:center;">
+            <i class="fa-solid fa-camera" style="color:var(--burg); font-size:15px;"></i>
+          </div>
+          <div>
+            <div style="font-weight:700; font-size:15px;">צילום סטילס (פריים)</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:2px;">תיעוד רגעים נצחיים בעדשות פריים</div>
+            <div style="font-size:11px; margin-top:4px;"><span class="badge badge-gold">כלול · 980 ₪/שעה</span></div>
+          </div>
+        </div>
+        <div class="svc-chk" style="background:var(--gold);border-color:var(--gold);">
+          <i class="fa-solid fa-check" style="font-size:9px;color:#fff;"></i>
+        </div>
+      </div>
+
+      <!-- Video -->
+      <div class="svc-card" id="svc-video"
+           onclick="APP.toggleSvc('video', this)"
+           tabindex="0" role="checkbox" aria-checked="false"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleSvc('video',this);}">
+        <div style="display:flex; gap:12px; align-items:flex-start;">
+          <div style="width:38px;height:38px;min-width:38px;border-radius:9px;background:var(--burg-t);display:flex;align-items:center;justify-content:center;">
+            <i class="fa-solid fa-video" style="color:var(--burg); font-size:15px;"></i>
+          </div>
+          <div>
+            <div style="font-weight:700; font-size:15px;">וידאו קולנועי (4K Cinematic)</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:2px;">וידאו קולנועי 4K כולל עריכה מלאה</div>
+            <div style="font-size:13px; font-weight:800; color:var(--burg); margin-top:4px;">2,500 ₪</div>
+          </div>
+        </div>
+        <div class="svc-chk" id="chk-video"></div>
+      </div>
+
+      <!-- Magnets -->
+      <div class="svc-card" id="svc-magnets"
+           onclick="APP.toggleSvc('magnets', this)"
+           tabindex="0" role="checkbox" aria-checked="false"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleSvc('magnets',this);}">
+        <div style="display:flex; gap:12px; align-items:flex-start;">
+          <div style="width:38px;height:38px;min-width:38px;border-radius:9px;background:var(--burg-t);display:flex;align-items:center;justify-content:center;">
+            <i class="fa-solid fa-magnet" style="color:var(--burg); font-size:15px;"></i>
+          </div>
+          <div>
+            <div style="font-weight:700; font-size:15px;">מגנטי Fine-Art (איכות גלריה)</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:2px;">מגנטים על נייר צילום אמיתי לאורחים</div>
+            <div style="font-size:13px; font-weight:800; color:var(--burg); margin-top:4px;">1,800 ₪</div>
+          </div>
+        </div>
+        <div class="svc-chk" id="chk-magnets"></div>
+      </div>
+
+    </div>
+
+    <div style="display:flex; gap:12px;">
+      <button class="btn btn-outline" style="flex:1;" onclick="APP.prev()">
+        <i class="fa-solid fa-arrow-right"></i> חזרה
+      </button>
+      <button class="btn btn-dark" style="flex:2;" onclick="APP.next()">
+        המשך לבחירת שעות <i class="fa-solid fa-arrow-left"></i>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════
+       STEP 3 · Hours / Experience
+  ══════════════════════════════ -->
+  <section id="step-3" class="step-panel" aria-label="שלב 3 – שעות צילום">
+
+    <h2 style="font-size:28px; font-weight:700; margin-bottom:4px;">איזה חלק מהסיפור נתעד?</h2>
+    <p style="color:var(--muted); margin-bottom:26px; font-size:15px;">
+      תעריף אחיד: <strong>980 ₪ לשעה</strong> · בחרו חבילה או התאימו בעצמכם
+    </p>
+
+    <!-- Named Presets -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:22px;">
+
+      <div class="hr-card" id="preset-essence"
+           onclick="APP.setPreset(4, 'essence')"
+           tabindex="0" role="radio" aria-checked="false"
+           onkeydown="if(event.key==='Enter'||event.key===' ')APP.setPreset(4,'essence')">
+        <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px;">המהות · חבילת בסיס</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; line-height:1;">4<span style="font-size:16px;"> שע׳</span></div>
+        <div style="font-size:11px; color:var(--muted); margin:6px 0; line-height:1.5;">קבלת פנים, טקס,<br>ריקודים ראשונים</div>
+        <div style="font-size:16px; font-weight:800; color:var(--burg);">3,920 ₪</div>
+      </div>
+
+      <div class="hr-card sel" id="preset-chronicle"
+           onclick="APP.setPreset(8, 'chronicle')"
+           tabindex="0" role="radio" aria-checked="true"
+           style="position:relative;"
+           onkeydown="if(event.key==='Enter'||event.key===' ')APP.setPreset(8,'chronicle')">
+        <div style="position:absolute; top:-11px; right:50%; transform:translateX(50%);">
+          <span class="badge badge-red">הבחירה הפופולרית ✨</span>
+        </div>
+        <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px;">הסיפור המלא · הנבחרת</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; line-height:1;">8<span style="font-size:16px;"> שע׳</span></div>
+        <div style="font-size:11px; color:var(--muted); margin:6px 0; line-height:1.5;">מההכנות המרגשות<br>ועד שיא הלילה</div>
+        <div style="font-size:16px; font-weight:800; color:var(--burg);">7,840 ₪</div>
+      </div>
+
+      <div class="hr-card" id="preset-legacy"
+           onclick="APP.setPreset(12, 'legacy')"
+           tabindex="0" role="radio" aria-checked="false"
+           style="position:relative;"
+           onkeydown="if(event.key==='Enter'||event.key===' ')APP.setPreset(12,'legacy')">
+        <div style="position:absolute; top:-11px; right:50%; transform:translateX(50%);">
+          <span class="badge badge-gold">מתנת AI בלעדית ✦</span>
+        </div>
+        <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px;">המורשת · ללא הגבלה</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:700; line-height:1;">12<span style="font-size:16px;"> שע׳</span></div>
+        <div style="font-size:11px; color:var(--muted); margin:6px 0; line-height:1.5;">ליווי צמוד מהבוקר<br>ועד האורח האחרון</div>
+        <div style="font-size:16px; font-weight:800; color:var(--burg);">11,760 ₪</div>
+      </div>
+
+    </div>
+
+    <!-- Custom Slider -->
+    <div style="background:var(--soft); border:1px solid var(--border); border-radius:var(--r); padding:20px; margin-bottom:28px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <span style="font-size:13px; font-weight:700;">התאמה אישית</span>
+        <span id="slider-readout" style="font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:700; color:var(--burg);">8 שעות · 7,840 ₪</span>
+      </div>
+      <input class="hr-slider" type="range" id="hours-slider"
+             min="1" max="16" value="8"
+             oninput="APP.onSlider(this.value)">
+      <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin-top:6px;">
+        <span>1 שעה</span><span>16 שעות</span>
+      </div>
+      <p style="font-size:11px; color:var(--muted); margin-top:8px; text-align:center;">
+        כל שעה נוספת מחוץ לחבילה: 980 ₪ · כולל עריכה ומסירה דיגיטלית
+      </p>
+    </div>
+
+    <div style="display:flex; gap:12px;">
+      <button class="btn btn-outline" style="flex:1;" onclick="APP.prev()">
+        <i class="fa-solid fa-arrow-right"></i> חזרה
+      </button>
+      <button class="btn btn-dark" style="flex:2;" onclick="APP.next()">
+        המשך לשדרוגים <i class="fa-solid fa-arrow-left"></i>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════
+       STEP 4 · Boutique Upgrades
+  ══════════════════════════════ -->
+  <section id="step-4" class="step-panel" aria-label="שלב 4 – שדרוגי בוטיק">
+
+    <h2 style="font-size:28px; font-weight:700; margin-bottom:4px;">שדרוגי פרימיום</h2>
+    <p style="color:var(--muted); margin-bottom:26px; font-size:15px;">
+      כל שדרוג מוסיף ממד נוסף לסיפור שלכם - בחרו בתשוקה
+    </p>
+
+    <!-- Pre-event -->
+    <div class="section-label">לפני האירוע</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-bottom:24px;">
+
+      <div class="up-card" id="up-prelude"
+           onclick="APP.toggleUp('prelude', 2200, this)"
+           tabindex="0" role="checkbox" aria-checked="false"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleUp('prelude',2200,this);}">
+        <div class="up-icon"><i class="fa-solid fa-heart"></i></div>
+        <div style="flex:1;">
+          <div style="font-weight:700; font-size:13px; margin-bottom:2px;">הפתיח (צילומי זוגיות / Save the Date)</div>
+          <div style="font-size:11px; color:var(--muted);">צילומי זוגיות / Save the Date</div>
+        </div>
+        <div style="font-weight:800; color:var(--burg); font-size:13px; white-space:nowrap;">2,200 ₪</div>
+      </div>
+
+      <div class="up-card" id="up-avantgarde"
+           onclick="APP.toggleUp('avantgarde', 3800, this)"
+           tabindex="0" role="checkbox" aria-checked="false"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleUp('avantgarde',3800,this);}">
+        <div class="up-icon"><i class="fa-solid fa-droplet"></i></div>
+        <div style="flex:1;">
+          <div style="font-weight:700; font-size:13px; margin-bottom:2px;">אוונגרד (Trash the Dress אמנותי)</div>
+          <div style="font-size:11px; color:var(--muted);">Trash the Dress אמנותי</div>
+        </div>
+        <div style="font-weight:800; color:var(--burg); font-size:13px; white-space:nowrap;">3,800 ₪</div>
+      </div>
+
+    </div>
+
+    <!-- During event -->
+    <div class="section-label">במהלך האירוע</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-bottom:24px;">
+
+      <div class="up-card" id="up-reels"
+           onclick="APP.toggleUp('reels', 2800, this)"
+           tabindex="0" role="checkbox" aria-checked="false"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleUp('reels',2800,this);}">
+        <div class="up-icon"><i class="fa-brands fa-instagram"></i></div>
+        <div style="flex:1;">
+          <div style="font-weight:700; font-size:13px; margin-bottom:2px;">עורך הסיפור (Reels בזמן אמת)</div>
+          <div style="font-size:11px; color:var(--muted);">עורך Reels צמוד בזמן אמת</div>
+        </div>
+        <div style="font-weight:800; color:var(--burg); font-size:13px; white-space:nowrap;">2,800 ₪</div>
+      </div>
+
+    </div>
+
+    <!-- Post event -->
+    <div class="section-label">אחרי האירוע</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-bottom:28px;">
+
+      <div class="up-card" id="up-priority"
+           onclick="APP.toggleUp('priority', 1400, this)"
+           tabindex="0" role="checkbox" aria-checked="false"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleUp('priority',1400,this);}">
+        <div class="up-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div style="flex:1;">
+          <div style="font-weight:700; font-size:13px; margin-bottom:2px;">מסירה מהירה (תוך 48 שעות)</div>
+          <div style="font-size:11px; color:var(--muted);">מסירה מלאה תוך 48 שעות</div>
+        </div>
+        <div style="font-weight:800; color:var(--burg); font-size:13px; white-space:nowrap;">1,400 ₪</div>
+      </div>
+
+      <div class="up-card" id="up-archive"
+           onclick="APP.toggleUp('archive', 2800, this)"
+           tabindex="0" role="checkbox" aria-checked="false"
+           onkeydown="if(event.key===' '){event.preventDefault();APP.toggleUp('archive',2800,this);}">
+        <div class="up-icon"><i class="fa-solid fa-hard-drive"></i></div>
+        <div style="flex:1;">
+          <div style="font-weight:700; font-size:13px; margin-bottom:2px;">ארכיון מאסטר (גיבוי 10 שנים)</div>
+          <div style="font-size:11px; color:var(--muted);">גיבוי RAW מאובטח ל-10 שנים</div>
+        </div>
+        <div style="font-weight:800; color:var(--burg); font-size:13px; white-space:nowrap;">2,800 ₪</div>
+      </div>
+
+    </div>
+
+    <!-- ── ADVANCED AI STUDIO ── -->
+    <div class="ai-glow" style="background: linear-gradient(135deg, #0D0D14 0%, #141624 100%); border-radius:var(--r); padding:22px; border:1px solid #2a2d3e;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <i class="fa-solid fa-wand-magic-sparkles" style="color:#93c5fd; font-size:18px;"></i>
+        <span style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:#fff;">סטודיו AI מתקדם</span>
+        <span class="badge badge-ai">מופעל ב-AI</span>
+      </div>
+      <p style="font-size:12px; color:#6b7280; margin-bottom:16px;">
+        תוצאות פרימיום בטכנולוגיית בינה מלאכותית · הנחת חבילה 500 ₪ בבחירת 2 שירותים ומעלה
+      </p>
+      <div id="ai-bundle-notice" style="display:none; background:rgba(184,151,58,.15); border:1px solid rgba(184,151,58,.35); border-radius:8px; padding:9px 13px; margin-bottom:14px; font-size:12px; color:#e8c96c; font-weight:700;">
+        ✦ הנחת חבילת AI פועלת - חיסכון של 500 ₪ 🎉
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px;">
+
+        <div class="up-card ai-card" id="up-ai-aerial"
+             onclick="APP.toggleAI('aerial', 850, this)"
+             tabindex="0" role="checkbox" aria-checked="false"
+             onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAI('aerial',850,this);}">
+          <div class="up-icon"><i class="fa-solid fa-expand"></i></div>
+          <div style="flex:1;">
+            <div style="display:flex; align-items:center; gap:6px; margin-bottom:2px;">
+              <div style="font-weight:700; font-size:13px; color:var(--black);">פנורמות AI (תחליף רחפן)</div>
+            </div>
+            <div style="font-size:11px; color:#6b7280;">פנורמות רחבות – תחליף רחפן ב-Generative AI</div>
+          </div>
+          <div style="font-weight:800; color:var(--gold); font-size:13px; white-space:nowrap;">850 ₪</div>
+        </div>
+
+        <div class="up-card ai-card" id="up-ai-retouch"
+             onclick="APP.toggleAI('retouch', 1200, this)"
+             tabindex="0" role="checkbox" aria-checked="false"
+             onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAI('retouch',1200,this);}">
+          <div class="up-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:13px; color:var(--black); margin-bottom:2px;">ריטוש מאסטר AI</div>
+            <div style="font-size:11px; color:#6b7280;">ריטוש עומק, ניקוי רקע, Golden Hour</div>
+          </div>
+          <div style="font-weight:800; color:var(--gold); font-size:13px; white-space:nowrap;">1,200 ₪</div>
+        </div>
+
+        <div class="up-card ai-card" id="up-ai-cinema"
+             onclick="APP.toggleAI('cinema', 950, this)"
+             tabindex="0" role="checkbox" aria-checked="false"
+             onkeydown="if(event.key===' '){event.preventDefault();APP.toggleAI('cinema',950,this);}">
+          <div class="up-icon"><i class="fa-solid fa-film"></i></div>
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:13px; color:var(--black); margin-bottom:2px;">קליפ AI (מוכן לבוקר שאחרי)</div>
+            <div style="font-size:11px; color:#6b7280;">סרטון היילייטס מוכן בבוקר שאחרי</div>
+          </div>
+          <div style="font-weight:800; color:var(--gold); font-size:13px; white-space:nowrap;">950 ₪</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="display:flex; gap:12px; margin-top:24px;">
+      <button class="btn btn-outline" style="flex:1;" onclick="APP.prev()">
+        <i class="fa-solid fa-arrow-right"></i> חזרה
+      </button>
+      <button class="btn btn-dark" style="flex:2;" onclick="APP.next()">
+        לסיכום הסופי <i class="fa-solid fa-arrow-left"></i>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════
+       STEP 5 · Premium Summary
+  ══════════════════════════════ -->
+  <section id="step-5" class="step-panel" aria-label="שלב 5 – סיכום">
+
+    <h2 style="font-size:28px; font-weight:700; margin-bottom:4px;">הצעת המחיר האישית שלכם מוכנה</h2>
+    <p style="color:var(--muted); margin-bottom:20px; font-size:15px;">
+      פירוט מלא · מחיר שקוף · ניתן לפריסה ל-12 תשלומים ללא ריבית
+    </p>
+
+    <!-- Fix 5: AI value banner -->
+    <div style="background:linear-gradient(135deg,#0F1117,#1a1d2e); border-radius:var(--r); padding:14px 20px; margin-bottom:22px; display:flex; align-items:center; gap:12px; border:1px solid #2a2d3e;">
+      <i class="fa-solid fa-wand-magic-sparkles" style="color:#93c5fd; font-size:18px; flex-shrink:0;"></i>
+      <div>
+        <div style="color:#fff; font-size:13px; font-weight:700; margin-bottom:2px;">✨ כברירת מחדל: עריכת צבע חכמה ב-AI ללא תוספת תשלום</div>
+        <div style="color:#9ca3af; font-size:11px;">כל חבילה כוללת Color Grading אוטומטי ב-AI - הסטנדרט החדש של איכות פרימיום</div>
+      </div>
+    </div>
+
+    <!-- Quote box -->
+    <div id="summary-box" style="border:2px solid var(--border); border-radius:var(--r); padding:26px; margin-bottom:24px;"></div>
+
+    <!-- Contact -->
+    <div style="background:var(--soft); border-radius:var(--r); padding:22px; margin-bottom:22px;">
+      <h3 style="font-size:17px; font-weight:700; margin-bottom:14px;">פרטי יצירת קשר</h3>
+      <!-- Row 1: Name + Phone -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
+        <div>
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:5px; text-transform:uppercase; letter-spacing:.5px;">שם מלא *</label>
+          <input type="text" id="c-name" placeholder="ישראל ישראלי" oninput="APP.state.contact.name=this.value;">
+        </div>
+        <div>
+          <label style="display:block; font-size:12px; font-weight:700; margin-bottom:5px; text-transform:uppercase; letter-spacing:.5px;">טלפון *</label>
+          <input type="tel" id="c-phone" placeholder="05X-XXXXXXX" oninput="APP.state.contact.phone=this.value;">
+        </div>
+      </div>
+      <!-- Row 2: Email (full width) -->
+      <div style="margin-bottom:14px;">
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:5px; text-transform:uppercase; letter-spacing:.5px;">אימייל <span style="color:var(--muted); font-weight:400; text-transform:none; letter-spacing:0;">(לקבלת ה-PDF)</span></label>
+        <input type="email" id="c-email" placeholder="your@email.com" oninput="APP.state.contact.email=this.value;">
+      </div>
+      <!-- Row 3: Notes (full width) -->
+      <div>
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:5px; text-transform:uppercase; letter-spacing:.5px;">בקשות מיוחדות <span style="color:var(--muted); font-weight:400; text-transform:none; letter-spacing:0;">(רשות)</span></label>
+        <textarea id="c-notes" placeholder="מידע חשוב על האירוע, בקשות מיוחדות, שאלות..." rows="3" oninput="APP.state.contact.notes=this.value;" style="resize:vertical;"></textarea>
+      </div>
+    </div>
+
+    <!-- Legal -->
+    <div style="border:2px solid var(--border); border-radius:var(--r); padding:22px; margin-bottom:24px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+        <h3 style="font-size:16px; font-weight:700; display:flex; align-items:center; gap:9px;">
+          <i class="fa-solid fa-shield-check" style="color:var(--burg);"></i>הצהרות ואישורי שירות
+        </h3>
+        <button class="btn btn-outline" style="padding:6px 14px; font-size:12px;" onclick="APP.checkAllLegal()">
+          סמן הכל ✓
+        </button>
+      </div>
+      <div class="legal-row">
+        <input type="checkbox" id="l1">
+        <label for="l1"><strong>מחיר סופי:</strong> מסמך זה מהווה הצעת מחיר ראשונית. המחיר הסופי ייקבע לאחר שיחת ייעוץ וחתימה על הסכם שירות מפורט.</label>
+      </div>
+      <div class="legal-row">
+        <input type="checkbox" id="l2">
+        <label for="l2"><strong>אחריות שירות:</strong> אנו עובדים עם רשת צלמים מפוקחת בלבד. במקרה חריג, נדאג להחלפת צלם/ת ברמה זהה או גבוהה יותר - ללא עלות נוספת.</label>
+      </div>
+      <div class="legal-row">
+        <input type="checkbox" id="l3">
+        <label for="l3"><strong>מדיניות ביטולים:</strong> עד 60 יום לפני האירוע - החזר מלא. עד 30 יום - 50% החזר. פחות מ-30 יום - ללא החזר. נגמישות במקרים חריגים.</label>
+      </div>
+      <div class="legal-row">
+        <input type="checkbox" id="l4">
+        <label for="l4"><strong>קניין רוחני:</strong> תמונות הגמורות מועברות לידי הלקוח בסיום תהליך העריכה. הסטודיו שומר זכות שימוש בתמונות לצרכי תיק עבודות, בכפוף להסכמת הלקוח.</label>
+      </div>
+      <div class="legal-row">
+        <input type="checkbox" id="l5">
+        <label for="l5"><strong>אישור:</strong> קראתי את התנאים, הבנתי את מודל השירות, ואני מאשר/ת את נכונות הפרטים שמילאתי.</label>
+      </div>
+    </div>
+
+    <!-- Urgency bar -->
+    <div id="urgency-bar">
+      <i class="fa-solid fa-clock" style="flex-shrink:0; color:#f87171;"></i>
+      <span><strong style="color:#fca5a5;">⚡ המחיר מובטח ל-48 שעות הקרובות בלבד</strong> · נותרו תאריכים ספורים לחודש הקרוב</span>
+    </div>
+
+    <!-- Action buttons - WhatsApp FIRST per Israeli UX research -->
+    <button class="btn btn-wa btn-w100" onclick="APP.sendWhatsApp()" style="margin-bottom:12px; font-size:17px; padding:18px;">
+      <i class="fa-brands fa-whatsapp" style="font-size:22px;"></i>
+      שלח בוואטסאפ וקבל אישור מיידי ✅
+    </button>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+      <button class="btn btn-dark btn-w100" id="submit-btn" onclick="APP.submitForm()">
+        <i class="fa-solid fa-calendar-check"></i> שריינו תאריך ומחיר
+      </button>
+      <button class="btn btn-outline" style="width:100%; padding:14px;" onclick="APP.downloadPDF()">
+        <i class="fa-solid fa-file-pdf" style="color:var(--burg);"></i> הורד PDF
+      </button>
+    </div>
+    <div style="margin-bottom:16px;">
+      <button class="btn btn-outline" style="width:100%; padding:13px;" onclick="APP.copyQuote()">
+        <i class="fa-solid fa-copy"></i> העתק הצעה ללוח
+      </button>
+    </div>
+    <button class="btn btn-outline" style="width:100%; padding:13px;" onclick="APP.prev()">
+      <i class="fa-solid fa-arrow-right"></i> חזרה לשדרוגים
+    </button>
+
+  </section>
+
+</main>
+
+<!-- STICKY PRICE BAR -->
+<div id="price-bar" class="no-print">
+  <div>
+    <div class="pb-label" style="font-size:10px; letter-spacing:.5px; text-transform:uppercase;">השקעה משוערת</div>
+    <div class="pb-total" id="pb-total">0 ₪</div>
+    <div class="pb-save"  id="pb-save"></div>
+  </div>
+</div>
+
+<!-- SMART ALERT -->
+<div id="smart-alert" class="no-print">
+  <div id="alert-body" style="font-size:13px; line-height:1.6; flex:1;"></div>
+  <button onclick="APP.closeAlert()" style="background:none;border:none;cursor:pointer;color:#aaa;font-size:20px;line-height:1;padding:0;flex-shrink:0;">×</button>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div id="modal-overlay">
+  <div class="modal-box">
+    <button onclick="APP.closeModal()" style="position:absolute;top:14px;left:14px;background:none;border:none;cursor:pointer;font-size:22px;color:#aaa;">×</button>
+    <div style="font-size:58px; margin-bottom:14px;">✅</div>
+    <h3 style="font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:700; margin-bottom:8px;">ההצעה נשלחה!</h3>
+    <p style="color:var(--muted); font-size:14px; margin-bottom:22px;">ניצור אתכם קשר תוך 24 שעות לאישור הפרטים</p>
+    <button class="btn btn-dark btn-w100" onclick="APP.closeModal()">סגור</button>
+  </div>
+</div>
+
+<!-- jsPDF (lazy loaded) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
+<script>
+/* ================================================================
+   APP - Single Namespace, Clean Architecture
+   All IDs used in JS are explicitly declared here.
+================================================================ */
+const APP = (() => {
+
+  // ── STATE ──────────────────────────────────────────────────────
+  const state = {
+    currentStep: 1,
+    eventType:   null,
+    eventLabel:  '',
+    eventDate:   '',
+    guests:      0,
+    locationFee: 0,
+    isOutdoor:   false,
+    startTime:   '',
+    hours:       8,
+    // Core services (step 2)
+    services: {
+      video:   false,
+      magnets: false
+    },
+    // Boutique upsells (step 4)
+    upsells: {
+      prelude:    false,
+      avantgarde: false,
+      reels:      false,
+      priority:   false,
+      archive:    false
+    },
+    // AI upsells (step 4, separate)
+    aiUpsells: {
+      aerial:  false,
+      retouch: false,
+      cinema:  false
+    },
+    contact: { name:'', phone:'', email:'', notes:'' }
+  };
+
+  // ── PRICING ────────────────────────────────────────────────────
+  const PRICE = {
+    hourRate:  980,
+    services: {
+      video:   2500,
+      magnets: 1800
+    },
+    upsells: {
+      prelude:    2200,
+      avantgarde: 3800,
+      reels:      2800,
+      priority:   1400,
+      archive:    2800
+    },
+    ai: {
+      aerial:  850,
+      retouch: 1200,
+      cinema:  950
+    },
+    aiBundle:       -500,  // discount for 2+ AI services
+    pkgThreshold:  15000,
+    pkgDiscount:    0.12
+  };
+
+  const LABELS = {
+    services: {
+      video:   'וידאו קולנועי (4K Cinematic)',
+      magnets: 'מגנטי Fine-Art (איכות גלריה)'
+    },
+    upsells: {
+      prelude:    'הפתיח – צילומי זוגיות / Save the Date',
+      avantgarde: 'אוונגרד – Trash the Dress אמנותי',
+      reels:      'עורך הסיפור – Reels בזמן אמת',
+      priority:   'מסירה מהירה – תוך 48 שעות',
+      archive:    'ארכיון מאסטר – גיבוי 10 שנים'
+    },
+    ai: {
+      aerial:  'פנורמות AI (תחליף רחפן)',
+      retouch: 'ריטוש מאסטר AI',
+      cinema:  'קליפ AI (מוכן לבוקר שאחרי)'
+    }
+  };
+
+  // ── PRICING CALCULATOR ─────────────────────────────────────────
+  function calcPrice() {
+    const items = [];
+    let subtotal = 0;
+    const add = (label, price, type = 'add') => {
+      items.push({ label, price, type });
+      subtotal += price;
+    };
+
+    // Hours × rate
+    const hoursCost = state.hours * PRICE.hourRate;
+    add(`${state.hours} שעות צילום (${PRICE.hourRate} ₪/שעה)`, hoursCost, 'base');
+
+    // Location surcharge
+    if (state.locationFee > 0) add('תוספת נסיעה', state.locationFee);
+
+    // Core services
+    for (const [key, active] of Object.entries(state.services)) {
+      if (active) add(LABELS.services[key], PRICE.services[key]);
+    }
+
+    // Boutique upsells
+    for (const [key, active] of Object.entries(state.upsells)) {
+      if (active) add(LABELS.upsells[key], PRICE.upsells[key]);
+    }
+
+    // AI upsells
+    const aiCount = Object.values(state.aiUpsells).filter(Boolean).length;
+    for (const [key, active] of Object.entries(state.aiUpsells)) {
+      if (active) add(LABELS.ai[key], PRICE.ai[key], 'ai');
+    }
+
+    // AI Bundle discount
+    if (aiCount >= 2) {
+      add('AI Bundle Reward', PRICE.aiBundle, 'discount');
+    }
+
+    // Package discount (12% over 15,000)
+    let pkgDiscount = 0;
+    if (subtotal > PRICE.pkgThreshold) {
+      pkgDiscount = Math.round(subtotal * PRICE.pkgDiscount);
+      add('הנחת חבילה 12%', -pkgDiscount, 'discount');
+      subtotal -= pkgDiscount;
+    }
+
+    return { items, final: subtotal, pkgDiscount };
+  }
+
+  // ── RENDER PRICE BAR ───────────────────────────────────────────
+  function renderPrice() {
+    const { final, pkgDiscount } = calcPrice();
+    const el = document.getElementById('pb-total');
+    el.textContent = final.toLocaleString() + ' ₪';
+    el.classList.add('flash');
+    setTimeout(() => el.classList.remove('flash'), 400);
+    const saveEl = document.getElementById('pb-save');
+    saveEl.textContent = pkgDiscount > 0 ? `חיסכון ${pkgDiscount.toLocaleString()} ₪ 🎉` : '';
+    syncMobileNav();
+  }
+
+  // ── DISCOUNT GAMIFICATION BAR ──────────────────────────────────
+  function renderDiscBar() {
+    const { final, pkgDiscount } = calcPrice();
+    const wrap = document.getElementById('disc-wrap');
+    if (final < 1000) { wrap.style.display = 'none'; return; }
+    wrap.style.display = 'block';
+    const pct = Math.min((final / PRICE.pkgThreshold) * 100, 100);
+    document.getElementById('disc-fill').style.width = pct + '%';
+    const txt  = document.getElementById('disc-txt');
+    const sub  = document.getElementById('disc-sub');
+    const bdg  = document.getElementById('disc-badge');
+    if (final >= PRICE.pkgThreshold) {
+      txt.innerHTML = `<span style="color:var(--green);font-weight:800">✓ הנחת חבילה 12% פועלת - חסכתם ${pkgDiscount.toLocaleString()} ₪!</span>`;
+      sub.textContent = '';
+      bdg.textContent = '';
+    } else {
+      const need = PRICE.pkgThreshold - final;
+      txt.innerHTML = `עוד <strong>${need.toLocaleString()} ₪</strong> לפתיחת הנחת חבילה 12%`;
+      sub.textContent = `שווי הנחה פוטנציאלי: כ-${Math.round(PRICE.pkgThreshold * PRICE.pkgDiscount).toLocaleString()} ₪`;
+      bdg.textContent = '';
+    }
+  }
+
+  // ── AI BUNDLE NOTICE ───────────────────────────────────────────
+  function renderAIBundle() {
+    const count = Object.values(state.aiUpsells).filter(Boolean).length;
+    const notice = document.getElementById('ai-bundle-notice');
+    if (notice) notice.style.display = count >= 2 ? 'block' : 'none';
+  }
+
+  // ── PROGRESS ───────────────────────────────────────────────────
+  function renderProgress() {
+    const labels = ['האירוע', 'שירותים', 'שעות', 'שדרוגים', 'סיכום'];
+    let html = '';
+    for (let i = 1; i <= 5; i++) {
+      const done   = i < state.currentStep;
+      const active = i === state.currentStep;
+      html += `
+        <div class="pn ${done?'done':''} ${active?'active':''}"
+             onclick="APP.goTo(${i})" title="${labels[i-1]}">
+          <div class="pn-num">
+            ${done ? '<i class="fa-solid fa-check" style="font-size:10px;"></i>' : i}
+          </div>
+          <div class="pn-lbl">${labels[i-1]}</div>
+        </div>`;
+      if (i < 5) {
+        html += `<div class="pn-line ${done?'done':''}"></div>`;
+      }
+    }
+    document.getElementById('progress').innerHTML = html;
+  }
+
+  // ── STEP VISIBILITY ────────────────────────────────────────────
+  function showStep(n) {
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById('step-' + n);
+    if (panel) panel.classList.add('active');
+    renderProgress();
+    if (n === 5) renderSummary();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    renderPrice();
+    renderDiscBar();
+  }
+
+  // ── NAVIGATION ─────────────────────────────────────────────────
+  function next() {
+    const s = state.currentStep;
+    // Validate
+    if (s === 1 && !state.eventType) {
+      flashAlert('אנא בחרו סוג אירוע לפני המשך ⚠️');
+      return;
+    }
+    if (s === 1 && state.isOutdoor && !state.startTime) {
+      flashAlert('לאירוע חוץ נא לציין שעת התחלה ⏰');
+      return;
+    }
+    if (s < 5) {
+      state.currentStep++;
+      showStep(state.currentStep);
+    }
+  }
+
+  function prev() {
+    if (state.currentStep > 1) {
+      state.currentStep--;
+      showStep(state.currentStep);
+    }
+  }
+
+  function goTo(n) {
+    if (n <= state.currentStep) {
+      state.currentStep = n;
+      showStep(n);
+    }
+  }
+
+  // ── STEP 1 HANDLERS ────────────────────────────────────────────
+  function pickEvent(el, type, label) {
+    state.eventType  = type;
+    state.eventLabel = label;
+    document.querySelectorAll('.ev-card').forEach(c => c.classList.remove('sel'));
+    el.classList.add('sel');
+    renderPrice();
+    renderDiscBar();
+  }
+
+  // ── STEP 2 HANDLERS ────────────────────────────────────────────
+  function toggleSvc(key, el) {
+    state.services[key] = !state.services[key];
+    el.classList.toggle('sel');
+    el.setAttribute('aria-checked', String(state.services[key]));
+    const chk = document.getElementById('chk-' + key);
+    if (chk) {
+      if (state.services[key]) {
+        chk.style.background    = 'var(--burg)';
+        chk.style.borderColor   = 'var(--burg)';
+        chk.innerHTML = '<i class="fa-solid fa-check" style="font-size:9px;color:#fff;"></i>';
+      } else {
+        chk.style.background  = '';
+        chk.style.borderColor = '';
+        chk.innerHTML = '';
+      }
+    }
+    renderPrice();
+    renderDiscBar();
+  }
+
+  // ── STEP 3 HANDLERS ────────────────────────────────────────────
+  function setPreset(hours, id) {
+    state.hours = hours;
+    // Sync slider
+    const slider = document.getElementById('hours-slider');
+    if (slider) slider.value = hours;
+    updateSliderReadout(hours);
+    // Highlight preset card
+    ['essence','chronicle','legacy'].forEach(name => {
+      const el = document.getElementById('preset-' + name);
+      if (el) {
+        el.classList.toggle('sel', name === id);
+        el.setAttribute('aria-checked', String(name === id));
+      }
+    });
+    renderPrice();
+    renderDiscBar();
+  }
+
+  function onSlider(val) {
+    const hours = parseInt(val);
+    state.hours = hours;
+    updateSliderReadout(hours);
+    // Deselect presets if custom value
+    const presetMap = { 4:'essence', 8:'chronicle', 12:'legacy' };
+    ['essence','chronicle','legacy'].forEach(name => {
+      const el = document.getElementById('preset-' + name);
+      if (el) {
+        const match = presetMap[hours] === name;
+        el.classList.toggle('sel', match);
+        el.setAttribute('aria-checked', String(match));
+      }
+    });
+    renderPrice();
+    renderDiscBar();
+  }
+
+  function updateSliderReadout(hours) {
+    const cost = (hours * PRICE.hourRate).toLocaleString();
+    const el = document.getElementById('slider-readout');
+    if (el) el.textContent = `${hours} שעות · ${cost} ₪`;
+  }
+
+  // ── STEP 4 HANDLERS ────────────────────────────────────────────
+  function toggleUp(key, price, el) {
+    state.upsells[key] = !state.upsells[key];
+    el.classList.toggle('sel');
+    el.setAttribute('aria-checked', String(state.upsells[key]));
+    showPricePop(state.upsells[key] ? price : -price);
+    renderPrice();
+    renderDiscBar();
+    runAlerts();
+  }
+
+  function toggleAI(key, price, el) {
+    state.aiUpsells[key] = !state.aiUpsells[key];
+    el.classList.toggle('sel');
+    el.setAttribute('aria-checked', String(state.aiUpsells[key]));
+    showPricePop(state.aiUpsells[key] ? price : -price);
+    renderAIBundle();
+    renderPrice();
+    renderDiscBar();
+  }
+
+  // ── PRICE POP ANIMATION ────────────────────────────────────────
+  function showPricePop(diff) {
+    if (!diff) return;
+    const pop = document.createElement('div');
+    pop.className = 'price-pop';
+    pop.textContent = (diff > 0 ? '+' : '') + diff.toLocaleString() + ' ₪';
+    pop.style.color = diff > 0 ? 'var(--burg)' : 'var(--green)';
+    document.body.appendChild(pop);
+    setTimeout(() => pop.remove(), 1300);
+  }
+
+  // ── TOAST NOTIFICATIONS ──────────────────────────────────────
+  function toast(msg, type = 'info', duration = 3500) {
+    const container = document.getElementById('toast-container');
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    const icons = { success: '✅', error: '⚠️', info: 'ℹ️' };
+    el.innerHTML = `<span>${icons[type]||''}</span><span>${msg}</span>`;
+    container.appendChild(el);
+    setTimeout(() => {
+      el.style.animation = 'toastOut .3s ease forwards';
+      setTimeout(() => el.remove(), 300);
+    }, duration);
+  }
+
+  // ── SMART ALERTS ───────────────────────────────────────────────
+  let alertTimer = null;
+
+  function showAlert(html) {
+    clearTimeout(alertTimer);
+    document.getElementById('alert-body').innerHTML = html;
+    document.getElementById('smart-alert').classList.add('visible');
+    alertTimer = setTimeout(closeAlert, 8000);
+  }
+
+  function closeAlert() {
+    document.getElementById('smart-alert').classList.remove('visible');
+  }
+
+  function flashAlert(msg, type = 'error') {
+    toast(msg, type);
+    showAlert(msg);
+    clearTimeout(alertTimer);
+    alertTimer = setTimeout(closeAlert, 4000);
+  }
+
+  function runAlerts() {
+    if (state.guests > 500) {
+      showAlert('<i class="fa-solid fa-users" style="color:var(--burg);margin-left:6px;"></i><strong>500+ אורחים:</strong><br>לאירוע בסדר גודל זה מומלץ להוסיף צלמ/ת נוסף/ת. צרו קשר לתיאום.');
+      return;
+    }
+    if (state.isOutdoor && state.startTime && state.startTime >= '15:00') {
+      showAlert('<i class="fa-solid fa-sun" style="color:var(--gold);margin-left:6px;"></i><strong>תאורה:</strong><br>לאירועי חוץ מומלץ מאוד להתחיל לפני 15:00 לאיכות אור מיטבית.');
+      return;
+    }
+    closeAlert();
+  }
+
+  // ── MOBILE STICKY NAV ─────────────────────────────────────────
+  function syncMobileNav() {
+    const { final } = calcPrice();
+    const el = document.getElementById('msn-price');
+    if (el) el.textContent = final.toLocaleString() + ' ₪';
+  }
+
+  function mobileNext() { next(); }
+
+  // ── STEP 5 - SUMMARY ──────────────────────────────────────────
+  function renderSummary() {
+    const { items, final, pkgDiscount } = calcPrice();
+    const dateStr = state.eventDate
+      ? new Date(state.eventDate).toLocaleDateString('he-IL', { day:'numeric', month:'long', year:'numeric' })
+      : 'לא נבחר';
+
+    const baseItems    = items.filter(i => i.type === 'base' || (i.type === 'add' && i.price > 0));
+    const discItems    = items.filter(i => i.type === 'discount');
+    const aiItems      = items.filter(i => i.type === 'ai');
+
+    function renderRows(arr) {
+      return arr.map(it => {
+        const neg = it.price < 0;
+        const val = neg
+          ? `<span style="color:var(--green);">−${Math.abs(it.price).toLocaleString()} ₪</span>`
+          : `${it.price.toLocaleString()} ₪`;
+        return `<div class="sum-row ${neg?'neg':''}">
+          <span>${it.label}</span><span style="font-weight:700;">${val}</span>
+        </div>`;
+      }).join('');
+    }
+
+    let html = `
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:20px;">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700;">סיכום החבילה שלכם</div>
+          <div style="font-size:13px; color:var(--muted); margin-top:2px;">
+            ${state.eventLabel || 'אירוע'} · ${dateStr} · ${state.guests || 'N/A'} אורחים
+          </div>
+        </div>
+        <div style="text-align:left;">
+          <div style="font-size:11px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.5px;">השקעה מתוכננת</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:700; color:var(--burg); line-height:1.1;">
+            ${final.toLocaleString()} ₪
+          </div>
+          ${pkgDiscount > 0
+            ? `<div style="font-size:13px;color:var(--green);font-weight:700;">חסכתם ${pkgDiscount.toLocaleString()} ₪ 🎉</div>`
+            : ''}
+        </div>
+      </div>`;
+
+    html += `<div class="sum-cat">שירותי ליבה ✓</div>` + renderRows(baseItems);
+    if (aiItems.length) html += `<div class="sum-cat">סטודיו AI מתקדם ✦</div>` + renderRows(aiItems);
+    if (discItems.length) html += `<div class="sum-cat">הנחות</div>` + renderRows(discItems);
+
+    html += `<div class="sum-total">
+      <span>סה״כ לתשלום</span>
+      <span style="color:var(--burg);">${final.toLocaleString()} ₪</span>
+    </div>`;
+
+    if (pkgDiscount > 0) {
+      html += `<div style="background:var(--green-t);border:1px solid rgba(26,107,60,.2);border-radius:9px;padding:12px 16px;margin-top:14px;display:flex;align-items:center;gap:10px;">
+        <i class="fa-solid fa-tag" style="color:var(--green);font-size:16px;"></i>
+        <div><div style="font-weight:700;color:var(--green);font-size:14px;">הנחת חבילה 12% הופעלה!</div>
+        <div style="font-size:12px;color:var(--muted);">חסכתם ${pkgDiscount.toLocaleString()} ₪ על חבילה מעל 15,000 ₪</div></div>
+      </div>`;
+    }
+
+    document.getElementById('summary-box').innerHTML = html;
+  }
+
+  // ── LEGAL ─────────────────────────────────────────────────────
+  function checkAllLegal() {
+    for (let i = 1; i <= 5; i++) {
+      const el = document.getElementById('l' + i);
+      if (el) el.checked = true;
+    }
+  }
+
+  function validateLegal() {
+    for (let i = 1; i <= 5; i++) {
+      const el = document.getElementById('l' + i);
+      if (!el || !el.checked) {
+        flashAlert('אנא אשרו את כל ההצהרות המשפטיות ✅');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // ── FORM SUBMIT ───────────────────────────────────────────────
+  async function submitForm() {
+    if (!validateLegal()) return;
+    const name  = document.getElementById('c-name').value.trim();
+    const phone = document.getElementById('c-phone').value.trim();
+    if (!name || !phone) {
+      ['c-name','c-phone'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el.value.trim()) {
+          el.classList.add('field-err');
+          el.addEventListener('input', () => el.classList.remove('field-err'), { once: true });
+        }
+      });
+      flashAlert('אנא מלאו שם וטלפון ⚠️');
+      return;
+    }
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> שולח...';
+
+    const { items, final } = calcPrice();
+    const breakdown = items.map(i =>
+      `${i.label}: ${i.price >= 0 ? '+' : ''}${i.price.toLocaleString()} ₪`
+    ).join('\n');
+
+    const payload = {
+      access_key: '636e046c-45b4-4011-a947-1ffe575b5bb1',
+      subject:    `הצעת מחיר – סטודיו לומייר – ${state.eventLabel || 'אירוע'} – ${name}`,
+      name, phone,
+      email:        document.getElementById('c-email').value || 'לא צוין',
+      'סוג אירוע':  state.eventLabel || 'לא נבחר',
+      'תאריך':      state.eventDate  || 'לא נבחר',
+      'אורחים':     state.guests     || 'לא צוין',
+      'שעות צילום': state.hours,
+      'תוספת נסיעה': state.locationFee > 0 ? `${state.locationFee.toLocaleString()} ₪` : 'ללא',
+      'שירותי ליבה': [
+        'צילום סטילס (כלול)',
+        ...Object.entries(state.services).filter(([,v])=>v).map(([k]) => LABELS.services[k])
+      ].join(' | '),
+      'שדרוגי פרימיום': Object.entries(state.upsells).filter(([,v])=>v).map(([k]) => LABELS.upsells[k]).join(' | ') || 'ללא',
+      'שירותי AI':     Object.entries(state.aiUpsells).filter(([,v])=>v).map(([k]) => LABELS.ai[k]).join(' | ') || 'ללא',
+      'מחיר סופי':    final.toLocaleString() + ' ₪',
+      'פירוט מלא':    items.map(i =>
+        `${i.label}: ${i.price >= 0 ? '+' : ''}${i.price.toLocaleString()} ₪`
+      ).join('\n'),
+      'הערות':        document.getElementById('c-notes').value || 'ללא'
+    };
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('modal-overlay').classList.add('visible');
+        toast('ההצעה נשלחה בהצלחה! PDF מורד אוטומטית 📄', 'success', 5000);
+        downloadPDF();
+      } else {
+        throw new Error(data.message || 'Unknown error');
+      }
+    } catch (err) {
+      console.error(err);
+      flashAlert('שגיאה בשליחה. אנא נסו שנית.');
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-calendar-check"></i> שריינו תאריך ומחיר';
+    }
+  }
+
+  // ── WHATSAPP ──────────────────────────────────────────────────
+  function sendWhatsApp() {
+    const { final } = calcPrice();
+    const name = document.getElementById('c-name').value.trim();
+    const svcList = [
+      ...Object.entries(state.services).filter(([,v])=>v).map(([k]) => LABELS.services[k]),
+      ...Object.entries(state.upsells).filter(([,v])=>v).map(([k]) => LABELS.upsells[k]),
+      ...Object.entries(state.aiUpsells).filter(([,v])=>v).map(([k]) => LABELS.ai[k])
+    ].join(', ') || 'צילום סטילס בלבד';
+
+    const msg = `היי Studio Lumière! 📸\n${name ? `שמי ${name} ו` : ''}בניתם לי חבילה מדהימה באתר! אלו הפרטים:`
+      + `\n\n🎊 סוג אירוע: ${state.eventLabel || 'לא נבחר'}`
+      + `\n📅 תאריך: ${state.eventDate || 'לא נבחר'}`
+      + `\n⏱️ שעות צילום: ${state.hours}`
+      + `\n✨ שירותים: ${svcList}`
+      + `\n\n💰 השקעה מתוכננת: ${final.toLocaleString()} ₪`
+      + `\n\nאשמח לאישור זמינות לתאריך ולסגירת הפרטים - מחכה לתשובתכם! 🙏`;
+
+    window.open(`https://wa.me/972587555456?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  // ── PDF ───────────────────────────────────────────────────────
+  function downloadPDF() {
+    function tryPDF() {
+      if (!window.jspdf) { setTimeout(tryPDF, 600); return; }
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF('p', 'mm', 'a4');
+
+      // Header
+      doc.setFillColor(139, 0, 0);
+      doc.rect(0, 0, 210, 42, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(18);
+      doc.text('STUDIO LUMIERE · OFFICIAL PHOTOGRAPHY PROPOSAL', 105, 15, { align: 'center' });
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(9);
+      doc.text(`Generated: ${new Date().toLocaleDateString('en-GB')}   |   Tel: 058-755-5456`, 105, 24, { align: 'center' });
+      const name  = document.getElementById('c-name').value  || 'N/A';
+      const phone = document.getElementById('c-phone').value || 'N/A';
+      doc.text(`Client: ${name}  |  Phone: ${phone}  |  Event: ${state.eventLabel||'N/A'}  |  Date: ${state.eventDate||'N/A'}  |  Hours: ${state.hours}`, 105, 32, { align: 'center' });
+      doc.text(`Guests: ${state.guests||'N/A'}`, 105, 38, { align: 'center' });
+
+      // Table
+      let y = 52;
+      doc.setFillColor(34, 34, 34);
+      doc.rect(10, y - 5, 190, 10, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(9);
+      doc.text('Service / Item', 175, y + 1, { align: 'right' });
+      doc.text('Price (ILS)', 35, y + 1, { align: 'left' });
+      y += 10;
+
+      const { items, final, pkgDiscount } = calcPrice();
+      items.forEach((it, i) => {
+        if (y > 265) { doc.addPage(); y = 20; }
+        if (i % 2 === 0) { doc.setFillColor(248, 247, 245); doc.rect(10, y - 4, 190, 9, 'F'); }
+        const neg = it.price < 0;
+        doc.setTextColor(neg ? 26 : 51, neg ? 107 : 51, neg ? 60 : 51);
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5);
+        doc.text(it.label, 175, y + 1, { align: 'right' });
+        const ps = (neg ? '-' : '+') + Math.abs(it.price).toLocaleString() + ' ILS';
+        doc.text(ps, 35, y + 1, { align: 'left' });
+        y += 9;
+      });
+
+      // Total bar
+      y += 4;
+      doc.setFillColor(139, 0, 0);
+      doc.rect(10, y - 5, 190, 14, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(13);
+      doc.text(`TOTAL: ${final.toLocaleString()} ILS`, 105, y + 4, { align: 'center' });
+
+      if (pkgDiscount > 0) {
+        y += 18; doc.setTextColor(26, 107, 60); doc.setFontSize(10);
+        doc.text(`Package discount applied: ${pkgDiscount.toLocaleString()} ILS saved (12%)`, 105, y, { align: 'center' });
+      }
+
+      doc.setTextColor(160, 160, 160); doc.setFontSize(7.5); doc.setFont('helvetica', 'italic');
+      doc.text('This quote is an estimate only and does not constitute a binding contract. Studio Lumiere acts as an intermediary.', 105, 283, { align: 'center' });
+      doc.text('Cancellation: Full refund >60 days | 50% >30 days | No refund thereafter.', 105, 288, { align: 'center' });
+
+      doc.save(`lumiere-quote-${Date.now()}.pdf`);
+    }
+    tryPDF();
+  }
+
+  // ── COPY QUOTE ────────────────────────────────────────────────
+  function copyQuote() {
+    const { items, final } = calcPrice();
+    let txt = `Studio Lumière · Bespoke Photography Quote\n${'─'.repeat(40)}\n`;
+    txt += `Client: ${document.getElementById('c-name').value||'N/A'}\n`;
+    txt += `Phone:  ${document.getElementById('c-phone').value||'N/A'}\n`;
+    txt += `Event:  ${state.eventLabel||'N/A'} · ${state.eventDate||'N/A'} · ${state.hours} hrs · ${state.guests||'?'} guests\n\n`;
+    txt += `Breakdown:\n`;
+    items.forEach(it => txt += `  ${it.label}: ${it.price >= 0 ? '+' : ''}${it.price.toLocaleString()} ₪\n`);
+    txt += `\nTOTAL: ${final.toLocaleString()} ₪\n`;
+    txt += `\nTel: 058-755-5456\n* Estimate only - not a binding contract.`;
+    navigator.clipboard.writeText(txt)
+      .then(() => toast('✅ הצעת המחיר הועתקה ללוח!', 'success', 3000))
+      .catch(() => alert(txt));
+  }
+
+  // ── MODAL ─────────────────────────────────────────────────────
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('visible');
+  }
+
+  // ── INIT ──────────────────────────────────────────────────────
+  function init() {
+    renderProgress();
+    // Default: 8 hours preset selected - renders 7,840 ₪ immediately
+    setPreset(8, 'chronicle');
+    renderPrice();
+    // Close modal on overlay click
+    document.getElementById('modal-overlay').addEventListener('click', e => {
+      if (e.target === document.getElementById('modal-overlay')) closeModal();
+    });
+    // Update slider gradient live
+    const slider = document.getElementById('hours-slider');
+    if (slider) {
+      const update = () => {
+        const pct = ((slider.value - 1) / (slider.max - 1)) * 100;
+        slider.style.background = `linear-gradient(to right, var(--burg) ${pct}%, var(--border) ${pct}%)`;
+      };
+      slider.addEventListener('input', update);
+      update();
+    }
+  }
+
+  // ── PUBLIC API ────────────────────────────────────────────────
+  return {
+    state,
+    next, prev, goTo,
+    pickEvent,
+    toggleSvc,
+    setPreset, onSlider,
+    toggleUp, toggleAI,
+    runAlerts, closeAlert,
+    checkAllLegal,
+    submitForm, sendWhatsApp, downloadPDF, copyQuote,
+    closeModal,
+    mobileNext,
+    render: renderPrice,
+    init
+  };
+
+})();
+
+// ── BOOT ──────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => APP.init());
+</script>
+</body>
+</html>

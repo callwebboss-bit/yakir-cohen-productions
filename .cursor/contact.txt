@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>יצירת קשר | יקיר כהן הפקות</title>
+  <meta name="description" content="צרו קשר עם יקיר כהן הפקות – אולפן הקלטות, DJ, קריינות, פודקאסטים. זמינים 24/6 בוואטסאפ." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicRecordingStudio",
+    "name": "יקיר כהן הפקות",
+    "telephone": "+972587555456",
+    "email": "callwebboss@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "מודיעין",
+      "addressCountry": "IL"
+    },
+    "sameAs": [
+      "https://www.instagram.com/yakir.cohen.official/",
+      "https://www.tiktok.com/@yakir.cohen.offical",
+      "https://www.facebook.com/dj.yakir.cohen/",
+      "https://www.youtube.com/@Yakircohen"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- EMERGENCY BAR -->
+  <a class="emergency-bar"
+     href="https://wa.me/972587555456?text=%F0%9F%9A%A8+%D7%A7%D7%95+%D7%97%D7%99%D7%A8%D7%95%D7%9D%21+%D7%90%D7%A0%D7%99+%D7%A6%D7%A8%D7%99%D7%9A+DJ+%D7%91%D7%93%D7%97%D7%99%D7%A4%D7%95%D7%AA"
+     target="_blank" rel="noopener" aria-label="קו חירום לDJ">
+    <div class="em-dot"></div>
+    <div class="em-text">
+      <div class="em-title">🚨 DJ נפל ברגע האחרון?</div>
+      <div class="em-sub">קו חירום זמין עכשיו · תגובה תוך דקות</div>
+    </div>
+    <span class="em-arrow">←</span>
+  </a>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="red-chip">✦ יקיר כהן הפקות ✦</div>
+    <h1>בואו <em>נדבר</em> על הפרויקט שלכם</h1>
+    <p>אולפן הקלטות · DJ · קריינות · פודקאסטים · מודיעין</p>
+  </header>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar" role="list">
+    <div class="trust-item" role="listitem">
+      <div class="trust-num">20+</div>
+      <div class="trust-label">שנות ניסיון</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item" role="listitem">
+      <div class="trust-num">500+</div>
+      <div class="trust-label">פרויקטים</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item" role="listitem">
+      <div class="trust-num">★ 5.0</div>
+      <div class="trust-label">דירוג לקוחות</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item" role="listitem">
+      <div class="trust-num">15 דק׳</div>
+      <div class="trust-label">זמן תגובה</div>
+    </div>
+  </div>
+
+  <!-- RESPONSE TIME -->
+  <div class="response-time" aria-live="polite">
+    <span class="rt-dot"></span>
+    זמין עכשיו · ממוצע תגובה 15 דקות
+  </div>
+
+  <!-- QUIZ CARD -->
+  <div class="quiz-card" id="quizCard">
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- MIC STEPS -->
+    <div class="mic-progress" aria-hidden="true">
+      <div class="mic-step active" id="step-icon-1">
+        <div class="mic-icon">🎤</div>
+        <div class="mic-step-label">שירות</div>
+      </div>
+      <div class="mic-connector"></div>
+      <div class="mic-step" id="step-icon-2">
+        <div class="mic-icon">📅</div>
+        <div class="mic-step-label">תזמון</div>
+      </div>
+      <div class="mic-connector"></div>
+      <div class="mic-step" id="step-icon-3">
+        <div class="mic-icon">💰</div>
+        <div class="mic-step-label">תקציב</div>
+      </div>
+      <div class="mic-connector"></div>
+      <div class="mic-step" id="step-icon-4">
+        <div class="mic-icon">✉️</div>
+        <div class="mic-step-label">פרטים</div>
+      </div>
+    </div>
+
+    <!-- QUESTION 1: SERVICE -->
+    <div class="question-block active" id="q1">
+      <div class="q-label">שלב 1 מתוך 4</div>
+      <div class="q-title">במה אוכל לעזור לכם?</div>
+      <div class="options-grid" role="radiogroup" aria-label="בחרו שירות">
+        <button class="opt-btn" data-service="studio" onclick="selectOption(this,'service','studio')" role="radio" aria-checked="false">
+          <span>הקלטה באולפן</span>
+          <span class="opt-icon">🎙️</span>
+        </button>
+        <button class="opt-btn" data-service="dj" onclick="selectOption(this,'service','dj')" role="radio" aria-checked="false">
+          <span>DJ לאירוע</span>
+          <span class="opt-icon">🎧</span>
+        </button>
+        <button class="opt-btn" data-service="voice" onclick="selectOption(this,'service','voice')" role="radio" aria-checked="false">
+          <span>קריינות</span>
+          <span class="opt-icon">🎚️</span>
+        </button>
+        <button class="opt-btn" data-service="podcast" onclick="selectOption(this,'service','podcast')" role="radio" aria-checked="false">
+          <span>הקלטת פודקאסט</span>
+          <span class="opt-icon">🎵</span>
+        </button>
+        <button class="opt-btn" data-service="clip" onclick="selectOption(this,'service','clip')" role="radio" aria-checked="false">
+          <span>הפקת קליפ / וידאו</span>
+          <span class="opt-icon">🎬</span>
+        </button>
+        <button class="opt-btn" data-service="other" onclick="selectOption(this,'service','other')" role="radio" aria-checked="false">
+          <span>שירות אחר</span>
+          <span class="opt-icon">💡</span>
+        </button>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-next" id="next1" onclick="goNext(1)" disabled>הבא ←</button>
+      </div>
+    </div>
+
+    <!-- QUESTION 2: TIMING -->
+    <div class="question-block" id="q2">
+      <div class="q-label">שלב 2 מתוך 4</div>
+      <div class="q-title">מתי אתם צריכים אותנו?</div>
+      <div class="options-grid" role="radiogroup" aria-label="בחרו תזמון">
+        <button class="opt-btn" onclick="selectOption(this,'timing','urgent')" role="radio" aria-checked="false">
+          <span>דחוף — השבוע</span>
+          <span class="opt-icon">⚡</span>
+        </button>
+        <button class="opt-btn" onclick="selectOption(this,'timing','month')" role="radio" aria-checked="false">
+          <span>תוך חודש</span>
+          <span class="opt-icon">📆</span>
+        </button>
+        <button class="opt-btn" onclick="selectOption(this,'timing','flexible')" role="radio" aria-checked="false">
+          <span>גמיש — נתאם יחד</span>
+          <span class="opt-icon">🗓️</span>
+        </button>
+        <button class="opt-btn" onclick="selectOption(this,'timing','future')" role="radio" aria-checked="false">
+          <span>עתידי — רק בודקים</span>
+          <span class="opt-icon">🔭</span>
+        </button>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-back" onclick="goBack(2)">→ חזור</button>
+        <button class="btn-next" id="next2" onclick="goNext(2)" disabled>הבא ←</button>
+      </div>
+    </div>
+
+    <!-- QUESTION 3: BUDGET -->
+    <div class="question-block" id="q3">
+      <div class="q-label">שלב 3 מתוך 4</div>
+      <div class="q-title">מה רמת ההפקה שאתם מחפשים?</div>
+      <div class="options-grid" role="radiogroup" aria-label="בחרו רמת הפקה">
+        <button class="opt-btn" onclick="selectOption(this,'budget','minimal')" role="radio" aria-checked="false">
+          <span>מינימליסטי ומדויק</span>
+          <span class="budget-badge badge-min">חסכוני</span>
+          <span class="opt-icon">🎯</span>
+        </button>
+        <button class="opt-btn" onclick="selectOption(this,'budget','standard')" role="radio" aria-checked="false">
+          <span>סטנדרט מקצועי</span>
+          <span class="budget-badge badge-std">פופולרי</span>
+          <span class="opt-icon">⭐</span>
+        </button>
+        <button class="opt-btn" onclick="selectOption(this,'budget','fullpower')" role="radio" aria-checked="false">
+          <span>הפקה הוליוודית</span>
+          <span class="budget-badge badge-full">Full Power</span>
+          <span class="opt-icon">🚀</span>
+        </button>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn-back" onclick="goBack(3)">→ חזור</button>
+        <button class="btn-next" id="next3" onclick="goNext(3)" disabled>הבא ←</button>
+      </div>
+    </div>
+
+    <!-- QUESTION 4: DETAILS -->
+    <div class="question-block" id="q4">
+      <div class="q-label">שלב 4 מתוך 4 — כמעט שם! 🎉</div>
+      <div class="q-title">השאירו פרטים ונחזור אליכם</div>
+
+      <input class="input-field" type="text" id="inp-name" placeholder="שם מלא *" required aria-label="שם מלא" autocomplete="name" />
+      <div class="val-msg" id="val-name">נא להזין שם</div>
+
+      <input class="input-field" type="tel" id="inp-phone" placeholder="טלפון *" required aria-label="טלפון" autocomplete="tel" inputmode="tel" />
+      <div class="val-msg" id="val-phone">נא להזין מספר טלפון תקין</div>
+
+      <input class="input-field" type="email" id="inp-email" placeholder="מייל (אופציונלי)" aria-label="כתובת מייל" autocomplete="email" />
+
+      <textarea class="input-field" id="inp-msg" rows="3" placeholder="ספרו לנו קצת על הפרויקט (אופציונלי)" aria-label="הודעה"></textarea>
+
+      <p class="privacy-note">🔒 הפרטים שלכם שמורים אצלנו בלבד</p>
+
+      <div class="quiz-nav">
+        <button class="btn-back" onclick="goBack(4)">→ חזור</button>
+        <button class="btn-next" id="next4" onclick="submitForm()">שלחו ←</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-state" id="successState">
+      <div class="success-icon">🎉</div>
+      <h3 id="successTitle">קיבלנו! נחזור אליכם בקרוב</h3>
+      <p id="successMsg">תוך 15 דקות תקבלו הודעה מיקיר.</p>
+
+      <!-- ROADMAP -->
+      <div class="roadmap" id="roadmapBlock">
+        <div class="roadmap-title">המסלול שלנו מכאן</div>
+        <div class="roadmap-steps" id="roadmapSteps"></div>
+      </div>
+
+      <!-- WA BUTTON -->
+      <a class="btn-wa" id="waBtn" href="https://wa.me/972587555456" target="_blank" rel="noopener">
+        <span>💬</span> שלחו וואטסאפ עכשיו
+      </a>
+
+      <button class="btn-reset" onclick="resetQuiz()">← שלחו פנייה נוספת</button>
+    </div>
+
+  </div><!-- /quiz-card -->
+
+  <!-- QUICK CONTACT -->
+  <div class="quick-row" aria-label="דרכי יצירת קשר מהירות">
+    <a class="quick-btn" href="tel:+972587555456" aria-label="התקשרו">
+      <span>📞</span>
+      <span>058-7555456</span>
+      <span class="qb-label">התקשרו</span>
+    </a>
+    <a class="quick-btn" href="https://wa.me/972587555456" target="_blank" rel="noopener" aria-label="וואטסאפ">
+      <span>💬</span>
+      <span>וואטסאפ</span>
+      <span class="qb-label">זמין 24/6</span>
+    </a>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="email-section">
+    <a class="email-btn" href="/cdn-cgi/l/email-protection#5132303d3d263433333e222211363c30383d7f323e3c" aria-label="שלחו מייל">
+      <span>✉️</span>
+      <span class="__cf_email__" data-cfemail="3b585a57574c5e59595448487b5c565a525715585456">[email&#160;protected]</span>
+    </a>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="social-section">
+    <div class="social-label">עקבו אחרינו</div>
+    <div class="social-row" role="list">
+      <a class="soc-btn" href="https://www.instagram.com/yakir.cohen.official/" target="_blank" rel="noopener" aria-label="Instagram" role="listitem">📸</a>
+      <a class="soc-btn" href="https://www.tiktok.com/@yakir.cohen.offical" target="_blank" rel="noopener" aria-label="TikTok" role="listitem">🎵</a>
+      <a class="soc-btn" href="https://www.facebook.com/dj.yakir.cohen/" target="_blank" rel="noopener" aria-label="Facebook" role="listitem">👍</a>
+      <a class="soc-btn" href="https://www.youtube.com/@Yakircohen" target="_blank" rel="noopener" aria-label="YouTube" role="listitem">▶️</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section" aria-label="שאלות נפוצות">
+    <div class="section-title">שאלות נפוצות</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+        כמה עולה הקלטה באולפן?
+        <span class="faq-arrow" aria-hidden="true">▼</span>
+      </button>
+      <div class="faq-a" role="region">המחיר תלוי בסוג ההקלטה, משך הזמן ורמת ההפקה הנדרשת. נשמח לשלוח הצעת מחיר מותאמת אישית לאחר שיחה קצרה.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+        האם אפשר לשמוע דוגמאות מהעבודות שלכם?
+        <span class="faq-arrow" aria-hidden="true">▼</span>
+      </button>
+      <div class="faq-a" role="region">בוודאי! ניתן לצפות ולשמוע עבודות נבחרות בערוץ היוטיוב שלנו ובפרופיל האינסטגרם. תוכנית מלאה נשלח בשמחה עם פנייה.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+        כמה זמן לוקחת הפקה מלאה?
+        <span class="faq-arrow" aria-hidden="true">▼</span>
+      </button>
+      <div class="faq-a" role="region">קריינות ופודקאסט — לרוב 24–48 שעות. הקלטה באולפן — תלוי בהיקף. DJ — מתאמים לפי תאריך האירוע. בדחיפות? זמינים לפתרונות מהירים.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+        איפה האולפן ממוקם?
+        <span class="faq-arrow" aria-hidden="true">▼</span>
+      </button>
+      <div class="faq-a" role="region">האולפן ממוקם במודיעין. ניתן לתאם הגעה עצמית או הקלטה מרחוק דרך זום/טלפון לפי הצורך.</div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 יקיר כהן הפקות · כל הזכויות שמורות</p>
+    <p>מודיעין · זמין 6 ימים בשבוע</p>
+    <div class="footer-hours">
+      <span>🕙</span> א׳–ה׳: 10:00–20:00 · ו׳: לפי תיאום
+    </div>
+  </footer>
+
+</div><!-- /page -->
+
+<!-- STICKY WA (mobile) -->
+<div class="sticky-wa" id="stickyWa" aria-label="שלחו וואטסאפ">
+  <a href="https://wa.me/972587555456" target="_blank"

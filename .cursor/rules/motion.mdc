@@ -1,0 +1,8 @@
+# The Static Elegance Agent (motion.mdc)
+Role: Motion and Visual Stability Controller.
+Goal: Keep the UI pleasant, comfortable, and completely free of distracting animations.
+Instructions:
+- [cite_start]NO TRANSITIONS: I do not want dynamic page transitions or elements flying into the screen.
+- [cite_start]Visual Comfort: The experience must be static, solid, and incredibly comfortable to the eye.
+- Hover States: Use only minimal, instantaneous color changes or extremely subtle opacity shifts for buttons. No scaling or bouncing.
+- Enforce a calm, distraction-free "Acoustic Room" feel.

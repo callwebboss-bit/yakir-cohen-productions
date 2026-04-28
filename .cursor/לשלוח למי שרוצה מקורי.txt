@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>יקיר כהן הפקות | טופס הזמנה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0A0A0A;
+  --gold: #B8860B;
+  --gold-light: #D4A017;
+  --gold-pale: #FDF6E3;
+  --red: #8B0000;
+  --surface: #FFFFFF;
+  --bg: #F7F5F2;
+  --muted: #888;
+  --border: #E0DADA;
+  --green: #25D366;
+  --radius: 14px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: 'Heebo', sans-serif;
+  background: var(--bg);
+  color: var(--black);
+  min-height: 100vh;
+  padding-bottom: 120px;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--black);
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: 50%; transform: translateX(-50%);
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(184,134,11,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.studio-tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.header h1 {
+  font-size: 1.9rem;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.header h1 span { color: var(--gold-light); }
+.header-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* ── MAY BANNER ── */
+.may-banner {
+  background: linear-gradient(135deg, var(--gold) 0%, #8B6914 100%);
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.may-dot {
+  width: 7px; height: 7px;
+  background: #fff;
+  border-radius: 50%;
+  animation: blink 1.4s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* ── STEPS ── */
+.step-label {
+  padding: 28px 20px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.step-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── SERVICE TYPE ── */
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 20px;
+}
+.service-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+  position: relative;
+}
+.service-card:active { transform: scale(0.97); }
+.service-card.selected {
+  border-color: var(--black);
+  background: var(--black);
+  color: #fff;
+}
+.service-card.selected .svc-icon { background: rgba(255,255,255,0.1); }
+.service-card.selected .svc-sub { color: rgba(255,255,255,0.55); }
+.service-card.ai-card.selected {
+  border-color: var(--gold);
+  background: var(--black);
+}
+.service-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.svc-icon {
+  width: 46px; height: 46px;
+  background: var(--bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  font-size: 1.3rem;
+}
+.svc-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.svc-sub {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── PACKAGE SECTION ── */
+#pkg-section, #clip-section, #info-section { display: none; }
+#pkg-section.show, #clip-section.show, #info-section.show { display: block; }
+
+.pkg-cards { padding: 0 20px; display: flex; flex-direction: column; gap: 12px; }
+
+.pkg-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+.pkg-card:active { transform: scale(0.985); }
+.pkg-card.selected {
+  border-color: var(--black);
+  background: #FAFAFA;
+}
+.pkg-card.popular { border-color: var(--gold); }
+.pkg-badge {
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+.pkg-badge.red { background: var(--red); }
+.pkg-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.pkg-name { font-size: 1.05rem; font-weight: 800; }
+.pkg-price-wrap { text-align: left; }
+.pkg-price {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: var(--black);
+  line-height: 1;
+}
+.pkg-was {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-decoration: line-through;
+  text-align: left;
+}
+.pkg-desc { font-size: 0.78rem; color: var(--muted); margin-bottom: 12px; }
+.pkg-features { list-style: none; }
+.pkg-features li {
+  font-size: 0.82rem;
+  padding: 5px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  border-bottom: 1px solid #F0EDEA;
+  color: #333;
+}
+.pkg-features li:last-child { border-bottom: none; }
+.feat-check {
+  width: 16px; height: 16px;
+  background: var(--black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.feat-check svg { width: 8px; height: 8px; stroke: #fff; }
+.pkg-card.selected .feat-check { background: var(--gold); }
+
+/* ── DELIVERY NOTE ── */
+.delivery-note {
+  margin: 0 20px;
+  background: #FFF8E7;
+  border: 1px solid #F0D060;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 0.8rem;
+  color: #7A5A00;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+}
+.delivery-note svg { flex-shrink: 0; margin-top: 1px; }
+
+/* ── CLIP SECTION ── */
+.clip-cards { padding: 0 20px; display: flex; flex-direction: column; gap: 10px; }
+.clip-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.clip-card:active { transform: scale(0.985); }
+.clip-card.selected { border-color: var(--black); background: #FAFAFA; }
+.clip-icon {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.clip-info { flex: 1; }
+.clip-name { font-size: 0.92rem; font-weight: 700; margin-bottom: 2px; }
+.clip-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.4; }
+.clip-price { font-weight: 800; font-size: 0.9rem; color: var(--black); white-space: nowrap; }
+
+/* "VIRAL" tag */
+.viral-tag {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 20px;
+  margin-right: 6px;
+  letter-spacing: 0.05em;
+}
+
+/* ── GRANT BOX ── */
+.grant-box {
+  margin: 0 20px;
+  background: var(--black);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.grant-box::before {
+  content: '';
+  position: absolute;
+  top: -30px; left: -30px;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(184,134,11,0.2) 0%, transparent 70%);
+}
+.grant-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.grant-title { font-size: 1rem; font-weight: 800; margin-bottom: 6px; }
+.grant-desc { font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+.grant-amount {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.grant-num {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.grant-condition {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.4;
+}
+
+/* ── NO GOING BACK ── */
+.policy-box {
+  margin: 0 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  background: #FFF;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.policy-icon {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}
+.policy-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 3px; }
+.policy-text { font-size: 0.77rem; color: var(--muted); line-height: 1.5; }
+
+/* ── INFO FIELDS ── */
+.fields { padding: 0 20px; display: flex; flex-direction: column; gap: 12px; }
+
+.field-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.field-group input,
+.field-group textarea,
+.field-group select {
+  width: 100%;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  font-family: 'Heebo', sans-serif;
+  color: var(--black);
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+}
+.field-group input:focus,
+.field-group textarea:focus,
+.field-group select:focus { border-color: var(--black); }
+.field-group textarea { resize: none; height: 90px; line-height: 1.5; }
+
+/* ── SUMMARY ── */
+.summary-box {
+  margin: 0 20px;
+  border: 1.5px solid var(--black);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: #fff;
+}
+.summary-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  border-bottom: 1px solid #F0EDEA;
+  font-size: 0.85rem;
+}
+.summary-row:last-of-type { border-bottom: none; }
+.sum-label { color: var(--muted); }
+.sum-val { font-weight: 600; color: var(--black); }
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 2px solid var(--black);
+}
+.sum-total-label { font-size: 0.85rem; font-weight: 700; }
+.sum-total-price { font-size: 1.6rem; font-weight: 900; }
+
+/* ── STICKY FOOTER / WA BUTTON ── */
+.sticky-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  z-index: 100;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.sticky-bar.up { transform: translateY(0); }
+
+.wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 20px;
+  font-size: 1rem;
+  font-weight: 800;
+  font-family: 'Heebo', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+  animation: pulse 2.2s infinite;
+}
+.wa-btn:active { transform: scale(0.97); }
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+  70%  { box-shadow: 0 0 0 10px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+.wa-icon { width: 22px; height: 22px; fill: #fff; }
+
+/* ── SECTION GAP ── */
+.gap { height: 14px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="studio-tag">יקיר כהן הפקות - אולפן בוטיק</div>
+  <h1>בניית <span>השיר שלך</span></h1>
+  <p class="header-sub">מלאי את הטופס ויקיר יחזור אליך בוואצאפ עם הצעה מסודרת</p>
+</div>
+
+<!-- MAY BANNER -->
+<div class="may-banner">
+  <div class="may-dot"></div>
+  מחיר מיוחד לחודש מאי - שיר מקורי עם AI - ניתן להזמין עכשיו
+  <div class="may-dot"></div>
+</div>
+
+<!-- STEP 1: SERVICE TYPE -->
+<div class="step-label">שלב 1 - סוג השירות</div>
+<div class="service-grid">
+  <div class="service-card" id="svc-cover" onclick="selectService('cover')">
+    <div class="svc-icon">🎤</div>
+    <div class="svc-title">הקלטת קאבר</div>
+    <div class="svc-sub">שיר קיים - בגרסה שלך</div>
+  </div>
+  <div class="service-card ai-card" id="svc-ai" onclick="selectService('ai')">
+    <div class="service-badge">מאי 2025</div>
+    <div class="svc-icon">✨</div>
+    <div class="svc-title">שיר מקורי + AI</div>
+    <div class="svc-sub">הפקה מלאה - המחיר המיוחד</div>
+  </div>
+</div>
+
+<!-- STEP 2: PACKAGES -->
+<div id="pkg-section">
+  <div class="step-label" id="pkg-step-label">שלב 2 - בחירת חבילה</div>
+
+  <!-- COVER PACKAGES -->
+  <div class="pkg-cards" id="cover-pkgs" style="display:none">
+    <div class="pkg-card" id="cover-basic" onclick="selectPkg('cover','basic',990,'הקלטה בסיסית')">
+      <div class="pkg-top">
+        <div>
+          <div class="pkg-name">הקלטה בסיסית</div>
+          <div class="pkg-desc">מושלם לשיר מתנה או ניסיון ראשון</div>
+        </div>
+        <div class="pkg-price-wrap">
+          <div class="pkg-price">₪990</div>
+        </div>
+      </div>
+      <ul class="pkg-features">
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>סשן הקלטה עד שעתיים</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>עריכת קול בסיסית</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>פלייבק + מיקס מהיר</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>קובץ סופי MP3 + WAV</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card popular" id="cover-pro" onclick="selectPkg('cover','pro',1480,'הקלטה מקצועית')">
+      <div class="pkg-badge">הכי מבוקש</div>
+      <div class="pkg-top">
+        <div>
+          <div class="pkg-name">הקלטה מקצועית</div>
+          <div class="pkg-desc">הסטנדרט המלא - מוכן להפצה</div>
+        </div>
+        <div class="pkg-price-wrap">
+          <div class="pkg-price">₪1,480</div>
+        </div>
+      </div>
+      <ul class="pkg-features">
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>זמן אולפן ללא הגבלה</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>תיקון זיופים (Melodyne)</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>מיקס ומאסטרינג מלא</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>עד 2 סבבי תיקונים</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>מוכן לספוטיפיי ויוטיוב</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card" id="cover-vip" onclick="selectPkg('cover','vip',1980,'VIP קאבר')">
+      <div class="pkg-top">
+        <div>
+          <div class="pkg-name">VIP קאבר</div>
+          <div class="pkg-desc">הכל כלול - כולל ייעוץ הפצה</div>
+        </div>
+        <div class="pkg-price-wrap">
+          <div class="pkg-price">₪1,980</div>
+        </div>
+      </div>
+      <ul class="pkg-features">
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>כל מה שבמקצועי +</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>ייעוץ אסטרטגי להפצה</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>תמונת אמן לסושיאל</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>ליווי אישי של יקיר</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- AI PACKAGES -->
+  <div class="pkg-cards" id="ai-pkgs" style="display:none">
+
+    <div class="delivery-note" style="margin-bottom:12px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+      <span>מזמינות עכשיו - <strong>תוצאה סופית מאי-יוני 2025.</strong> ההפקה מתחילה מיד עם האישור.</span>
+    </div>
+
+    <div class="pkg-card" id="ai-spark" onclick="selectPkg('ai','spark',2400,'ניצן - שיר AI בסיסי')">
+      <div class="pkg-top">
+        <div>
+          <div class="pkg-name">ניצן ✦</div>
+          <div class="pkg-desc">שיר מקורי ראשון עם AI</div>
+        </div>
+        <div class="pkg-price-wrap">
+          <div class="pkg-price">₪2,400</div>
+          <div class="pkg-was">₪3,200</div>
+        </div>
+      </div>
+      <ul class="pkg-features">
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>כתיבת מילים מקוריות</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>עיבוד AI + הקלטת קול</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>מיקס בסיסי</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>עד סבב תיקונים אחד</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card popular" id="ai-song" onclick="selectPkg('ai','song',3600,'שיר - חבילה המלאה')">
+      <div class="pkg-badge">מומלץ למי שרצינית</div>
+      <div class="pkg-top">
+        <div>
+          <div class="pkg-name">שיר ✦✦</div>
+          <div class="pkg-desc">ההפקה המלאה - לסינגל אמיתי</div>
+        </div>
+        <div class="pkg-price-wrap">
+          <div class="pkg-price">₪3,600</div>
+          <div class="pkg-was">₪4,800</div>
+        </div>
+      </div>
+      <ul class="pkg-features">
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>כל מה שבניצן +</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>מיקס ומאסטרינג מלא</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>תיקון זיופים (Melodyne)</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>עד 2 סבבי תיקונים</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>ייעוץ אסטרטגי + הפצה</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>מוכן לספוטיפיי ויוטיוב</li>
+      </ul>
+    </div>
+
+    <div class="pkg-card" id="ai-hit" onclick="selectPkg('ai','hit',5200,'להיט - VIP מלא')">
+      <div class="pkg-badge red">All-In</div>
+      <div class="pkg-top">
+        <div>
+          <div class="pkg-name">להיט ✦✦✦</div>
+          <div class="pkg-desc">ליווי מלא מהרעיון עד הבמה</div>
+        </div>
+        <div class="pkg-price-wrap">
+          <div class="pkg-price">₪5,200</div>
+          <div class="pkg-was">₪7,000</div>
+        </div>
+      </div>
+      <ul class="pkg-features">
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>כל מה שבשיר +</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>ליווי אישי של יקיר לאורך כל ההפקה</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>תוכן לסושיאל (3 ריילס מוכנים)</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>קמפיין הפצה ראשוני</li>
+        <li><span class="feat-check"><svg viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke-width="1.8" stroke-linecap="round"/></svg></span>שיתוף פעולה ללהיט הבא</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- GRANT BOX - only for AI -->
+<div id="grant-box-wrap" style="display:none">
+  <div class="step-label">מה שמייחד אותנו</div>
+  <div class="grant-box">
+    <div class="grant-tag">אנחנו מאמינים בשיר</div>
+    <div class="grant-title">5,000 האזנות = ₪2,500 בחזרה</div>
+    <div class="grant-desc">אנחנו מפיקים שירים שאנחנו מאמינים בהם. אם השיר שלנו יגיע ל-5,000 האזנות - נעניק מענק של ₪2,500 ישירות אליך.</div>
+    <div class="grant-amount">
+      <div class="grant-num">₪2,500</div>
+      <div class="grant-condition">מענק מהאולפן<br>עם הגעה ל-5,000 האזנות</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3: CLIP -->
+<div id="clip-section">
+  <div class="step-label">שלב 3 - הוסף קליפ (אופציונלי)</div>
+  <div class="clip-cards">
+
+    <div class="clip-card" id="clip-none" onclick="selectClip('none',0,'ללא קליפ')">
+      <div class="clip-icon">✕</div>
+      <div class="clip-info">
+        <div class="clip-name">ללא קליפ</div>
+        <div class="clip-desc">רק השיר - מוכן להפצה</div>
+      </div>
+      <div class="clip-price">חינם</div>
+    </div>
+
+    <div class="clip-card" id="clip-onetake" onclick="selectClip('onetake',590,'וואן-טייק ויראלי')">
+      <div class="clip-icon">📱</div>
+      <div class="clip-info">
+        <div class="clip-name"><span class="viral-tag">ויראלי</span>וואן-טייק</div>
+        <div class="clip-desc">מצלמה אחת, לוקיישן אחד, טייק אחד. לא מושלם - אמיתי. זה מה שעובד ברשת.</div>
+      </div>
+      <div class="clip-price">+₪590</div>
+    </div>
+
+    <div class="clip-card" id="clip-styled" onclick="selectClip('styled',1100,'קליפ מעוצב')">
+      <div class="clip-icon">🎬</div>
+      <div class="clip-info">
+        <div class="clip-name">קליפ מעוצב</div>
+        <div class="clip-desc">מספר זוויות, גראדר צבע, עריכה מקצועית - מוכן ליוטיוב</div>
+      </div>
+      <div class="clip-price">+₪1,100</div>
+    </div>
+
+    <div class="clip-card" id="clip-full" onclick="selectClip('full',2200,'קליפ פרודקשן מלא')">
+      <div class="clip-icon">🎭</div>
+      <div class="clip-info">
+        <div class="clip-name">פרודקשן מלא</div>
+        <div class="clip-desc">ימי צילום, תסריט, תלבושות, תאורה מקצועית - קליפ ברמת תעשייה</div>
+      </div>
+      <div class="clip-price">+₪2,200</div>
+    </div>
+
+  </div>
+
+  <!-- no going back policy -->
+  <div class="gap"></div>
+  <div class="policy-box">
+    <div class="policy-icon">🔒</div>
+    <div>
+      <div class="policy-title">מדיניות השינויים שלנו</div>
+      <div class="policy-text">אנחנו עובדים תהליך - כל שלב מאושר לפני שעוברים הלאה. אחרי האישור, לא חוזרים אחורה. זה מה שמבטיח תוצאה מקצועית בזמן.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4: PERSONAL INFO -->
+<div id="info-section">
+  <div class="step-label">שלב 4 - פרטים אישיים</div>
+  <div class="fields">
+
+    <div class="field-group">
+      <label>שם מלא</label>
+      <input type="text" id="fname" placeholder="הכניסי שם מלא" autocomplete="name">
+    </div>
+
+    <div class="field-group">
+      <label>מספר טלפון</label>
+      <input type="tel" id="fphone" placeholder="050-0000000" autocomplete="tel" dir="ltr">
+    </div>
+
+    <div class="field-group" id="cover-name-wrap" style="display:none">
+      <label>שם השיר לקאבר</label>
+      <input type="text" id="fcovername" placeholder="שם השיר ושם האמן המקורי">
+    </div>
+
+    <div class="field-group" id="ai-concept-wrap" style="display:none">
+      <label>על מה השיר? (קונספט)</label>
+      <textarea id="fconcept" placeholder="ספרי על הנושא, הרגש, מה שתרצי שהשיר יביא..."></textarea>
+    </div>
+
+    <div class="field-group">
+      <label>הערות נוספות</label>
+      <textarea id="fnotes" placeholder="כל מה שחשוב לדעת - סגנון, טיימינג, שאלות..."></textarea>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="step-label" style="padding: 14px 0 10px;">סיכום הזמנה</div>
+    <div class="summary-box" id="summary-box">
+      <div class="summary-title">פרטי ההזמנה</div>
+      <div class="summary-row"><span class="sum-label">שירות</span><span class="sum-val" id="sum-svc">-</span></div>
+      <div class="summary-row"><span class="sum-label">חבילה</span><span class="sum-val" id="sum-pkg">-</span></div>
+      <div class="summary-row"><span class="sum-label">קליפ</span><span class="sum-val" id="sum-clip">-</span></div>
+      <div class="summary-total">
+        <span class="sum-total-label">סה"כ</span>
+        <span class="sum-total-price" id="sum-total">₪0</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="gap" style="height: 24px;"></div>
+
+<!-- STICKY WA BUTTON -->
+<div class="sticky-bar" id="sticky-bar">
+  <a href="#" id="wa-link" class="wa-btn" onclick="sendToWA(event)">
+    <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span id="wa-btn-text">שליחה ליקיר בוואצאפ</span>
+  </a>
+</div>
+
+<script>
+const STATE = {
+  svc: null,       // 'cover' | 'ai'
+  pkg: null,       // package id
+  pkgName: null,
+  pkgPrice: 0,
+  clip: 'none',
+  clipName: 'ללא קליפ',
+  clipPrice: 0
+};
+
+function selectService(type) {
+  STATE.svc = type;
+  STATE.pkg = null; STATE.pkgName = null; STATE.pkgPrice = 0;
+  STATE.clip = 'none'; STATE.clipName = 'ללא קליפ'; STATE.clipPrice = 0;
+
+  document.getElementById('svc-cover').classList.toggle('selected', type === 'cover');
+  document.getElementById('svc-ai').classList.toggle('selected', type === 'ai');
+
+  document.getElementById('pkg-section').classList.add('show');
+  document.getElementById('cover-pkgs').style.display = type === 'cover' ? 'flex' : 'none';
+  document.getElementById('ai-pkgs').style.display   = type === 'ai'    ? 'flex' : 'none';
+  document.getElementById('grant-box-wrap').style.display = type === 'ai' ? 'block' : 'none';
+
+  document.getElementById('cover-name-wrap').style.display  = type === 'cover' ? 'block' : 'none';
+  document.getElementById('ai-concept-wrap').style.display  = type === 'ai'    ? 'block' : 'none';
+
+  document.getElementById('clip-section').classList.remove('show');
+  document.getElementById('info-section').classList.remove('show');
+  document.getElementById('sticky-bar').classList.remove('up');
+
+  clearPkgSelection();
+  clearClipSelection();
+  updateSummary();
+
+  setTimeout(() => document.getElementById('pkg-section').scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+}
+
+function clearPkgSelection() {
+  document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('selected'));
+}
+function clearClipSelection() {
+  document.querySelectorAll('.clip-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('clip-none') && document.getElementById('clip-none').classList.add('selected');
+}
+
+function selectPkg(svc, id, price, name) {
+  if (STATE.svc !== svc) return;
+  STATE.pkg = id; STATE.pkgName = name; STATE.pkgPrice = price;
+
+  clearPkgSelection();
+  document.getElementById(svc + '-' + id).classList.add('selected');
+
+  document.getElementById('clip-section').classList.add('show');
+  document.getElementById('info-section').classList.add('show');
+  clearClipSelection();
+  document.getElementById('sticky-bar').classList.add('up');
+  updateSummary();
+
+  setTimeout(() => document.getElementById('clip-section').scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+}
+
+function selectClip(id, price, name) {
+  STATE.clip = id; STATE.clipPrice = price; STATE.clipName = name;
+  document.querySelectorAll('.clip-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('clip-' + id).classList.add('selected');
+  updateSummary();
+}
+
+function updateSummary() {
+  const total = STATE.pkgPrice + STATE.clipPrice;
+  document.getElementById('sum-svc').textContent  = STATE.svc === 'cover' ? 'הקלטת קאבר' : STATE.svc === 'ai' ? 'שיר מקורי + AI' : '-';
+  document.getElementById('sum-pkg').textContent  = STATE.pkgName || '-';
+  document.getElementById('sum-clip').textContent = STATE.clipName || '-';
+  document.getElementById('sum-total').textContent = total > 0 ? '₪' + total.toLocaleString() : '₪0';
+  document.getElementById('wa-btn-text').textContent = total > 0 ? 'שריינ/י עכשיו - ₪' + total.toLocaleString() : 'שליחה ליקיר בוואצאפ';
+}
+
+function sendToWA(e) {
+  e.preventDefault();
+
+  const name   = document.getElementById('fname').value.trim();
+  const phone  = document.getElementById('fphone').value.trim();
+  const notes  = document.getElementById('fnotes').value.trim();
+  const cover  = document.getElementById('fcovername') ? document.getElementById('fcovername').value.trim() : '';
+  const concept= document.getElementById('fconcept') ? document.getElementById('fconcept').value.trim() : '';
+
+  if (!name || !phone) {
+    alert('יש להכניס שם ומספר טלפון.');
+    document.getElementById('info-section').scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+  if (!STATE.pkg) {
+    alert('יש לבחור חבילה.');
+    return;
+  }
+
+  const total = STATE.pkgPrice + STATE.clipPrice;
+  const svcLabel = STATE.svc === 'cover' ? 'הקלטת קאבר' : 'שיר מקורי + AI';
+
+  let msg = 'היי יקיר! סיימתי את הטופס ורוצה לקדם 🎤\n\n';
+  msg += '*סוג שירות:* ' + svcLabel + '\n';
+  msg += '*חבילה:* ' + STATE.pkgName + ' - ₪' + STATE.pkgPrice.toLocaleString() + '\n';
+  msg += '*קליפ:* ' + STATE.clipName + (STATE.clipPrice > 0 ? ' (+₪' + STATE.clipPrice.toLocaleString() + ')' : '') + '\n';
+  msg += '*סה"כ:* ₪' + total.toLocaleString() + '\n\n';
+  msg += '*שם:* ' + name + '\n';
+  msg += '*טלפון:* ' + phone + '\n';
+  if (cover)   msg += '*שיר לקאבר:* ' + cover + '\n';
+  if (concept) msg += '*קונספט השיר:* ' + concept + '\n';
+  if (notes)   msg += '*הערות:* ' + notes + '\n';
+
+  const encoded = encodeURIComponent(msg);
+  window.open('https://wa.me/972587555456?text=' + encoded, '_blank');
+}
+</script>
+</body>
+</html>

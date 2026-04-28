@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אולפני יקיר כהן - מערכת הזמנות חכמה</title>
+    <meta name="description" content="אולפני יקיר כהן - הקלטות מקצועיות, פודקאסטים, אטרקציות לאירועים ושירותים דיגיטליים">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2b2e33;
+            --bg: #ffffff;
+            --accent: #FFD700;
+            --text: #2b2e33;
+            --text-light: #7B7F85;
+            --light-bg: #f8f9fa;
+            --border: #e0e0e0;
+            --success: #25D366;
+            --error: #ff4444;
+            --shadow: 0 4px 20px rgba(43, 46, 51, 0.08);
+            --shadow-hover: 0 8px 30px rgba(43, 46, 51, 0.15);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: 'Heebo', sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            direction: rtl; 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        .main-header {
+            background: linear-gradient(135deg, var(--primary), #3a3d42);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.03)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.5;
+        }
+        
+        .logo-area {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .main-header h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .main-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: white;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        /* Container */
+        .app-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--light-bg);
+        }
+        
+        .category-nav::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .category-nav::-webkit-scrollbar-track {
+            background: var(--light-bg);
+            border-radius: 10px;
+        }
+        
+        .category-nav::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
+        .cat-btn {
+            background: var(--light-bg);
+            border: 2px solid transparent;
+            padding: 14px 28px;
+            border-radius: 50px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Heebo', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .cat-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .cat-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(43, 46, 51, 0.1);
+        }
+
+        /* Audio Player Section */
+        .audio-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, white 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 2px solid #e0f2fe;
+        }
+
+        .audio-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .audio-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .audio-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .audio-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .audio-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        
+        .service-card.selected {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #f0fdf4 0%, white 100%);
+            box-shadow: 0 0 0 4px rgba(43, 46, 51, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--text);
+            font-weight: 700;
+        }
+        
+        .service-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            min-height: 45px;
+            line-height: 1.5;
+        }
+        
+        .service-price {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .price-badge {
+            background: var(--accent);
+            color: black;
+            font-size: 0.7rem;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: 700;
+        }
+
+        .service-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: black;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .service-badge.popular {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .service-badge.new {
+            background: #4ecdc4;
+            color: white;
+        }
+
+        .service-badge.kids {
+            background: #ff9ff3;
+            color: white;
+        }
+
+        /* Upsells */
+        .upsells-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .upsells-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .upsell-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .upsell-item {
+            background: var(--light-bg);
+            border: 2px solid var(--border);
+            border-radius: 15px;
+            padding: 18px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .upsell-item:hover {
+            border-color: var(--primary);
+            background: white;
+            transform: translateX(-3px);
+        }
+
+        .upsell-item.active {
+            border-color: var(--success);
+            background: linear-gradient(135deg, #f0fdf4 0%, white 100%);
+            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+        }
+
+        .upsell-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .upsell-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .upsell-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 8px;
+            display: block;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 20px;
+        }
+
+        .form-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(43, 46, 51, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Error Styles */
+        .error-field {
+            border-color: var(--error) !important;
+            background-color: #fff5f5 !important;
+            animation: shake 0.3s ease-in-out;
+        }
+
+        .error-msg {
+            color: var(--error);
+            font-size: 0.9rem;
+            margin-top: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* Cart Summary */
+        .cart-summary {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .cart-summary h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .cart-items {
+            margin-bottom: 15px;
+        }
+
+        .cart-item {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            font-size: 1rem;
+        }
+
+        .price-row.total {
+            border-top: 2px solid var(--primary);
+            margin-top: 10px;
+            padding-top: 15px;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .price-row.discount {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .discount-badge {
+            background: var(--success);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-align: center;
+            margin: 15px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--success), #20b358);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            font-family: 'Heebo', sans-serif;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+            transform: none;
+        }
+
+        /* Success Modal */
+        .success-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-modal.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .success-content {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: bounceIn 0.6s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .success-content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--success);
+        }
+
+        .success-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .success-details {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: right;
+        }
+
+        .success-details .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .success-details .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .detail-value {
+            color: var(--text-light);
+        }
+
+        .close-modal-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-header h1 {
+                font-size: 2rem;
+            }
+
+            .logo-area {
+                font-size: 3rem;
+            }
+
+            .stats-bar {
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .stat-num {
+                font-size: 2rem;
+            }
+
+            .category-nav {
+                padding: 15px;
+                gap: 8px;
+            }
+
+            .cat-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .service-card {
+                padding: 20px;
+            }
+
+            .service-icon {
+                font-size: 2.5rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .service-desc {
+                font-size: 0.85rem;
+                min-height: auto;
+            }
+
+            .service-price {
+                font-size: 1.3rem;
+            }
+
+            .form-section {
+                position: static;
+                margin-top: 30px;
+                padding: 25px;
+            }
+
+            .submit-btn {
+                padding: 16px;
+                font-size: 1.1rem;
+            }
+
+            .success-content {
+                padding: 30px 20px;
+            }
+
+            .success-icon {
+                font-size: 4rem;
+            }
+
+            .audio-section {
+                padding: 20px;
+            }
+
+            .audio-buttons {
+                flex-direction: column;
+            }
+
+            .audio-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 25px;
+            }
+
+            .service-icon {
+                font-size: 3rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .service-desc {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Layout Fix for Desktop */
+        @media (min-width: 769px) {
+            .calculator-layout {
+                display: grid;
+                grid-template-columns: 1.6fr 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="logo-area">🎤</div>
+        <h1>אולפני יקיר כהן</h1>
+        <p>מערכת הזמנות חכמה ומקצועית</p>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-num">15+</span>
+            <span class="stat-label">שנות ניסיון</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">5000+</span>
+            <span class="stat-label">לקוחות מרוצים</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">⭐⭐⭐⭐⭐</span>
+            <span class="stat-label">דירוג ממוצע</span>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Audio Before/After Section -->
+        <div class="audio-section" id="audio-section">
+            <h3>🎧 שמע את ההבדל המדהים שלנו:</h3>
+            <div class="audio-buttons">
+                <button class="audio-btn" onclick="playAudio('before')">
+                    ▶️ האזן - לפני עיבוד
+                </button>
+                <button class="audio-btn" onclick="playAudio('after')">
+                    ▶️ האזן - אחרי עיבוד
+                </button>
+            </div>
+            <p style="text-align: center; margin-top: 20px; color: var(--text-light);">
+                תוצאות של מקצוענות אמיתית! ✨
+            </p>
+        </div>
+
+        <!-- Category Navigation -->
+        <nav class="category-nav" id="category-nav">
+            <!-- Will be populated by JS -->
+        </nav>
+
+        <div class="calculator-layout">
+            <!-- Services Grid -->
+            <div>
+                <div class="services-grid" id="services-grid">
+                    <!-- Will be populated by JS -->
+                </div>
+
+                <!-- Upsells Section -->
+                <div class="upsells-section" id="upsells-section" style="display: none;">
+                    <h3>➕ תוספות זמינות</h3>
+                    <div class="upsell-grid" id="upsell-grid">
+                        <!-- Will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Section -->
+            <div class="form-section">
+                <h3>📋 פרטים להזמנה</h3>
+
+                <div class="cart-summary" id="cart-summary" style="display: none;">
+                    <h4>🛒 סיכום הזמנה</h4>
+                    <div class="cart-items" id="cart-items"></div>
+                    <div id="discount-badge-container"></div>
+                    <div class="price-row">
+                        <span>מחיר בסיס:</span>
+                        <span id="val-base">0 ₪</span>
+                    </div>
+                    <div class="price-row">
+                        <span>תוספות:</span>
+                        <span id="val-addons">0 ₪</span>
+                    </div>
+                    <div class="price-row discount" id="row-discount" style="display: none;">
+                        <span>הנחת חבילה:</span>
+                        <span id="val-discount">0 ₪</span>
+                    </div>
+                    <div class="price-row total">
+                        <span>סה"כ לתשלום:</span>
+                        <span id="val-total">0 ₪</span>
+                    </div>
+                </div>
+
+                <form id="order-form" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="inp-name">שם מלא *</label>
+                        <input type="text" id="inp-name" placeholder="הכנס שם מלא">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inp-phone">טלפון *</label>
+                        <input type="tel" id="inp-phone" placeholder="05xxxxxxxx">
+                    </div>
+
+                    <div class="form-group" id="location-group" style="display: none;">
+                        <label for="inp-location">מיקום האירוע *</label>
+                        <input type="text" id="inp-location" placeholder="כתובת מלאה של האירוע">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inp-date">תאריך מועדף *</label>
+                        <input type="date" id="inp-date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inp-time">שעה מועדפת *</label>
+                        <input type="time" id="inp-time">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inp-note">הערות (אופציונלי)</label>
+                        <textarea id="inp-note" placeholder="ספר לנו עוד על מה שאתה צריך..."></textarea>
+                    </div>
+
+                    <button type="button" class="submit-btn" id="submit-btn" onclick="app.sendOrder()">
+                        📱 אישור ושליחת הזמנה
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="success-modal">
+        <div class="success-content">
+            <div class="success-icon">✅</div>
+            <h2>ההזמנה התקבלה בהצלחה!</h2>
+            <p>תודה על ההזמנה. ניצור איתך קשר בהקדם האפשרי.</p>
+            
+            <div class="success-details" id="success-details">
+                <!-- Will be populated by JS -->
+            </div>
+
+            <button class="close-modal-btn" onclick="app.closeSuccessModal()">
+                סגור
+            </button>
+        </div>
+    </div>
+
+    <!-- Hidden Audio Players -->
+    <audio id="audio-before" src="https://drive.google.com/uc?export=download&id=1lUf36AIwDwuTcbftWjucq-H8QUCf50YN_URL_HERE"></audio>
+    <audio id="audio-after" src="https://drive.google.com/uc?export=download&id=1Nacw-tu7rtBKe1L-Tu0JePdxqpU_suWE"></audio>
+
+    <script>
+        // ====================================
+        // הגדרות מערכת (Configuration)
+        // ====================================
+        const CONFIG = {
+            whatsappNumber: "972587555456",
+            googleSheetAppUrl: "https://script.google.com/macros/s/AKfycbwRsSNj5rWgYbkG2c0EdM36LRpj6uiVdm56T7IbEcPy592_GfDTmW8SpMOpgdFhEH54Ww/exec", // העתק מ-Deployment
+            adminEmail: "callwebboss@gmail.com",
+            orderPrefix: "YK-"
+        };
+
+
+        // ====================================
+        // מחירון מרכזי
+        // ====================================
+        const PRICES = {
+            // הקלטות
+            recording_basic: 590,
+            recording_premium: 1190,
+            
+            // פודקאסטים
+            podcast_basic: 750,
+            podcast_advanced: 1500,
+            
+            // קליפים
+            clip_basic: 2500,
+            clip_pro: 5000,
+            
+            // אטרקציות (מחיר בסיס)
+            event_attraction: 1750,
+            event_attraction_bundle: 1180, // מחיר ל-3+
+            
+            // תוספות
+            melodyne: 200,
+            production_full: 1200,
+            stems: 300,
+            video_pro: 850,
+            video_studio: 400,
+            
+            // פודקאסט תוספות
+            editing_advanced: 590,
+            full_edit: 750,
+            custom_graphics: 450,
+            highlights: 300,
+            premium_package: 3540,
+            
+            // AI/Digital
+            ai_voice: 250,
+            ai_mixing: 1750,
+            ai_podcast_edit: 750,
+            ai_video_edit: 750,
+            ai_volume: 250,
+            ai_rescue: 250,
+            ai_photos: 250
+        };
+
+        // ====================================
+        // הגדרת שירותים
+        // ====================================
+        const SERVICES = {
+            // הקלטות
+            recording_basic: {
+                id: 'SONG_BASIC',
+                name: '🎤 הקלטת שיר בסיסית',
+                category: 'recordings',
+                price: PRICES.recording_basic,
+                icon: '🎤',
+                desc: 'הקלטה מקצועית עם מיקס ומאסטרינג כלול',
+                upsells: ['warmup', 'melodyne', 'production_full', 'stems', 'video_pro', 'video_studio', 'raw_only']
+            },
+            recording_premium: {
+                id: 'SONG_PREMIUM',
+                name: '🌟 הקלטת שיר פרמיום',
+                category: 'recordings',
+                price: PRICES.recording_premium,
+                icon: '🌟',
+                desc: 'חבילה מושלמת עם כל התוספות',
+                upsells: ['warmup', 'melodyne', 'production_full', 'stems', 'video_pro']
+            },
+            
+            // פודקאסטים
+            podcast_basic: {
+                id: 'POD_BASIC',
+                name: '🎙️ הקלטת פודקאסט',
+                category: 'podcasts',
+                price: PRICES.podcast_basic,
+                icon: '🎙️',
+                desc: 'הקלטה מקצועית באולפן',
+                upsells: ['editing_advanced', 'full_edit', 'custom_graphics', 'highlights', 'premium_package']
+            },
+            podcast_advanced: {
+                id: 'POD_ADV',
+                name: '🎙️ פודקאסט מתקדם',
+                category: 'podcasts',
+                price: PRICES.podcast_advanced,
+                icon: '🎙️',
+                desc: 'כולל עריכה מלאה וגרפיקה',
+                upsells: ['custom_graphics', 'highlights']
+            },
+            
+            // קליפים
+            clip_basic: {
+                id: 'CLIP_BASIC',
+                name: '🎬 קליפ בסיסי',
+                category: 'clips',
+                price: PRICES.clip_basic,
+                icon: '🎬',
+                desc: 'צילום ועריכה מקצועית',
+                upsells: []
+            },
+            clip_pro: {
+                id: 'CLIP_PRO',
+                name: '🎬 קליפ מקצועי',
+                category: 'clips',
+                price: PRICES.clip_pro,
+                icon: '🎬',
+                desc: 'הפקה מלאה עם צוות מקצועי',
+                upsells: []
+            },
+            
+            // אטרקציות לאירועים
+            event_smoke: {
+                id: 'EVENT_SMOKE',
+                name: '💨 עשן כבד',
+                category: 'events',
+                price: PRICES.event_attraction,
+                icon: '💨',
+                badge: 'popular',
+                desc: 'אטרקציה מרהיבה לכניסה מרשימה',
+                upsells: []
+            },
+            event_bubbles: {
+                id: 'EVENT_BUBBLES',
+                name: '🫧 בועות סבון',
+                category: 'events',
+                price: PRICES.event_attraction,
+                icon: '🫧',
+                badge: 'kids',
+                desc: 'מושלם לאירועי ילדים',
+                upsells: []
+            },
+            event_balloons: {
+                id: 'EVENT_BALLOONS',
+                name: '🎈 בלונים ענקיים',
+                category: 'events',
+                price: PRICES.event_attraction,
+                icon: '🎈',
+                desc: 'בלונים ענקיים מרשימים',
+                upsells: []
+            },
+            event_sparklers: {
+                id: 'EVENT_SPARKLERS',
+                name: '❄️ זיקוקים קרים',
+                category: 'events',
+                price: PRICES.event_attraction,
+                icon: '❄️',
+                badge: 'popular',
+                desc: 'זיקוקים בטוחים ומרהיבים',
+                upsells: []
+            },
+            event_confetti: {
+                id: 'EVENT_CONFETTI',
+                name: '🎊 קונפטי',
+                category: 'events',
+                price: PRICES.event_attraction,
+                icon: '🎊',
+                desc: 'פיצוץ קונפטי צבעוני',
+                upsells: []
+            },
+            event_drummer: {
+                id: 'EVENT_DRUMMER',
+                name: '🥁 מתופף',
+                category: 'events',
+                price: PRICES.event_attraction,
+                icon: '🥁',
+                desc: 'מתופף מקצועי לאירוע',
+                upsells: []
+            },
+            event_smoke_cannon: {
+                id: 'EVENT_SMOKE_CANNON',
+                name: '🌈 תותחי עשן צבעוני',
+                category: 'events',
+                price: PRICES.event_attraction,
+                icon: '🌈',
+                badge: 'new',
+                desc: 'תותחי עשן בצבעים מרהיבים',
+                upsells: []
+            },
+            event_smoke_gun: {
+                id: 'EVENT_SMOKE_GUN',
+                name: '💨 רובה עשן',
+                category: 'events',
+                price: PRICES.event_attraction,
+                icon: '💨',
+                badge: 'new',
+                desc: 'רובה עשן מקצועי',
+                upsells: []
+            },
+            event_slideshow: {
+                id: 'EVENT_SLIDESHOW',
+                name: '📸 מצגת תמונות',
+                category: 'events',
+                price: PRICES.event_attraction,
+                icon: '📸',
+                desc: 'מצגת תמונות מרגשת ליום הולדת',
+                upsells: []
+            },
+            event_foam: {
+                id: 'EVENT_FOAM',
+                name: '🎉 תותח קצף לילדים',
+                category: 'events',
+                price: PRICES.event_attraction,
+                icon: '🎉',
+                badge: 'kids',
+                desc: 'כיף מטורף לילדים',
+                upsells: []
+            },
+            podcast_grandpa: {
+                id: 'POD_GRANDPA',
+                name: '🎙️ פודקאסט עם סבא',
+                category: 'events',
+                price: PRICES.event_attraction,
+                icon: '🎙️',
+                desc: 'מתנה מרגשת שנשארת לדורות + הקלטת שיר',
+                upsells: []
+            },
+            sound_rental: {
+                id: 'SOUND_RENTAL',
+                name: '🔊 השכרת ציוד הגברה',
+                category: 'events',
+                price: PRICES.event_attraction,
+                icon: '🔊',
+                desc: 'מערכת הגברה מקצועית',
+                upsells: []
+            },
+            
+            // שירותים דיגיטליים (AI)
+            ai_voice: {
+                id: 'AI_VOICE',
+                name: '🎤 שיפור קול מהנייד',
+                category: 'ai',
+                price: PRICES.ai_voice,
+                icon: '🎤',
+                desc: 'הפיכת הקלטת וואטסאפ לאולפנית - כולל שיפור סאונד והוצאת MP3/MP4',
+                upsells: []
+            },
+            ai_mixing: {
+                id: 'AI_MIXING',
+                name: '🎚️ מיקס ומאסטרינג',
+                category: 'ai',
+                price: PRICES.ai_mixing,
+                icon: '🎚️',
+                desc: 'עיבוד מקצועי מלא - כולל הוצאת קבצים בכל הפורמטים',
+                upsells: []
+            },
+            ai_podcast_edit: {
+                id: 'AI_POD_EDIT',
+                name: '🎬 עריכת פודקאסט',
+                category: 'ai',
+                price: PRICES.ai_podcast_edit,
+                icon: '🎬',
+                desc: 'עריכה מקצועית - ניקוי רעשים, שיפור סאונד, הוצאת MP3/MP4',
+                upsells: []
+            },
+            ai_video_edit: {
+                id: 'AI_VIDEO_EDIT',
+                name: '📱 עריכת סרטונים קצרים',
+                category: 'ai',
+                price: PRICES.ai_video_edit,
+                icon: '📱',
+                desc: 'עריכה לרילס/שורטס/טיקטוק - כתוביות, אפקטים, ייצוא באיכות גבוהה',
+                upsells: []
+            },
+            ai_volume: {
+                id: 'AI_VOLUME',
+                name: '🔊 שינוי והתאמת ווליום',
+                category: 'ai',
+                price: PRICES.ai_volume,
+                icon: '🔊',
+                desc: 'עד שעת הקלטה - איזון דינמי והוצאת קובץ מעובד',
+                upsells: []
+            },
+            ai_rescue: {
+                id: 'AI_RESCUE',
+                name: '🆘 הצלת הקלטות פגומות',
+                category: 'ai',
+                price: PRICES.ai_rescue,
+                icon: '🆘',
+                desc: 'לכל 5 דקות - ניקוי רעשים, שחזור איכות, הוצאת קובץ נקי',
+                upsells: []
+            },
+            ai_photos: {
+                id: 'AI_PHOTOS',
+                name: '📸 שדרוג תמונות (AI)',
+                category: 'ai',
+                price: PRICES.ai_photos,
+                icon: '📸',
+                desc: 'לכל 10 תמונות - שיפור רזולוציה, צבעים, חדות',
+                upsells: []
+            }
+        };
+
+        // ====================================
+        // הגדרת תוספות (Upsells)
+        // ====================================
+        const UPSELLS = {
+            // תוספות להקלטת שיר
+            warmup: {
+                name: '✨ חימום קולי מודרך (מומלץ מאוד)',
+                price: 0,
+                desc: '20 דקות לפני ההקלטה - כלול במחיר'
+            },
+            melodyne: {
+                name: '✨ Melodyne - תיקון זיופים',
+                price: PRICES.melodyne,
+                desc: 'שיפור דיוק קולי מקצועי'
+            },
+            production_full: {
+                name: '🎹 הפקה מלאה מקצועית',
+                price: PRICES.production_full,
+                desc: 'הפקה מוזיקלית מלאה סביב השירה - עד 5 כלים, עיבוד מקצועי'
+            },
+            stems: {
+                name: '🎚️ Stems - רצועות נפרדות',
+                price: PRICES.stems,
+                desc: 'קבצים נפרדים לכל כלי'
+            },
+            video_pro: {
+                name: '🎥 צילום וידאו מקצועי',
+                price: PRICES.video_pro,
+                desc: 'צלם מקצועי - קליפ או מזכרת מהחוויה'
+            },
+            video_studio: {
+                name: '📹 צילום במצלמות אולפן',
+                price: PRICES.video_studio,
+                desc: 'צילום באיכות HD'
+            },
+            raw_only: {
+                name: '🎙️ הקלטה גולמית בלבד',
+                price: 0,
+                desc: 'ללא עיבוד - קובץ גולמי בלבד (שים לב: לא כולל תיקוני זיופים)'
+            },
+            
+            // תוספות לפודקאסט
+            editing_advanced: {
+                name: '✂️ עריכה מתקדמת',
+                price: PRICES.editing_advanced,
+                desc: 'לכל שעה שצולמה | כולל: פתיח וסגיר, עריכה מקצועית, זוויות מרובות'
+            },
+            full_edit: {
+                name: '🎬 עריכה מלאה של וידאו',
+                price: PRICES.full_edit,
+                desc: 'כולל: עריכת וידאו מלאה, מיקס ומאסטרינג, גרפיקה וטקסטים'
+            },
+            custom_graphics: {
+                name: '🎨 התאמה אישית מתקדמת',
+                price: PRICES.custom_graphics,
+                desc: 'גרפיקה וטקסטים מותאמים אישית לפי דרישה'
+            },
+            highlights: {
+                name: '⭐ רגעי שיא (עד 3 דק\')',
+                price: PRICES.highlights,
+                desc: 'הפיכת הפודקאסט לרילס/טיקטוק - עריכת Highlights מקצועית'
+            },
+            premium_package: {
+                name: '💎 חבילת ראש שקט - הכל!',
+                price: PRICES.premium_package,
+                desc: 'הפקה מלאה ומושלמת - כולל הכל!'
+            }
+        };
+
+        // ====================================
+        // קטגוריות
+        // ====================================
+        const CATEGORIES = {
+            all: { name: 'הכל', icon: '🎯' },
+            recordings: { name: 'הקלטות', icon: '🎤' },
+            podcasts: { name: 'פודקאסטים', icon: '🎙️' },
+            clips: { name: 'קליפים', icon: '🎬' },
+            events: { name: 'אטרקציות לאירועים', icon: '🎉' },
+            ai: { name: 'שירותים דיגיטליים', icon: '💻' }
+        };
+
+        // ====================================
+        // אפליקציה ראשית
+        // ====================================
+        const app = {
+            data: {
+                currentCategory: 'all',
+                selectedServices: new Set(), // תומך בבחירה מרובה
+                selectedUpsells: new Set(),
+                eventCount: 0 // ספירת אטרקציות אירועים
+            },
+
+            init() {
+                this.renderCategories();
+                this.renderServices();
+                this.setupEventListeners();
+                this.setMinDate();
+            },
+
+            renderCategories() {
+                const nav = document.getElementById('category-nav');
+                nav.innerHTML = Object.entries(CATEGORIES).map(([key, cat]) => `
+                    <button class="cat-btn ${key === 'all' ? 'active' : ''}" 
+                            onclick="app.filterCategory('${key}')">
+                        ${cat.icon} ${cat.name}
+                    </button>
+                `).join('');
+            },
+
+            filterCategory(cat) {
+                this.data.currentCategory = cat;
+                
+                // Update UI
+                document.querySelectorAll('.cat-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                event.target.classList.add('active');
+                
+                this.renderServices();
+            },
+
+            renderServices() {
+                const grid = document.getElementById('services-grid');
+                const services = Object.entries(SERVICES).filter(([key, service]) => {
+                    if (this.data.currentCategory === 'all') return true;
+                    return service.category === this.data.currentCategory;
+                });
+
+                grid.innerHTML = services.map(([key, service]) => `
+                    <div class="service-card ${this.data.selectedServices.has(key) ? 'selected' : ''}" 
+                         id="card-${key}"
+                         onclick="app.selectService('${key}')">
+                        ${service.badge ? `<span class="service-badge ${service.badge}">${service.badge === 'popular' ? 'פופולרי' : service.badge === 'new' ? 'חדש' : 'מומלץ לילדים'}</span>` : ''}
+                        <span class="service-icon">${service.icon}</span>
+                        <h3>${service.name}</h3>
+                        <p class="service-desc">${service.desc}</p>
+                        <div class="service-price">
+                            ${service.price.toLocaleString()} ₪
+                            ${service.category === 'events' ? '<span class="price-badge">1,180₪ ל-3+</span>' : ''}
+                        </div>
+                    </div>
+                `).join('');
+            },
+
+            selectService(id) {
+                const service = SERVICES[id];
+                
+                // אם זה שירות אירוע - אפשר בחירה מרובה
+                if (service.category === 'events') {
+                    if (this.data.selectedServices.has(id)) {
+                        this.data.selectedServices.delete(id);
+                        this.data.eventCount--;
+                    } else {
+                        this.data.selectedServices.add(id);
+                        this.data.eventCount++;
+                    }
+                    
+                    // עדכון UI
+                    document.getElementById(`card-${id}`).classList.toggle('selected');
+                    
+                    // הצג/הסתר שדה מיקום
+                    document.getElementById('location-group').style.display = 
+                        this.data.eventCount > 0 ? 'block' : 'none';
+                    
+                } else {
+                    // שירות רגיל - בחירה יחידה
+                    // נקה בחירות קודמות של שירותים רגילים
+                    const regularServices = Array.from(this.data.selectedServices).filter(s => SERVICES[s].category !== 'events');
+                    regularServices.forEach(s => this.data.selectedServices.delete(s));
+                    
+                    this.data.selectedServices.add(id);
+                    this.data.selectedUpsells.clear();
+                    
+                    // עדכון UI
+                    document.querySelectorAll('.service-card').forEach(c => {
+                        if (!c.id.includes('event')) c.classList.remove('selected');
+                    });
+                    document.getElementById(`card-${id}`).classList.add('selected');
+                    
+                    // הצג תוספות
+                    if (service.upsells && service.upsells.length > 0) {
+                        this.renderUpsells(service.upsells);
+                    } else {
+                        document.getElementById('upsells-section').style.display = 'none';
+                    }
+                }
+                
+                this.calculateTotal();
+                
+                // Scroll to form on mobile
+                if (window.innerWidth < 768) {
+                    document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
+                }
+            },
+
+            renderUpsells(upsellKeys) {
+                const section = document.getElementById('upsells-section');
+                const grid = document.getElementById('upsell-grid');
+
+                grid.innerHTML = upsellKeys.map(key => {
+                    const upsell = UPSELLS[key];
+                    const isActive = this.data.selectedUpsells.has(key);
+                    return `
+                        <div class="upsell-item ${isActive ? 'active' : ''}" 
+                             onclick="app.toggleUpsell('${key}')">
+                            <div class="upsell-label">
+                                <input type="checkbox" ${isActive ? 'checked' : ''} 
+                                       style="pointer-events:none; margin-left:12px;">
+                                <div>
+                                    <span>${upsell.name}</span>
+                                    ${upsell.desc ? `<span class="upsell-desc">${upsell.desc}</span>` : ''}
+                                </div>
+                            </div>
+                            <div class="upsell-price">
+                                ${upsell.price > 0 ? '+' + upsell.price.toLocaleString() + ' ₪' : 'כלול'}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                section.style.display = 'block';
+            },
+
+            toggleUpsell(key) {
+                if (this.data.selectedUpsells.has(key)) {
+                    this.data.selectedUpsells.delete(key);
+                } else {
+                    this.data.selectedUpsells.add(key);
+                }
+                
+                // Re-render upsells
+                const firstService = Array.from(this.data.selectedServices).find(s => SERVICES[s].category !== 'events');
+                if (firstService && SERVICES[firstService].upsells) {
+                    this.renderUpsells(SERVICES[firstService].upsells);
+                }
+                
+                this.calculateTotal();
+            },
+
+            calculateTotal() {
+                if (this.data.selectedServices.size === 0) {
+                    document.getElementById('cart-summary').style.display = 'none';
+                    document.getElementById('submit-btn').disabled = true;
+                    return;
+                }
+
+                let basePrice = 0;
+                let addonPrice = 0;
+                let discount = 0;
+                
+                // חישוב שירותים
+                const cartItemsHTML = [];
+                const selectedArray = Array.from(this.data.selectedServices);
+                
+                // ספירת אטרקציות אירועים
+                const eventServices = selectedArray.filter(s => SERVICES[s].category === 'events');
+                const regularServices = selectedArray.filter(s => SERVICES[s].category !== 'events');
+                
+                // שירותים רגילים
+                regularServices.forEach(key => {
+                    const service = SERVICES[key];
+                    basePrice += service.price;
+                    cartItemsHTML.push(`<div class="cart-item">🔹 ${service.name}</div>`);
+                });
+                
+                // אטרקציות אירועים
+                if (eventServices.length > 0) {
+                    const pricePerAttraction = eventServices.length >= 3 ? 
+                        PRICES.event_attraction_bundle : 
+                        PRICES.event_attraction;
+                    
+                    eventServices.forEach(key => {
+                        const service = SERVICES[key];
+                        basePrice += pricePerAttraction;
+                        cartItemsHTML.push(`<div class="cart-item">🔹 ${service.name}</div>`);
+                    });
+                    
+                    // חישוב הנחה
+                    if (eventServices.length >= 3) {
+                        discount = (PRICES.event_attraction - PRICES.event_attraction_bundle) * eventServices.length;
+                    }
+                }
+                
+                // תוספות
+                this.data.selectedUpsells.forEach(key => {
+                    const upsell = UPSELLS[key];
+                    addonPrice += upsell.price;
+                    if (upsell.price > 0) {
+                        cartItemsHTML.push(`<div class="cart-item" style="font-size:0.9rem; opacity:0.8;">+ ${upsell.name}</div>`);
+                    }
+                });
+                
+                // עדכון UI
+                document.getElementById('cart-items').innerHTML = cartItemsHTML.join('');
+                document.getElementById('val-base').textContent = basePrice.toLocaleString() + ' ₪';
+                document.getElementById('val-addons').textContent = addonPrice.toLocaleString() + ' ₪';
+                
+                // הנחה
+                const discountRow = document.getElementById('row-discount');
+                const discountBadgeContainer = document.getElementById('discount-badge-container');
+                if (discount > 0) {
+                    discountRow.style.display = 'flex';
+                    document.getElementById('val-discount').textContent = '-' + discount.toLocaleString() + ' ₪';
+                    discountBadgeContainer.innerHTML = `<div class="discount-badge">🔥 הנחת חבילת אטרקציות הופעלה! חסכת ${discount.toLocaleString()}₪</div>`;
+                } else {
+                    discountRow.style.display = 'none';
+                    discountBadgeContainer.innerHTML = '';
+                }
+                
+                const total = basePrice + addonPrice;
+                document.getElementById('val-total').textContent = total.toLocaleString() + ' ₪';
+                
+                document.getElementById('cart-summary').style.display = 'block';
+                document.getElementById('submit-btn').disabled = false;
+            },
+
+            async sendOrder() {
+                // איסוף נתונים
+                const name = document.getElementById('inp-name').value.trim();
+                const phone = document.getElementById('inp-phone').value.trim();
+                const location = document.getElementById('inp-location').value.trim();
+                const date = document.getElementById('inp-date').value;
+                const time = document.getElementById('inp-time').value;
+                const note = document.getElementById('inp-note').value.trim();
+                
+                // ולידציה
+                const errors = [];
+                
+                if (!name) {
+                    errors.push({ field: 'inp-name', msg: '❌ נא להזין שם מלא' });
+                }
+                
+                if (!phone) {
+                    errors.push({ field: 'inp-phone', msg: '❌ נא להזין מספר טלפון' });
+                } else if (!/^0\d{8,9}$/.test(phone)) {
+                    errors.push({ field: 'inp-phone', msg: '❌ מספר טלפון לא תקין (9-10 ספרות)' });
+                }
+                
+                if (this.data.selectedServices.size === 0) {
+                    errors.push({ field: 'services-grid', msg: '❌ נא לבחור לפחות שירות אחד' });
+                }
+                
+                if (this.data.eventCount > 0 && !location) {
+                    errors.push({ field: 'inp-location', msg: '❌ נא להזין מיקום האירוע' });
+                }
+                
+                if (!date) {
+                    errors.push({ field: 'inp-date', msg: '❌ נא לבחור תאריך' });
+                }
+                
+                if (!time) {
+                    errors.push({ field: 'inp-time', msg: '❌ נא לבחור שעה' });
+                }
+                
+                // הצגת שגיאות
+                if (errors.length > 0) {
+                    // נקה שגיאות קודמות
+                    document.querySelectorAll('.error-msg').forEach(el => el.remove());
+                    document.querySelectorAll('.error-field').forEach(el => el.classList.remove('error-field'));
+                    
+                    // הצג שגיאות חדשות
+                    errors.forEach(error => {
+                        const field = document.getElementById(error.field);
+                        if (field) {
+                            field.classList.add('error-field');
+                            const errorDiv = document.createElement('div');
+                            errorDiv.className = 'error-msg';
+                            errorDiv.textContent = error.msg;
+                            field.parentNode.insertBefore(errorDiv, field.nextSibling);
+                        }
+                    });
+                    
+                    // גלילה לשגיאה הראשונה
+                    const firstError = document.querySelector('.error-field');
+                    if (firstError) {
+                        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    
+                    return;
+                }
+                
+                // נקה שגיאות
+                document.querySelectorAll('.error-msg').forEach(el => el.remove());
+                document.querySelectorAll('.error-field').forEach(el => el.classList.remove('error-field'));
+                
+                // נטרל כפתור
+                const submitBtn = document.getElementById('submit-btn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = '⏳ שולח הזמנה...';
+                
+                // יצירת מספר הזמנה
+                const orderId = CONFIG.orderPrefix + Date.now();
+                
+                // בניית רשימת שירותים
+                const servicesList = Array.from(this.data.selectedServices).map(key => {
+                    const service = SERVICES[key];
+                    return {
+                        name: service.name,
+                        price: service.price,
+                        category: service.category
+                    };
+                });
+                
+                // בניית רשימת תוספות
+                const upsellsList = Array.from(this.data.selectedUpsells).map(key => {
+                    const upsell = UPSELLS[key];
+                    return {
+                        name: upsell.name,
+                        price: upsell.price
+                    };
+                });
+                
+                // חישוב סכומים
+                const basePrice = parseInt(document.getElementById('val-base').textContent.replace(/[^\d]/g, ''));
+                const addonPrice = parseInt(document.getElementById('val-addons').textContent.replace(/[^\d]/g, ''));
+                const totalPrice = parseInt(document.getElementById('val-total').textContent.replace(/[^\d]/g, ''));
+                
+                // בניית הודעת WhatsApp
+                let whatsappMsg = `🎉 *הזמנה חדשה מ-${name}*\n\n`;
+                whatsappMsg += `📋 *פרטי הזמנה:*\n`;
+                whatsappMsg += `🔹 מספר הזמנה: *${orderId}*\n`;
+                whatsappMsg += `🔹 שם: *${name}*\n`;
+                whatsappMsg += `🔹 טלפון: *${phone}*\n`;
+                if (location) whatsappMsg += `🔹 מיקום אירוע: *${location}*\n`;
+                whatsappMsg += `\n`;
+                
+                // שירותים שנבחרו
+                whatsappMsg += `🎯 *שירותים שנבחרו:*\n`;
+                servicesList.forEach(service => {
+                    whatsappMsg += `  ${service.name}\n`;
+                });
+                whatsappMsg += `\n`;
+                
+                // תוספות
+                if (upsellsList.length > 0) {
+                    whatsappMsg += `➕ *תוספות שנבחרו:*\n`;
+                    upsellsList.forEach(upsell => {
+                        whatsappMsg += `  ✅ ${upsell.name}`;
+                        if (upsell.price > 0) {
+                            whatsappMsg += ` - *${upsell.price.toLocaleString()}₪*`;
+                        } else {
+                            whatsappMsg += ` - *כלול*`;
+                        }
+                        whatsappMsg += `\n`;
+                    });
+                    whatsappMsg += `\n`;
+                } else {
+                    whatsappMsg += `➕ *תוספות:* אין תוספות נוספות\n\n`;
+                }
+                
+                // סה"כ
+                whatsappMsg += `💳 *סה"כ לתשלום: ${totalPrice.toLocaleString()}₪*\n`;
+                whatsappMsg += `(כולל מע"מ)\n\n`;
+                
+                // תאריך ושעה
+                whatsappMsg += `📅 *תאריך מועדף:* ${this.formatDate(date)}\n`;
+                whatsappMsg += `🕐 *שעה מועדפת:* ${time}\n\n`;
+                
+                // הערות
+                if (note) {
+                    whatsappMsg += `📝 *הערות:*\n${note}\n\n`;
+                } else {
+                    whatsappMsg += `📝 *הערות:* אין הערות מיוחדות\n\n`;
+                }
+                
+                whatsappMsg += `---\n`;
+                whatsappMsg += `🎵 *אולפני יקיר כהן*\n`;
+                whatsappMsg += `ההזמנה נשלחה בהצלחה! נחזור אליך בהקדם 🚀`;
+                
+                // שליחה ל-Google Sheets (רקע)
+                try {
+                    const sheetData = {
+                        orderId: orderId,
+                        timestamp: new Date().toISOString(),
+                        customerName: name,
+                        customerPhone: phone,
+                        location: location || 'לא רלוונטי',
+                        services: servicesList.map(s => s.name).join(', '),
+                        serviceIds: servicesList.map(s => s.name).join(','),
+                        basePrice: basePrice,
+                        upsells: upsellsList.map(u => u.name).join(', ') || 'ללא',
+                        addonsTotal: addonPrice,
+                        totalPrice: totalPrice,
+                        preferredDate: date,
+                        preferredTime: time,
+                        notes: note || 'אין הערות',
+                        status: 'חדש ⭐'
+                    };
+                  	 console.log('🚀 שולח ל:', CONFIG.googleSheetAppUrl);
+		console.log('📦 נתונים:', sheetData); 
+const response = await fetch(CONFIG.googleSheetAppUrl, {
+    method: 'POST',
+    headers: { 
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(sheetData)
+});
+
+const result = await response.json();
+console.log('📥 תגובה מהשרת:', result);
+
+if (result.success) {
+    console.log('✅ ההזמנה נשמרה! מספר:', result.orderId);
+    submitBtn.innerHTML = '✅ נשמר!';
+} else {
+    console.error('❌ שגיאה:', result.error);
+    alert('שגיאה בשמירת ההזמנה: ' + result.error);
+}
+                
+                // הצג מודל הצלחה
+                this.showSuccessModal(orderId, name, servicesList, totalPrice, date, time);
+                
+                // פתח WhatsApp אחרי 1 שניה
+                setTimeout(() => {
+                    const encodedMsg = encodeURIComponent(whatsappMsg);
+                    const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodedMsg}`;
+                    window.open(whatsappUrl, '_blank');
+                    
+                    // החזר כפתור למצב רגיל
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = '📱 אישור ושליחת הזמנה';
+                    }, 2000);
+                }, 1000);
+            },
+
+            showSuccessModal(orderId, name, services, total, date, time) {
+                const modal = document.getElementById('success-modal');
+                const details = document.getElementById('success-details');
+                
+                details.innerHTML = `
+                    <div class="detail-row">
+                        <span class="detail-label">מספר הזמנה:</span>
+                        <span class="detail-value">${orderId}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">שם:</span>
+                        <span class="detail-value">${name}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">שירותים:</span>
+                        <span class="detail-value">${services.map(s => s.name).join(', ')}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">סה"כ:</span>
+                        <span class="detail-value" style="font-weight: 700; color: var(--success);">${total.toLocaleString()}₪</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">תאריך:</span>
+                        <span class="detail-value">${this.formatDate(date)}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">שעה:</span>
+                        <span class="detail-value">${time}</span>
+                    </div>
+                `;
+                
+                modal.classList.add('show');
+            },
+
+            closeSuccessModal() {
+                document.getElementById('success-modal').classList.remove('show');
+                // נקה טופס
+                document.getElementById('order-form').reset();
+                this.data.selectedServices.clear();
+                this.data.selectedUpsells.clear();
+                this.data.eventCount = 0;
+                document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+                document.getElementById('location-group').style.display = 'none';
+                this.calculateTotal();
+            },
+
+            formatDate(dateStr) {
+                const date = new Date(dateStr);
+                const day = date.getDate();
+                const month = date.getMonth() + 1;
+                const year = date.getFullYear();
+                
+                const hebrewMonths = [
+                    'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני',
+                    'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'
+                ];
+                
+                return `${day} ב${hebrewMonths[month - 1]} ${year}`;
+            },
+
+            setMinDate() {
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('inp-date').setAttribute('min', today);
+            },
+
+            setupEventListeners() {
+                // Close modal on outside click
+                document.getElementById('success-modal').addEventListener('click', (e) => {
+                    if (e.target.id === 'success-modal') {
+                        this.closeSuccessModal();
+                    }
+                });
+            }
+        };
+
+        // Play audio function
+        function playAudio(type) {
+            const audio = document.getElementById(`audio-${type}`);
+            if (audio.paused) {
+                // Stop other audio
+                document.querySelectorAll('audio').forEach(a => a.pause());
+                audio.currentTime = 0;
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        // Init app
+        document.addEventListener('DOMContentLoaded', () => app.init());
+    </script>
+</body>
+</html>

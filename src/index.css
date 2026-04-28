@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@400;500;700;900&display=swap');
+
+@theme {
+  --font-serif: "Frank Ruhl Libre", serif;
+  --font-sans: "Heebo", sans-serif;
+  
+  --color-brand-red: #bc0100;
+  --color-brand-black: #000000;
+  --color-surface: #fbf9f8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
