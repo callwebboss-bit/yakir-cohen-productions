@@ -1,61 +1,103 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import REDIRECTS from "@/data/redirections.json";
 
-const REDIRECTS: Record<string, string> = {
-  '/recording-studio': '/studio',
-  '/studio-recording': '/studio',
-  '/stuttering-treatment': '/clinic',
-  '/stuttering-therapy': '/stuttering',
-  '/academy-music': '/academy',
-  '/dj-course': '/courses',
-  '/production-course': '/courses',
-  '/bride-blessing': '/attractions',
-  '/groom-blessing': '/attractions',
-  '/gift-card': '/voucher',
-  '/gift-voucher': '/voucher',
-  '/orders': '/voucher',
-  '/gallery': '/',
-  // Hebrew encoded paths (common ones)
-  '/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA': '/studio',
-  '/%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%A7%D7%95%D7%9C': '/clinic',
-  '/%D7%92%D7%9E%D7%92%D7%95%D7%9D': '/stuttering',
-  '/%D7%A7%D7%95%D7%A8%D7%A1-%D7%93%D7%99%D7%92%D7%99%D7%99': '/courses',
-  '/%D7%A7%D7%95%D7%A8%D7%A1-%D7%94%D7%A4%D7%A7%D7%94': '/courses',
-  '/%D7%90%D7%98%D7%A8%D7%A7%D7%A6%D7%99%D7%95%D7%AA': '/attractions',
-  '/%D7%A6%D7%95%D7%A8-%D7%A7%D7%A9%D7%A8': '/contact',
-};
+const SEMANTIC_REDIRECTS: Array<{ pattern: RegExp; target: string }> = [
+  {
+    pattern: /(chupa|chuppa|kupa|חתונה|כלה|חתן|bride|groom|wedding|weddings)/i,
+    target: "/weddings/songs",
+  },
+];
 
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+const IGNORE_EXTENSIONS = /\.(?:ico|png|jpg|jpeg|webp|svg|css|js|json|xml|txt)$/i;
+const IGNORED_PATHS = ["/search", "/weddings/songs"];
 
-  // Check if we have a direct redirect
+function safeDecode(path: string) {
+  try {
+    return decodeURIComponent(path);
+  } catch {
+    return path;
+  }
+}
+
+function normalizePath(path: string) {
+  return path.toLowerCase().replace(/\/+$/, "");
+}
+
+function findRedirect(pathname: string) {
   if (REDIRECTS[pathname]) {
-    const url = request.nextUrl.clone();
-    url.pathname = REDIRECTS[pathname];
-    return NextResponse.redirect(url, 301);
+    return REDIRECTS[pathname];
   }
 
-  // Handle trailing slashes or case sensitivity if needed
-  const lowerPath = pathname.toLowerCase().replace(/\/$/, '');
-  if (REDIRECTS[lowerPath]) {
+  for (const [key, target] of Object.entries(REDIRECTS)) {
+    if (pathname === key || pathname.startsWith(`${key}/`)) {
+      return target;
+    }
+  }
+
+  return null;
+}
+
+function extractSearchKeywords(pathname: string) {
+  const clean = pathname.replace(/^\//, "");
+  if (!clean) return null;
+
+  const words = clean
+    .split(/[-_/]+/)
+    .map((segment) => segment.replace(/[^\p{L}\p{N}]+/gu, " ").trim())
+    .filter(Boolean);
+
+  const stopWords = new Set(["page", "old", "new", "www", "com", "il"]);
+  const keywords = words.filter((word) => !stopWords.has(word.toLowerCase()));
+
+  return keywords.length > 0 ? encodeURIComponent(keywords.join(" ")) : null;
+}
+
+export function middleware(request: NextRequest) {
+  const rawPathname = request.nextUrl.pathname;
+  const decodedPathname = safeDecode(rawPathname);
+  const pathname = normalizePath(decodedPathname);
+
+  if (IGNORE_EXTENSIONS.test(pathname)) {
+    return NextResponse.next();
+  }
+
+  if (IGNORED_PATHS.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))) {
+    return NextResponse.next();
+  }
+
+  const directTarget = findRedirect(pathname);
+  if (directTarget) {
     const url = request.nextUrl.clone();
-    url.pathname = REDIRECTS[lowerPath];
-    return NextResponse.redirect(url, 301);
+    url.pathname = directTarget;
+    url.searchParams.set("ref", "old_site");
+    return NextResponse.redirect(url, 308);
+  }
+
+  for (const redirect of SEMANTIC_REDIRECTS) {
+    if (redirect.pattern.test(pathname)) {
+      const url = request.nextUrl.clone();
+      url.pathname = redirect.target;
+      url.searchParams.set("ref", "old_site");
+      return NextResponse.redirect(url, 308);
+    }
+  }
+
+  const searchKeywords = extractSearchKeywords(pathname);
+  if (searchKeywords) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/search";
+    url.search = new URLSearchParams({
+      q: decodeURIComponent(searchKeywords),
+      soft_redirect: "true",
+      ref: "old_site",
+    }).toString();
+    return NextResponse.redirect(url, 308);
   }
 
   return NextResponse.next();
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
-  ],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };

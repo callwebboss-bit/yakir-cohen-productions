@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.yakircohen.com/home</loc>
+    <xhtml:link rel="alternate" href="https://www.yakircohen.com/" />
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.yakircohen.com/recording-studio</loc>
+    <xhtml:link rel="alternate" href="https://www.yakircohen.com/studio" />
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.yakircohen.com/studio-recording</loc>
+    <xhtml:link rel="alternate" href="https://www.yakircohen.com/studio" />
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.yakircohen.com/stuttering-treatment</loc>
+    <xhtml:link rel="alternate" href="https://www.yakircohen.com/clinic" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yakircohen.com/stuttering-therapy</loc>
+    <xhtml:link rel="alternate" href="https://www.yakircohen.com/stuttering" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yakircohen.com/academy-music</loc>
+    <xhtml:link rel="alternate" href="https://www.yakircohen.com/academy" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yakircohen.com/dj-course</loc>
+    <xhtml:link rel="alternate" href="https://www.yakircohen.com/courses" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.yakircohen.com/bride-blessing</loc>
+    <xhtml:link rel="alternate" href="https://www.yakircohen.com/attractions" />
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.yakircohen.com/groom-blessing</loc>
+    <xhtml:link rel="alternate" href="https://www.yakircohen.com/attractions" />
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.yakircohen.com/gift-card</loc>
+    <xhtml:link rel="alternate" href="https://www.yakircohen.com/voucher" />
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.yakircohen.com/orders</loc>
+    <xhtml:link rel="alternate" href="https://www.yakircohen.com/voucher" />
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.yakircohen.com/gallery</loc>
+    <xhtml:link rel="alternate" href="https://www.yakircohen.com/" />
+    <priority>0.7</priority>
+  </url>
+</urlset>

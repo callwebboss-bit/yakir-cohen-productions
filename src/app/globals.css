@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  font-family: 'Heebo', 'Frank Ruhl Libre', system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: #FAFAF8;
+}
+
+@theme {
+  --font-frank: "Frank Ruhl Libre", serif;
+}
