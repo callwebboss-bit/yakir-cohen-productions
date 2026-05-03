@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/events/stage-led-dj`,                     lastModified: NOW, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/events/led-booth`,                        lastModified: NOW, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/attractions/Wedding-photography`,          lastModified: NOW, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE}/attractions/bubble-machine`,               lastModified: NOW, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/attractions/bubble-machine`,               lastModified: NOW, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/attractions/cold-fireworks`,               lastModified: NOW, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/attractions/confetti-cannon`,              lastModified: NOW, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/attractions/giant-balloons`,               lastModified: NOW, changeFrequency: "monthly", priority: 0.7 },
