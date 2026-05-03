@@ -6,7 +6,8 @@ const NOW = new Date();
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     /* ── Top of funnel ── */
-    { url: BASE, lastModified: NOW, changeFrequency: "monthly", priority: 1 },
+    { url: BASE,                    lastModified: NOW, changeFrequency: "monthly", priority: 1 },
+    { url: `${BASE}/stemsplit`,     lastModified: NOW, changeFrequency: "monthly", priority: 0.9 },
 
     /* ── האולפן ── */
     { url: `${BASE}/studio`,                       lastModified: NOW, changeFrequency: "monthly", priority: 0.9 },
