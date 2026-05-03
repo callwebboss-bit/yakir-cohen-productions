@@ -14,7 +14,7 @@ export interface LeadResult {
   success: boolean;
 }
 
-const YAKIR_PHONE = '972528701918';
+const YAKIR_PHONE = '972587555456';
 
 export async function sendLead(payload: LeadPayload): Promise<LeadResult> {
   const message = buildMessage(payload);

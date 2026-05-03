@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import StructuredData from "@/components/StructuredData";
+import { BLUR_DATA_URL } from "@/lib/blur";
 
 export const metadata: Metadata = {
   title: "האקדמיה למוזיקה | קורס DJ, הפקה וסאונד",
@@ -30,11 +31,13 @@ export default function AcademyPage() {
       <StructuredData data={academySchema} />
       <section className="relative h-[60vh] flex items-center justify-center bg-black text-white overflow-hidden">
         <div className="absolute inset-0">
-          <Image 
-            src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2670" 
+          <Image
+            src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2670"
             alt="אקדמיה לסאונד וקורס DJ במודיעין - יקיר כהן הפקות"
             fill
             className="object-cover opacity-50"
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60"></div>
         </div>
@@ -59,7 +62,7 @@ export default function AcademyPage() {
               </p>
             </div>
             <div className="mt-10 flex gap-4">
-              <Link href="/courses" className="bg-brand-red text-white px-8 py-4 rounded font-bold hover:scale-105 transition-all shadow-xl">
+              <Link href="/courses" className="bg-brand-red text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors shadow-xl">
                 צפה בקורסים שלנו
               </Link>
             </div>

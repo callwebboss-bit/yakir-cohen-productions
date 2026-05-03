@@ -3,6 +3,7 @@ import { Volume2, Mic, Play, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import StructuredData from "@/components/StructuredData";
+import { BLUR_DATA_URL } from "@/lib/blur";
 
 export const metadata: Metadata = {
   title: "טיפול בגמגום במודיעין | פיתוח קול ושיקום קולי מקצועי",
@@ -37,18 +38,20 @@ export default function ClinicPage() {
               מרחב בטוח ומקצועי ל <strong>טיפול בגמגום במודיעין</strong>, פיתוח הקול, שיקום מיתרי הקול, והקניית ביטחון עצמי בדיבור והופעה מול קהל.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="bg-brand-red text-white px-10 py-5 rounded font-bold shadow-xl hover:scale-105 transition-all cursor-pointer">
+              <button className="bg-brand-red text-white px-10 py-5 rounded font-bold shadow-xl hover:bg-red-700 transition-colors cursor-pointer">
                 קבע פגישת אבחון
               </button>
             </div>
           </article>
           <div className="relative aspect-video rounded-xl overflow-hidden border border-zinc-200 shadow-2xl">
-            <Image 
-               src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2787&auto=format&fit=crop" 
-               alt="קליניקה לטיפול בגמגום במודיעין" 
+            <Image
+               src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2787&auto=format&fit=crop"
+               alt="קליניקה לטיפול בגמגום במודיעין"
                fill
                priority
                className="object-cover"
+               placeholder="blur"
+               blurDataURL={BLUR_DATA_URL}
             />
           </div>
         </div>

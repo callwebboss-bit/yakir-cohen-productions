@@ -1,18 +1,19 @@
 import type { Metadata } from 'next';
 import StructuredData from '@/components/StructuredData';
 import PodcastCalculator from '@/features/podcast/PodcastCalculator';
+import StudioRecordsSVG from '@/components/StudioRecordsSVG';
 
 export const metadata: Metadata = {
-  title: 'שירותי פודקאסט',
+  title: 'הפקת פודקאסט מקצועית במודיעין | יקיר כהן הפקות',
   description:
-    'אולפן פודקאסטים B2B במודיעין. שלושה מסלולי Broadcast Quality — Audio, Video ו-Full Social Machine. נגיש בין ירושלים לתל אביב.',
+    'הפקת פודקאסט מקצועית — הקלטה, עריכה והפצה. שלוש חבילות מ-950 ₪. אולפן מודיעין, נגיש מכל הארץ. ציוד Sphere L22 מקצועי.',
   alternates: {
     canonical: 'https://www.yakircohen.com/podcast',
   },
   openGraph: {
-    title: 'שירותי פודקאסט | יקיר כהן הפקות',
+    title: 'הפקת פודקאסט מקצועית | יקיר כהן הפקות',
     description:
-      'Broadcast Quality. המקום שבו מומחים הופכים לאוטוריטה. אולפן פודקאסטים מקצועי במודיעין.',
+      'הפקת פודקאסט מקצועית במודיעין — הקלטה, עריכה והפצה. מ-950 ₪.',
     url: 'https://www.yakircohen.com/podcast',
     images: [
       {
@@ -32,7 +33,7 @@ const podcastSchema = {
   provider: {
     '@type': 'LocalBusiness',
     name: 'יקיר כהן הפקות',
-    telephone: '+972-52-8701918',
+    telephone: '+972587555456',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'רחוב היובל 15',
@@ -52,12 +53,25 @@ const podcastSchema = {
   },
 };
 
-const TAGS = ['Audio-Only', 'Multi-Cam Video', 'Full Social Machine', 'Content Repurposing'];
+const TAGS = ['הקלטה בלבד', 'וידאו מולטי-קאם', 'מכונת תוכן סושיאל', 'עריכה והפצה'];
 
 export default function PodcastPage() {
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
       <StructuredData data={podcastSchema} />
+
+      {/* Dynamic Glassmorphism Hero */}
+      <div className="relative mb-16 rounded-3xl overflow-hidden">
+        <div className="absolute inset-0">
+          <StudioRecordsSVG />
+        </div>
+        <div className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 backdrop-blur-md p-12 text-center">
+          <h1 className="font-serif text-5xl font-bold mb-4 italic text-white">הפקת פודקאסט מקצועית</h1>
+          <p className="text-xl text-zinc-200 max-w-2xl mx-auto leading-relaxed">
+            הפודקאסט שלי ייצר נוכחות, אמון ולידים. אני דואג לכל השאר.
+          </p>
+        </div>
+      </div>
 
       {/* Hero */}
       <header className="bg-white border-b border-zinc-100 text-center py-14 px-4">
@@ -71,7 +85,7 @@ export default function PodcastPage() {
           className="text-4xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-3"
           style={{ fontFamily: '"Frank Ruhl Libre", serif' }}
         >
-          Broadcast Quality.
+          הפקת פודקאסט מקצועית במודיעין.
           <br />
           <span className="text-[#D42B2B]">המקום שבו מומחים הופכים לאוטוריטה.</span>
         </h1>

@@ -33,3 +33,30 @@ You recognize these core categories:
 ## Optimization
 - Enforce `loading="lazy"` for all event gallery images.
 - Suggest conversion to `.webp` for any file found with a Hebrew `.jpg` or `.png` extension.
+
+## Build-Time Checks (בצע בכל build)
+
+### 1. Non-webp Detection
+Scan `public/assets/images/**` for any `.jpg`, `.jpeg`, `.png`, `.jfif` files.
+For each match: log a warning `⚠️ [assets] Convert to .webp: {filename}`.
+Do NOT block the build — only warn.
+
+### 2. LCP Image Priority Enforcement
+When adding or modifying a page component (`page.tsx`):
+- If the page has a `<header>` or hero section containing `<Image>` from `next/image`
+- AND the image is above-the-fold (first visible element)
+- THEN enforce `priority={true}` on that `<Image>` tag
+- Log: `✅ [assets] LCP priority set on {path}`
+
+### 3. Alt Text Validation
+Every `<Image>` component must have a non-empty `alt` prop describing the content in Hebrew.
+If `alt=""` or `alt` is missing → warn: `⚠️ [assets] Missing alt text on image in {file}`.
+
+### 4. brand-shadow Consistency
+When generating card or hero components with `box-shadow`:
+- Use `.brand-shadow`, `.brand-shadow-sm`, `.brand-shadow-dark`, or `.brand-shadow-card` from globals.css
+- NEVER use `shadow-[8px_8px_0px_#...]` arbitrary Tailwind values for directional offset shadows
+- The CSS variable `--main-shadow-direction` auto-flips for RTL — no manual override needed
+
+### 5. Placeholder Protocol (unchanged)
+If image not found → render dark `#050505` / gold `#D4AF37` placeholder component with Hebrew category name.

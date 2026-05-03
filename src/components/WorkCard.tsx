@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Share2 } from "lucide-react";
+import { BLUR_DATA_URL } from "@/lib/blur";
 
 interface WorkCardProps {
   title: string;
@@ -28,7 +29,7 @@ export default function WorkCard({ title, category, image }: WorkCardProps) {
 
   return (
     <div className="relative group overflow-hidden rounded-3xl border border-zinc-200 aspect-video">
-      <Image src={image} alt={title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+      <Image src={image} alt={title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" placeholder="blur" blurDataURL={BLUR_DATA_URL} />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full p-8 flex justify-between items-end text-white">
         <div className="text-right">

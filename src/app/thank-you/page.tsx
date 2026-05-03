@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import StudioRecordsSVG from '@/components/StudioRecordsSVG';
 
 export const metadata: Metadata = {
   title: 'ההצעה שלך בידינו',
@@ -35,6 +36,19 @@ export default function ThankYouPage() {
       dir="rtl"
       className="min-h-screen bg-[#FAFAF8] flex flex-col items-center justify-center px-4 py-20"
     >
+      {/* Dynamic Glassmorphism Hero */}
+      <div className="relative mb-16 rounded-3xl overflow-hidden max-w-4xl w-full">
+        <div className="absolute inset-0">
+          <StudioRecordsSVG />
+        </div>
+        <div className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 backdrop-blur-md p-12 text-center">
+          <h1 className="font-serif text-5xl font-bold mb-4 italic text-white">ההצעה שלך בידינו</h1>
+          <p className="text-xl text-zinc-200 max-w-2xl mx-auto leading-relaxed">
+            תודה על הפנייה! אנחנו כבר עובדים על זה.
+          </p>
+        </div>
+      </div>
+
       <div className="max-w-md w-full text-center">
         <p className="text-6xl mb-6" role="img" aria-label="מוזיקה">
           🎶
@@ -80,13 +94,13 @@ export default function ThankYouPage() {
             אם לא תשמעו מאיתנו תוך שעה, צרו קשר ישירות בוואטסאפ.
           </p>
           <a
-            href="https://wa.me/972528701918"
+            href="https://wa.me/972587555456"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 mt-3 text-sm font-bold text-[#1A1A1A] hover:text-[#D42B2B] transition-colors"
           >
             <WhatsAppIcon />
-            058-870-1918
+            0587555456
           </a>
         </div>
 

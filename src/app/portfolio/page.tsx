@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { getPortfolioCollection } from "@/content/config";
+import StudioRecordsSVG from "@/components/StudioRecordsSVG";
 
 export const metadata: Metadata = {
   title: "פורטפוליו | יקיר כהן הפקות",
@@ -13,6 +14,20 @@ export default async function PortfolioIndexPage() {
   return (
     <main className="min-h-screen bg-[#FAFAF8] px-6 py-16 lg:px-24">
       <div className="mx-auto max-w-6xl space-y-12">
+
+        {/* Dynamic Glassmorphism Hero */}
+        <div className="relative mb-16 rounded-3xl overflow-hidden">
+          <div className="absolute inset-0">
+            <StudioRecordsSVG />
+          </div>
+          <div className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 backdrop-blur-md p-12 text-center">
+            <h1 className="font-serif text-5xl font-bold mb-4 italic text-white">פורטפוליו</h1>
+            <p className="text-xl text-zinc-200 max-w-2xl mx-auto leading-relaxed">
+              פרויקטים שנשארים בזיכרון. הצצה ליצירות שמחברות בין קהל למוזיקה.
+            </p>
+          </div>
+        </div>
+
         <section className="space-y-6 text-right">
           <p className="text-sm uppercase tracking-[0.35em] text-[#D42B2B]">פורטפוליו</p>
           <h1 className="font-serif text-5xl font-black leading-tight">פרויקטים שנשארים בזיכרון</h1>

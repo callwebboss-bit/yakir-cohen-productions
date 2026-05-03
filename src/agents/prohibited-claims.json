@@ -1,0 +1,115 @@
+{
+  "prohibited_claims": {
+    "viral_guarantees": [
+      "will reach 1 million views",
+      "will go viral",
+      "guaranteed to trend",
+      "will definitely become trending",
+      "assured viral success"
+    ],
+    "income_guarantees": [
+      "guaranteed ₪X income",
+      "guaranteed ₪X monthly earnings",
+      "will generate ₪X profit",
+      "assured revenue of"
+    ],
+    "seo_guarantees": [
+      "guaranteed #1 ranking",
+      "guaranteed first page Google",
+      "guaranteed top 3 YouTube results",
+      "#1 position on search results"
+    ],
+    "copyright_immunity": [
+      "won't get copyright strikes",
+      "safe from copyright takedown",
+      "immune to DMCA",
+      "bypass copyright detection",
+      "copyright-proof method"
+    ],
+    "false_ownership": [
+      "you'll own all content",
+      "full exclusive rights",
+      "complete ownership transfer",
+      "unrestricted use rights"
+    ],
+    "empty_superlatives": [
+      "best in the world",
+      "best in Israel",
+      "only studio offering this",
+      "only method that works",
+      "revolutionary breakthrough",
+      "mind-blowing results",
+      "unmatched quality",
+      "world-class guaranteed"
+    ],
+    "absolute_outcomes": [
+      "100% guarantee",
+      "never fail",
+      "will absolutely work",
+      "definitely will succeed",
+      "certainly will happen"
+    ],
+    "timeline_guarantees": [
+      "complete in 24 hours",
+      "delivered within 24 hours",
+      "guaranteed 24-hour turnaround",
+      "finished by tomorrow"
+    ]
+  },
+  "privacy_requirements": [
+    "explicit consent checkbox (unchecked by default)",
+    "data retention period disclosed",
+    "data usage purposes clearly stated",
+    "right to erasure/deletion option",
+    "contact method for data requests",
+    "no data sharing without consent"
+  ],
+  "ai_disclosure": {
+    "required_when": ["content mentions Claude, ChatGPT, Gemini, or other AI tool", "copy is AI-assisted but human-reviewed"],
+    "required_format": "[AI-ASSISTED CONTENT]\nThis text was created with AI assistance and reviewed by our team.",
+    "required_placement": "Beginning of document or before content block"
+  },
+  "brand_tone_guidelines": {
+    "forbidden_words": [
+      "amazing",
+      "incredible",
+      "mind-blowing",
+      "revolutionary",
+      "game-changing",
+      "unbelievable",
+      "shocking",
+      "guaranteed",
+      "never"
+    ],
+    "preferred_words": [
+      "thoughtful",
+      "detailed",
+      "precise",
+      "intentional",
+      "crafted",
+      "refined",
+      "authentic",
+      "experienced"
+    ],
+    "tone": "Warm, professional, minimalist luxury—no hype"
+  },
+  "amendment_13_2026": {
+    "effective_date": "2026-01-01",
+    "key_requirements": [
+      "Explicit consent for any data collection",
+      "Separate consent from ToS (not bundled)",
+      "Right to delete/erasure within 7 business days",
+      "Disclose data retention period",
+      "Disclose purposes of data usage",
+      "No pre-ticked consent boxes",
+      "Hebrew-language consent options"
+    ],
+    "penalties": "Up to ₪1.8M fine for non-compliance",
+    "contact_pages_must_have": [
+      "Clear consent opt-in",
+      "Privacy policy link",
+      "Data deletion request link",
+      "Retention period disclosure"
+    ]
+  }
+}

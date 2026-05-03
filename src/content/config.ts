@@ -1,3 +1,5 @@
+import path from "path";
+
 export interface PortfolioItem {
   title: string;
   publishDate: string;
@@ -8,15 +10,20 @@ export interface PortfolioItem {
   slug: string;
 }
 
-const portfolioDirectory = new URL("./portfolio", import.meta.url);
+const portfolioDirectory = path.join(process.cwd(), "src", "content", "portfolio");
 
 export async function getPortfolioCollection(): Promise<PortfolioItem[]> {
   const fs = await import("fs/promises");
-  const files = await fs.readdir(portfolioDirectory);
+  let files: string[];
+  try {
+    files = await fs.readdir(portfolioDirectory);
+  } catch {
+    return [];
+  }
 
   const items: PortfolioItem[] = [];
-  for (const file of files.filter((file) => file.endsWith(".json"))) {
-    const raw = await fs.readFile(new URL(`./portfolio/${file}`, import.meta.url), "utf-8");
+  for (const file of files.filter((f) => f.endsWith(".json"))) {
+    const raw = await fs.readFile(path.join(portfolioDirectory, file), "utf-8");
     const item = JSON.parse(raw) as PortfolioItem;
     items.push(item);
   }

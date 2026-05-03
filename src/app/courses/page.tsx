@@ -2,6 +2,7 @@ import React from "react";
 import { School } from "lucide-react";
 import { Metadata } from "next";
 import StructuredData from "@/components/StructuredData";
+import StudioRecordsSVG from "@/components/StudioRecordsSVG";
 
 export const metadata: Metadata = {
   title: "האקדמיה לסאונד וקול | קורסים דיגיטליים",
@@ -32,6 +33,20 @@ export default function CoursesPage() {
   return (
     <div className="flex flex-col pb-24">
       <StructuredData data={coursesSchema} />
+
+      {/* Dynamic Glassmorphism Hero */}
+      <div className="relative mb-16 rounded-3xl overflow-hidden">
+        <div className="absolute inset-0">
+          <StudioRecordsSVG />
+        </div>
+        <div className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 backdrop-blur-md p-12 text-center">
+          <h1 className="font-serif text-5xl font-bold mb-4 italic text-white">האקדמיה לסאונד וקול</h1>
+          <p className="text-xl text-zinc-200 max-w-2xl mx-auto leading-relaxed">
+            תנו לקול שלכם את הכלים המקצועיים ביותר. קורסים דיגיטליים ופגישות אישיות.
+          </p>
+        </div>
+      </div>
+
       <header className="bg-zinc-900 py-32 px-6 text-white overflow-hidden relative">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-red/5 skew-x-12 transform origin-top-right"></div>
         <div className="max-w-7xl mx-auto relative z-10 text-center flex flex-col items-center">

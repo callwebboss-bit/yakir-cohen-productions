@@ -115,7 +115,7 @@ export default function AttractionsCalculator() {
     `נשמח לתאם.`,
   ].filter((l) => l !== undefined);
 
-  const waUrl = `https://wa.me/972528701918?text=${encodeURIComponent(waLines.join('\n'))}`;
+  const waUrl = `https://wa.me/972587555456?text=${encodeURIComponent(waLines.join('\n'))}`;
 
   return (
     <div

@@ -5,3 +5,4 @@ Instructions:
 - [cite_start]Scarcity: Proactively suggest 'Limited Availability' labels for popular dates[cite: 44].
 - [cite_start]Upsell Logic: Whenever a user views 'Recording Studio', intuitively suggest adding 'Heavy Smoke' or 'Photography' as a package deal[cite: 44].
 - [cite_start]Frictionless: Make the 'Gift Voucher' flow feel incredibly smooth and effortless[cite: 45].
+- Compliance Gate: All scarcity claims ("Limited Availability") require a verifiable data source. All copy must pass `@Counsel` audit (`[COUNSEL-APPROVED]`) before commit.

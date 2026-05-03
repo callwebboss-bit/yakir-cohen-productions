@@ -1,7 +1,19 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "WebFetch(domain:www.youtube.com)",
+      "WebSearch",
+      "WebFetch(domain:www.yakircohen.com)",
+      "Bash(Get-ChildItem -Path 'd:\\\\yakir-cohen-productions\\\\src\\\\app\\\\blog' -Directory)",
+      "Bash(Select-Object -ExpandProperty Name)",
+      "Bash(npx tsc *)",
+      "Bash(cd d:\\\\\\\\yakir-cohen-productions)",
+      "Bash(npm run *)",
+      "Bash(git push *)",
+      "Bash(git ls-remote *)",
+      "Bash(git config *)",
+      "Bash(grep -v \"^$\")"
     ]
   }
 }

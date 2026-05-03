@@ -3,15 +3,15 @@ import StructuredData from "@/components/StructuredData";
 import AttractionsCalculator from "@/features/attractions/AttractionsCalculator";
 
 export const metadata: Metadata = {
-  title: "אטרקציות לאירועים — פיק מומנטס",
+  title: "אטרקציות לאירועים | יקיר כהן הפקות — עשן כבד, זיקוקים קרים, קונפטי",
   description:
-    "עצבו את רגעי השיא שלכם. עשן כבד, זיקוקים קרים, קונפטי ותא הקלטה לאירועים במודיעין. חבילה מ-1,750 ₪ — ב-4 אטרקציות תקבלו קליפ היילייטס מתנה.",
+    "אטרקציות לאירועים: עשן כבד, זיקוקים קרים, קונפטי, בועות סבון ועוד. חבילה מ-1,750 ₪ — ב-4 אטרקציות קליפ היילייטס מתנה. מודיעין ואזור המרכז.",
   alternates: {
     canonical: "https://www.yakircohen.com/attractions",
   },
   openGraph: {
     title: "אטרקציות לאירועים | יקיר כהן הפקות",
-    description: "עשן כבד, זיקוקים קרים, קונפטי ועוד — חבילות מ-1,750 ₪",
+    description: "עשן כבד, זיקוקים קרים, קונפטי, בועות סבון — חבילות מ-1,750 ₪",
     url: "https://www.yakircohen.com/attractions",
   },
 };
@@ -19,10 +19,10 @@ export const metadata: Metadata = {
 const attractionsSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "פיק מומנטס — יקיר כהן הפקות",
+  name: "אטרקציות לאירועים — יקיר כהן הפקות",
   description:
     "הפקת אטרקציות ואפקטים פרימיום לאירועים — עשן כבד, זיקוקים קרים, תותחי קונפטי, תא הקלטה ועוד",
-  telephone: "+972-52-8701918",
+  telephone: "+972587555456",
   address: {
     "@type": "PostalAddress",
     addressLocality: "מודיעין-מכבים-רעות",
@@ -68,8 +68,8 @@ export default function AttractionsPage() {
           style={{ fontFamily: '"Frank Ruhl Libre", serif' }}
         >
           עצבו את{" "}
-          <span className="text-[#B80000]">רגעי השיא</span>{" "}
-          שלכם
+          <span className="text-[#B80000]">אטרקציות לאירועים</span>{" "}
+          שישארו בזיכרון
         </h1>
 
         <p className="text-white/50 text-base max-w-sm mx-auto mb-6 leading-relaxed">

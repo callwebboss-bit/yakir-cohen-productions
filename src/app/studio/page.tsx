@@ -5,10 +5,12 @@ import { Metadata } from "next";
 import Image from "next/image";
 import StructuredData from "@/components/StructuredData";
 import WorkCard from "@/components/WorkCard";
+import ShareButton from "@/components/ShareButton";
+import { BLUR_DATA_URL } from "@/lib/blur";
 
 export const metadata: Metadata = {
-  title: "אולפן הקלטות במודיעין",
-  description: "אולפן הקלטות מקצועי במודיעין עם ליווי אמנותי, מיקס ומאסטרינג מדויק ואווירה שמרגישה כמו בית.",
+  title: "אולפן הקלטות במודיעין — הקלטת שירים מקצועית | יקיר כהן הפקות",
+  description: "אולפן הקלטות מקצועי במודיעין — הקלטת שיר מ-990 ₪ כולל טכנאי, תיקון זיופים ומיקס. ליווי אמנותי מלא. נגיש מתל אביב, ירושלים והמרכז.",
   alternates: {
     canonical: "https://www.yakircohen.com/studio",
   },
@@ -64,12 +66,14 @@ export default function StudioPage() {
       {/* Studio Hero */}
       <section className="relative min-h-[80vh] flex items-center justify-center bg-zinc-900 border-b border-white/10 text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image 
-            src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2670&auto=format&fit=crop" 
-            alt="אולפן הקלטות במודיעין - יקיר כהן הפקות" 
+          <Image
+            src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2670&auto=format&fit=crop"
+            alt="אולפן הקלטות במודיעין - יקיר כהן הפקות"
             fill
             priority
             className="w-full h-full object-cover opacity-40 grayscale"
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-zinc-900"></div>
         </div>
@@ -87,10 +91,10 @@ export default function StudioPage() {
             אני בונה סביבה שבה כל קטע נשמע כמו שצריך. ציוד קצה, אקוסטיקה נקייה וזיקה אמיתית לרגש שבקול שלך.
           </p>
           <div className="flex flex-wrap gap-4 justify-center mt-6">
-            <Link href="#services" className="bg-brand-red text-white px-8 py-4 rounded font-bold hover:scale-105 transition-all shadow-xl cursor-pointer">
+            <Link href="#services" className="bg-brand-red text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors shadow-xl cursor-pointer">
               גלה את השירותים שלנו
             </Link>
-            <Link href="/clinic" className="border border-white bg-white/5 backdrop-blur-md text-white px-8 py-4 rounded font-bold hover:bg-white hover:text-black transition-all cursor-pointer">
+            <Link href="/contact" className="border border-white bg-white/5 backdrop-blur-md text-white px-8 py-4 rounded font-bold hover:bg-white hover:text-black transition-all cursor-pointer">
               קבע סיור באולפן
             </Link>
           </div>
@@ -178,12 +182,16 @@ export default function StudioPage() {
             <p className="text-zinc-500 max-w-2xl mx-auto font-medium">תמחור שקוף והוגן באולפן ההקלטות במודיעין, מותאם אישית לצרכים שלך.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <PricingCard title="בסיס (Basic)" price="250" unit="שעה" features={['הקלטת שירה בערוץ אחד', 'ציוד אולפן בסיסי', 'ראף מיקס בסיום']} />
-            <PricingCard title="Silver" price="1,800" unit="שיר" features={['עד 8 שעות אולפן', 'הפקה ועיבוד בסיסי', 'מיקס ומאסטרינג מלא', 'תיקוני זיופים Melodyne']} isPopular />
-            <PricingCard title="VIP Epic" price="4,500" unit="פרויקט" features={['זמן אולפן ללא הגבלה', 'הפקה מורכבת + נגנים', 'מיקס אנלוגי פרימיום', 'ייעוץ אמנותי צמוד']} />
+            <PricingCard title="הקלטת שיר" price="990" unit="שיר" features={['הקלטת שירה בחדר אקוסטי', 'טכנאי סאונד מקצועי', 'תיקון זיופים (Melodyne)', 'מיקס גמור מוכן לשיתוף']} />
+            <PricingCard title="שיר + קליפ 4K" price="2,800" unit="פרויקט" features={['הכל מחבילת הקלטת שיר', 'צילום קליפ 4K', 'עריכת וידאו מקצועית', 'מסירה דיגיטלית מלאה']} isPopular />
+            <PricingCard title="הפקה מלאה" price="7,800" unit="פרויקט" features={['זמן אולפן ללא הגבלה', 'הפקה ועיבוד מורכב', 'קליפ 4K פרימיום', 'ייעוץ אמנותי צמוד']} />
           </div>
         </div>
       </section>
+
+      <div className="flex justify-center py-6 border-t border-zinc-100">
+        <ShareButton title="אולפן ההקלטות" />
+      </div>
     </div>
   );
 }

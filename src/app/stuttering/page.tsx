@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import StructuredData from "@/components/StructuredData";
+import { BLUR_DATA_URL } from "@/lib/blur";
 
 export const metadata: Metadata = {
   title: "טיפול בגמגום ושיקום קולי",
@@ -40,17 +41,19 @@ export default function StutteringPage() {
               גמגום זה לא בעיה של הפה. זה דפוס מחשבתי שנבנה עם השנים. אני עובד על שניהם. דרך סאונד, דרך מיקרופון ודרך תרגול אמיתי שמשנה את הדרך שבה אתה שומע את עצמך.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link href="/clinic" className="bg-brand-red text-white px-10 py-5 rounded font-bold shadow-xl hover:scale-105 transition-all">
+              <Link href="/clinic" className="bg-brand-red text-white px-10 py-5 rounded font-bold shadow-xl hover:bg-red-700 transition-colors">
                 למד על השיטה שלנו
               </Link>
             </div>
           </div>
           <div className="relative aspect-square rounded-2xl overflow-hidden border border-zinc-200">
-             <Image 
-               src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2787" 
+             <Image
+               src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2787"
                alt="טיפול בגמגום במודיעין - יקיר כהן הפקות"
                fill
                className="object-cover"
+               placeholder="blur"
+               blurDataURL={BLUR_DATA_URL}
              />
           </div>
         </div>

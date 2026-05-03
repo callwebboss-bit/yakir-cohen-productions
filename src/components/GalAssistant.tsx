@@ -6,9 +6,22 @@ import { motion, AnimatePresence } from "motion/react";
 
 export default function GalAssistant() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { role: "assistant", content: "שלום! אני גל, העוזרת החכמה של יקיר כהן. איך אוכל לעזור לכם היום עם סאונד, פיתוח קול או הפקה?" }
-  ]);
+  const [messages, setMessages] = useState(() => {
+    const now = new Date();
+    const day = now.getDay(); // 0=Sun … 5=Fri, 6=Sat
+    const hour = now.getHours();
+    const isClosed =
+      day === 6 ||
+      (day === 5 && hour >= 16) ||
+      (day === 0 && hour < 9);
+    const isAfterHours = !isClosed && (hour < 10 || hour >= 22);
+    const content = isClosed
+      ? "האולפן סגור עכשיו. נחזור ביום ראשון מ-9:00. שלחו הודעה בווטסאפ ונחזור בהקדם."
+      : isAfterHours
+      ? "האולפן סגור כרגע (שעות פעילות: ראשון–חמישי 10:00–22:00). אפשר להשאיר הודעה ונחזור."
+      : "שלום! אני גל, העוזרת החכמה של יקיר כהן. איך אוכל לעזור לכם היום עם סאונד, פיתוח קול או הפקה?";
+    return [{ role: "assistant", content }];
+  });
   const [input, setInput] = useState("");
 
   const handleSend = () => {
@@ -28,7 +41,7 @@ export default function GalAssistant() {
 
   const openWhatsApp = () => {
     const message = encodeURIComponent("היי יקיר, הגעתי מהאתר ואשמח לקבל פרטים נוספים.");
-    window.open(`https://wa.me/972528701918?text=${message}`, "_blank");
+    window.open(`https://wa.me/972587555456?text=${message}`, "_blank");
   };
 
   return (
@@ -48,7 +61,14 @@ export default function GalAssistant() {
                 </div>
                 <div>
                   <h3 className="font-bold">גל - עוזרת אישית</h3>
-                  <p className="text-[10px] text-white/50 uppercase tracking-widest">מחוברת כעת</p>
+                  <p className="text-[10px] text-white/50 uppercase tracking-widest">
+                    {(() => {
+                      const h = new Date().getHours();
+                      const d = new Date().getDay();
+                      const open = d !== 6 && !(d === 5 && h >= 16) && !(d === 0 && h < 9) && h >= 10 && h < 22;
+                      return open ? "מחוברת כעת" : "לא זמינים כרגע";
+                    })()}
+                  </p>
                 </div>
               </div>
               <button onClick={() => setIsOpen(false)} className="text-white/50 hover:text-white transition-colors">

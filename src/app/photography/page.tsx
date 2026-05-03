@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import StructuredData from '@/components/StructuredData';
 import PhotographyCalculator from '@/features/photography/PhotographyCalculator';
+import StudioRecordsSVG from '@/components/StudioRecordsSVG';
 
 export const metadata: Metadata = {
   title: 'צילום בוטיק — Studio Lumière',
@@ -23,7 +24,7 @@ const photoSchema = {
   provider: {
     '@type': 'LocalBusiness',
     name: 'יקיר כהן הפקות',
-    telephone: '+972-52-8701918',
+    telephone: '+972587555456',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'מודיעין-מכבים-רעות',
@@ -47,6 +48,19 @@ export default function PhotographyPage() {
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
       <StructuredData data={photoSchema} />
+
+      {/* Dynamic Glassmorphism Hero */}
+      <div className="relative mb-16 rounded-3xl overflow-hidden">
+        <div className="absolute inset-0">
+          <StudioRecordsSVG />
+        </div>
+        <div className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 backdrop-blur-md p-12 text-center">
+          <h1 className="font-serif text-5xl font-bold mb-4 italic text-white">צילום בוטיק</h1>
+          <p className="text-xl text-zinc-200 max-w-2xl mx-auto leading-relaxed">
+            צרו את הסיפור המושלם שלכם. תעריף אחיד ושקוף: 980 ₪ לשעת צלם.
+          </p>
+        </div>
+      </div>
 
       {/* Hero */}
       <header className="bg-white border-b border-zinc-100 text-center py-14 px-4">

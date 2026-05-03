@@ -392,7 +392,7 @@ export default function PhotographyCalculator() {
             )}
           </div>
           <a
-            href={`https://wa.me/972528701918?text=${encodeURIComponent(waText)}`}
+            href={`https://wa.me/972587555456?text=${encodeURIComponent(waText)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-[#8B0000] hover:bg-[#A50000] text-white px-6 py-3 rounded-full text-sm font-bold transition-colors whitespace-nowrap"

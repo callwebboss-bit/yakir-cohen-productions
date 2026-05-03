@@ -1,14 +1,24 @@
 import React from "react";
 import { Metadata } from "next";
 import Image from "next/image";
-import { CheckCircle2, Heart, Shield, Music, Star } from "lucide-react";
+import Link from "next/link";
+import { Heart, Shield, Music, Star } from "lucide-react";
 import StructuredData from "@/components/StructuredData";
+import RelatedPages from "@/components/RelatedPages";
+import { BLUR_DATA_URL } from "@/lib/blur";
+import StudioRecordsSVG from "@/components/StudioRecordsSVG";
 
 export const metadata: Metadata = {
   title: "אודות יקיר כהן | מפיק מוזיקלי, מומחה לקול וסאונד",
-  description: "הכירו את יקיר כהן והצוות שמאחורי יקיר כהן הפקות. מעל 20 שנות ניסיון בהפקה מוזיקלית, שיקום קולי וטיפול בגמגום בשיטה ייחודית.",
-  alternates: {
-    canonical: "https://www.yakircohen.com/about",
+  description: "הכירו את יקיר כהן — מפיק מוזיקלי ומומחה לקול עם 20+ שנות ניסיון. אולפן הקלטות, פודקאסט, DJ ואטרקציות לאירועים — הכל תחת קורת גג אחת.",
+  alternates: { canonical: "https://www.yakircohen.com/about" },
+  openGraph: {
+    title: "אודות יקיר כהן הפקות",
+    description: "20+ שנות ניסיון. אולפן הקלטות, פודקאסט, DJ ואטרקציות לאירועים.",
+    url: "https://www.yakircohen.com/about",
+    siteName: "יקיר כהן הפקות",
+    locale: "he_IL",
+    type: "website",
   },
 };
 
@@ -45,20 +55,22 @@ export default function AboutPage() {
               יקיר כהן הוא איש סאונד, מפיק מוזיקלי ומומחה לשיקום קולי, המשלב בעבודתו עולמות שלכאורה נפרדים אך למעשה מזינים זה את זה: האמנות והטיפול.
             </p>
             <p>
-              לאחר שני עשורים של עבודה צמודה עם אמנים מהשורה הראשונה, הקלטת מאות פרויקטים וניהול אולפני הקלטות, יקיר פיתח שיטת עבודה ייחודית ששמה את האדם במרכז. עבורו, אולפן ההקלטות הוא לא רק מקום עם טכנולוגיה, אלא מרחב לצמיחה וביטוי עצמי.
+              לאחר שני עשורים של עבודה צמודה עם אמנים מהשורה הראשונה, הקלטת מאות פרויקטים וניהול אולפני הקלטות, יקיר פיתח שיטת עבודה ייחודית ששמה את האדם为中心. עבורו, אולפן ההקלטות הוא לא רק מקום עם טכנולוגיה, אלא מרחב לצמיחה וביטוי עצמי.
             </p>
             <p>
               הידע המקצועי שלו בפיזיולוגיה של מיתרי הקול, לצד הדיוק האנושי שנדרש בהפקה מוזיקלית, מאפשרים לו להוביל כל אדם למקסימום היכולת הקולית שלו - בין אם הוא זמר מקצועי ובין אם הוא מתמודד עם קשיי דיבור.
             </p>
           </div>
         </div>
-        <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700">
-           <Image 
-             src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2670" 
-             alt="יקיר כהן באולפן" 
+        <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+           <Image
+             src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2670"
+             alt="יקיר כהן באולפן הקלטות במודיעין"
              fill
-             className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+             className="object-cover grayscale"
              priority
+             placeholder="blur"
+             blurDataURL={BLUR_DATA_URL}
            />
            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
            <div className="absolute bottom-8 right-8 text-white text-right">
@@ -67,6 +79,21 @@ export default function AboutPage() {
            </div>
         </div>
       </section>
+
+      {/* Dynamic Glassmorphism Hero */}
+      <div className="relative mb-16 rounded-3xl overflow-hidden">
+        <div className="absolute inset-0">
+          <StudioRecordsSVG />
+        </div>
+        <div className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 backdrop-blur-md p-12 text-center">
+          <h1 className="font-serif text-5xl font-bold mb-4 italic text-white">
+            אודות יקיר כהן הפקות
+          </h1>
+          <p className="text-xl text-zinc-200 max-w-2xl mx-auto leading-relaxed">
+            הכירו את יקיר כהן — מפיק מוזיקלי ומומחה לקול עם 20+ שנות ניסיון.
+          </p>
+        </div>
+      </div>
 
       {/* Stats Grid */}
       <section className="bg-zinc-900 text-white py-24 px-6 border-y border-white/5">
@@ -102,7 +129,7 @@ export default function AboutPage() {
             <ValueCard 
               icon={<Shield className="text-brand-red" size={32} />}
               title="מקצוענות ללא פשרות"
-              desc="אנחנו משתמשים בציוד הקצה העליון בעולם ובניסיון שנצבר במשך עשורים כדי להבטיח תוצאה ברמה בינלאומית."
+              desc="אנחנו משתמשים בציוד מקצועי ובניסיון שנצבר במשך עשורים — כדי להבטיח תוצאה שנשמעת ומרגישה נכון."
             />
             <ValueCard 
               icon={<Heart className="text-brand-red" size={32} />}
@@ -121,20 +148,31 @@ export default function AboutPage() {
       {/* Team CTA */}
       <section className="py-24 px-6 max-w-5xl mx-auto text-center">
         <div className="bg-zinc-900 rounded-[3rem] p-16 text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-brand-red/10 animate-pulse"></div>
           <div className="relative z-10 flex flex-col items-center">
             <h2 className="font-serif text-4xl md:text-6xl font-bold mb-8 italic">מוכנים להתחיל ליצור?</h2>
             <p className="text-zinc-400 text-xl mb-12 max-w-xl">
-              הצטרפו למאות האמנים והמטופלים שכבר מצאו את הקול שלהם אצלנו.
+              הצטרפו ללקוחות שכבר מצאו את הקול שלהם אצלנו. שלחו הודעה ונחזור אליכם.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <button className="bg-brand-red text-white px-10 py-5 rounded-full font-bold shadow-xl hover:scale-105 transition-all text-lg">
+              <Link href="/contact/whatsapp" className="bg-brand-red text-white px-10 py-5 rounded-full font-bold shadow-xl text-lg hover:bg-red-700 transition-colors">
                 דברו איתנו ב-WhatsApp
-              </button>
+              </Link>
+              <Link href="/about/faq" className="border border-white/30 text-white px-8 py-5 rounded-full font-bold hover:bg-white/10 transition-colors">
+                שאלות נפוצות
+              </Link>
             </div>
           </div>
         </div>
       </section>
+
+      <RelatedPages
+        title="הכירו אותנו יותר"
+        pages={[
+          { label: "ביקורות ולקוחות", href: "/about/reviews", desc: "מה אומרים עלינו — 250+ ביקורות" },
+          { label: "שאלות נפוצות", href: "/about/faq", desc: "כל מה שצריך לדעת לפני ההזמנה" },
+          { label: "צרו קשר", href: "/contact", desc: "נשמח לענות על כל שאלה" },
+        ]}
+      />
     </div>
   );
 }

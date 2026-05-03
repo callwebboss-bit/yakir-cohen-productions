@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import YouTube from "@/components/ui/YouTube";
 import { getPortfolioCollection, getPortfolioItem } from "@/content/config";
 
-interface Params {
-  slug: string;
+interface Props {
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   return items.map((item) => ({ slug: item.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const item = await getPortfolioItem(params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const item = await getPortfolioItem(slug);
 
   if (!item) {
     return {
@@ -43,8 +44,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function PortfolioProjectPage({ params }: { params: Params }) {
-  const item = await getPortfolioItem(params.slug);
+export default async function PortfolioProjectPage({ params }: Props) {
+  const { slug } = await params;
+  const item = await getPortfolioItem(slug);
 
   if (!item) {
     return (
