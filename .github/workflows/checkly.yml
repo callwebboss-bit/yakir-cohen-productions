@@ -1,0 +1,39 @@
+name: Checkly — E2E & API Monitoring
+
+on:
+  deployment_status:          # runs when Vercel marks the deploy as "success"
+
+jobs:
+  run-checks:
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      CHECKLY_API_KEY:     ${{ secrets.CHECKLY_API_KEY }}
+      CHECKLY_ACCOUNT_ID:  ${{ secrets.CHECKLY_ACCOUNT_ID }}
+      PRODUCTION_URL:      ${{ github.event.deployment_status.target_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Checkly CLI
+        run: npm install --save-dev @checkly/cli
+
+      - name: Run checks against deployed URL
+        run: npx checkly test --record --verbose
+        # --record  → saves results to Checkly dashboard
+        # --verbose → full output in CI logs
+
+      - name: Deploy check definitions
+        if: github.ref == 'refs/heads/main'
+        run: npx checkly deploy --force
+        # Syncs check definitions to Checkly on every main push
