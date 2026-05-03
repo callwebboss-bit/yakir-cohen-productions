@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -13,7 +14,8 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import IdleGhostButton from "@/components/IdleGhostButton";
 import ClipboardAttribution from "@/components/ClipboardAttribution";
 
-const BASE_URL = "https://www.yakircohen.com";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.yakircohen.com";
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 const OG_IMAGE = `${BASE_URL}/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp`;
 const PHONE = "+972587555456";
 const EMAIL = "office@yakircohen.com";
@@ -48,7 +50,6 @@ export const metadata: Metadata = {
     shortcut: "/icon.svg",
     apple: "/icon.svg",
   },
-  viewport: "width=device-width, initial-scale=1",
   robots: {
     index: true,
     follow: true,
@@ -82,6 +83,11 @@ export const metadata: Metadata = {
     capable: true,
     title: "יקיר כהן הפקות",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#111827",
 };
 
@@ -102,6 +108,17 @@ export default function RootLayout({
         <ClientSchema />
       </head>
       <body className="antialiased bg-[#FAFAF8] text-[#1A1A1A] font-sans">
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="gtag-init" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${GA_ID}', { page_path: window.location.pathname });`}
+            </Script>
+          </>
+        )}
         <div className="sr-only" aria-hidden="true">
           <Logo />
         </div>
