@@ -9,18 +9,32 @@ export async function POST(req: NextRequest) {
 
   // ── Signature verification ──
   if (secret) {
-    const signature = req.headers.get("x-stemsplit-signature") ??
-                      req.headers.get("x-webhook-signature") ?? "";
+    const rawSig = req.headers.get("x-stemsplit-signature") ??
+                   req.headers.get("x-webhook-signature") ?? "";
     const rawBody = await req.text();
+
+    // Strip "sha256=" prefix if present — accept both formats
+    const incoming = rawSig.startsWith("sha256=") ? rawSig.slice(7) : rawSig;
 
     const expected = crypto
       .createHmac("sha256", secret)
       .update(rawBody)
       .digest("hex");
 
-    const trusted = `sha256=${expected}`;
+    // Hash both through the same HMAC so buffers are always 32 bytes —
+    // timingSafeEqual throws when lengths differ.
+    const toHash = (v: string) =>
+      crypto.createHmac("sha256", secret).update(v).digest();
 
-    if (!crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(trusted))) {
+    const isValid = (() => {
+      try {
+        return crypto.timingSafeEqual(toHash(incoming), toHash(expected));
+      } catch {
+        return false;
+      }
+    })();
+
+    if (!isValid) {
       console.warn("[StemSplit webhook] invalid signature");
       return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
     }

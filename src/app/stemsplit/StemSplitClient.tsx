@@ -322,47 +322,21 @@ export default function StemSplitClient() {
   const canSubmit = mode === "idle" || mode === "error";
 
   return (
-    <div className="min-h-screen bg-[#0D0D14] text-white" dir="rtl">
+    <>
+      {/* ── Main Tool ── */}
+      {/* Hero is server-rendered in page.tsx for LCP; this component loads after first paint */}
+      <section className="px-6 pb-20 max-w-2xl mx-auto">
 
-      {/* ── Hero ── */}
-      <section className="relative pt-28 pb-16 px-6 text-center overflow-hidden">
-        {/* Background glow */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-20"
-               style={{ background: "radial-gradient(ellipse, #7B2FBE 0%, transparent 70%)" }} />
-        </div>
-
-        {/* Credits badge */}
+        {/* Credits badge — fetched after mount, non-blocking */}
         {credits !== null && (
-          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-sm mb-6">
-            <span className="w-2 h-2 rounded-full bg-[#C9A84C] animate-pulse" />
-            <span className="text-white/60">קרדיטים זמינים:</span>
-            <span className="text-[#C9A84C] font-black">{credits}</span>
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-sm">
+              <span className="w-2 h-2 rounded-full bg-[#C9A84C] animate-pulse" />
+              <span className="text-white/60">קרדיטים זמינים:</span>
+              <span className="text-[#C9A84C] font-black">{credits}</span>
+            </div>
           </div>
         )}
-
-        <h1 className="text-5xl md:text-6xl font-black mb-4 leading-tight"
-            style={{ fontFamily: '"Frank Ruhl Libre", serif' }}>
-          <span className="gradient-text">StemSplit AI</span>
-        </h1>
-        <p className="text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-8">
-          הפרידו כל שיר לווקאל נקי ופלייבק מלא — בבינה מלאכותית.
-          <br className="hidden md:block" />
-          כלי מקצועי לאולפנים, יוצרים ו-DJs.
-        </p>
-
-        {/* Trust badges */}
-        <div className="flex flex-wrap justify-center gap-4 text-sm text-white/40">
-          {["איכות הגבוהה ביותר", "עד 50MB לקובץ", "MP3 / WAV / FLAC", "מאובטח ופרטי"].map((b) => (
-            <span key={b} className="flex items-center gap-1.5">
-              <span className="text-[#7B2FBE]">✓</span> {b}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Main Tool ── */}
-      <section className="px-6 pb-20 max-w-2xl mx-auto">
 
         {/* Tabs */}
         <div className="flex gap-1 bg-white/5 rounded-xl p-1 mb-6" role="tablist">
@@ -628,6 +602,6 @@ export default function StemSplitClient() {
         }
         .ltr { direction: ltr; }
       `}</style>
-    </div>
+    </>
   );
 }
