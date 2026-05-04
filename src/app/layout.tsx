@@ -14,7 +14,14 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import IdleGhostButton from "@/components/IdleGhostButton";
 import ClipboardAttribution from "@/components/ClipboardAttribution";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.yakircohen.com";
+const DEFAULT_BASE_URL = "https://www.yakircohen.com";
+const rawBaseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_BASE_URL;
+let BASE_URL = DEFAULT_BASE_URL;
+try {
+  BASE_URL = new URL(rawBaseUrl).toString();
+} catch (error) {
+  console.warn(`Invalid NEXT_PUBLIC_SITE_URL value: ${rawBaseUrl}. Using default ${DEFAULT_BASE_URL}.`, error);
+}
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 const OG_IMAGE = `${BASE_URL}/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp`;
 const PHONE = "+972587555456";

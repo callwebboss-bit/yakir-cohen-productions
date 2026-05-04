@@ -77,6 +77,14 @@ const services = [
     turnaround: "24 שעות",
     desc: "תאורה, צבע, חידוד, רטוש עדין, הסרת אלמנטים — תמונות מאירועים.",
   },
+  {
+    emoji: "🎚️",
+    title: "פיצול ערוצים",
+    href: "/online/vocal-fix/stem-split",
+    price: "199 ₪",
+    turnaround: "24 שעות",
+    desc: "הפרדת שיר לווקאל ובס נפרדים עם StemSplit — מוכן למיקס או להשמעה.",
+  },
 ];
 
 const howItWorks = [

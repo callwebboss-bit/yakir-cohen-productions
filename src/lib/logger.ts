@@ -9,13 +9,17 @@
  *   log.error("split.failed", { jobId, error: err.message });
  */
 
+import { Logtail } from "@logtail/node";
+
 type Level = "debug" | "info" | "warn" | "error";
 
 interface LogContext {
   [key: string]: unknown;
 }
 
-const BETTERSTACK_INGEST = "https://in.logs.betterstack.com";
+const logtail = process.env.LOGTAIL_SOURCE_TOKEN
+  ? new Logtail(process.env.LOGTAIL_SOURCE_TOKEN)
+  : undefined;
 
 function send(level: Level, event: string, ctx: LogContext = {}): void {
   const payload = {
@@ -33,20 +37,15 @@ function send(level: Level, event: string, ctx: LogContext = {}): void {
            : console.info;
   fn(`[${level.toUpperCase()}] ${event}`, ctx);
 
-  // Fire-and-forget to BetterStack — never awaited, never crashes the caller
-  const token = process.env.LOGTAIL_SOURCE_TOKEN;
-  if (token) {
-    fetch(BETTERSTACK_INGEST, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(payload),
-    }).catch(() => {
+  if (!logtail) {
+    return;
+  }
+
+  logtail
+    .log(payload.event, level, payload)
+    .catch(() => {
       // Logging must never break the app
     });
-  }
 }
 
 export const log = {

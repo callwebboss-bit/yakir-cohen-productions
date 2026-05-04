@@ -71,6 +71,13 @@ const services = [
     tags: ["EQ", "Reverb", "Balance"],
   },
   {
+    href: "/online/vocal-fix/stem-split",
+    title: "פיצול ערוצים",
+    price: "מ-199 ₪",
+    desc: "הפרדה אוטומטית של שיר לווקאל ובס נפרדים עם StemSplit. מוכן למיקס ועיבוד.",
+    tags: ["ווקאל", "בס", "STEM", "פיצול"],
+  },
+  {
     href: "/online/vocal-fix/audio-repair",
     title: "תיקון שמע",
     price: "מ-120 ₪",

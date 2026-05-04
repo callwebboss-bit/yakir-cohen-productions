@@ -11,3 +11,4 @@ coverage/
 # Ollama AI model cache (do not commit — multi-GB files)
 blobs/
 manifests/
+.vercel

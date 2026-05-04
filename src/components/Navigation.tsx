@@ -40,8 +40,14 @@ const NAV_ITEMS: NavItem[] = [
       { label: "אולפן נייד",    href: "/podcast/mobile-studio"     },
     ],
   },
-  {
-    label: "אירועים", href: "/attractions",
+  {    label: "אונליין", href: "/online",
+    children: [
+      { label: "כל השירותים", href: "/online" },
+      { label: "שיפור קול", href: "/online/vocal-fix" },
+      { label: "פיצול ערוצים", href: "/online/vocal-fix/stem-split" },
+    ],
+  },
+  {    label: "אירועים", href: "/attractions",
     children: [
       { label: "DJ לאירועים",   href: "/events/dj-events"          },
       { label: "DJ בעיר",       href: "/dj-events/cities"           },
