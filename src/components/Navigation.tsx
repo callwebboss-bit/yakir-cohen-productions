@@ -156,7 +156,8 @@ export default function Navigation() {
       ref={navRef}
       className={cn(
         "fixed top-0 w-full z-50 h-20 flex items-center",
-        "transition-transform duration-300 ease-in-out",
+        /* Respect prefers-reduced-motion — disable slide for vestibular disorders */
+        "motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-in-out",
         /* Hide when scrolling down (reading), reveal when scrolling up or at top */
         dir === "down" && !isOpen ? "-translate-y-full" : "translate-y-0",
         scrolled
@@ -197,7 +198,7 @@ export default function Navigation() {
                         "ring-2 ring-[#D42B2B]/20 ring-offset-1"
                     )}
                     aria-expanded={openDropdown === item.href}
-                    aria-haspopup="listbox"
+                    aria-haspopup="true"
                     aria-current={isActive(item) ? "page" : undefined}
                   >
                     <span>{item.label}</span>
@@ -209,14 +210,13 @@ export default function Navigation() {
                   </button>
 
                   {openDropdown === item.href && (
+                    /* Plain nav list — no listbox/option roles; those are for <select> patterns */
                     <div
                       className="absolute top-full start-0 mt-1.5 min-w-[210px] bg-white border border-zinc-200 rounded-xl shadow-lg py-2 z-50"
-                      role="listbox"
                     >
                       <Link
                         href={item.href}
                         className="block ps-4 pe-4 py-2 text-zinc-900 font-bold border-b border-zinc-100 mb-1 hover:bg-zinc-50"
-                        role="option"
                       >
                         כל ה{item.label}
                       </Link>
@@ -225,7 +225,6 @@ export default function Navigation() {
                           key={child.href}
                           href={child.href}
                           className="block ps-4 pe-4 py-2 text-zinc-600 font-medium hover:bg-zinc-50 hover:text-black"
-                          role="option"
                           aria-current={pathname === child.href ? "page" : undefined}
                         >
                           {child.label}
@@ -259,7 +258,7 @@ export default function Navigation() {
                 isMoreActive ? "text-brand-red" : "text-zinc-700 hover:text-black"
               )}
               aria-expanded={openDropdown === MORE_KEY}
-              aria-haspopup="dialog"
+              aria-haspopup="true"
             >
               <span>עוד</span>
               <ChevronDown
@@ -272,7 +271,6 @@ export default function Navigation() {
             {openDropdown === MORE_KEY && (
               <div
                 className="absolute top-full start-0 mt-1.5 w-[400px] bg-white border border-zinc-200 rounded-2xl shadow-xl p-3 z-50"
-                role="dialog"
                 aria-label="שירותים נוספים"
               >
                 <div className="grid grid-cols-2 gap-1.5">

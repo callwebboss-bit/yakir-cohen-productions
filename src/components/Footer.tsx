@@ -9,7 +9,8 @@ const YOUTUBE_URL   = "https://www.youtube.com/user/kikosh";
 const FACEBOOK_URL  = "https://www.facebook.com/dj.yakir.cohen";
 const WHATSAPP_URL  = "https://wa.me/972587555456";
 
-const paymentBadges = [
+/* Native <ul>/<li> carry list semantics — no role="list/listitem" overrides needed */
+const paymentMethods = [
   { label: "bit",       bg: "#FF6B00", color: "#fff"             },
   { label: "PayBox",    bg: "#0066CC", color: "#fff"             },
   { label: "PayPal",    bg: "#003087", color: "#fff"             },
@@ -19,7 +20,6 @@ const paymentBadges = [
   { label: "Apple Pay", bg: "#000",    color: "#fff"             },
 ];
 
-/* ── 4-column link groups ── */
 const studioLinks = [
   { label: "הקלטת שירים",    href: "/studio/recording-song-modiin", title: "הקלטת שיר מקצועית במודיעין — מ-990 ₪" },
   { label: "ברכות מקצועיות", href: "/studio/blessings",             title: "הקלטת ברכות לחתונה ובר מצווה — מ-990 ₪" },
@@ -34,18 +34,15 @@ const moreLinks = [
   { label: "אולפן נייד",      href: "/podcast/mobile-studio",            title: "אולפן הקלטות ניד שמגיע אליכם" },
   { label: "שירותים לעסקים", href: "/business",                          title: "קריינות, הגברה והפקת תוכן לעסקים" },
   { label: "הבלוג",           href: "/blog",                              title: "מדריכים וטיפים על מוזיקה, DJ והפקה" },
-  { label: "שוברים לאירועים", href: "/voucher",                           title: "שוברי מתנה להקלטות ולאירועים — יקיר כהן הפקות" },
+  { label: "שוברים לאירועים", href: "/voucher",                           title: "שוברי מתנה להקלטות ולאירועים" },
   { label: "פורטל VIP",       href: "/vip",                               title: "אזור VIP — לקוחות יקיר כהן הפקות" },
 ];
 
 export default function Footer() {
   return (
-    <footer
-      dir="rtl"
-      className="bg-zinc-50 border-t border-zinc-200"
-      aria-label="פוטר — יקיר כהן הפקות"
-    >
-      {/* ── Main 4-column grid ── */}
+    /* <footer> has an implicit contentinfo landmark — no aria-label needed */
+    <footer dir="rtl" className="bg-zinc-50 border-t border-zinc-200">
+
       <div className="max-w-7xl mx-auto px-6 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
@@ -69,34 +66,33 @@ export default function Footer() {
               זה מה שאנחנו עושים הכי טוב.
             </p>
 
+            {/* Visible phone text — no aria-label override needed */}
             <a
               href={WHATSAPP_URL}
               title="שלחו הודעה בוואטסאפ ליקיר כהן הפקות"
               className="inline-flex items-center gap-2 text-sm font-bold text-zinc-900 hover:text-[#D42B2B] transition-colors"
-              aria-label="וואטסאפ 058-7-555-456"
             >
               <Phone size={15} aria-hidden="true" />
               <span>058-7-555-456</span>
             </a>
 
-            <p className="text-zinc-400 text-xs italic mt-auto" aria-label="סלוגן: מי שלא מכיר – יקיר">
+            {/* Visible slogan — screen reader reads text directly, no override */}
+            <p className="text-zinc-400 text-xs italic mt-auto">
               מי שלא מכיר – יקיר.
             </p>
           </div>
 
           {/* Col 2 — האולפן ואירועים */}
           <nav aria-label="האולפן ואירועים">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">
+            {/* h3: footer columns are subordinate to h1/h2 of the page */}
+            <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">
               האולפן ואירועים
-            </h2>
+            </h3>
             <ul className="flex flex-col gap-2.5">
               {studioLinks.map(({ label, href, title }) => (
                 <li key={href}>
-                  <Link
-                    href={href}
-                    title={title}
-                    className="text-sm text-zinc-600 hover:text-[#D42B2B] transition-colors"
-                  >
+                  <Link href={href} title={title}
+                    className="text-sm text-zinc-600 hover:text-[#D42B2B] transition-colors">
                     {label}
                   </Link>
                 </li>
@@ -106,17 +102,14 @@ export default function Footer() {
 
           {/* Col 3 — פודקאסט ועוד */}
           <nav aria-label="פודקאסט ושירותים נוספים">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">
               פודקאסט ועוד
-            </h2>
+            </h3>
             <ul className="flex flex-col gap-2.5">
               {moreLinks.map(({ label, href, title }) => (
                 <li key={href}>
-                  <Link
-                    href={href}
-                    title={title}
-                    className="text-sm text-zinc-600 hover:text-[#D42B2B] transition-colors"
-                  >
+                  <Link href={href} title={title}
+                    className="text-sm text-zinc-600 hover:text-[#D42B2B] transition-colors">
                     {label}
                   </Link>
                 </li>
@@ -127,58 +120,50 @@ export default function Footer() {
           {/* Col 4 — שעות, מיקום, תשלום */}
           <div className="flex flex-col gap-6">
 
-            {/* Hours */}
             <div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-3">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-3">
                 שעות פעילות
-              </h2>
+              </h3>
               <p className="text-sm text-zinc-600">ראשון עד חמישי — 10:00 עד 22:00</p>
               <p className="text-sm text-zinc-400 mt-1">שישי ושבת — האולפן סגור</p>
               <p className="text-xs text-zinc-400 mt-1">חוזרים ביום ראשון מ-9:00</p>
-              <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
-                זמינים בווטסאפ — עונים כשאפשר.
-              </p>
+              <p className="text-xs text-zinc-400 mt-2 leading-relaxed">זמינים בווטסאפ — עונים כשאפשר.</p>
             </div>
 
-            {/* Location */}
             <div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-2">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-2">
                 מיקום
-              </h2>
-              <p className="text-sm text-zinc-600 mb-1">
-                אולפן הקלטות מודיעין — קניון עזריאלי
-              </p>
+              </h3>
+              <p className="text-sm text-zinc-600 mb-1">אולפן הקלטות מודיעין — קניון עזריאלי</p>
               <a
                 href={WAZE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="ניווט לאולפן הקלטות יקיר כהן מודיעין"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-zinc-500 hover:text-[#D42B2B] transition-colors"
-                aria-label="פתח Waze לניווט לאולפן"
               >
                 <NavIcon size={13} aria-hidden="true" />
                 <span>פתח ב-Waze</span>
               </a>
             </div>
 
-            {/* Payment */}
             <div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-3">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-3">
                 אמצעי תשלום
-              </h2>
-              <div className="flex flex-wrap gap-1.5" role="list" aria-label="אמצעי תשלום מקובלים">
-                {paymentBadges.map(({ label, bg, color, border }) => (
-                  <span
-                    key={label}
-                    role="listitem"
-                    className="px-2 py-0.5 rounded text-[11px] font-bold"
-                    style={{ backgroundColor: bg, color, border: border ? "1px solid #e4e4e7" : undefined }}
-                    aria-label={`תשלום ב-${label}`}
-                  >
-                    {label}
-                  </span>
+              </h3>
+              {/* Semantic <ul>/<li> — no div+role="list" needed */}
+              <ul className="flex flex-wrap gap-1.5">
+                {paymentMethods.map(({ label, bg, color, border }) => (
+                  <li key={label}>
+                    <span
+                      className="px-2 py-0.5 rounded text-[11px] font-bold"
+                      style={{ backgroundColor: bg, color, border: border ? "1px solid #e4e4e7" : undefined }}
+                    >
+                      {label}
+                    </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
               <p className="text-zinc-400 text-xs mt-2">חשבונית ירוקה — GROW</p>
             </div>
           </div>
@@ -195,37 +180,47 @@ export default function Footer() {
             <span className="hidden sm:inline"> האתר מונגש ומותאם לכולם.</span>
           </p>
 
-          {/* Social icons */}
-          <div className="flex items-center gap-4" aria-label="רשתות חברתיות">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer"
-               title="יקיר כהן הפקות באינסטגרם"
-               className="text-zinc-400 hover:text-zinc-700 transition-colors" aria-label="אינסטגרם">
-              <Instagram size={16} aria-hidden="true" />
-            </a>
-            <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer"
-               title="ערוץ היוטיוב של יקיר כהן הפקות"
-               className="text-zinc-400 hover:text-zinc-700 transition-colors" aria-label="יוטיוב">
-              <Youtube size={16} aria-hidden="true" />
-            </a>
-            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer"
-               title="יקיר כהן הפקות בפייסבוק"
-               className="text-zinc-400 hover:text-zinc-700 transition-colors" aria-label="פייסבוק">
-              <Facebook size={16} aria-hidden="true" />
-            </a>
-            <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer"
-               title="יקיר כהן הפקות בטיקטוק"
-               className="text-zinc-400 hover:text-zinc-700 transition-colors" aria-label="טיקטוק">
-              <TikTokIcon size={16} />
-            </a>
-          </div>
+          {/* Icon-only social links — aria-label required (no visible text) */}
+          <nav aria-label="רשתות חברתיות">
+            <ul className="flex items-center gap-4">
+              <li>
+                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer"
+                   aria-label="אינסטגרם — יקיר כהן הפקות"
+                   className="text-zinc-400 hover:text-zinc-700 transition-colors inline-flex p-1">
+                  <Instagram size={16} aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer"
+                   aria-label="יוטיוב — יקיר כהן הפקות"
+                   className="text-zinc-400 hover:text-zinc-700 transition-colors inline-flex p-1">
+                  <Youtube size={16} aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer"
+                   aria-label="פייסבוק — יקיר כהן הפקות"
+                   className="text-zinc-400 hover:text-zinc-700 transition-colors inline-flex p-1">
+                  <Facebook size={16} aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer"
+                   aria-label="טיקטוק — יקיר כהן הפקות"
+                   className="text-zinc-400 hover:text-zinc-700 transition-colors inline-flex p-1">
+                  <TikTokIcon size={16} />
+                </a>
+              </li>
+            </ul>
+          </nav>
 
           {/* Legal */}
           <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-center">
             <span>&copy; 2025 כל הזכויות שמורות ליקיר כהן</span>
-            <span className="text-zinc-300 hidden sm:inline">|</span>
-            <Link href="/terms"         title="תנאי שימוש — יקיר כהן הפקות" className="hover:text-zinc-700 transition-colors">תנאי שימוש</Link>
-            <Link href="/accessibility" title="הצהרת נגישות — יקיר כהן הפקות" className="hover:text-zinc-700 transition-colors">נגישות</Link>
-            <Link href="/privacy"       title="מדיניות פרטיות — יקיר כהן הפקות" className="hover:text-zinc-700 transition-colors">פרטיות</Link>
+            <span className="text-zinc-300 hidden sm:inline" aria-hidden="true">|</span>
+            <Link href="/terms"         className="hover:text-zinc-700 transition-colors">תנאי שימוש</Link>
+            <Link href="/accessibility" className="hover:text-zinc-700 transition-colors">נגישות</Link>
+            <Link href="/privacy"       className="hover:text-zinc-700 transition-colors">פרטיות</Link>
           </div>
 
         </div>

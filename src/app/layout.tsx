@@ -126,12 +126,20 @@ export default function RootLayout({
             </Script>
           </>
         )}
+        {/* Skip-to-content — visible on keyboard focus, hidden otherwise */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:start-4 focus:z-[9999] focus:bg-white focus:text-[#D42B2B] focus:px-4 focus:py-2 focus:rounded-md focus:font-bold focus:text-sm focus:shadow-lg"
+        >
+          דלג לתוכן הראשי
+        </a>
         <div className="sr-only" aria-hidden="true">
           <Logo />
         </div>
         <Navigation />
         <DynamicHero />
-        <main className="min-h-screen pt-20 pb-20 lg:pb-0">
+        {/* id="main-content" is the skip-link target */}
+        <main id="main-content" className="min-h-screen pt-20 pb-20 lg:pb-0">
           {children}
         </main>
         <Footer />
