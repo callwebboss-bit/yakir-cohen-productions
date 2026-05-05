@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "מחירון שירותים אונליין — עריכת קול ותמונה | יקיר כהן הפקות",
   description:
     "מחירון מלא לכל שירותי האונליין: ניקוי רעשים, תיקון זיופים, מיקס, תיקון עוצמה, שיפור תמונות — שליחה מהבית, קבלה תוך 24 שעות.",
-  alternates: { canonical: "https://www.yakircohen.com/online/online-ai-pricing" },
+  alternates: { canonical: `${SITE_URL}/online/online-ai-pricing` },
   openGraph: {
     title: "מחירון שירותים אונליין | יקיר כהן הפקות",
     description: "ניקוי רעשים, מיקס, תיקון זיופים, שיפור תמונות — מ-29 ₪.",
-    url: "https://www.yakircohen.com/online/online-ai-pricing",
+    url: `${SITE_URL}/online/online-ai-pricing`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -25,12 +26,12 @@ const schema = {
   "name": "מחירון שירותים אונליין — יקיר כהן הפקות",
   "description": "כל שירותי העריכה אונליין עם מחיר, מה כלול וזמן ביצוע.",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "ניקוי רעשים", "url": "https://www.yakircohen.com/online/vocal-fix/ניקוי-רעשים" },
-    { "@type": "ListItem", "position": 2, "name": "תיקון זיופים", "url": "https://www.yakircohen.com/online/vocal-fix/pitch-correction" },
-    { "@type": "ListItem", "position": 3, "name": "מיקס ומאסטרינג", "url": "https://www.yakircohen.com/online/vocal-fix/mixing" },
-    { "@type": "ListItem", "position": 4, "name": "תיקון עוצמה", "url": "https://www.yakircohen.com/online/vocal-fix/volume-fix" },
-    { "@type": "ListItem", "position": 5, "name": "שחזור אודיו", "url": "https://www.yakircohen.com/online/vocal-fix/audio-repair" },
-    { "@type": "ListItem", "position": 6, "name": "שיפור תמונות", "url": "https://www.yakircohen.com/online/vocal-fix/photo-enhance" },
+    { "@type": "ListItem", "position": 1, "name": "ניקוי רעשים", "url": `${SITE_URL}/online/vocal-fix/ניקוי-רעשים` },
+    { "@type": "ListItem", "position": 2, "name": "תיקון זיופים", "url": `${SITE_URL}/online/vocal-fix/pitch-correction` },
+    { "@type": "ListItem", "position": 3, "name": "מיקס ומאסטרינג", "url": `${SITE_URL}/online/vocal-fix/mixing` },
+    { "@type": "ListItem", "position": 4, "name": "תיקון עוצמה", "url": `${SITE_URL}/online/vocal-fix/volume-fix` },
+    { "@type": "ListItem", "position": 5, "name": "שחזור אודיו", "url": `${SITE_URL}/online/vocal-fix/audio-repair` },
+    { "@type": "ListItem", "position": 6, "name": "שיפור תמונות", "url": `${SITE_URL}/online/vocal-fix/photo-enhance` },
   ],
 };
 

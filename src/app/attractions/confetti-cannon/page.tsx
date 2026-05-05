@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,11 +11,11 @@ export const metadata: Metadata = {
   title: "קונפטי לאירועים — תותחי קונפטי לחתונות ובר מצווה | יקיר כהן הפקות",
   description:
     "תותחי קונפטי לחתונות, בר/בת מצווה וימי הולדת — פיצוץ של שמחה בדיוק ברגע הנכון. צבעים לפי האירוע. חלק מחבילות האטרקציות מ-1,750 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/attractions/confetti-cannon" },
+  alternates: { canonical: `${SITE_URL}/attractions/confetti-cannon` },
   openGraph: {
     title: "קונפטי לאירועים | יקיר כהן הפקות",
     description: "תותחי קונפטי — פיצוץ שמחה בצבעים של האירוע שלכם. מ-1,750 ₪.",
-    url: "https://www.yakircohen.com/attractions/confetti-cannon",
+    url: `${SITE_URL}/attractions/confetti-cannon`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   title: "5 טיפים לפני שנכנסים לאולפן בפעם הראשונה | יקיר כהן הפקות",
   description:
     "מה לעשות יום לפני, מה להביא לאולפן, ואיך לקבל את התוצאה הטובה ביותר מסשן ההקלטה הראשון שלכם.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/Studio-Tips" },
+  alternates: { canonical: `${SITE_URL}/blog/Studio-Tips` },
   openGraph: {
     title: "5 טיפים לאולפן ההקלטות | יקיר כהן הפקות",
     description: "מה לעשות לפני, מה להביא, ואיך לקבל תוצאה מקסימלית.",
-    url: "https://www.yakircohen.com/blog/Studio-Tips",
+    url: `${SITE_URL}/blog/Studio-Tips`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
@@ -23,9 +24,9 @@ const schema = {
   "@type": "Article",
   "headline": "5 טיפים לפני שנכנסים לאולפן בפעם הראשונה",
   "author": { "@type": "Person", "name": "יקיר כהן" },
-  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": "https://www.yakircohen.com" },
+  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": `${SITE_URL}` },
   "datePublished": "2026-01-01",
-  "mainEntityOfPage": "https://www.yakircohen.com/blog/Studio-Tips",
+  "mainEntityOfPage": `${SITE_URL}/blog/Studio-Tips`,
 };
 
 const tips = [

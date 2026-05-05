@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   title: "5 טיפים לשיפור הקול שלכם — לפני ובמהלך ההקלטה | יקיר כהן הפקות",
   description:
     "טיפים מעשיים לשיפור ביצועי שירה: חימום, נשימה, מיקרופון טכניק, הדמעות, ועוד — ממה שטכנאים שמועים שוב ושוב.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/Music-Tips" },
+  alternates: { canonical: `${SITE_URL}/blog/Music-Tips` },
   openGraph: {
     title: "5 טיפים לשיפור הקול | יקיר כהן הפקות",
     description: "טיפים מעשיים לשירה טובה יותר — מהאולפן.",
-    url: "https://www.yakircohen.com/blog/Music-Tips",
+    url: `${SITE_URL}/blog/Music-Tips`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
@@ -23,9 +24,9 @@ const schema = {
   "@type": "Article",
   "headline": "5 טיפים לשיפור הקול שלכם — לפני ובמהלך ההקלטה",
   "author": { "@type": "Person", "name": "יקיר כהן" },
-  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": "https://www.yakircohen.com" },
+  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": `${SITE_URL}` },
   "datePublished": "2026-01-01",
-  "mainEntityOfPage": "https://www.yakircohen.com/blog/Music-Tips",
+  "mainEntityOfPage": `${SITE_URL}/blog/Music-Tips`,
 };
 
 const tips = [

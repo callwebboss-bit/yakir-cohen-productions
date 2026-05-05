@@ -1,6 +1,6 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
 import StructuredData from "@/components/StructuredData";
 import RelatedPages from "@/components/RelatedPages";
 import YouTube from "@/components/ui/YouTube";
@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   title: "הפקת שיר מקורי — מרעיון לשיר גמור | יקיר כהן הפקות",
   description:
     "הפקת שיר מקורי מקצועית — כתיבת מילים, לחן, הקלטה ומיקס. יוצאים עם שיר שנשמע כמו שיצא מאולפן על. מ-990 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/studio/recording-song-modiin/original-song" },
+  alternates: { canonical: `${SITE_URL}/studio/recording-song-modiin/original-song` },
   openGraph: {
     title: "הפקת שיר מקורי | יקיר כהן הפקות",
     description: "מרעיון לשיר גמור. כתיבה, הקלטה, מיקס. מ-990 ₪.",
-    url: "https://www.yakircohen.com/studio/recording-song-modiin/original-song",
+    url: `${SITE_URL}/studio/recording-song-modiin/original-song`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

@@ -1,18 +1,20 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Star } from "lucide-react";
 import StructuredData from "@/components/StructuredData";
 import RelatedPages from "@/components/RelatedPages";
+import GoogleReviewsEmbed from "@/components/embeds/GoogleReviewsEmbed";
 
 export const metadata: Metadata = {
-  title: "ביקורות ולקוחות מרוצים | יקיר כהן הפקות — מה אומרים עלינו",
+  title: "ביקורות ולקוחות | יקיר כהן הפקות",
   description:
-    "מעל 250 ביקורות חיוביות. לקוחות מחתונות, הקלטות, פודקאסטים ואירועים. קראו מה מספרים על יקיר כהן הפקות.",
-  alternates: { canonical: "https://www.yakircohen.com/about/reviews" },
+    "משובים וביקורות מלקוחות — חתונות, אולפן, פודקאסט ואירועים. קריאה לפני שמחליטים.",
+  alternates: { canonical: `${SITE_URL}/about/reviews` },
   openGraph: {
     title: "ביקורות | יקיר כהן הפקות",
-    description: "מעל 250 ביקורות. לקוחות מחתונות, הקלטות ואירועים.",
-    url: "https://www.yakircohen.com/about/reviews",
+    description: "משובים מלקוחות על אולפן, DJ, פודקאסט ואטרקציות.",
+    url: `${SITE_URL}/about/reviews`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -21,17 +23,10 @@ export const metadata: Metadata = {
 
 const aggregateSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "יקיר כהן הפקות",
-  "url": "https://www.yakircohen.com",
-  "telephone": "+972-58-7555456",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "250",
-    "bestRating": "5",
-    "worstRating": "1",
-  },
+  "@type": "WebPage",
+  name: "ביקורות | יקיר כהן הפקות",
+  url: `${SITE_URL}/about/reviews`,
+  isPartOf: { "@type": "WebSite", name: "יקיר כהן הפקות", url: SITE_URL },
 };
 
 const categories = [
@@ -127,6 +122,15 @@ export default function ReviewsPage() {
         </div>
         <p className="text-zinc-500">הקלטות, חתונות, פודקאסטים, אירועים — ביקורות מכל השירותים.</p>
       </header>
+
+      <section className="py-10 px-6 bg-white border-b border-zinc-100" aria-labelledby="google-reviews-widget-heading">
+        <div className="max-w-4xl mx-auto w-full">
+          <h2 id="google-reviews-widget-heading" className="sr-only">
+            ביקורות מגוגל
+          </h2>
+          <GoogleReviewsEmbed />
+        </div>
+      </section>
 
       {/* Category filter */}
       <div className="py-8 px-6 bg-white border-b border-zinc-100">

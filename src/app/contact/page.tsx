@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import React from "react";
 import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
 import TikTokIcon from "@/components/icons/TikTokIcon";
@@ -12,35 +13,35 @@ export const metadata: Metadata = {
   title: "צור קשר",
   description: "צרו קשר עם יקיר כהן הפקות לתיאום הקלטה, ייעוץ קולי או הרשמה לקורסים. זמינים עבורכם במודיעין.",
   alternates: {
-    canonical: "https://www.yakircohen.com/contact",
+    canonical: `${SITE_URL}/contact`,
   },
 };
 
 const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  "name": "צור קשר - יקיר כהן הפקות",
-  "description": "דף יצירת קשר לתיאום סשנים וייעוץ.",
-  "mainEntity": {
+  name: "צור קשר - יקיר כהן הפקות",
+  description: "דף יצירת קשר לתיאום סשנים וייעוץ.",
+  mainEntity: {
     "@type": "Organization",
-    "name": "יקיר כהן הפקות",
-    "telephone": "+972587555456",
-    "email": "office@yakircohen.com",
-    "address": {
+    name: "יקיר כהן הפקות",
+    telephone: "+972587555456",
+    email: "office@yakircohen.com",
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": "Modi'in",
-      "addressCountry": "IL"
-    }
-  }
+      addressLocality: "Modi'in",
+      addressCountry: "IL",
+    },
+  },
 };
 
 async function submitLead(formData: FormData) {
-  'use server';
+  "use server";
 
   const name = String(formData.get("name") ?? "").trim();
   const phone = String(formData.get("phone") ?? "").trim();
   const service = String(formData.get("service") ?? "פנייה כללית").trim();
-  const notes = String(formData.get("notes") ?? "").trim();
+  const notes = String(formData.get("message") ?? "").trim();
   const consent = formData.get("consent") === "on";
 
   if (!consent) {
@@ -64,7 +65,6 @@ export default function ContactPage() {
     <div className="flex flex-col py-24 px-6 max-w-7xl mx-auto" dir="rtl">
       <StructuredData data={contactSchema} />
 
-      {/* Dynamic Glassmorphism Hero */}
       <div className="relative mb-16 rounded-3xl overflow-hidden">
         <div className="absolute inset-0">
           <StudioRecordsSVG />
@@ -72,7 +72,7 @@ export default function ContactPage() {
         <div className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 backdrop-blur-md p-12 text-center">
           <h1 className="font-serif text-5xl font-bold mb-4 italic text-white">בואו נדבר.</h1>
           <p className="text-xl text-zinc-200 max-w-2xl mx-auto leading-relaxed">
-            אנחנו כאן לכל שאלה, רעיון או חלום מוזיקלי. בואו נפגש באולפן ונבנה משהו מדהים ביחד.
+            אנחנו כאן לכל שאלה, רעיון או חלום מוזיקלי. בואו נפגש באולפן ונבנה משהו מדויק יחד.
           </p>
         </div>
       </div>
@@ -96,6 +96,7 @@ export default function ContactPage() {
               </a>
             </div>
           </div>
+
           <div className="flex gap-6 items-start">
             <div className="w-12 h-12 bg-zinc-900 text-white rounded-full flex items-center justify-center shrink-0">
               <Mail size={24} />
@@ -105,6 +106,7 @@ export default function ContactPage() {
               <p className="text-zinc-600 text-lg">office@yakircohen.com</p>
             </div>
           </div>
+
           <div className="flex gap-6 items-start">
             <div className="w-12 h-12 bg-zinc-900 text-white rounded-full flex items-center justify-center shrink-0">
               <MapPin size={24} />
@@ -118,7 +120,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="inline-block mt-3 text-brand-red font-bold underline"
               >
-                פתח בגוגל מפס
+                פתחו בגוגל מפס
               </a>
             </div>
           </div>
@@ -168,6 +170,7 @@ export default function ContactPage() {
               />
             </div>
           </div>
+
           <div className="flex flex-col gap-2">
             <label htmlFor="service" className="text-sm font-bold uppercase tracking-widest text-zinc-400">מה השירות המבוקש?</label>
             <select
@@ -183,11 +186,12 @@ export default function ContactPage() {
               <option value="פנייה כללית">פנייה כללית</option>
             </select>
           </div>
+
           <div className="flex flex-col gap-2">
-            <label htmlFor="notes" className="text-sm font-bold uppercase tracking-widest text-zinc-400">הודעה</label>
+            <label htmlFor="message" className="text-sm font-bold uppercase tracking-widest text-zinc-400">הודעה</label>
             <textarea
-              id="notes"
-              name="notes"
+              id="message"
+              name="message"
               rows={4}
               className="bg-white border border-zinc-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-red/20 transition-all resize-none"
             />
@@ -195,13 +199,19 @@ export default function ContactPage() {
 
           <div className="flex items-start gap-3">
             <input id="consent" name="consent" type="checkbox" required className="mt-1 h-5 w-5 text-brand-red focus:ring-brand-red/20" />
-            <label htmlFor="consent" className="text-sm text-zinc-600">
-              אני מסכימ/ה שיקיר כהן הפקות ישתמש בפרטים האלה ליצירת קשר בנוגע לשירותים הרלוונטיים. ניתן לבקש מחיקה בתוך 7 ימים עסקיים.
-            </label>
+            <div className="text-sm text-zinc-600 space-y-2">
+              <label htmlFor="consent" className="block">
+                אני מסכימ/ה במפורש שיקיר כהן הפקות ישתמש בפרטים שהזנתי כדי ליצור איתי קשר בנוגע לפנייה הזאת.
+              </label>
+              <p className="text-xs leading-relaxed text-zinc-500">
+                הפרטים יישמרו למשך 12 חודשים במטרה לטפל בפנייה ובמעקב שירות. ניתן לבקש מחיקת המידע בכל עת במייל
+                {" "}office@yakircohen.com, ונטפל בבקשה בתוך 7 ימים עסקיים.
+              </p>
+            </div>
           </div>
 
           <button className="w-full bg-brand-red text-white py-5 rounded-xl font-bold hover:bg-red-700 transition-colors shadow-xl">
-            שלחו — נחזור בוואטסאפ
+            שלחו - נחזור בוואטסאפ
           </button>
         </form>
       </div>

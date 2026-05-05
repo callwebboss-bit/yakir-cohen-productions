@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   title: "ברכות מוקלטות מקצועיות — לכל אירוע | יקיר כהן הפקות",
   description:
     "הקלטת ברכות מקצועית לכל אירוע — בר מצווה, חתונה, בת מצווה, יום הולדת. מ-990 ₪ כולל הכל. קניון עזריאלי מודיעין.",
-  alternates: { canonical: "https://www.yakircohen.com/studio/blessings" },
+  alternates: { canonical: `${SITE_URL}/studio/blessings` },
   openGraph: {
     title: "ברכות מוקלטות מקצועיות | יקיר כהן הפקות",
     description: "לבר מצווה, חתונה, בת מצווה ועוד. מ-990 ₪.",
-    url: "https://www.yakircohen.com/studio/blessings",
+    url: `${SITE_URL}/studio/blessings`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -161,6 +162,7 @@ export default function BlessingsPage() {
         pages={[
           { label: "הקלטת שירים מקצועית", href: "/studio/recording-song-modiin", desc: "שיר לחתונה ושיר מקורי מ-990 ₪" },
           { label: "מחירון אולפן", href: "/studio/pricing", desc: "כל המחירים במקום אחד" },
+          { label: "אולפן נייד לברכות בבית", href: "/studio/mobile-studio/home-phone-blessings", desc: "ברכות והקלטות קוליות בבית הלקוח או בטלפון" },
           { label: "שובר מתנה", href: "/voucher", desc: "הקלטה כמתנה לכל אירוע" },
         ]}
       />

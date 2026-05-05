@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -9,11 +10,11 @@ export const metadata: Metadata = {
   title: "שירותים אונליין — עריכת קול ותמונה מהבית | יקיר כהן הפקות",
   description:
     "ניקוי רעשים, תיקון זיופים, מיקס, תיקון עוצמה, שחזור אודיו ושיפור תמונות — שולחים קובץ, מקבלים מוכן תוך 24 שעות. ללא פגישה.",
-  alternates: { canonical: "https://www.yakircohen.com/online" },
+  alternates: { canonical: `${SITE_URL}/online` },
   openGraph: {
     title: "שירותים אונליין | יקיר כהן הפקות",
     description: "עריכת קול ותמונה מהבית — שולחים, מקבלים. מ-29 ₪.",
-    url: "https://www.yakircohen.com/online",
+    url: `${SITE_URL}/online`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -230,6 +231,7 @@ export default function OnlinePage() {
       <RelatedPages
         title="שירותי האולפן"
         pages={[
+          { label: "StemSplit", href: "/stemsplit", desc: "פיצול ערוצים מהיר לשירים ומיקסים" },
           { label: "הקלטת שירים", href: "/studio/recording-song-modiin", desc: "מ-990 ₪ — האולפן שלנו" },
           { label: "מחירון אולפן", href: "/studio/pricing", desc: "כל שירותי ההקלטה" },
           { label: "קריינות לעסקים", href: "/business/professional-voiceover", desc: "מ-490 ₪ לסקריפט" },

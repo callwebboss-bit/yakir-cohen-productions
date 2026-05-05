@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "ציוד פודקאסט מקצועי — מה צריך? | יקיר כהן הפקות",
   description:
     "מה הציוד שצריך לפודקאסט מקצועי? Sphere L22, מיקרופונים, ממשקי הקלטה, מצלמות — מדריך ציוד פודקאסט + אפשרות הקלטה באולפן מודיעין.",
-  alternates: { canonical: "https://www.yakircohen.com/podcast/podcast-equipment" },
+  alternates: { canonical: `${SITE_URL}/podcast/podcast-equipment` },
   openGraph: {
     title: "ציוד פודקאסט מקצועי | יקיר כהן הפקות",
     description: "Sphere L22, מיקרופונים, ממשקים, מצלמות. מדריך ציוד + אולפן מודיעין.",
-    url: "https://www.yakircohen.com/podcast/podcast-equipment",
+    url: `${SITE_URL}/podcast/podcast-equipment`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -25,7 +26,7 @@ const schema = {
   "headline": "ציוד פודקאסט מקצועי — מה צריך באמת?",
   "description": "מדריך ציוד פודקאסט: מיקרופונים, ממשקים, מצלמות. Sphere L22 ועוד.",
   "author": { "@type": "Person", "name": "יקיר כהן" },
-  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": "https://www.yakircohen.com" },
+  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": `${SITE_URL}` },
 };
 
 const equipmentTiers = [

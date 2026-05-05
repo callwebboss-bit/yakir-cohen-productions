@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   title: "ברכה לבר מצווה — הקלטה מקצועית מהלב | יקיר כהן הפקות",
   description:
     "הקלטת ברכה לבר מצווה מקצועית — 990 ₪ כולל הכל. כתיבת נוסח, הקלטה, מיקס. מתנה שנשארת לנצח. מודיעין, נגיש מכל הארץ.",
-  alternates: { canonical: "https://www.yakircohen.com/studio/blessings/bar-mitzvah" },
+  alternates: { canonical: `${SITE_URL}/studio/blessings/bar-mitzvah` },
   openGraph: {
     title: "ברכה לבר מצווה — הקלטה מקצועית | יקיר כהן הפקות",
     description: "990 ₪ כולל הכל. ברכה שנשמעת כמו ברדיו, רגש שנשאר לנצח.",
-    url: "https://www.yakircohen.com/studio/blessings/bar-mitzvah",
+    url: `${SITE_URL}/studio/blessings/bar-mitzvah`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

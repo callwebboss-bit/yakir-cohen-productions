@@ -12,3 +12,9 @@ coverage/
 blobs/
 manifests/
 .vercel
+
+# TypeScript incremental build (local cache)
+*.tsbuildinfo
+
+*storybook.log
+storybook-static

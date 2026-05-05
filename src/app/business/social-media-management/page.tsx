@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BarChart3, Zap, Users, TrendingUp, CheckCircle2 } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "ניהול סושיאל מדיה — Facebook, Instagram, TikTok | יקיר כהן הפקות",
   description:
     "ניהול מקצועי של חשבונות הסושיאל מדיה שלכם. תוכן יומי, עיצוב גרפי, ניתוח ביצועים. מ-₪1,500/חודש.",
-  alternates: { canonical: "https://www.yakircohen.com/business/social-media-management" },
+  alternates: { canonical: `${SITE_URL}/business/social-media-management` },
   openGraph: {
     title: "ניהול סושיאל מדיה מקצועי | יקיר כהן הפקות",
     description: "Facebook, Instagram, TikTok, YouTube — ניהול מלא. תוכן, עיצוב, ניתוח.",
-    url: "https://www.yakircohen.com/business/social-media-management",
+    url: `${SITE_URL}/business/social-media-management`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -28,7 +29,7 @@ const schema = {
     "@type": "LocalBusiness",
     "name": "יקיר כהן הפקות",
     "telephone": "+972-58-7555456",
-    "url": "https://www.yakircohen.com",
+    "url": `${SITE_URL}`,
   },
   "offers": {
     "@type": "Offer",

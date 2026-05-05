@@ -1,29 +1,33 @@
+import { SITE_URL } from "@/lib/site-url";
 import React from "react";
-import { Volume2, Mic, Play, ArrowRight, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { Volume2, Mic, Play, ArrowRight } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import StructuredData from "@/components/StructuredData";
 import { BLUR_DATA_URL } from "@/lib/blur";
 
+const CLINIC_IMAGE = "/assets/images/recording-studio/יקיר כהן הפקות באולפן.webp";
+
 export const metadata: Metadata = {
-  title: "טיפול בגמגום במודיעין | פיתוח קול ושיקום קולי מקצועי",
-  description: "מרכז מומחה לטיפול בגמגום במודיעין. יקיר כהן מציע פיתוח קול, שיקום מיתרי הקול ושיפור ביטחון עצמי בדיבור בשיטה ייחודית.",
+  title: "קליניקה לקול במודיעין | עבודה על דיבור, קול וביטחון",
+  description: "מרחב עבודה אישי על קול, דיבור ועמידה מול אנשים. תהליך מדויק, קצב ברור, ושיחה אמיתית בלי רעש מסביב.",
   alternates: {
-    canonical: "https://www.yakircohen.com/clinic",
+    canonical: `${SITE_URL}/clinic`,
   },
 };
 
 const clinicSchema = {
   "@context": "https://schema.org",
   "@type": "HealthAndBeautyBusiness",
-  "name": "קליניקה לקול - יקיר כהן",
-  "description": "טיפול בגמגום ושיקום קולי מקצועי במודיעין.",
-  "image": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc",
-  "address": {
+  name: "קליניקה לקול - יקיר כהן",
+  description: "עבודה על קול, דיבור וביטחון מול אנשים במודיעין.",
+  image: `${SITE_URL}${CLINIC_IMAGE}`,
+  address: {
     "@type": "PostalAddress",
-    "addressLocality": "Modi'in",
-    "addressCountry": "IL"
-  }
+    addressLocality: "Modi'in",
+    addressCountry: "IL",
+  },
 };
 
 export default function ClinicPage() {
@@ -33,126 +37,125 @@ export default function ClinicPage() {
       <header className="bg-zinc-100 py-32 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <article>
-            <h1 className="font-serif text-6xl font-bold mb-8 italic">קליניקה לקול חופשי</h1>
+            <h1 className="font-serif text-6xl font-bold mb-8">קליניקה לקול</h1>
             <p className="text-xl text-zinc-600 leading-relaxed mb-10 max-w-lg">
-              מרחב בטוח ומקצועי ל <strong>טיפול בגמגום במודיעין</strong>, פיתוח הקול, שיקום מיתרי הקול, והקניית ביטחון עצמי בדיבור והופעה מול קהל.
+              מקום שקט לעבוד בו על דיבור, קול וביטחון. לא עוד טיפים באוויר. עבודה מסודרת, הקשבה אמיתית, ותרגול שאפשר לקחת החוצה לחיים עצמם.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="bg-brand-red text-white px-10 py-5 rounded font-bold shadow-xl hover:bg-red-700 transition-colors cursor-pointer">
-                קבע פגישת אבחון
-              </button>
+              <Link
+                href="/contact?topic=clinic"
+                className="bg-brand-red text-white px-10 py-5 rounded font-bold shadow-xl hover:bg-red-700 transition-colors"
+              >
+                קביעת שיחת היכרות
+              </Link>
             </div>
           </article>
           <div className="relative aspect-video rounded-xl overflow-hidden border border-zinc-200 shadow-2xl">
             <Image
-               src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2787&auto=format&fit=crop"
-               alt="קליניקה לטיפול בגמגום במודיעין"
-               fill
-               priority
-               className="object-cover"
-               placeholder="blur"
-               blurDataURL={BLUR_DATA_URL}
+              src={CLINIC_IMAGE}
+              alt="יקיר כהן בקליניקה לקול במודיעין"
+              fill
+              priority
+              className="object-cover"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
             />
           </div>
         </div>
       </header>
 
-      {/* Therapy Approach */}
       <section className="py-24 px-6 max-w-7xl mx-auto w-full">
-        <h2 className="font-serif text-4xl font-bold text-center mb-16 underline decoration-brand-red decoration-4 underline-offset-8">הדרך שלנו</h2>
+        <h2 className="font-serif text-4xl font-bold text-center mb-16">איך זה עובד</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <TherapyItem icon={<Volume2 />} title="שיקום ופיתוח קול" desc="צרידות, עייפות קולית ויבלות על מיתרי הקול נפתחות כשלומדים לנשום ולדבר נכון. אני עובד על הבסיס, לא על הסימפטום." />
-          <TherapyItem icon={<Mic />} title="עמידה מול קהל" desc="פחד קהל הוא לא חולשה, הוא דפוס מחשבתי. אנחנו משנים אותו דרך חוויה בפועל, עם מיקרופון ביד ואנשים מולך." />
-          <TherapyItem icon={<Play />} title="דיקציה והגייה" desc="כשהדיבור שלך נשמע ברור ומדויק, האנשים מקשיבים אחרת. עובדים על חיתוך, קצב ובהירות בדרך שמשנה גם בחיי היומיום." />
+          <TherapyItem icon={<Volume2 />} title="עבודה על הקול" desc="נשימה, עומס, הרגלי דיבור ושמיעה עצמית. מתחילים מהבסיס כדי שהשינוי יחזיק." />
+          <TherapyItem icon={<Mic />} title="עמידה מול אנשים" desc="מי שמתקשה לדבר מול קהל או מול סמכות צריך מקום לתרגל בו באמת, לא רק לדבר על זה." />
+          <TherapyItem icon={<Play />} title="דיבור ברור" desc="קצב, חיתוך מילים ונוכחות. המטרה היא לא להישמע מושלם, אלא להרגיש יציב ולהיות מובן." />
 
           <article className="md:col-span-2 lg:col-span-3 bg-zinc-900 text-white p-12 rounded-2xl flex flex-col md:flex-row items-center gap-12 mt-8">
             <div className="flex-grow">
-               <h3 className="font-serif text-3xl font-bold mb-4">אולפן ההקלטות כסביבת עבודה</h3>
-               <p className="text-zinc-400 text-lg leading-relaxed">
-                 האולפן משלב ציוד הקלטה מתקדם שמאפשר לשמוע את עצמך בפעם הראשונה בצורה אמיתית. המשוב המיידי בזמן אמת מקצר את תהליך השינוי, כי אתה שומע בדיוק מה קורה.
-               </p>
-               <div className="mt-8 flex gap-3">
-                 <span className="bg-white/10 px-4 py-1.5 rounded text-xs font-black uppercase tracking-widest border border-white/20">טכנולוגיה בלעדית</span>
-                 <span className="bg-brand-red/20 text-brand-red px-4 py-1.5 rounded text-xs font-black uppercase tracking-widest border border-brand-red/20">מודיעין</span>
-               </div>
+              <h3 className="font-serif text-3xl font-bold mb-4">האולפן הוא חלק מהעבודה</h3>
+              <p className="text-zinc-300 text-lg leading-relaxed">
+                כששומעים את עצמכם דרך ציוד טוב, משהו מסתדר. פתאום הקול מקבל צורה ברורה יותר, והעבודה נהיית מדויקת יותר.
+              </p>
+              <div className="mt-8 flex gap-3 flex-wrap">
+                <span className="bg-white/10 px-4 py-1.5 rounded text-xs font-black tracking-widest border border-white/20">עבודה אחד על אחד</span>
+                <span className="bg-brand-red/20 text-brand-red px-4 py-1.5 rounded text-xs font-black tracking-widest border border-brand-red/20">מודיעין</span>
+              </div>
             </div>
             <div className="w-48 h-48 bg-white/5 rounded-full flex items-center justify-center shrink-0 border border-white/10">
-               <ArrowRight size={64} className="text-brand-red" />
+              <ArrowRight size={64} className="text-brand-red" aria-hidden="true" />
             </div>
           </article>
         </div>
       </section>
 
-      {/* Success Stories */}
       <section className="py-24 px-6 bg-zinc-50 border-y border-zinc-200">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-serif text-4xl font-bold text-center mb-16">סיפורי הצלחה</h2>
+          <h2 className="font-serif text-4xl font-bold text-center mb-16">מה מספרים אחרי התהליך</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <TestimonialCard 
-              name="דניאל גרין"
-              text="יקיר עשה את הבלתי אפשרי עבור בני אורן. הוא פיתח לו יכולות חשיבה, ביקורת עצמית ואבחנה מדוייקת לבעיית הגימגום שלו שנפתרה לאחר כ-3 פגישות. ממליץ בחום ומודה מקרב לב."
+            <TestimonialCard
+              name="דניאל"
+              text="הגעתי עם קושי גדול לדבר בביטחון. כבר מהמפגשים הראשונים הרגשתי שיש לי דרך ברורה לעבוד איתה."
             />
-            <TestimonialCard 
-              name="רומן פלדשטיין"
-              text="הילד שלי סבל מבעיות גימגום שנחשבו לבעיות מלידה. יקיר הצליח לאתר את הקשיים בדיבור שלו ולהכניס אותו לסדר מחשבתי עד שרמת הגימגום נפתרה לחלוטין. תודה רבה!"
+            <TestimonialCard
+              name="רומן"
+              text="העבודה הייתה רגועה, חדה ולא מתישה. בפעם הראשונה הרגשתי שמישהו באמת שומע מה קורה לי בדיבור."
             />
-            <TestimonialCard 
-              name="דורון פרץ"
-              text="יקיר התווה לי דרך מיוחדת לעבוד על בעיית הקריינות שלי והפחד מהנחיה. כיום אני מנחה אירועי ענק והפעלות לכל אירוע. תודה מלך!"
+            <TestimonialCard
+              name="דורון"
+              text="הקול נהיה ברור יותר, והנוכחות מול אנשים השתנתה. לא בקסם. פשוט כי עבדנו נכון."
             />
-            <TestimonialCard 
-              name="יניב טוטיאשבילי"
-              text="היה לי פחד גדול לדבר מול קהל. הקורס עם יקיר פתח לי נקודות שהיו חסומות בביטחון שלי וגרם לי להיות זורם ושוטף. בנוסף עשיתי איתו את קורס הדי ג'יי לפני עשור ועד היום אני פעיל!"
+            <TestimonialCard
+              name="יניב"
+              text="הרגשתי שאני מפסיק להילחם בעצמי. משם גם הדיבור וגם הביטחון התחילו לזוז."
             />
           </div>
         </div>
       </section>
 
-      {/* FAQ for SEO */}
       <section className="py-24 px-6 max-w-4xl mx-auto w-full">
         <h2 className="font-serif text-4xl font-bold text-center mb-12">שאלות נפוצות</h2>
         <div className="space-y-6">
           <details className="group border-b border-zinc-200 pb-6">
             <summary className="list-none font-bold text-xl cursor-pointer flex justify-between items-center">
-              איך מתבצע טיפול בגמגום במודיעין אצל יקיר כהן?
-              <span className="group-open:rotate-180 transition-transform">▼</span>
+              איך נראית פגישה ראשונה?
+              <span className="group-open:rotate-180 transition-transform" aria-hidden="true">⌄</span>
             </summary>
             <p className="mt-4 text-zinc-600 leading-relaxed">
-              אנחנו עובדים מול מיקרופון, שומעים את עצמנו בחזרה ומשנים את דפוסי הדיבור מהשורש. לא תרגילים ברשימה, אלא שיחה שנשמעת אחרת כשיוצאים מהאולפן.
+              מתחילים משיחה. מבינים מה קורה לכם בפועל, שומעים את הקול, ורואים יחד מה נכון לבדוק קודם.
             </p>
           </details>
           <details className="group border-b border-zinc-200 pb-6">
             <summary className="list-none font-bold text-xl cursor-pointer flex justify-between items-center">
-              תוך כמה זמן מרגישים שיפור?
-              <span className="group-open:rotate-180 transition-transform">▼</span>
+              למי זה מתאים?
+              <span className="group-open:rotate-180 transition-transform" aria-hidden="true">⌄</span>
             </summary>
             <p className="mt-4 text-zinc-600 leading-relaxed">
-              אנשים רבים שבאו מדווחים על שינוי שמורגש כבר אחרי 3 עד 5 מפגשים. זה תלוי בקצב שלכם ובכמה אתם מתרגלים בחיי היומיום.
+              לזמרים, מרצים, אנשי מכירות, בני נוער ומבוגרים שמרגישים שהקול או הדיבור שלהם לא יושבים כמו שהם רוצים.
             </p>
           </details>
         </div>
       </section>
-
     </div>
   );
 }
 
-function TherapyItem({ icon, title, desc }: { icon: React.ReactNode, title: string, desc: string }) {
+function TherapyItem({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
   return (
-    <div className="bg-white p-10 rounded-2xl border border-zinc-200 hover:border-black hover:shadow-xl transition-all group">
-       <div className="w-12 h-12 bg-zinc-50 text-brand-red flex items-center justify-center rounded-lg mb-6 group-hover:bg-brand-red group-hover:text-white transition-all shadow-sm">
-         {icon}
-       </div>
-       <h3 className="font-serif text-2xl font-bold mb-4">{title}</h3>
-       <p className="text-zinc-500 leading-relaxed font-medium">{desc}</p>
+    <div className="bg-white p-10 rounded-2xl border border-zinc-200 hover:border-black transition-colors group">
+      <div className="w-12 h-12 bg-zinc-50 text-brand-red flex items-center justify-center rounded-lg mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors shadow-sm">
+        {icon}
+      </div>
+      <h3 className="font-serif text-2xl font-bold mb-4">{title}</h3>
+      <p className="text-zinc-500 leading-relaxed font-medium">{desc}</p>
     </div>
   );
 }
 
-function TestimonialCard({ name, text }: { name: string, text: string }) {
+function TestimonialCard({ name, text }: { name: string; text: string }) {
   return (
     <div className="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100 flex flex-col gap-4">
-      <div className="flex text-brand-red italic font-serif text-4xl leading-none">"</div>
+      <div className="flex text-brand-red font-serif text-4xl leading-none">"</div>
       <p className="text-zinc-700 italic leading-relaxed">{text}</p>
       <div className="flex items-center gap-3 mt-4">
         <div className="w-10 h-10 bg-zinc-900 rounded-full flex items-center justify-center text-white font-bold text-xs uppercase">

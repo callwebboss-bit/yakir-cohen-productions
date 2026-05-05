@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   title: "בלוג | יקיר כהן הפקות — מוזיקה, הפקה ואירועים",
   description:
     "מדריכים, טיפים ותוכן מקצועי על הקלטת שירים, הפקת פודקאסט, DJ לאירועים ואטרקציות. מבית יקיר כהן הפקות.",
-  alternates: { canonical: "https://www.yakircohen.com/blog" },
+  alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
     title: "הבלוג של יקיר כהן הפקות",
     description: "מדריכים מקצועיים על מוזיקה, הפקה ואירועים.",
-    url: "https://www.yakircohen.com/blog",
+    url: `${SITE_URL}/blog`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -22,12 +23,12 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Blog",
   "name": "הבלוג של יקיר כהן הפקות",
-  "url": "https://www.yakircohen.com/blog",
+  "url": `${SITE_URL}/blog`,
   "description": "מדריכים, טיפים ותוכן מקצועי על מוזיקה, הפקה ואירועים.",
   "publisher": {
     "@type": "Organization",
     "name": "יקיר כהן הפקות",
-    "url": "https://www.yakircohen.com",
+    "url": `${SITE_URL}`,
   },
 };
 
@@ -179,7 +180,7 @@ export default function BlogPage() {
                   href={`/blog/${slug}`}
                   className="text-sm font-bold text-[#D42B2B] group-hover:underline text-right mt-auto"
                 >
-                  קראו עוד ←
+                  {`קראו על ${title} ←`}
                 </Link>
               </div>
             </article>

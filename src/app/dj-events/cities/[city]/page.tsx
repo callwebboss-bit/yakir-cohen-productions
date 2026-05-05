@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -97,12 +98,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `DJ לאירועים ב${data.nameHebrew} | יקיר כהן הפקות`,
     description: data.description,
     alternates: {
-      canonical: `https://www.yakircohen.com/dj-events/cities/${city}`,
+      canonical: `${SITE_URL}/dj-events/cities/${city}`,
     },
     openGraph: {
       title: `DJ ב${data.nameHebrew} | יקיר כהן הפקות`,
       description: data.description,
-      url: `https://www.yakircohen.com/dj-events/cities/${city}`,
+      url: `${SITE_URL}/dj-events/cities/${city}`,
       siteName: "יקיר כהן הפקות",
       locale: "he_IL",
       type: "website",
@@ -134,7 +135,7 @@ export default async function CityDJPage({ params }: Props) {
       "@type": "City",
       name: data.nameHebrew,
     },
-    url: `https://www.yakircohen.com/dj-events/cities/${city}`,
+    url: `${SITE_URL}/dj-events/cities/${city}`,
     offers: {
       "@type": "Offer",
       price: data.price,
@@ -315,8 +316,8 @@ export default async function CityDJPage({ params }: Props) {
       <RelatedPages
         title="קישורים שימושיים"
         pages={[
-          { label: "חתונות", href: "/weddings", desc: "DJ לחתונה — מ-12,650 ₪" },
-          { label: "בר/בת מצווה", href: "/about/bar-mitzvah", desc: "DJ לבר מצווה — מ-7,500 ₪" },
+          { label: "חתונות", href: "/events/dj-events", desc: "DJ לחתונה — מ-12,650 ₪" },
+          { label: "בר/בת מצווה", href: "/blog/bar-bat-mitzvah", desc: "מדריך מוזיקה, ברכות ואטרקציות" },
           { label: "עוד ערים", href: "/dj-events/cities", desc: "DJ בכל אזור המרכז" },
           { label: "צור קשר", href: "/contact", desc: "בדקו זמינות לתאריך שלכם" },
         ]}

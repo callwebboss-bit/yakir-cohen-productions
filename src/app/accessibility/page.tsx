@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import React from "react";
 import { Metadata } from "next";
 import StructuredData from "@/components/StructuredData";
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
   title: "הצהרת נגישות",
   description: "הצהרת נגישות של יקיר כהן הפקות - WCAG 2.1 AA, תמיכה במקלדת, נגישות פיזית במודיעין וירושלים.",
   alternates: {
-    canonical: "https://www.yakircohen.com/accessibility",
+    canonical: `${SITE_URL}/accessibility`,
   },
 };
 

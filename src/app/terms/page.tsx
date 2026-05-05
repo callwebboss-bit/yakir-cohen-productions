@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import React from "react";
 import { Metadata } from "next";
 import StructuredData from "@/components/StructuredData";
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
   title: "תנאי השירות",
   description: "תנאי השירות של יקיר כהן הפקות - ביטול אירועים, נגישות, והגבלות אחריות.",
   alternates: {
-    canonical: "https://www.yakircohen.com/terms",
+    canonical: `${SITE_URL}/terms`,
   },
 };
 

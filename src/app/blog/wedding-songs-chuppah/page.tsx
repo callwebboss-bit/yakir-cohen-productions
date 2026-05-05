@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "שירים לכניסה לחופה — המדריך המלא 2026 | יקיר כהן הפקות",
   description:
     "איך בוחרים שיר לכניסה לחופה? שיר ידוע מול שיר מקורי, ריקוד סלואו, כניסת חתן וכלה — כל מה שצריך לדעת. כולל אפשרות הקלטה מקצועית במודיעין.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/wedding-songs-chuppah" },
+  alternates: { canonical: `${SITE_URL}/blog/wedding-songs-chuppah` },
   openGraph: {
     title: "שירים לכניסה לחופה — המדריך המלא 2026",
     description: "איך בוחרים שיר לחופה? מדריך מקיף עם טיפים מקצועיים.",
-    url: "https://www.yakircohen.com/blog/wedding-songs-chuppah",
+    url: `${SITE_URL}/blog/wedding-songs-chuppah`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
@@ -25,10 +26,10 @@ const articleSchema = {
   "headline": "שירים לכניסה לחופה — המדריך המלא 2026",
   "description": "כל מה שצריך לדעת על בחירת שיר לכניסה לחופה, ריקוד סלואו ושירים מקוריים.",
   "author": { "@type": "Person", "name": "יקיר כהן" },
-  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": "https://www.yakircohen.com" },
+  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": `${SITE_URL}` },
   "datePublished": "2026-01-01",
   "dateModified": "2026-04-01",
-  "mainEntityOfPage": "https://www.yakircohen.com/blog/wedding-songs-chuppah",
+  "mainEntityOfPage": `${SITE_URL}/blog/wedding-songs-chuppah`,
 };
 
 const faqSchema = {

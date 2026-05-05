@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -8,17 +9,17 @@ export const metadata: Metadata = {
   title: "DJ עם AI: הטכנולוגיה שמשנה את הסאונד של אירועים | יקיר כהן הפקות",
   description:
     "איך AI הפך את עבודת ה-DJ — זיהוי קצבים, מיקס חכם בזמן אמת, והתאמה אוטומטית לקהל. מה זה אומר לחתונות ובר מצוות בישראל.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/ai-dj-music" },
+  alternates: { canonical: `${SITE_URL}/blog/ai-dj-music` },
   openGraph: {
     title: "DJ עם AI: הטכנולוגיה שמשנה את הסאונד של אירועים",
     description: "איך AI שינה את מה שאפשרי מאחורי דוכן ה-DJ — ומה זה אומר לאירוע שלכם.",
-    url: "https://www.yakircohen.com/blog/ai-dj-music",
+    url: `${SITE_URL}/blog/ai-dj-music`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
     images: [
       {
-        url: "https://www.yakircohen.com/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp",
+        url: `${SITE_URL}/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp`,
         width: 1200,
         height: 630,
         alt: "DJ עם AI — יקיר כהן הפקות",
@@ -32,9 +33,9 @@ const schema = {
   "@type": "Article",
   headline: "DJ עם AI: הטכנולוגיה שמשנה את הסאונד של אירועים",
   author: { "@type": "Person", name: "יקיר כהן" },
-  publisher: { "@type": "Organization", name: "יקיר כהן הפקות", url: "https://www.yakircohen.com" },
+  publisher: { "@type": "Organization", name: "יקיר כהן הפקות", url: `${SITE_URL}` },
   datePublished: "2026-05-01",
-  mainEntityOfPage: "https://www.yakircohen.com/blog/ai-dj-music",
+  mainEntityOfPage: `${SITE_URL}/blog/ai-dj-music`,
   keywords: "DJ AI, בינה מלאכותית מוזיקה, DJ לחתונה, DJ בר מצווה, יקיר כהן מודיעין",
 };
 

@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, Music } from "lucide-react";
@@ -7,11 +8,11 @@ import RelatedPages from "@/components/RelatedPages";
 export const metadata: Metadata = {
   title: "DJ לאירועים בכל העיר | יקיר כהן",
   description: "חפשו DJ לאירועים שלכם בכל עיר בישראל. שירות מקצועי ובערך משתלם.",
-  alternates: { canonical: "https://www.yakircohen.com/dj-events/cities" },
+  alternates: { canonical: `${SITE_URL}/dj-events/cities` },
   openGraph: {
     title: "DJ לאירועים בכל העיר | יקיר כהן",
     description: "שירות DJ מקצועי בכל עיר בישראל",
-    url: "https://www.yakircohen.com/dj-events/cities",
+    url: `${SITE_URL}/dj-events/cities`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -34,7 +35,7 @@ const schema = {
   "name": "DJ לאירועים | יקיר כהן הפקות",
   "description": "שירות DJ מקצועי לחתונות, בר/בת מצווה ואירועים בכל עיר בישראל",
   "telephone": "+972-58-7555456",
-  "url": "https://www.yakircohen.com/dj-events/cities",
+  "url": `${SITE_URL}/dj-events/cities`,
   "areaServed": "IL",
 };
 
@@ -145,8 +146,8 @@ export default function DJCitiesPage() {
       <RelatedPages
         title="קישורים שימושיים"
         pages={[
-          { label: "חתונות", href: "/weddings", desc: "DJ לחתונה — מ-12,650 ₪" },
-          { label: "בר/בת מצווה", href: "/about/bar-mitzvah", desc: "DJ לבר מצווה — מ-7,500 ₪" },
+          { label: "חתונות", href: "/events/dj-events", desc: "DJ לחתונה — מ-12,650 ₪" },
+          { label: "בר/בת מצווה", href: "/blog/bar-bat-mitzvah", desc: "מדריך מוזיקה, ברכות ואטרקציות" },
           { label: "כל השירותים", href: "/", desc: "יקיר כהן הפקות — דף הבית" },
         ]}
       />

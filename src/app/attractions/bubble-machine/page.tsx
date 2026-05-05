@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,12 +11,12 @@ export const metadata: Metadata = {
   title: "בועות סבון עשן לסלואו חתונה מודיעין 2026 | השכרת מכונת בועות לאירועים",
   description:
     "השכרת מכונת בועות סבון לאירועים ב-2026: סלואו חתונה, בר/בת מצווה ותאורה LED. שליטה אלחוטית, נוזלים היפואלרגניים, ניקוי מהיר וניסיון של 20 שנה.",
-  alternates: { canonical: "https://www.yakircohen.com/attractions/bubble-machine" },
+  alternates: { canonical: `${SITE_URL}/attractions/bubble-machine` },
   openGraph: {
     title: "בועות סבון עשן לחתונה במודיעין | יקיר כהן הפקות",
     description:
       "מכונת בועות LED לאירועים עם נוזל היפואלרגני, שליטה אלחוטית ותיאום מלא עם ה-DJ. מתאים לכל רגע מיוחד.",
-    url: "https://www.yakircohen.com/attractions/bubble-machine",
+    url: `${SITE_URL}/attractions/bubble-machine`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

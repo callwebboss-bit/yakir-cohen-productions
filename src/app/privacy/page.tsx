@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import React from "react";
 import { Metadata } from "next";
 import StructuredData from "@/components/StructuredData";
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
   title: "מדיניות פרטיות",
   description: "מדיניות פרטיות של יקיר כהן הפקות - איסוף מידע, שימוש בנתונים, וספקי שירות חיצוניים.",
   alternates: {
-    canonical: "https://www.yakircohen.com/privacy",
+    canonical: `${SITE_URL}/privacy`,
   },
 };
 

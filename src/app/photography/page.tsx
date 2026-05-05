@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from 'next';
 import StructuredData from '@/components/StructuredData';
 import PhotographyCalculator from '@/features/photography/PhotographyCalculator';
@@ -8,12 +9,12 @@ export const metadata: Metadata = {
   description:
     'סטודיו לומייר — צילום בוטיק באירועים. תעריף שקוף: 980 ₪ לשעת צלם. שלושה מסלולים: המהות, הסיפור המלא, המורשת. AI Glow — ריטוש מאסטר וקליפ AI.',
   alternates: {
-    canonical: 'https://www.yakircohen.com/photography',
+    canonical: `${SITE_URL}/photography`,
   },
   openGraph: {
     title: 'צילום בוטיק | יקיר כהן הפקות',
     description: 'צרו את הסיפור המושלם שלכם. תעריף אחיד ושקוף: 980 ₪ לשעת צלם.',
-    url: 'https://www.yakircohen.com/photography',
+    url: `${SITE_URL}/photography`,
   },
 };
 

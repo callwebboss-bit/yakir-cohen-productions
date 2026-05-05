@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, MapPin, Clock, Wifi } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "אולפן פודקאסט מקצועי במודיעין | יקיר כהן הפקות — ציוד Sphere L22",
   description:
     "אולפן פודקאסט מקצועי במודיעין — ציוד Sphere L22, וידאו מולטי-קאם, עריכה מלאה. מ-950 ₪ לפרק. נגיש מתל אביב וירושלים.",
-  alternates: { canonical: "https://www.yakircohen.com/podcast/podcast-studio" },
+  alternates: { canonical: `${SITE_URL}/podcast/podcast-studio` },
   openGraph: {
     title: "אולפן פודקאסט במודיעין | יקיר כהן הפקות",
     description: "ציוד Sphere L22, וידאו מולטי-קאם, עריכה מלאה. מ-950 ₪.",
-    url: "https://www.yakircohen.com/podcast/podcast-studio",
+    url: `${SITE_URL}/podcast/podcast-studio`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

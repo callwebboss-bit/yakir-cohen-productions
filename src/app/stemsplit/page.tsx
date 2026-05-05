@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import StructuredData from "@/components/StructuredData";
 import StemSplitLoader from "./StemSplitLoader";
@@ -18,11 +19,11 @@ export const metadata: Metadata = {
     "פלייבק לשיר",
     "AI music separation",
   ],
-  alternates: { canonical: "https://www.yakircohen.com/stemsplit" },
+  alternates: { canonical: `${SITE_URL}/stemsplit` },
   openGraph: {
     title: "StemSplit AI - הפרדת ווקאל וכלים | יקיר כהן הפקות",
     description: "הפרידו כל שיר לווקאל ופלייבק מלא — בינה מלאכותית. כלי מקצועי לאולפנים ויוצרי מוזיקה.",
-    url: "https://www.yakircohen.com/stemsplit",
+    url: `${SITE_URL}/stemsplit`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -37,11 +38,11 @@ const softwareSchema = {
   applicationCategory: "MultimediaApplication",
   operatingSystem: "Web",
   description: "כלי AI להפרדת ווקאל ופלייבק משירים. מאפשר ליוצרים ואולפנים לקבל ווקאל נקי ופלייבק מלא מכל קובץ אודיו.",
-  url: "https://www.yakircohen.com/stemsplit",
+  url: `${SITE_URL}/stemsplit`,
   provider: {
     "@type": "LocalBusiness",
     name: "יקיר כהן הפקות",
-    url: "https://www.yakircohen.com",
+    url: `${SITE_URL}`,
     telephone: "+972-58-7555456",
     address: {
       "@type": "PostalAddress",

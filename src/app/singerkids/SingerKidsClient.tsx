@@ -1,5 +1,6 @@
 "use client";
 
+import { SITE_URL } from "@/lib/site-url";
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import StructuredData from "@/components/StructuredData";
@@ -9,7 +10,7 @@ const singerkidsSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "הזמנה לשיר לילדים",
-  "url": "https://www.yakircohen.com/singerkids",
+  "url": `${SITE_URL}/singerkids`,
   "description": "טופס הזמנה לשיר לילדים ואירועים. שירות מקצועי במודיעין עם ייעוץ אישי.",
 };
 

@@ -1,5 +1,10 @@
 import { defineConfig } from "@checkly/cli";
 
+const SITE_URL =
+  process.env.PRODUCTION_URL ??
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "https://TEMPORARY_DEPLOYMENT_HOST";
+
 /**
  * Checkly monitoring configuration.
  *
@@ -36,7 +41,7 @@ export default defineConfig({
     environmentVariables: [
       {
         key:    "PRODUCTION_URL",
-        value:  "https://www.yakircohen.com",
+        value:  SITE_URL,
         locked: false,
       },
     ],

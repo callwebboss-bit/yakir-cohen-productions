@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "מחירון אולפן הקלטות — שקיפות מלאה | יקיר כהן הפקות",
   description:
     "מחירון שקוף לכל שירותי האולפן: הקלטת שיר מ-990 ₪, פודקאסט מ-950 ₪, DJ לחתונה מ-12,650 ₪. ללא הפתעות. כל המחירים במקום אחד.",
-  alternates: { canonical: "https://www.yakircohen.com/studio/pricing" },
+  alternates: { canonical: `${SITE_URL}/studio/pricing` },
   openGraph: {
     title: "מחירון אולפן | יקיר כהן הפקות",
     description: "הקלטת שיר מ-990 ₪, פודקאסט מ-950 ₪, DJ מ-7,500 ₪. שקיפות מלאה.",
-    url: "https://www.yakircohen.com/studio/pricing",
+    url: `${SITE_URL}/studio/pricing`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -23,12 +24,12 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "מחירון שירותי יקיר כהן הפקות",
-  "url": "https://www.yakircohen.com/studio/pricing",
+  "url": `${SITE_URL}/studio/pricing`,
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "הקלטת שיר", "url": "https://www.yakircohen.com/studio/recording-song-modiin" },
-    { "@type": "ListItem", "position": 2, "name": "הפקת פודקאסט", "url": "https://www.yakircohen.com/podcast/podcast-production" },
-    { "@type": "ListItem", "position": 3, "name": "DJ לאירועים", "url": "https://www.yakircohen.com/events/dj-events" },
-    { "@type": "ListItem", "position": 4, "name": "אטרקציות לאירועים", "url": "https://www.yakircohen.com/attractions" },
+    { "@type": "ListItem", "position": 1, "name": "הקלטת שיר", "url": `${SITE_URL}/studio/recording-song-modiin` },
+    { "@type": "ListItem", "position": 2, "name": "הפקת פודקאסט", "url": `${SITE_URL}/podcast/podcast-production` },
+    { "@type": "ListItem", "position": 3, "name": "DJ לאירועים", "url": `${SITE_URL}/events/dj-events` },
+    { "@type": "ListItem", "position": 4, "name": "אטרקציות לאירועים", "url": `${SITE_URL}/attractions` },
   ],
 };
 

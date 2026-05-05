@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Upload, Zap, Download } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "ניקוי רעשים מקצועי — שולחים קובץ, מקבלים שקט | יקיר כהן הפקות",
   description:
     "ניקוי רעשים מקצועי: מסירים רעש מזגן, הד חדר, ונשימות לא רצויות. שולחים קובץ, מקבלים קובץ נקי תוך 24 שעות. מ-79 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/online/vocal-fix/ניקוי-רעשים" },
+  alternates: { canonical: `${SITE_URL}/online/vocal-fix/ניקוי-רעשים` },
   openGraph: {
     title: "ניקוי רעשים מקצועי | יקיר כהן הפקות",
     description: "מסירים רעש מזגן, הד, נשימות. מ-79 ₪ תוך 24 שעות.",
-    url: "https://www.yakircohen.com/online/vocal-fix/ניקוי-רעשים",
+    url: `${SITE_URL}/online/vocal-fix/ניקוי-רעשים`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -28,7 +29,7 @@ const schema = {
     "@type": "LocalBusiness",
     "name": "יקיר כהן הפקות",
     "telephone": "+972-58-7555456",
-    "url": "https://www.yakircohen.com",
+    "url": `${SITE_URL}`,
   },
   "offers": { "@type": "Offer", "price": "79", "priceCurrency": "ILS", "description": "ניקוי רעשים בסיסי לקובץ אחד" },
 };

@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -8,17 +9,17 @@ export const metadata: Metadata = {
   title: "מאחורי הקלעים של יצירה: המכניקה של הפקת שיר מקורי | יקיר כהן הפקות מודיעין",
   description:
     "איך הופך רעיון קטן לסינגל מוגמר. 5 השלבים של הפקת שיר מקורי באולפן הקלטות מודיעין — מכתיבת המילים ועד הפצה ברשתות.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/original-song-production-behind-the-scenes" },
+  alternates: { canonical: `${SITE_URL}/blog/original-song-production-behind-the-scenes` },
   openGraph: {
     title: "המכניקה של הפקת שיר מקורי | יקיר כהן הפקות מודיעין",
     description: "5 השלבים שהופכים רעיון לשיר מוגמר — מכתיבה ועד הפצה. אולפן הקלטות מודיעין.",
-    url: "https://www.yakircohen.com/blog/original-song-production-behind-the-scenes",
+    url: `${SITE_URL}/blog/original-song-production-behind-the-scenes`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
     images: [
       {
-        url: "https://www.yakircohen.com/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp",
+        url: `${SITE_URL}/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp`,
         width: 1200,
         height: 630,
         alt: "הפקת שיר מקורי — יקיר כהן הפקות מודיעין",
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "המכניקה של הפקת שיר מקורי",
     description: "5 שלבים מהרעיון ועד הסינגל המוגמר. אולפן הקלטות מודיעין.",
-    images: ["https://www.yakircohen.com/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp"],
+    images: [`${SITE_URL}/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp`],
   },
 };
 
@@ -41,7 +42,7 @@ const schema = {
   publisher: {
     "@type": "Organization",
     name: "יקיר כהן הפקות",
-    url: "https://www.yakircohen.com",
+    url: `${SITE_URL}`,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Modi'in",
@@ -49,7 +50,7 @@ const schema = {
     },
   },
   datePublished: "2026-04-30",
-  mainEntityOfPage: "https://www.yakircohen.com/blog/original-song-production-behind-the-scenes",
+  mainEntityOfPage: `${SITE_URL}/blog/original-song-production-behind-the-scenes`,
   keywords: "הפקת שיר מקורי, אולפן הקלטות מודיעין, הפקה מוזיקלית AI, הקלטת ילדים, שיר מקורי לילדים",
 };
 

@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "תיקון זיופים מקצועי — Melodyne ביד מנוסה | יקיר כהן הפקות",
   description:
     "תיקון זיופים מקצועי עם Melodyne — שמירת הטבעיות, תיקון מה שמפריע. שולחים קובץ, מקבלים שירה שנשמעת כמו שצריך. מ-150 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/online/vocal-fix/pitch-correction" },
+  alternates: { canonical: `${SITE_URL}/online/vocal-fix/pitch-correction` },
   openGraph: {
     title: "תיקון זיופים עם Melodyne | יקיר כהן הפקות",
     description: "Melodyne ביד מנוסה — טבעי, מדויק. מ-150 ₪.",
-    url: "https://www.yakircohen.com/online/vocal-fix/pitch-correction",
+    url: `${SITE_URL}/online/vocal-fix/pitch-correction`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

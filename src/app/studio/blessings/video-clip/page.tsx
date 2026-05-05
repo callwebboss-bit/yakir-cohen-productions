@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Video, CheckCircle2, Star, Zap } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "קליפ בר/בת מצווה — וידאו מקצועי מרגש | יקיר כהן הפקות",
   description:
     "קליפ בר/בת מצווה מקצועי - וידאו מרגש שמסכם את הרגע המיוחד. תצילום, עריכה, מוזיקה וקול. מ-₪1500. מודיעין, מכל הארץ.",
-  alternates: { canonical: "https://www.yakircohen.com/studio/blessings/video-clip" },
+  alternates: { canonical: `${SITE_URL}/studio/blessings/video-clip` },
   openGraph: {
     title: "קליפ בר/בת מצווה — וידאו מקצועי | יקיר כהן הפקות",
     description: "וידאו בר/בת מצווה שנהפך להיות סיפור. תצילום, עריכה, מוזיקה מקצועית.",
-    url: "https://www.yakircohen.com/studio/blessings/video-clip",
+    url: `${SITE_URL}/studio/blessings/video-clip`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -28,7 +29,7 @@ const schema = {
     "@type": "LocalBusiness",
     "name": "יקיר כהן הפקות",
     "telephone": "+972-58-7555456",
-    "url": "https://www.yakircohen.com",
+    "url": `${SITE_URL}`,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "עמק איילון 34/5",

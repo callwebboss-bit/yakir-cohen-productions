@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "5 מיליון צפיות: הסרטון שכבש את הרשת | יקיר כהן הפקות",
   description:
     "הסרטון הכי ויראלי שלנו — חצה 5 מיליון צפיות בכל הפלטפורמות. מה גרם לו לפרוץ, ומה AI עשה עם ההפצה שלו.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/viral-5m-views" },
+  alternates: { canonical: `${SITE_URL}/blog/viral-5m-views` },
   openGraph: {
     title: "5 מיליון צפיות: הסרטון שכבש את הרשת",
     description: "הסרטון הכי ויראלי שלנו — 5M צפיות. מה גרם לו לפרוץ.",
-    url: "https://www.yakircohen.com/blog/viral-5m-views",
+    url: `${SITE_URL}/blog/viral-5m-views`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
@@ -32,9 +33,9 @@ const schema = {
   "@type": "Article",
   headline: "5 מיליון צפיות: הסרטון שכבש את הרשת",
   author: { "@type": "Person", name: "יקיר כהן" },
-  publisher: { "@type": "Organization", name: "יקיר כהן הפקות", url: "https://www.yakircohen.com" },
+  publisher: { "@type": "Organization", name: "יקיר כהן הפקות", url: `${SITE_URL}` },
   datePublished: "2026-05-01",
-  mainEntityOfPage: "https://www.yakircohen.com/blog/viral-5m-views",
+  mainEntityOfPage: `${SITE_URL}/blog/viral-5m-views`,
 };
 
 const socialLinks = [

@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Home } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "הקלטת ברכות בבית — אולפן נייד מגיע אליכם | יקיר כהן הפקות",
   description:
     "לא יכולים להגיע לאולפן? אנחנו מגיעים אליכם. הקלטת ברכות לחתונה, בר מצווה, יום הולדת — בבית, בחדר השינה, בגן. מ-690 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/studio/mobile-studio/home-phone-blessings" },
+  alternates: { canonical: `${SITE_URL}/studio/mobile-studio/home-phone-blessings` },
   openGraph: {
     title: "הקלטת ברכות בבית | יקיר כהן הפקות",
     description: "אולפן נייד מגיע אליכם — הקלטת ברכות מקצועית בבית. מ-690 ₪.",
-    url: "https://www.yakircohen.com/studio/mobile-studio/home-phone-blessings",
+    url: `${SITE_URL}/studio/mobile-studio/home-phone-blessings`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

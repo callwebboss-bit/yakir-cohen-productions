@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -9,11 +10,11 @@ export const metadata: Metadata = {
   title: "אולפן פודקאסט נייד — מגיע אליכם | יקיר כהן הפקות מודיעין",
   description:
     "אולפן הקלטות ניד שמגיע למשרד, לבית או לאולם. Sony 4K, Shure SM7B, עיבוד AI. תוצר מוגמר תוך 24-48 שעות. Modi'in.",
-  alternates: { canonical: "https://www.yakircohen.com/podcast/mobile-studio" },
+  alternates: { canonical: `${SITE_URL}/podcast/mobile-studio` },
   openGraph: {
     title: "אולפן פודקאסט נייד — מגיע אליכם | יקיר כהן הפקות",
     description: "Sony 4K, Shure SM7B, עיבוד AI. תוצר מוגמר תוך 24-48 שעות.",
-    url: "https://www.yakircohen.com/podcast/mobile-studio",
+    url: `${SITE_URL}/podcast/mobile-studio`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

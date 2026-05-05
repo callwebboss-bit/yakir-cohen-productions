@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "נרמול עוצמה ו-Loudness — LUFS תקני לכל פלטפורמה | יקיר כהן הפקות",
   description:
     "נרמול עוצמה מקצועי: LUFS תקני ל-Spotify, YouTube, Apple Music, רדיו. Compression ו-Limiting. שולחים קובץ, מקבלים עוצמה אחידה. מ-79 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/online/vocal-fix/volume-fix" },
+  alternates: { canonical: `${SITE_URL}/online/vocal-fix/volume-fix` },
   openGraph: {
     title: "נרמול עוצמה LUFS | יקיר כהן הפקות",
     description: "LUFS תקני לכל פלטפורמה. מ-79 ₪.",
-    url: "https://www.yakircohen.com/online/vocal-fix/volume-fix",
+    url: `${SITE_URL}/online/vocal-fix/volume-fix`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

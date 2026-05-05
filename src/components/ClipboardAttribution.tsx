@@ -1,9 +1,10 @@
 "use client";
 
+import { SITE_URL } from "@/lib/site-url";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-const BASE_URL = "https://www.yakircohen.com";
+const BASE_URL = SITE_URL;
 const MIN_LENGTH = 30;
 
 /**

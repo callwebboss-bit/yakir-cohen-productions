@@ -5,15 +5,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Menu, X, ChevronDown, Crown,
-  GraduationCap, Building2, Mic, Globe,
+  GraduationCap, Building2, Mic, Globe, Search,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 
-type NavChild  = { label: string; href: string };
-type NavItem   = { label: string; href: string; children?: NavChild[] };
-type MegaItem  = {
+type NavChild = { label: string; href: string };
+type NavItem = { label: string; href: string; children?: NavChild[] };
+type MegaItem = {
   Icon: LucideIcon;
   label: string;
   desc: string;
@@ -21,55 +21,60 @@ type MegaItem  = {
   iconClass: string;
 };
 
-/* ── Regular nav items (5 items — clean bar) ── */
 const NAV_ITEMS: NavItem[] = [
   {
     label: "האולפן", href: "/studio",
     children: [
-      { label: "הקלטת שירים",    href: "/studio/recording-song-modiin" },
-      { label: "ברכות מקצועיות", href: "/studio/blessings"             },
-      { label: "מחירון",          href: "/studio/pricing"               },
-      { label: "הקלטה — ירושלים", href: "/studio/studio-jerusalem"      },
+      { label: "הקלטת שירים", href: "/studio/recording-song-modiin" },
+      { label: "ברכות מקצועיות", href: "/studio/blessings" },
+      { label: "אולפן נייד לבית", href: "/studio/mobile-studio" },
+      { label: "מחירון", href: "/studio/pricing" },
+      { label: "הקלטה בירושלים", href: "/studio/studio-jerusalem" },
+      { label: "אולפן ביתי", href: "/academy/home-studio" },
     ],
   },
   {
     label: "פודקאסט", href: "/podcast",
     children: [
       { label: "הפקת פודקאסט", href: "/podcast/podcast-production" },
-      { label: "אולפן פודקאסט", href: "/podcast/podcast-studio"    },
-      { label: "אולפן נייד",    href: "/podcast/mobile-studio"     },
+      { label: "אולפן פודקאסט", href: "/podcast/podcast-studio" },
+      { label: "אולפן נייד", href: "/podcast/mobile-studio" },
+      { label: "ציוד פודקאסט", href: "/podcast/podcast-equipment" },
     ],
   },
-  {    label: "אונליין", href: "/online",
+  {
+    label: "אונליין", href: "/online",
     children: [
       { label: "כל השירותים", href: "/online" },
       { label: "שיפור קול", href: "/online/vocal-fix" },
       { label: "פיצול ערוצים", href: "/online/vocal-fix/stem-split" },
     ],
   },
-  {    label: "אירועים", href: "/attractions",
+  {
+    label: "אירועים", href: "/attractions",
     children: [
-      { label: "DJ לאירועים",   href: "/events/dj-events"          },
-      { label: "DJ בעיר",       href: "/dj-events/cities"           },
-      { label: "עמדת לד",       href: "/events/led-booth"           },
-      { label: "אטרקציות",      href: "/attractions"                },
-      { label: "מחשבון מחיר",   href: "/attractions#calculator"    },
+      { label: "DJ לאירועים", href: "/events/dj-events" },
+      { label: "DJ בעיר", href: "/dj-events/cities" },
+      { label: "עמדת לד", href: "/events/led-booth" },
+      { label: "צילום אירועים", href: "/photography" },
+      { label: "אטרקציות", href: "/attractions" },
+      { label: "מחשבון מחיר", href: "/attractions#calculator" },
     ],
   },
   {
     label: "גמגום", href: "/stuttering",
     children: [
-      { label: "השיטה",       href: "/stuttering#method"  },
+      { label: "השיטה", href: "/stuttering#method" },
       { label: "סיפורי הצלחה", href: "/stuttering#stories" },
     ],
   },
   {
     label: "בלוג", href: "/blog",
     children: [
-      { label: "מוזיקה בחתונה", href: "/blog/magazine-wedding"       },
-      { label: "שירים לחופה",   href: "/blog/wedding-songs-chuppah"  },
-      { label: "טיפים לאולפן",  href: "/blog/Studio-Tips"            },
-      { label: "הוצאה לאור",    href: "/blog/RECORDS"                 },
+      { label: "מוזיקה בחתונה", href: "/blog/magazine-wedding" },
+      { label: "שירים לחופה", href: "/blog/wedding-songs-chuppah" },
+      { label: "טיפים לאולפן", href: "/blog/Studio-Tips" },
+      { label: "הוצאה לאור", href: "/blog/RECORDS" },
     ],
   },
   {
@@ -77,60 +82,62 @@ const NAV_ITEMS: NavItem[] = [
   },
 ];
 
-/* ── Mega-menu: האקדמיה + עסקים ── */
 const MORE_KEY = "__more__";
 
 const MORE_ITEMS: MegaItem[] = [
   {
     Icon: GraduationCap,
     label: "האקדמיה",
-    desc: "קורס DJ ולימודי סאונד",
+    desc: "קורסי DJ, סאונד ואולפן ביתי",
     href: "/academy",
     iconClass: "bg-amber-50 text-amber-600 group-hover:bg-amber-500 group-hover:text-white",
   },
   {
     Icon: Building2,
     label: "שירותים לעסקים",
-    desc: "קריינות, פודקאסט, הגברה",
+    desc: "תוכן קולי, הפקה וציוד",
     href: "/business",
     iconClass: "bg-blue-50 text-blue-600 group-hover:bg-blue-500 group-hover:text-white",
   },
   {
     Icon: Mic,
     label: "קריינות מקצועית",
-    desc: "IVR, תדמית, קורפורייט",
+    desc: "טלפון, וידאו ומותג",
     href: "/business/professional-voiceover",
     iconClass: "bg-rose-50 text-rose-600 group-hover:bg-rose-500 group-hover:text-white",
   },
   {
     Icon: Globe,
     label: "ניהול סושיאל",
-    desc: "Facebook, Instagram, TikTok",
+    desc: "תכנים ונוכחות ברשתות",
     href: "/business/social-media-management",
     iconClass: "bg-violet-50 text-violet-600 group-hover:bg-violet-500 group-hover:text-white",
   },
 ];
 
 export default function Navigation() {
-  const [isOpen, setIsOpen]               = useState(false);
-  const [openDropdown, setOpenDropdown]   = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const pathname = usePathname() ?? "/";
-  const navRef   = useRef<HTMLElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   const { dir, scrolled } = useScrollDirection();
 
-  /* Podcast context — subtle brand glow on nav */
-  const isPodcast     = pathname.startsWith("/podcast");
-  const isMoreActive  = MORE_ITEMS.some((m) => pathname.startsWith(m.href.split("#")[0]));
+  const isPodcast = pathname.startsWith("/podcast");
+  const isMoreActive = MORE_ITEMS.some((m) => pathname.startsWith(m.href.split("#")[0]));
 
   useEffect(() => {
     const onClickOutside = (e: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(e.target as Node))
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setOpenDropdown(null);
+      }
     };
     const onEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") { setOpenDropdown(null); setIsOpen(false); }
+      if (e.key === "Escape") {
+        setOpenDropdown(null);
+        setIsOpen(false);
+      }
     };
     document.addEventListener("mousedown", onClickOutside);
     document.addEventListener("keydown", onEsc);
@@ -156,21 +163,16 @@ export default function Navigation() {
       ref={navRef}
       className={cn(
         "fixed top-0 w-full z-50 h-20 flex items-center",
-        /* Respect prefers-reduced-motion — disable slide for vestibular disorders */
         "motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-in-out",
-        /* Hide when scrolling down (reading), reveal when scrolling up or at top */
         dir === "down" && !isOpen ? "-translate-y-full" : "translate-y-0",
         scrolled
-          ? "bg-white/92 backdrop-blur-xl shadow-sm border-b border-zinc-100"
-          : "bg-white/70 backdrop-blur-md",
-        /* Podcast glow — subtle brand red shadow at the bottom */
+          ? "bg-white/95 backdrop-blur-md border-b border-zinc-200 shadow-sm"
+          : "bg-white/80 backdrop-blur-sm",
         isPodcast && "shadow-[0_3px_28px_0_rgba(212,43,43,0.10)]"
       )}
       aria-label="ניווט ראשי"
     >
-      <div className="max-w-7xl mx-auto ps-6 pe-6 w-full flex items-center justify-between gap-4">
-
-        {/* Logo */}
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-3 shrink-0" aria-label="יקיר כהן הפקות - דף הבית">
           <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white font-black text-xl">
             Y
@@ -180,9 +182,7 @@ export default function Navigation() {
           </span>
         </Link>
 
-        {/* ── Desktop Nav ── */}
         <ul className="hidden lg:flex items-center gap-0.5 font-bold text-sm">
-
           {NAV_ITEMS.map((item) => (
             <li key={item.href} className="relative">
               {item.children ? (
@@ -191,11 +191,9 @@ export default function Navigation() {
                     type="button"
                     onClick={() => setOpenDropdown(openDropdown === item.href ? null : item.href)}
                     className={cn(
-                      "flex items-center gap-1 ps-3 pe-3 py-2 rounded-md transition-colors",
+                      "flex items-center gap-1 ps-3 pe-3 py-2 rounded-xl transition-colors",
                       isActive(item) ? "text-brand-red" : "text-zinc-700 hover:text-black",
-                      /* Podcast item highlight ring */
-                      isPodcast && item.href === "/podcast" &&
-                        "ring-2 ring-[#D42B2B]/20 ring-offset-1"
+                      isPodcast && item.href === "/podcast" && "ring-2 ring-[#D42B2B]/20 ring-offset-1"
                     )}
                     aria-expanded={openDropdown === item.href}
                     aria-haspopup="true"
@@ -210,10 +208,7 @@ export default function Navigation() {
                   </button>
 
                   {openDropdown === item.href && (
-                    /* Plain nav list — no listbox/option roles; those are for <select> patterns */
-                    <div
-                      className="absolute top-full start-0 mt-1.5 min-w-[210px] bg-white border border-zinc-200 rounded-xl shadow-lg py-2 z-50"
-                    >
+                    <div className="absolute top-full start-0 mt-1.5 min-w-[210px] bg-white border border-zinc-200 rounded-2xl shadow-lg py-2 z-50">
                       <Link
                         href={item.href}
                         className="block ps-4 pe-4 py-2 text-zinc-900 font-bold border-b border-zinc-100 mb-1 hover:bg-zinc-50"
@@ -237,7 +232,7 @@ export default function Navigation() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "block ps-3 pe-3 py-2 rounded-md",
+                    "block ps-3 pe-3 py-2 rounded-xl",
                     pathname === item.href ? "text-brand-red" : "text-zinc-700 hover:text-black"
                   )}
                   aria-current={pathname === item.href ? "page" : undefined}
@@ -248,13 +243,12 @@ export default function Navigation() {
             </li>
           ))}
 
-          {/* ── "עוד" Mega-Menu ── */}
           <li className="relative">
             <button
               type="button"
               onClick={() => setOpenDropdown(openDropdown === MORE_KEY ? null : MORE_KEY)}
               className={cn(
-                "flex items-center gap-1 ps-3 pe-3 py-2 rounded-md transition-colors",
+                "flex items-center gap-1 ps-3 pe-3 py-2 rounded-xl transition-colors",
                 isMoreActive ? "text-brand-red" : "text-zinc-700 hover:text-black"
               )}
               aria-expanded={openDropdown === MORE_KEY}
@@ -270,7 +264,7 @@ export default function Navigation() {
 
             {openDropdown === MORE_KEY && (
               <div
-                className="absolute top-full start-0 mt-1.5 w-[400px] bg-white border border-zinc-200 rounded-2xl shadow-xl p-3 z-50"
+                className="absolute top-full start-0 mt-1.5 w-[400px] bg-white border border-zinc-200 rounded-3xl shadow-xl p-3 z-50"
                 aria-label="שירותים נוספים"
               >
                 <div className="grid grid-cols-2 gap-1.5">
@@ -278,10 +272,10 @@ export default function Navigation() {
                     <Link
                       key={href}
                       href={href}
-                      className="flex items-center gap-3 p-3 rounded-xl hover:bg-zinc-50 transition-colors group"
+                      className="flex items-center gap-3 p-3 rounded-2xl hover:bg-zinc-50 transition-colors group"
                     >
                       <div className={cn(
-                        "w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-colors",
+                        "w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors",
                         iconClass
                       )}>
                         <Icon size={17} aria-hidden="true" />
@@ -295,7 +289,7 @@ export default function Navigation() {
                 </div>
                 <div className="mt-2 pt-2.5 border-t border-zinc-100 flex justify-between px-1">
                   <Link href="/business" className="text-xs text-zinc-400 hover:text-[#D42B2B] transition-colors font-bold">
-                    כל שירותי עסקים ←
+                    כל שירותי העסקים ←
                   </Link>
                   <Link href="/academy" className="text-xs text-zinc-400 hover:text-[#D42B2B] transition-colors font-bold">
                     כל האקדמיה ←
@@ -306,12 +300,19 @@ export default function Navigation() {
           </li>
         </ul>
 
-        {/* End cluster */}
         <div className="flex items-center gap-2 shrink-0">
+          <Link
+            href="/search"
+            className="hidden sm:inline-flex items-center justify-center w-10 h-10 rounded-xl border border-zinc-200 text-zinc-700 hover:text-black hover:border-zinc-400 transition-colors"
+            aria-label="חיפוש באתר"
+          >
+            <Search size={18} aria-hidden="true" />
+          </Link>
+
           <Link
             href="/vip"
             className={cn(
-              "hidden sm:inline-flex items-center gap-1.5 ps-4 pe-4 py-2.5 rounded-md font-black text-sm",
+              "hidden sm:inline-flex items-center gap-1.5 ps-4 pe-4 py-2.5 rounded-2xl font-black text-sm",
               "bg-gradient-to-b from-amber-400 to-amber-600 text-zinc-900",
               "hover:from-amber-300 hover:to-amber-500",
               "shadow-sm border border-amber-700/20"
@@ -324,7 +325,7 @@ export default function Navigation() {
 
           <button
             type="button"
-            className="lg:hidden p-2 text-zinc-900 rounded-md border border-zinc-200 hover:border-zinc-400"
+            className="lg:hidden p-2 text-zinc-900 rounded-xl border border-zinc-200 hover:border-zinc-400"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "סגור תפריט" : "פתח תפריט"}
             aria-expanded={isOpen}
@@ -335,7 +336,6 @@ export default function Navigation() {
         </div>
       </div>
 
-      {/* ── Mobile Drawer ── */}
       {isOpen && (
         <div
           id="mobile-menu"
@@ -396,7 +396,6 @@ export default function Navigation() {
               </li>
             ))}
 
-            {/* Mobile "עוד" accordion */}
             <li className="border-b border-zinc-100">
               <button
                 type="button"
@@ -426,11 +425,10 @@ export default function Navigation() {
               )}
             </li>
 
-            {/* Mobile VIP — sticky at bottom */}
             <li className="pt-4">
               <Link
                 href="/vip"
-                className="flex items-center justify-center gap-2 py-3 rounded-md bg-gradient-to-b from-amber-400 to-amber-600 text-zinc-900 font-black"
+                className="flex items-center justify-center gap-2 py-3 rounded-2xl bg-gradient-to-b from-amber-400 to-amber-600 text-zinc-900 font-black"
               >
                 <Crown size={18} aria-hidden="true" />
                 <span>פורטל VIP</span>

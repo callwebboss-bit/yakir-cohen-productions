@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "שירות כתיבת שירים — מילים לשיר מקצועי | יקיר כהן הפקות",
   description:
     "שירות כתיבת מילים לשירים — לחתונה, בר מצווה, שיר מקורי. כותב מקצועי שמוציא מכם את הסיפור האמיתי. צרו קשר לפרטים.",
-  alternates: { canonical: "https://www.yakircohen.com/studio/recording-song-modiin/songwriting-service" },
+  alternates: { canonical: `${SITE_URL}/studio/recording-song-modiin/songwriting-service` },
   openGraph: {
     title: "כתיבת שירים מקצועית | יקיר כהן הפקות",
     description: "מילים לשיר לחתונה, בר מצווה, שיר מקורי. צרו קשר לפרטים.",
-    url: "https://www.yakircohen.com/studio/recording-song-modiin/songwriting-service",
+    url: `${SITE_URL}/studio/recording-song-modiin/songwriting-service`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

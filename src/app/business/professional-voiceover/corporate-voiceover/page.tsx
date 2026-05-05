@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Video, Tv, Megaphone, BookOpen } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "קריינות לסרטוני תדמית ופרסומות — קול מקצועי לעסקים | יקיר כהן הפקות",
   description:
     "קריינות מקצועית לסרטוני תדמית, פרסומות, e-learning והדרכות. קול שמשדר מה שאתם רוצים שישדר. הצעת מחיר תוך שעות.",
-  alternates: { canonical: "https://www.yakircohen.com/business/professional-voiceover/corporate-voiceover" },
+  alternates: { canonical: `${SITE_URL}/business/professional-voiceover/corporate-voiceover` },
   openGraph: {
     title: "קריינות לסרטוני תדמית | יקיר כהן הפקות",
     description: "סרטון הסבר, פרסומת, e-learning. קול מקצועי לעסקים.",
-    url: "https://www.yakircohen.com/business/professional-voiceover/corporate-voiceover",
+    url: `${SITE_URL}/business/professional-voiceover/corporate-voiceover`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

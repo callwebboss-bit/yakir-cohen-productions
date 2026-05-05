@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
@@ -6,32 +7,17 @@ import Footer from "@/components/Footer";
 import GalAssistant from "@/components/GalAssistant";
 import MobileCtaBar from "@/components/MobileCtaBar";
 import ExitIntent from "@/components/ExitIntent";
-import StructuredData from "@/components/StructuredData";
 import Logo from "@/components/Logo";
 import ClientSchema from "@/components/ClientSchema";
+import SiteSchema from "@/components/SiteSchema";
 import DynamicHero from "@/components/DynamicHero";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import IdleGhostButton from "@/components/IdleGhostButton";
 import ClipboardAttribution from "@/components/ClipboardAttribution";
 
-const DEFAULT_BASE_URL = "https://www.yakircohen.com";
-const rawBaseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_BASE_URL;
-let BASE_URL = DEFAULT_BASE_URL;
-try {
-  BASE_URL = new URL(rawBaseUrl).toString();
-} catch (error) {
-  console.warn(`Invalid NEXT_PUBLIC_SITE_URL value: ${rawBaseUrl}. Using default ${DEFAULT_BASE_URL}.`, error);
-}
+const BASE_URL = SITE_URL;
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 const OG_IMAGE = `${BASE_URL}/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp`;
-const PHONE = "+972587555456";
-const EMAIL = "office@yakircohen.com";
-const SOCIAL_LINKS = {
-  instagram: "https://www.instagram.com/yakir.cohen.official",
-  tiktok: "https://www.tiktok.com/@yakir.cohen.offical",
-  youtube: "https://www.youtube.com/user/kikosh",
-  facebook: "https://www.facebook.com/dj.yakir.cohen",
-};
 
 const buildTitle = (pageTitle?: string) =>
   pageTitle
@@ -40,7 +26,7 @@ const buildTitle = (pageTitle?: string) =>
 
 const buildDescription = (pageDescription?: string) =>
   pageDescription ||
-  "אולפן הקלטות פרמיום וקליניקה לקול במודיעין. הפקה, הקלטה, מיקס ושדרוג קול לאירועים, פודקאסטים ולימודים באזור המרכז.";
+  "אולפן הקלטות במודיעין: שירים, ברכות, פודקאסט, שירותי אונליין לעריכת קול, DJ ואטרקציות לאירועים. מענה מסודר ותוצאה מקצועית.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -49,6 +35,19 @@ export const metadata: Metadata = {
     template: "%s | יקיר כהן הפקות",
   },
   description: buildDescription(),
+  keywords: [
+    "אולפן הקלטות מודיעין",
+    "הקלטת שיר לאירוע",
+    "הפקת פודקאסט",
+    "DJ לחתונה",
+    "פיתוח קול",
+    "שיפור סאונד AI",
+    "אטרקציות לאירועים",
+    "לימודי DJ",
+    "קליניקה לגמגום",
+    "יקיר כהן הפקות",
+  ],
+  category: "music",
   alternates: {
     canonical: BASE_URL,
   },
@@ -110,8 +109,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://elfsightcdn.com" />
         <link rel="preload" href={OG_IMAGE} as="image" type="image/webp" />
         <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Frank+Ruhl+Libre:wght@300..900&family=Heebo:wght@100..900&family=Platypi:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+        <SiteSchema />
         <ClientSchema />
       </head>
       <body className="antialiased bg-[#FAFAF8] text-[#1A1A1A] font-sans">
@@ -126,7 +127,9 @@ export default function RootLayout({
             </Script>
           </>
         )}
-        {/* Skip-to-content — visible on keyboard focus, hidden otherwise */}
+        {/* Elfsight — אינסטגרם / ווידג'טים; לא חוסם LCP */}
+        <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+        {/* Skip-to-content: visible on keyboard focus, hidden otherwise */}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:start-4 focus:z-[9999] focus:bg-white focus:text-[#D42B2B] focus:px-4 focus:py-2 focus:rounded-md focus:font-bold focus:text-sm focus:shadow-lg"
@@ -138,7 +141,6 @@ export default function RootLayout({
         </div>
         <Navigation />
         <DynamicHero />
-        {/* id="main-content" is the skip-link target */}
         <main id="main-content" className="min-h-screen pt-20 pb-20 lg:pb-0">
           {children}
         </main>

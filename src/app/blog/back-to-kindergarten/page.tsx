@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   title: "חגיגת גן — מוזיקה ואטרקציות לסיום גן | יקיר כהן הפקות",
   description:
     "מוזיקה, קונפטי, בלוני ענק ושיר מקורי לסיום שנת הגן — איך הופכים טקס פרידה לחוויה שהילדים יזכרו. מדריך הורים ומורים.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/back-to-kindergarten" },
+  alternates: { canonical: `${SITE_URL}/blog/back-to-kindergarten` },
   openGraph: {
     title: "חגיגת גן — מוזיקה לסיום שנת הגן | יקיר כהן הפקות",
     description: "שיר מקורי, קונפטי, בלוני ענק — מדריך לחגיגת הגן.",
-    url: "https://www.yakircohen.com/blog/back-to-kindergarten",
+    url: `${SITE_URL}/blog/back-to-kindergarten`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
@@ -23,9 +24,9 @@ const schema = {
   "@type": "Article",
   "headline": "חגיגת גן — מוזיקה ואטרקציות לסיום שנת הגן",
   "author": { "@type": "Person", "name": "יקיר כהן" },
-  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": "https://www.yakircohen.com" },
+  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": `${SITE_URL}` },
   "datePublished": "2026-01-01",
-  "mainEntityOfPage": "https://www.yakircohen.com/blog/back-to-kindergarten",
+  "mainEntityOfPage": `${SITE_URL}/blog/back-to-kindergarten`,
 };
 
 const checklist = [

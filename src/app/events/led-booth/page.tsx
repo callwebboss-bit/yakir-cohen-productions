@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,17 +11,17 @@ export const metadata: Metadata = {
   title: "עמדת לד ניידת לאירועים — השכרה ומכירה | יקיר כהן הפקות מודיעין",
   description:
     "עמדת לד ניידת שמשנה את חוויית האירוע ויזואלית. השכרה ומכירה לחתונות, בר מצוות ואירועי חברה. מודיעין, Modi'in.",
-  alternates: { canonical: "https://www.yakircohen.com/events/led-booth" },
+  alternates: { canonical: `${SITE_URL}/events/led-booth` },
   openGraph: {
     title: "עמדת לד ניידת לאירועים | יקיר כהן הפקות מודיעין",
     description: "עמדת לד ניידת עם מסכים מובנים — מיתוג בזמן אמת, DJ, שידורים. להשכרה ולמכירה.",
-    url: "https://www.yakircohen.com/events/led-booth",
+    url: `${SITE_URL}/events/led-booth`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
     images: [
       {
-        url: "https://www.yakircohen.com/assets/images/led-booth/%D7%A2%D7%9E%D7%93%D7%AA%20%D7%9C%D7%93%20%D7%99%D7%A7%D7%99%D7%A8%D7%9B%D7%94%D7%9F%20-%20%D7%94%D7%9B%D7%99%20%D7%99%D7%A4%D7%94%20%D7%91%D7%90%D7%A8%D7%A5.webp",
+        url: `${SITE_URL}/assets/images/led-booth/%D7%A2%D7%9E%D7%93%D7%AA%20%D7%9C%D7%93%20%D7%99%D7%A7%D7%99%D7%A8%D7%9B%D7%94%D7%9F%20-%20%D7%94%D7%9B%D7%99%20%D7%99%D7%A4%D7%94%20%D7%91%D7%90%D7%A8%D7%A5.webp`,
         width: 1200,
         height: 630,
         alt: "עמדת לד ניידת לאירועים — יקיר כהן הפקות",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "עמדת לד ניידת לאירועים",
     description: "מיתוג בזמן אמת, DJ ושידורים. להשכרה ולמכירה — מודיעין.",
-    images: ["https://www.yakircohen.com/assets/images/led-booth/%D7%A2%D7%9E%D7%93%D7%AA%20%D7%9C%D7%93%20%D7%99%D7%A7%D7%99%D7%A8%D7%9B%D7%94%D7%9F%20-%20%D7%94%D7%9B%D7%99%20%D7%99%D7%A4%D7%94%20%D7%91%D7%90%D7%A8%D7%A5.webp"],
+    images: [`${SITE_URL}/assets/images/led-booth/%D7%A2%D7%9E%D7%93%D7%AA%20%D7%9C%D7%93%20%D7%99%D7%A7%D7%99%D7%A8%D7%9B%D7%94%D7%9F%20-%20%D7%94%D7%9B%D7%99%20%D7%99%D7%A4%D7%94%20%D7%91%D7%90%D7%A8%D7%A5.webp`],
   },
 };
 

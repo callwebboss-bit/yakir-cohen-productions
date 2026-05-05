@@ -1,5 +1,6 @@
 "use client";
 
+import { SITE_URL } from "@/lib/site-url";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Search, Mic, Music, ArrowLeft, ExternalLink } from "lucide-react";
@@ -9,7 +10,7 @@ import Footer from "@/components/Footer";
 const JSON_URL = 'https://raw.githubusercontent.com/yakir-c/yakircohenprudoctions/main/search-index.json';
 const WA_BASE = 'https://wa.me/972587555456?text=';
 const POPULAR = ['שיר כניסה לחופה', 'תקליטן לחתונה', 'אולפן ירושלים', 'פלייבק', 'מחירון'];
-const SITE_BASE = 'https://www.yakircohen.com';
+const SITE_BASE = SITE_URL;
 
 interface SearchResult {
   title: string;
@@ -23,7 +24,6 @@ export default function NotFound() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [seasonalText, setSeasonalText] = useState('');
-  const [availability, setAvailability] = useState({ online: true, text: 'פנוי עכשיו' });
   const searchInputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -59,32 +59,11 @@ export default function NotFound() {
     }
   }, []);
 
-  // Availability timer
-  useEffect(() => {
-    const checkAvailability = () => {
-      const now = new Date();
-      const day = now.getDay(); // 0 = Sunday, 6 = Saturday
-      const hour = now.getHours();
-
-      if (day === 6) { // Shabbat
-        setAvailability({ online: false, text: 'שבת שלום' });
-      } else if (hour >= 9 && hour < 18) {
-        setAvailability({ online: true, text: 'פנוי עכשיו' });
-      } else {
-        setAvailability({ online: false, text: 'חזור מאוחר יותר' });
-      }
-    };
-
-    checkAvailability();
-    const interval = setInterval(checkAvailability, 60000);
-    return () => clearInterval(interval);
-  }, []);
-
   // Load search index
   useEffect(() => {
     fetch(JSON_URL)
       .then(res => res.json())
-      .then(data => {
+      .then(() => {
         // Assuming data is array of SearchResult
         // In real, adapt
       })
@@ -283,7 +262,7 @@ export default function NotFound() {
                 <p className="text-gray-600">שירים, פודקאסט, ברכות מקצועיות</p>
               </div>
             </Link>
-            <Link href="/events" className="group">
+            <Link href="/events/dj-events" className="group">
               <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
                 <Music className="w-12 h-12 text-red-600 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2">אירועים</h3>

@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Mic, Edit3, Share2 } from "lucide-react";
@@ -9,11 +10,11 @@ export const metadata: Metadata = {
   title: "הפקת פודקאסט מקצועית — מרעיון לשידור | יקיר כהן הפקות",
   description:
     "הפקת פודקאסט מקצועית במודיעין — הקלטה, עריכה, עיצוב סאונד והפצה. מ-1,500 ₪. ציוד Sphere L22. עסקים, מומחים ויוצרי תוכן.",
-  alternates: { canonical: "https://www.yakircohen.com/podcast/podcast-production" },
+  alternates: { canonical: `${SITE_URL}/podcast/podcast-production` },
   openGraph: {
     title: "הפקת פודקאסט מקצועית | יקיר כהן הפקות",
     description: "מ-1,500 ₪. הקלטה, עריכה, הפצה. אולפן מודיעין.",
-    url: "https://www.yakircohen.com/podcast/podcast-production",
+    url: `${SITE_URL}/podcast/podcast-production`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -29,7 +30,7 @@ const videoSchema = {
   "uploadDate": "2024-01-01",
   "embedUrl": "https://www.youtube.com/embed/1O0isV7Zljg",
   "url": "https://www.youtube.com/watch?v=1O0isV7Zljg",
-  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": "https://www.yakircohen.com" },
+  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": `${SITE_URL}` },
 };
 
 const faqSchema = {

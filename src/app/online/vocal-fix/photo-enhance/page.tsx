@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ImageIcon } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "שיפור תמונות אונליין — עריכה ורטוש מקצועי | יקיר כהן הפקות",
   description:
     "שיפור תמונות מאירועים: תאורה, חידוד, הסרת אלמנטים מפריעים, רטוש — בשליחה אונליין. מ-29 ₪ לתמונה.",
-  alternates: { canonical: "https://www.yakircohen.com/online/vocal-fix/photo-enhance" },
+  alternates: { canonical: `${SITE_URL}/online/vocal-fix/photo-enhance` },
   openGraph: {
     title: "שיפור תמונות אונליין | יקיר כהן הפקות",
     description: "עריכה ורטוש מקצועי לתמונות מאירועים. מ-29 ₪.",
-    url: "https://www.yakircohen.com/online/vocal-fix/photo-enhance",
+    url: `${SITE_URL}/online/vocal-fix/photo-enhance`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

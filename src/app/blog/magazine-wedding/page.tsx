@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   title: "מוזיקה בחתונה — המדריך המלא לתכנון נכון | יקיר כהן הפקות",
   description:
     "שיר הכניסה, ריקוד הסלואו, שיר הכניסה לאולם, נגינה חיה מול DJ — כל מה שצריך לדעת לתכנן את המוזיקה בחתונה.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/magazine-wedding" },
+  alternates: { canonical: `${SITE_URL}/blog/magazine-wedding` },
   openGraph: {
     title: "מוזיקה בחתונה — המדריך המלא",
     description: "שיר כניסה, סלואו, DJ מול נגינה חיה. כל מה שצריך לדעת.",
-    url: "https://www.yakircohen.com/blog/magazine-wedding",
+    url: `${SITE_URL}/blog/magazine-wedding`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
@@ -23,9 +24,9 @@ const articleSchema = {
   "@type": "Article",
   "headline": "מוזיקה בחתונה — המדריך המלא לתכנון נכון",
   "author": { "@type": "Person", "name": "יקיר כהן" },
-  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": "https://www.yakircohen.com" },
+  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": `${SITE_URL}` },
   "datePublished": "2026-01-01",
-  "mainEntityOfPage": "https://www.yakircohen.com/blog/magazine-wedding",
+  "mainEntityOfPage": `${SITE_URL}/blog/magazine-wedding`,
 };
 
 const sections = [

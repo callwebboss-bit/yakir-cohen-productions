@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import { Metadata } from "next";
 import YouTube from "@/components/ui/YouTube";
 import { getPortfolioCollection, getPortfolioItem } from "@/content/config";
@@ -28,11 +29,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: item.title,
       description: item.description,
-      url: `https://www.yakircohen.com/portfolio/${item.slug}`,
+      url: `${SITE_URL}/portfolio/${item.slug}`,
       siteName: "יקיר כהן הפקות",
       images: [
         {
-          url: "https://www.yakircohen.com/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp",
+          url: `${SITE_URL}/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp`,
           width: 1200,
           height: 630,
           alt: item.title,

@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "DJ עם במה ותאורת LED לאירועים | יקיר כהן הפקות",
   description:
     "חבילת DJ עם במת תצוגה ותאורת LED מקצועית — לחתונות, בר/בת מצווה, ימי הולדת גדולים. מחיר הכל כלול. מ-15,500 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/events/stage-led-dj" },
+  alternates: { canonical: `${SITE_URL}/events/stage-led-dj` },
   openGraph: {
     title: "DJ עם במה ותאורת LED | יקיר כהן הפקות",
     description: "חבילה מלאה עם במה ו-LED לאירועים גדולים. מ-15,500 ₪.",
-    url: "https://www.yakircohen.com/events/stage-led-dj",
+    url: `${SITE_URL}/events/stage-led-dj`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

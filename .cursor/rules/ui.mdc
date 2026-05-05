@@ -1,7 +1,15 @@
+---
+description: Visual DNA — RTL, Acoustic Soul, soft geometry
+globs: **/*.{tsx,css}
+---
+
 # The Visual Architect (ui.mdc)
-Role: Pixel-Perfect UI Designer.
-Goal: Achieve the premium vibe of Spotify and Apple.
-Instructions:
-- MASTER RTL: Strictly use Tailwind logical properties (`ps-`, `pe-`, `ms-`, `me-`). [cite_start]Never use `pl-` or `pr-`[cite: 48].
-- [cite_start]DNA: Enforce "Acoustic Soul" textures (Dark wood, subtle glassmorphism)[cite: 48].
-- [cite_start]Accessibility: Ensure all buttons and CTAs are within thumb-reach (Mobile-First approach)[cite: 48].
+
+Role: Pixel-Perfect UI Designer.  
+Goal: Premium, calm interface (Spotify / Apple–inspired restraint), Hebrew-first.
+
+## חובה
+- **RTL:** רק Tailwind לוגי — `ps-`, `pe-`, `ms-`, `me-`. לא `pl-` / `pr-` על קומפוננטות חדשות.
+- **DNA:** Acoustic Soul — `#FAFAF8`, `#D42B2B`, `#1A1A1A`; זכוכית/גרדיאנטים **עדינים** בלבד.
+- **פינות (Shape):** ממשק “נוח ולא מרובע”: כרטיסים, כפתורי CTA, דרופדאונים, טבלאות עטופות — **`rounded-2xl`–`rounded-3xl`** או `rounded-full` איפה שמתאים; להימנע מ`rounded-md`/`rounded-lg` בלבד על בלוקים גדולים.
+- **נגישות:** כפתורים ו־CTA בטווח אגודל במובייל; מצב `:focus-visible` ברור.

@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -8,17 +9,17 @@ export const metadata: Metadata = {
   title: "הקלטת שירים לאירועים: כיצד AI הפך את זה לנגיש | יקיר כהן הפקות",
   description:
     "מה זה אומר להקליט שיר לאירוע בעידן AI — תיקון זיופים אוטומטי, עיבוד סאונד חכם, ואולפן שמגיע אליכם. מודיעין.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/recording-events-songs" },
+  alternates: { canonical: `${SITE_URL}/blog/recording-events-songs` },
   openGraph: {
     title: "הקלטת שירים לאירועים: AI ואולפן שמגיע אליכם",
     description: "תיקון זיופים, עיבוד חכם, ואולפן ניד — הקלטת שיר לאירוע בעידן החדש.",
-    url: "https://www.yakircohen.com/blog/recording-events-songs",
+    url: `${SITE_URL}/blog/recording-events-songs`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
     images: [
       {
-        url: "https://www.yakircohen.com/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp",
+        url: `${SITE_URL}/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp`,
         width: 1200,
         height: 630,
         alt: "הקלטת שיר לאירוע — יקיר כהן הפקות",
@@ -35,11 +36,11 @@ const schema = {
   publisher: {
     "@type": "Organization",
     name: "יקיר כהן הפקות",
-    url: "https://www.yakircohen.com",
+    url: `${SITE_URL}`,
     address: { "@type": "PostalAddress", addressLocality: "Modi'in", addressCountry: "IL" },
   },
   datePublished: "2026-05-01",
-  mainEntityOfPage: "https://www.yakircohen.com/blog/recording-events-songs",
+  mainEntityOfPage: `${SITE_URL}/blog/recording-events-songs`,
 };
 
 const sections = [

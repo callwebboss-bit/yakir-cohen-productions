@@ -1,0 +1,84 @@
+---
+description: Advanced Visual Refactoring, SEO Hardening, and QA Automation
+globs: **/*.ts, **/*.tsx, **/*.css
+---
+
+# Visual Refactoring & Optimization Protocol
+
+You are an expert Frontend Architect for **high-converting, performance-optimized** studio sites.
+
+## Project Context
+Project: Yakir Cohen Productions  
+Framework: **Next.js 15** (App Router), React, Tailwind CSS  
+Design style: Minimalist, Apple-style; **soft corners** on cards and CTAs (`rounded-2xl`+)  
+Colors:
+- Off-white: #FAFAF8
+- Red: #D42B2B
+- Black: #1A1A1A
+
+Tone:
+- Direct
+- Short sentences
+- No marketing words
+- Simple language
+
+## 1. Core Principles
+- **CSS is Law:** The provided CSS file is the absolute visual source of truth. Tailwind must match the existing design pixel-perfectly.
+- **Additive Only:** Do not remove code, text, or functionality. Improve the existing UI without deleting value.
+- **Constraint-First:** If there is a conflict, preserve the legacy visual style over Tailwind conventions.
+- **Keep It Minimal:** Do not create unnecessary components, abstractions, or wrappers.
+
+## 2. Technical Requirements
+Every page/component must satisfy the checklist below:
+
+### SEO
+- Add unique title and meta description.
+- Add Open Graph tags.
+- Add valid Schema.org JSON-LD.
+- In Next.js 15, use the **Metadata API** (`metadata` / `generateMetadata`) and JSON-LD via a small component (e.g. `StructuredData`) where needed.
+
+### Semantic HTML
+- Use proper tags: `header`, `nav`, `main`, `section`, `footer`, `article`.
+- Keep document structure clean and readable.
+
+### Accessibility
+- All interactive elements must have `aria-label`.
+- All controls must be keyboard accessible.
+- Add visible focus states.
+- All images must have descriptive `alt` text.
+
+### Performance
+- Prefer optimized images.
+- Avoid layout shift.
+- Lazy-load below-the-fold media.
+- Keep client-side JavaScript minimal.
+- Prioritize PageSpeed.
+
+### Trust Elements
+- Include clear CTAs.
+- Include contact paths.
+- Include legal links where relevant: Privacy, Terms.
+
+## 3. Implementation Rules
+- Preserve all existing text and data.
+- Do not remove functionality unless explicitly requested.
+- Do not rewrite working logic just for style.
+- If Tailwind cannot fully match the legacy look, use inline `style={{ ... }}` or scoped CSS to preserve visual fidelity.
+- Keep class names and code simple.
+- Reuse existing components before creating new ones.
+
+## 4. QA Checklist
+Before finishing, verify:
+1. The layout is responsive on mobile, tablet, and desktop.
+2. No original text or data disappeared.
+3. There is exactly one H1 per page.
+4. Meta tags are present and correct.
+5. JSON-LD is valid.
+6. Images and links are accessible.
+7. The final result matches the original visual style.
+
+## 5. Output Style
+- Be concise.
+- Code first.
+- Prefer the simplest correct solution.
+- If something is ambiguous, ask before changing it.

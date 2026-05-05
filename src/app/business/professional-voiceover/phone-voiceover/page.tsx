@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Phone } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "קריינות לטלפון — הודעת ברוכים הבאים מקצועית | יקיר כהן הפקות",
   description:
     "קריינות מקצועית לטלפון: הודעת קבלה, תפריט שלוחות, הודעת נעדר. הרושם הראשון של העסק שלכם נוצר כאן. הצעת מחיר תוך שעות.",
-  alternates: { canonical: "https://www.yakircohen.com/business/professional-voiceover/phone-voiceover" },
+  alternates: { canonical: `${SITE_URL}/business/professional-voiceover/phone-voiceover` },
   openGraph: {
     title: "קריינות לטלפון | יקיר כהן הפקות",
     description: "הודעת קבלה, שלוחות, נעדר — קול מקצועי לעסק שלכם.",
-    url: "https://www.yakircohen.com/business/professional-voiceover/phone-voiceover",
+    url: `${SITE_URL}/business/professional-voiceover/phone-voiceover`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

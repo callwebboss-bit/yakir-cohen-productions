@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   title: "אטרקציות לאירועים 2026 — מה שווה ומה לא | יקיר כהן הפקות",
   description:
     "עשן כבד, זיקוקים קרים, קונפטי, בועות סבון — מה באמת עושה אפקט לאירוע ומה רק נראה טוב בתמונות. המדריך המעשי.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/Attractions" },
+  alternates: { canonical: `${SITE_URL}/blog/Attractions` },
   openGraph: {
     title: "אטרקציות לאירועים 2026 — מה שווה ומה לא",
     description: "עשן כבד, זיקוקים קרים, קונפטי — מה באמת עושה אפקט ומה רק נראה טוב בתמונות.",
-    url: "https://www.yakircohen.com/blog/Attractions",
+    url: `${SITE_URL}/blog/Attractions`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
@@ -26,11 +27,11 @@ const schema = {
   publisher: {
     "@type": "Organization",
     name: "יקיר כהן הפקות",
-    url: "https://www.yakircohen.com",
+    url: `${SITE_URL}`,
     address: { "@type": "PostalAddress", addressLocality: "Modi'in", addressCountry: "IL" },
   },
   datePublished: "2026-01-01",
-  mainEntityOfPage: "https://www.yakircohen.com/blog/Attractions",
+  mainEntityOfPage: `${SITE_URL}/blog/Attractions`,
 };
 
 const attractions = [

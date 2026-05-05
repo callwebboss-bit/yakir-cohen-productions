@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Camera, CheckCircle2, Clock, MessageCircle, Phone, Star } from "lucide-react";
@@ -10,13 +11,13 @@ export const metadata: Metadata = {
   description:
     "צלם חתונות דתי ומקצועי לאירועים קטנים ואינטימיים. מחירים שקופים מ-3,500 ₪, כולל מע\"מ ועריכה. 48 שעות לתמונות הראשונות.",
   alternates: {
-    canonical: "https://www.yakircohen.com/attractions/Wedding-photography",
+    canonical: `${SITE_URL}/attractions/Wedding-photography`,
   },
   openGraph: {
     title: "צלם חתונות לאירועים קטנים | יקיר כהן הפקות",
     description:
       "צילום מקצועי לחתונות דתיות ואירועים אינטימיים. מחיר הוגן, ללא הפתעות, תמונות אמיתיות.",
-    url: "https://www.yakircohen.com/attractions/Wedding-photography",
+    url: `${SITE_URL}/attractions/Wedding-photography`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -33,7 +34,7 @@ const schema = {
     "@type": "LocalBusiness",
     name: "יקיר כהן הפקות",
     telephone: "+972-58-7555456",
-    url: "https://www.yakircohen.com",
+    url: `${SITE_URL}`,
     address: {
       "@type": "PostalAddress",
       streetAddress: "עמק איילון 34/5",
@@ -307,7 +308,7 @@ export default function WeddingPhotographyPage() {
           { label: "אטרקציות לאירועים", href: "/attractions", desc: "זיקוקים, קונפטי, עשן כבד ועוד" },
           { label: "עמדת לד", href: "/events/led-booth", desc: "עמדת לד ניידת לאירועים" },
           { label: "DJ לאירועים", href: "/events/dj-events", desc: "מוזיקה מקצועית לחתונות ובני מצווה" },
-          { label: "שירות לחתונה", href: "/weddings", desc: "כל שירותי ההפקה לחתונה" },
+          { label: "שירי חתונה", href: "/weddings/songs", desc: "שיר כניסה לחופה ושירים מקוריים" },
         ]}
       />
     </div>

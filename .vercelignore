@@ -1,0 +1,15 @@
+.git
+.next
+node_modules
+blobs
+.claude
+.cursor
+.roo
+.vscode
+tools
+*.tsbuildinfo
+*.log
+deploy
+nav-shell.html
+sitemap_redirects.xml
+docs/agent-local

@@ -11,6 +11,7 @@
 
 import fs from "fs";
 import path from "path";
+import { pathToFileURL } from "url";
 
 interface ValidationResult {
   file: string;
@@ -133,7 +134,7 @@ const PROHIBITED_CLAIMS: ProhibitedClaim[] = [
 
   // Category: Privacy/Data Violations
   {
-    pattern: /no.*?tracking|completely.*?private|never.*?share.*?data|100%.*?secure/i,
+    pattern: /\bno\b.*?tracking|completely.*?private|never.*?share.*?data|100%.*?secure/i,
     type: "PRIVACY_MISSING",
     severity: "critical",
     reason: "Data handling claims require explicit disclosure",
@@ -160,7 +161,7 @@ const PRIVACY_CHECKS: ProhibitedClaim[] = [
   {
     name: "Explicit Consent Language",
     pattern:
-      /I\s+consent\s+to|agree\s+to\s+(?:receive|marketing)|explicitly\s+opt/i,
+      /I\s+consent\s+to|agree\s+to\s+(?:receive|marketing)|explicitly\s+opt|אני\s+מסכימ(?:ה|\/ה)?\s+במפורש|אני\s+מסכים\s+במפורש|אני\s+מסכימה\s+במפורש/i,
     type: "PRIVACY_MISSING",
     severity: "critical",
     reason: "Amendment 13, 2026: explicit consent required for data usage",
@@ -169,7 +170,7 @@ const PRIVACY_CHECKS: ProhibitedClaim[] = [
   },
   {
     name: "Data Retention Disclosure",
-    pattern: /stored\s+for|retained\s+for|kept\s+for|\d+\s+(?:month|year|day)/i,
+    pattern: /stored\s+for|retained\s+for|kept\s+for|\d+\s+(?:month|year|day)|נשמור.*(?:חודש|חודשים|שנה|שנים|יום|ימים)|יישמר.*(?:חודש|חודשים|שנה|שנים|יום|ימים)|למשך\s+\d+\s*(?:חודש|חודשים|שנה|שנים|יום|ימים)/i,
     type: "PRIVACY_MISSING",
     severity: "critical",
     reason: "Data retention period must be disclosed",
@@ -177,7 +178,7 @@ const PRIVACY_CHECKS: ProhibitedClaim[] = [
   },
   {
     name: "Right to Erasure",
-    pattern: /delete.*?data|erase|remove.*?information|opt.*?out/i,
+    pattern: /delete.*?data|erase|remove.*?information|opt.*?out|לבקש\s+מחיקה|מחיקת\s+המידע|נמחק\s+את\s+המידע|להסיר\s+את\s+המידע/i,
     type: "PRIVACY_MISSING",
     severity: "critical",
     reason: "Amendment 13: users must have delete option",
@@ -206,7 +207,7 @@ export class CounselValidator {
     this.checkPrivacy(content, filePath);
 
     // Step 3: Check AI disclosure (for AI-generated copy)
-    this.checkAIDisclosure(content, filePath);
+    this.checkAIDisclosure(content);
 
     // Step 4: Determine overall status
     const criticalCount = this.violations.filter(
@@ -266,7 +267,7 @@ export class CounselValidator {
     });
   }
 
-  private checkAIDisclosure(content: string, filePath: string): void {
+  private checkAIDisclosure(content: string): void {
     // If content mentions AI tool but no disclosure, flag it
     if (/\b(Claude|ChatGPT|Gemini|AI-generated)\b/i.test(content)) {
       if (!/\[AI-ASSISTED/i.test(content)) {
@@ -367,4 +368,26 @@ export async function validateMarketingFile(filePath: string): Promise<void> {
     console.error(`Error validating ${filePath}:`, error);
     process.exit(1);
   }
+}
+
+async function runCli(): Promise<void> {
+  const filePaths = process.argv.slice(2);
+
+  if (filePaths.length === 0) {
+    console.error("Usage: tsx src/agents/counsel-validator.ts <file-path> [more-file-paths]");
+    process.exit(1);
+  }
+
+  for (const filePath of filePaths) {
+    await validateMarketingFile(path.resolve(filePath));
+  }
+}
+
+const invokedPath = process.argv[1] ? pathToFileURL(path.resolve(process.argv[1])).href : null;
+
+if (invokedPath === import.meta.url) {
+  runCli().catch((error) => {
+    console.error("Counsel validator failed:", error);
+    process.exit(1);
+  });
 }

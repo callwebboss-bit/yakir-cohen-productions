@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -9,11 +10,11 @@ export const metadata: Metadata = {
   title: "DJ לאירועים — חתונות, בר מצווה ואירועים פרטיים | יקיר כהן הפקות",
   description:
     "DJ מקצועי לחתונה מ-12,650 ₪, בר/בת מצווה מ-7,500 ₪. מודיעין ואזור המרכז. ציוד מקצועי, שירי כניסה, ריקוד סלואו — שולטים בכל רגע.",
-  alternates: { canonical: "https://www.yakircohen.com/events/dj-events" },
+  alternates: { canonical: `${SITE_URL}/events/dj-events` },
   openGraph: {
     title: "DJ לאירועים | יקיר כהן הפקות",
     description: "חתונה מ-12,650 ₪, בר מצווה מ-7,500 ₪. מודיעין ואזור המרכז.",
-    url: "https://www.yakircohen.com/events/dj-events",
+    url: `${SITE_URL}/events/dj-events`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

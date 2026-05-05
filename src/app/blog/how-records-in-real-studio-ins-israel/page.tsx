@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   title: "איך מקליטים באולפן אמיתי בישראל — המדריך המלא | יקיר כהן הפקות",
   description:
     "מה ההבדל בין אולפן ביתי לאולפן מקצועי, מה קורה בסשן הקלטה, כמה עולה, ואיך מוצאים אולפן שמתאים לסגנון שלכם — מדריך 2026.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/how-records-in-real-studio-ins-israel" },
+  alternates: { canonical: `${SITE_URL}/blog/how-records-in-real-studio-ins-israel` },
   openGraph: {
     title: "איך מקליטים באולפן אמיתי בישראל | יקיר כהן הפקות",
     description: "מה קורה בסשן הקלטה, כמה עולה, ואיך בוחרים אולפן — 2026.",
-    url: "https://www.yakircohen.com/blog/how-records-in-real-studio-ins-israel",
+    url: `${SITE_URL}/blog/how-records-in-real-studio-ins-israel`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
@@ -23,9 +24,9 @@ const schema = {
   "@type": "Article",
   "headline": "איך מקליטים באולפן אמיתי בישראל — המדריך המלא 2026",
   "author": { "@type": "Person", "name": "יקיר כהן" },
-  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": "https://www.yakircohen.com" },
+  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": `${SITE_URL}` },
   "datePublished": "2026-01-01",
-  "mainEntityOfPage": "https://www.yakircohen.com/blog/how-records-in-real-studio-ins-israel",
+  "mainEntityOfPage": `${SITE_URL}/blog/how-records-in-real-studio-ins-israel`,
 };
 
 const sections = [

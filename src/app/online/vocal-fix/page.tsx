@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Upload, Zap, Download } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "שיפור קול אונליין — ניקוי רעשים, תיקון זיופים, מיקסינג | יקיר כהן הפקות",
   description:
     "שירותי שיפור קול אונליין: ניקוי רעשים, תיקון זיופים (Melodyne), נרמול עוצמה, מיקסינג ושיפור תמונה. שולחים קובץ, מקבלים תוצאה. מ-79 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/online/vocal-fix" },
+  alternates: { canonical: `${SITE_URL}/online/vocal-fix` },
   openGraph: {
     title: "שיפור קול אונליין | יקיר כהן הפקות",
     description: "ניקוי רעשים, תיקון זיופים, מיקסינג. שולחים קובץ, מקבלים תוצאה. מ-79 ₪.",
-    url: "https://www.yakircohen.com/online/vocal-fix",
+    url: `${SITE_URL}/online/vocal-fix`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -28,7 +29,7 @@ const schema = {
     "@type": "LocalBusiness",
     "name": "יקיר כהן הפקות",
     "telephone": "+972-58-7555456",
-    "url": "https://www.yakircohen.com",
+    "url": `${SITE_URL}`,
   },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",

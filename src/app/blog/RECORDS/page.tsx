@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   title: "Records — הוצאת לאור עצמאית | יקיר כהן הפקות",
   description:
     "כל מה שצריך לדעת על הוצאת שיר עצמאית בישראל: הפצה לפלטפורמות, זכויות יוצרים, ISRC, DistroKid — מדריך מקיף למוזיקאים.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/RECORDS" },
+  alternates: { canonical: `${SITE_URL}/blog/RECORDS` },
   openGraph: {
     title: "Records — הוצאת לאור עצמאית | יקיר כהן הפקות",
     description: "הפצה עצמאית, ISRC, זכויות יוצרים — מדריך למוזיקאים.",
-    url: "https://www.yakircohen.com/blog/RECORDS",
+    url: `${SITE_URL}/blog/RECORDS`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
@@ -23,9 +24,9 @@ const schema = {
   "@type": "Article",
   "headline": "Records — הוצאת לאור עצמאית בישראל",
   "author": { "@type": "Person", "name": "יקיר כהן" },
-  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": "https://www.yakircohen.com" },
+  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": `${SITE_URL}` },
   "datePublished": "2026-01-01",
-  "mainEntityOfPage": "https://www.yakircohen.com/blog/RECORDS",
+  "mainEntityOfPage": `${SITE_URL}/blog/RECORDS`,
 };
 
 const steps = [

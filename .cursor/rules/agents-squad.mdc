@@ -1,0 +1,14 @@
+---
+description: יישור סוכני AI — AGENTS.md + .cursorrules + חוקי משנה
+alwaysApply: true
+---
+
+# סנכרון סקווד (Yakir Cohen AI)
+
+בכל משימה:
+
+1. **`AGENTS.md`** (שורש הריפו) — תפקידים: Storyteller, Ranker, Visualizer, Optimizer, Converter, Guardian, Counsel; תהליך `[DRAFT]` ו־`[COUNSEL-APPROVED]` לפני commit של תוכן שיווקי.
+2. **`.cursorrules`** — מערכת ההפעלה הגלובלית: Next.js 15, RTL, DNA צבעים, פינות רכות, הפניה ל־`.cursor/rules/`.
+3. **`.cursor/rules/*.mdc`** — יישום לפי נושא (`seo`, `ui`, `ux`, `perf`, `counsel`, וכו').
+
+אל תייצר תוכן שיווקי או טענות דירוג/ביקורת בלי עמידה ב־`counsel.mdc` וב־`AGENTS.md`.

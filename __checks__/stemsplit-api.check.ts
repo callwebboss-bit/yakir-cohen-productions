@@ -1,6 +1,9 @@
 import { ApiCheck, AssertionBuilder, Frequency } from "@checkly/cli/constructs";
 
-const BASE = process.env.PRODUCTION_URL ?? "https://www.yakircohen.com";
+const BASE =
+  process.env.PRODUCTION_URL ??
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "http://localhost:3000";
 
 /**
  * API Check 1 — /api/split responds and is configured.

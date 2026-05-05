@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Mic } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "הקלטת דרשה ודברי תורה באולפן | יקיר כהן הפקות",
   description:
     "הקלטת דרשה, שיעור תורה, חדושים, הספד — באולפן אקוסטי. קובץ נקי, ברור, מוכן להפצה בפודקאסט, ביוטיוב או בוואטסאפ. מ-490 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/studio/blessings/sermon-recording" },
+  alternates: { canonical: `${SITE_URL}/studio/blessings/sermon-recording` },
   openGraph: {
     title: "הקלטת דרשה ודברי תורה | יקיר כהן הפקות",
     description: "הקלטה מקצועית לדרשות ושיעורי תורה. מ-490 ₪.",
-    url: "https://www.yakircohen.com/studio/blessings/sermon-recording",
+    url: `${SITE_URL}/studio/blessings/sermon-recording`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

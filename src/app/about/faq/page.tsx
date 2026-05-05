@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -6,12 +7,12 @@ export const metadata: Metadata = {
   title: "שאלות נפוצות — אולפן הקלטות יקיר כהן הפקות",
   description: "כל מה שרצית לדעת על האולפן: מחירים, תנאי ביטול, נגישות, שעות פעילות ואיך להגיע. תשובות ישירות לשאלות הכי נפוצות.",
   alternates: {
-    canonical: "https://www.yakircohen.com/about/faq",
+    canonical: `${SITE_URL}/about/faq`,
   },
   openGraph: {
     title: "שאלות נפוצות | יקיר כהן הפקות",
     description: "מחירים, ביטול, נגישות ועוד — כל התשובות במקום אחד.",
-    url: "https://www.yakircohen.com/about/faq",
+    url: `${SITE_URL}/about/faq`,
   },
 };
 

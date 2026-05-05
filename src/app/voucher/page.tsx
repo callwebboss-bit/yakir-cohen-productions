@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import React from "react";
 import { Metadata } from "next";
 import VoucherContent from "@/components/VoucherContent";
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
   title: "שובר מתנה מוזיקלי",
   description: "העניקו מתנה של פעם בחיים. עצבו שובר מתנה להקלטת שיר, סדנת סאונד או טיפול קולי באולפני יקיר כהן.",
   alternates: {
-    canonical: "https://www.yakircohen.com/voucher",
+    canonical: `${SITE_URL}/voucher`,
   },
 };
 

@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "בניית אולפן ביתי — ייעוץ ותוכנית אקוסטית | יקיר כהן הפקות",
   description:
     "רוצים להקים אולפן ביתי? ייעוץ אקוסטי, רשימת ציוד, בחירת DAW, תכנון חדר — מ-490 ₪ לייעוץ. מגיעים אליכם או ב-Zoom.",
-  alternates: { canonical: "https://www.yakircohen.com/academy/home-studio" },
+  alternates: { canonical: `${SITE_URL}/academy/home-studio` },
   openGraph: {
     title: "בניית אולפן ביתי | יקיר כהן הפקות",
     description: "ייעוץ אקוסטי + תוכנית ציוד לאולפן ביתי. מ-490 ₪.",
-    url: "https://www.yakircohen.com/academy/home-studio",
+    url: `${SITE_URL}/academy/home-studio`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

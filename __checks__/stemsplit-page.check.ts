@@ -1,6 +1,9 @@
 import { BrowserCheck, Frequency } from "@checkly/cli/constructs";
 
-const BASE = process.env.PRODUCTION_URL ?? "https://www.yakircohen.com";
+const BASE =
+  process.env.PRODUCTION_URL ??
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "http://localhost:3000";
 
 /**
  * Browser Check — /stemsplit page loads and LCP element is visible.

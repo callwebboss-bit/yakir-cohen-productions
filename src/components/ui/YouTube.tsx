@@ -1,8 +1,14 @@
 import React from "react";
 
+import { cn } from "@/lib/utils";
+
 interface YouTubeProps {
   url: string;
   title: string;
+  /** מחליף מרווחי ברירת מחדל — למשל my-0 בתוך גריד */
+  className?: string;
+  /** ברירת מחדל lazy להטבעות מתחת לקיפול */
+  loading?: "lazy" | "eager";
 }
 
 function getYouTubeId(url: string) {
@@ -15,7 +21,7 @@ function getYouTubeId(url: string) {
   return urlObj.searchParams.get("v") || null;
 }
 
-export default function YouTube({ url, title }: YouTubeProps) {
+export default function YouTube({ url, title, className, loading = "lazy" }: YouTubeProps) {
   const videoId = getYouTubeId(url);
 
   if (!videoId) {
@@ -23,13 +29,14 @@ export default function YouTube({ url, title }: YouTubeProps) {
   }
 
   return (
-    <div className="relative group w-full max-w-5xl mx-auto my-12">
+    <div className={cn("relative group w-full max-w-5xl mx-auto my-12", className)}>
       <div className="absolute -inset-1 bg-gradient-to-r from-zinc-200 via-white to-zinc-200 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
       <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/20 bg-white/5 backdrop-blur-md shadow-2xl">
         <iframe
           className="h-full w-full"
           src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
           title={title}
+          loading={loading}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>

@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,11 +11,11 @@ export const metadata: Metadata = {
   title: "בלוני ענק לאירועים — אטרקציה שעוצרת את הנשימה | יקיר כהן הפקות",
   description:
     "בלוני ענק לאירועים: חתונות, בר/בת מצווה, ימי הולדת. אטרקציה ויזואלית שכולם מצלמים. חלק מחבילות האטרקציות מ-1,750 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/attractions/giant-balloons" },
+  alternates: { canonical: `${SITE_URL}/attractions/giant-balloons` },
   openGraph: {
     title: "בלוני ענק לאירועים | יקיר כהן הפקות",
     description: "אטרקציה ויזואלית לאירועים — חלק מחבילות האטרקציות מ-1,750 ₪.",
-    url: "https://www.yakircohen.com/attractions/giant-balloons",
+    url: `${SITE_URL}/attractions/giant-balloons`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

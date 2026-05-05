@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,17 +8,18 @@ import YouTube from "@/components/ui/YouTube";
 import PriceReveal from "@/components/PriceReveal";
 import AudioCompare from "@/components/AudioCompare";
 import ShareButton from "@/components/ShareButton";
+import RelatedPages from "@/components/RelatedPages";
 import { BLUR_DATA_URL } from "@/lib/blur";
 
 export const metadata: Metadata = {
   title: "הקלטת שירים מקצועית במודיעין | יקיר כהן הפקות — מ-990 ₪",
   description:
     "הקלטת שיר מקצועית במודיעין — 990 ₪ כולל טכנאי, תיקון זיופים ומיקס. שיר לחתונה, ברכות, שיר מקורי. נגיש מתל אביב וירושלים. תוצאה ביום אחד.",
-  alternates: { canonical: "https://www.yakircohen.com/studio/recording-song-modiin" },
+  alternates: { canonical: `${SITE_URL}/studio/recording-song-modiin` },
   openGraph: {
     title: "הקלטת שירים במודיעין | יקיר כהן הפקות",
     description: "990 ₪ כולל הכל. שיר לחתונה, ברכות, שיר מקורי. תוצאה ביום אחד.",
-    url: "https://www.yakircohen.com/studio/recording-song-modiin",
+    url: `${SITE_URL}/studio/recording-song-modiin`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -60,7 +62,7 @@ const videoSchema = {
   "uploadDate": "2024-01-01",
   "embedUrl": "https://www.youtube.com/embed/r8Xk2_m9FJ8",
   "url": "https://www.youtube.com/watch?v=r8Xk2_m9FJ8",
-  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": "https://www.yakircohen.com" },
+  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": `${SITE_URL}` },
 };
 
 const faqSchema = {
@@ -308,6 +310,14 @@ export default function RecordingSongModiinPage() {
       <div className="flex justify-center py-6 border-t border-zinc-100">
         <ShareButton title="הקלטת שיר במודיעין" />
       </div>
+      <RelatedPages
+        title="מסלולי הקלטה קשורים"
+        pages={[
+          { label: "שיר מקורי", href: "/studio/recording-song-modiin/original-song", desc: "פיתוח שיר מלא מרעיון להקלטה" },
+          { label: "כתיבת ברכה", href: "/studio/recording-song-modiin/blessing-writing", desc: "עזרה בניסוח טקסט לאירוע" },
+          { label: "שירות כתיבת שיר", href: "/studio/recording-song-modiin/songwriting-service", desc: "בניית מילים ולחן בהתאמה" },
+        ]}
+      />
     </div>
   );
 }

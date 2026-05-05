@@ -1,6 +1,6 @@
 {
     "builder.serverUrl": "",
-    "builder.command": "npm run dev",
+    "builder.command": "npm.cmd run dev",
     "builder.runDevServer": false,
     "builder.autoDetectDevServer": true,
     "builder.launchType": "editor"

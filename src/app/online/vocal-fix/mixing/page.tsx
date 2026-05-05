@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "מיקסינג מקצועי אונליין — EQ, Compression, Reverb | יקיר כהן הפקות",
   description:
     "מיקסינג מקצועי אונליין: EQ, Compression, Reverb, Balance. שולחים קבצים, מקבלים מיקס שנשמע כמו אולפן. מ-350 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/online/vocal-fix/mixing" },
+  alternates: { canonical: `${SITE_URL}/online/vocal-fix/mixing` },
   openGraph: {
     title: "מיקסינג מקצועי אונליין | יקיר כהן הפקות",
     description: "EQ, Compression, Reverb, Balance. מ-350 ₪.",
-    url: "https://www.yakircohen.com/online/vocal-fix/mixing",
+    url: `${SITE_URL}/online/vocal-fix/mixing`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

@@ -183,7 +183,6 @@ export default function StemSplitClient() {
   const [dragging, setDrag] = useState(false);
   const [mode, setMode]     = useState<Mode>("idle");
   const [progress, setProg] = useState(0);
-  const [jobId, setJobId]   = useState<string | null>(null);
   const [stems, setStems]   = useState<Stems | null>(null);
   const [error, setError]   = useState<string | null>(null);
   const [credits, setCredits] = useState<number | null>(null);
@@ -227,7 +226,6 @@ export default function StemSplitClient() {
 
   // ── Poll job status ──
   const startPolling = useCallback((id: string) => {
-    setJobId(id);
     setMode("processing");
     setProg(35);
 
@@ -316,7 +314,7 @@ export default function StemSplitClient() {
   const reset = () => {
     if (pollRef.current) clearInterval(pollRef.current);
     setMode("idle"); setFile(null); setUrl(""); setStems(null);
-    setError(null); setProg(0); setJobId(null);
+    setError(null); setProg(0);
   };
 
   const canSubmit = mode === "idle" || mode === "error";

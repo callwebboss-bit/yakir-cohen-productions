@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Layers, Sparkles, ArrowRight } from "lucide-react";
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   title: "פיצול ערוצים אונליין | StemSplit | יקיר כהן הפקות",
   description:
     "פיצול ערוצים מקצועי אונליין: ווקאל ובס נפרדים מתוך השיר שלך. שירות StemSplit עם תוצאה מוכנה לעיבוד, מיקס או הופעה חיה.",
-  alternates: { canonical: "https://www.yakircohen.com/online/vocal-fix/stem-split" },
+  alternates: { canonical: `${SITE_URL}/online/vocal-fix/stem-split` },
   openGraph: {
     title: "פיצול ערוצים אונליין | StemSplit | יקיר כהן הפקות",
     description: "הפרדת שיר לווקאל ובס נפרדים עם StemSplit — שירות פיצול ערוצים מהיר ומרוכז.",
-    url: "https://www.yakircohen.com/online/vocal-fix/stem-split",
+    url: `${SITE_URL}/online/vocal-fix/stem-split`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -27,7 +28,7 @@ const schema = {
     "@type": "LocalBusiness",
     name: "יקיר כהן הפקות",
     telephone: "+972-58-7555456",
-    url: "https://www.yakircohen.com",
+    url: `${SITE_URL}`,
   },
   serviceType: "StemSplit Audio Separation",
 };

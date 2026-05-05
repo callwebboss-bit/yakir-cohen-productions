@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,11 +12,11 @@ export const metadata: Metadata = {
   title: "עשן כבד לחתונה — אפקט ריקוד מרהיב | יקיר כהן הפקות",
   description:
     "עשן כבד לחתונה ולריקוד הסלואו — אפקט שנשאר על רצפת ריקוד ויוצר תמונות מדהימות. בטוח ומקצועי. חלק מחבילות האטרקציות מ-1,750 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/attractions/wedding-smoking-machine" },
+  alternates: { canonical: `${SITE_URL}/attractions/wedding-smoking-machine` },
   openGraph: {
     title: "עשן כבד לחתונה | יקיר כהן הפקות",
     description: "אפקט עשן כבד לריקוד הסלואו. מ-1,750 ₪.",
-    url: "https://www.yakircohen.com/attractions/wedding-smoking-machine",
+    url: `${SITE_URL}/attractions/wedding-smoking-machine`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",
@@ -185,7 +186,7 @@ export default function WeddingSmokingMachinePage() {
       {/* Sub-page link */}
       <section className="py-10 px-6 max-w-4xl mx-auto w-full">
         <Link
-          href="/attractions/wedding-smoking-machine/heavy-smoke-large-events"
+          href="/attractions"
           className="flex items-center justify-between p-6 bg-zinc-900 text-white rounded-2xl hover:bg-zinc-800 transition-all group"
         >
           <span className="text-xs font-bold text-[#D42B2B] group-hover:translate-x-1 transition-transform">← </span>

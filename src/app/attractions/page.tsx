@@ -1,18 +1,20 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import StructuredData from "@/components/StructuredData";
 import AttractionsCalculator from "@/features/attractions/AttractionsCalculator";
+import RelatedPages from "@/components/RelatedPages";
 
 export const metadata: Metadata = {
   title: "אטרקציות לאירועים | יקיר כהן הפקות — עשן כבד, זיקוקים קרים, קונפטי",
   description:
     "אטרקציות לאירועים: עשן כבד, זיקוקים קרים, קונפטי, בועות סבון ועוד. חבילה מ-1,750 ₪ — ב-4 אטרקציות קליפ היילייטס מתנה. מודיעין ואזור המרכז.",
   alternates: {
-    canonical: "https://www.yakircohen.com/attractions",
+    canonical: `${SITE_URL}/attractions`,
   },
   openGraph: {
     title: "אטרקציות לאירועים | יקיר כהן הפקות",
     description: "עשן כבד, זיקוקים קרים, קונפטי, בועות סבון — חבילות מ-1,750 ₪",
-    url: "https://www.yakircohen.com/attractions",
+    url: `${SITE_URL}/attractions`,
   },
 };
 
@@ -82,6 +84,15 @@ export default function AttractionsPage() {
       <main>
         <AttractionsCalculator />
       </main>
+
+      <RelatedPages
+        title="אטרקציות ושירותי אירוע קשורים"
+        pages={[
+          { label: "עשן כבד לחתונה", href: "/attractions/wedding-smoking-machine", desc: "אפקט רחבה לריקוד סלואו וכניסה" },
+          { label: "זיקוקים קרים", href: "/attractions/cold-fireworks", desc: "ניצוצות בטוחים לרגעי שיא" },
+          { label: "צילום אירועים", href: "/photography", desc: "תיעוד מקצועי לאירועים קטנים וחתונות" },
+        ]}
+      />
     </div>
   );
 }

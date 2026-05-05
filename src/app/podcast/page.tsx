@@ -1,23 +1,25 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from 'next';
 import StructuredData from '@/components/StructuredData';
 import PodcastCalculator from '@/features/podcast/PodcastCalculator';
 import StudioRecordsSVG from '@/components/StudioRecordsSVG';
+import RelatedPages from '@/components/RelatedPages';
 
 export const metadata: Metadata = {
   title: 'הפקת פודקאסט מקצועית במודיעין | יקיר כהן הפקות',
   description:
     'הפקת פודקאסט מקצועית — הקלטה, עריכה והפצה. שלוש חבילות מ-950 ₪. אולפן מודיעין, נגיש מכל הארץ. ציוד Sphere L22 מקצועי.',
   alternates: {
-    canonical: 'https://www.yakircohen.com/podcast',
+    canonical: `${SITE_URL}/podcast`,
   },
   openGraph: {
     title: 'הפקת פודקאסט מקצועית | יקיר כהן הפקות',
     description:
       'הפקת פודקאסט מקצועית במודיעין — הקלטה, עריכה והפצה. מ-950 ₪.',
-    url: 'https://www.yakircohen.com/podcast',
+    url: `${SITE_URL}/podcast`,
     images: [
       {
-        url: 'https://www.yakircohen.com/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp',
+        url: `${SITE_URL}/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp`,
         width: 1200,
         height: 630,
         alt: 'אולפן פודקאסטים במודיעין - יקיר כהן הפקות',
@@ -115,6 +117,15 @@ export default function PodcastPage() {
         </p>
         <PodcastCalculator />
       </section>
+
+      <RelatedPages
+        title="מסלולי פודקאסט קשורים"
+        pages={[
+          { label: "הפקת פודקאסט", href: "/podcast/podcast-production", desc: "תכנון, הקלטה, עריכה והפצה" },
+          { label: "אולפן פודקאסט", href: "/podcast/podcast-studio", desc: "הקלטת אודיו ווידאו בסביבה מקצועית" },
+          { label: "ציוד פודקאסט", href: "/podcast/podcast-equipment", desc: "מיקרופונים, מצלמות ותאורה להפקה" },
+        ]}
+      />
     </div>
   );
 }

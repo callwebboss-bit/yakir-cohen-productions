@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, MapPin, Zap, Shield } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "אולפן הקלטות נייד — מגיעים אליכם | יקיר כהן הפקות",
   description:
     "אולפן הקלטות נייד שמגיע לכל מקום — אירוע, בית, משרד. הקלטת שירים, ברכות, פודקאסט. ציוד מקצועי שמגיע לאיפה שנוח לכם.",
-  alternates: { canonical: "https://www.yakircohen.com/studio/mobile-studio" },
+  alternates: { canonical: `${SITE_URL}/studio/mobile-studio` },
   openGraph: {
     title: "אולפן הקלטות נייד | יקיר כהן הפקות",
     description: "ציוד מקצועי שמגיע לאיפה שנוח לכם — אירוע, בית, משרד.",
-    url: "https://www.yakircohen.com/studio/mobile-studio",
+    url: `${SITE_URL}/studio/mobile-studio`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

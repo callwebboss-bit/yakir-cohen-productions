@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "תיקון שמע מקצועי — קליקים, Clipping, קטיעות | יקיר כהן הפקות",
   description:
     "תיקון שמע מקצועי: קליקים, Clipping, קטיעות, נפילות — מה שנשמע שבור, אנחנו מתקנים. שולחים קובץ, מקבלים תוצאה. מ-120 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/online/vocal-fix/audio-repair" },
+  alternates: { canonical: `${SITE_URL}/online/vocal-fix/audio-repair` },
   openGraph: {
     title: "תיקון שמע | יקיר כהן הפקות",
     description: "קליקים, Clipping, קטיעות. מ-120 ₪.",
-    url: "https://www.yakircohen.com/online/vocal-fix/audio-repair",
+    url: `${SITE_URL}/online/vocal-fix/audio-repair`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

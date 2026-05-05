@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
   title: "בר ובת מצווה — המדריך למוזיקה, ברכות ואטרקציות | יקיר כהן הפקות",
   description:
     "כל מה שצריך לדעת על מוזיקה ואטרקציות לבר/בת מצווה: שיר מקורי, ברכה מוקלטת, DJ, עשן כבד, קונפטי. מדריך מקיף.",
-  alternates: { canonical: "https://www.yakircohen.com/blog/bar-bat-mitzvah" },
+  alternates: { canonical: `${SITE_URL}/blog/bar-bat-mitzvah` },
   openGraph: {
     title: "בר ובת מצווה — מדריך מוזיקה ואטרקציות",
     description: "שיר מקורי, ברכה, DJ, עשן, קונפטי — מדריך מקיף.",
-    url: "https://www.yakircohen.com/blog/bar-bat-mitzvah",
+    url: `${SITE_URL}/blog/bar-bat-mitzvah`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "article",
@@ -23,9 +24,9 @@ const schema = {
   "@type": "Article",
   "headline": "בר ובת מצווה — מדריך מוזיקה, ברכות ואטרקציות",
   "author": { "@type": "Person", "name": "יקיר כהן" },
-  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": "https://www.yakircohen.com" },
+  "publisher": { "@type": "Organization", "name": "יקיר כהן הפקות", "url": `${SITE_URL}` },
   "datePublished": "2026-01-01",
-  "mainEntityOfPage": "https://www.yakircohen.com/blog/bar-bat-mitzvah",
+  "mainEntityOfPage": `${SITE_URL}/blog/bar-bat-mitzvah`,
 };
 
 const checklist = [

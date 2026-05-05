@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,11 +12,11 @@ export const metadata: Metadata = {
   title: "זיקוקים קרים לאירועים — ניצוצות בטוחים לכל מקום | יקיר כהן הפקות",
   description:
     "זיקוקים קרים לחתונות, בר/בת מצווה ואירועים — ניצוצות קרים שבטוחים לכל מקום סגור. אפקט מרהיב לריקוד הסלואו ולכניסה לחופה. חלק מחבילות האטרקציות מ-1,750 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/attractions/cold-fireworks" },
+  alternates: { canonical: `${SITE_URL}/attractions/cold-fireworks` },
   openGraph: {
     title: "זיקוקים קרים לאירועים | יקיר כהן הפקות",
     description: "ניצוצות קרים, בטוחים לכל מקום. מ-1,750 ₪.",
-    url: "https://www.yakircohen.com/attractions/cold-fireworks",
+    url: `${SITE_URL}/attractions/cold-fireworks`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

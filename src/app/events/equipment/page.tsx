@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   title: "ציוד הגברה לאירועים — השכרה ומכירה | יקיר כהן הפקות",
   description:
     "ציוד הגברה מקצועי לאירועים: מערכות PA, מיקסרים, מיקרופונים אלחוטיים, מוניטורים — השכרה לערב יחיד או חבילה מלאה. מ-1,200 ₪.",
-  alternates: { canonical: "https://www.yakircohen.com/events/equipment" },
+  alternates: { canonical: `${SITE_URL}/events/equipment` },
   openGraph: {
     title: "ציוד הגברה לאירועים | יקיר כהן הפקות",
     description: "מערכות PA, מיקסרים, מיקרופונים — השכרה מ-1,200 ₪.",
-    url: "https://www.yakircohen.com/events/equipment",
+    url: `${SITE_URL}/events/equipment`,
     siteName: "יקיר כהן הפקות",
     locale: "he_IL",
     type: "website",

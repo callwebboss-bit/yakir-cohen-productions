@@ -1,6 +1,9 @@
 import { test, expect } from "@playwright/test";
 
-const BASE = process.env.PRODUCTION_URL ?? "https://www.yakircohen.com";
+const BASE =
+  process.env.PRODUCTION_URL ??
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "http://localhost:3000";
 
 test("StemSplit page — H1 visible, tool loads, no console errors", async ({ page }) => {
   const consoleErrors: string[] = [];
