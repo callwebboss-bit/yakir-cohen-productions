@@ -40,7 +40,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
             onChange={(e) => setQ(e.target.value)}
             placeholder="למשל: הקלטת שיר, פודקאסט, DJ לחתונה"
             aria-label="חיפוש"
-            className="flex-1 border-0 outline-none py-3 px-1.5 font-sans text-sm text-[#1a1a1a] bg-transparent"
+            className="flex-1 border-0 outline-none py-3 px-1.5 font-sans text-sm text-zinc-900 bg-transparent"
           />
           <Btn type="submit">חפש</Btn>
         </form>

@@ -101,7 +101,7 @@ export function SectionWrapper({
     <section
       id={id}
       dir="rtl"
-      className={`font-sans ${dark ? 'bg-zinc-900 text-white' : 'bg-surface text-[#1a1a1a]'} ${pad} ${className}`}
+      className={`font-sans ${dark ? 'bg-zinc-900 text-white' : 'bg-surface text-zinc-900'} ${pad} ${className}`}
     >
       {children}
     </section>

@@ -69,7 +69,7 @@ export default function PricingTable({ tiers = DEFAULT_TIERS }: PricingTableProp
               className={`rounded-2xl p-[22px] flex flex-col gap-3 border ${
                 featured
                   ? 'bg-zinc-900 text-white border-zinc-900 brand-shadow'
-                  : 'bg-white text-[#1a1a1a] border-zinc-200'
+                  : 'bg-white text-zinc-900 border-zinc-200'
               }`}
             >
               {tier.tag && (
@@ -85,7 +85,7 @@ export default function PricingTable({ tiers = DEFAULT_TIERS }: PricingTableProp
               <h3 className="font-serif text-xl font-extrabold m-0">{tier.name}</h3>
 
               <div className="flex items-baseline gap-1">
-                <span className={`font-serif font-black text-[38px] leading-none ${featured ? 'text-white' : 'text-[#1a1a1a]'}`}>
+                <span className={`font-serif font-black text-[38px] leading-none ${featured ? 'text-white' : 'text-zinc-900'}`}>
                   {tier.price}
                 </span>
                 <span className="text-sm opacity-70">₪</span>
@@ -117,7 +117,7 @@ export default function PricingTable({ tiers = DEFAULT_TIERS }: PricingTableProp
                 className={`mt-auto rounded-lg py-[11px] font-extrabold text-[13px] font-sans flex justify-center items-center gap-1.5 no-underline ${
                   featured
                     ? 'bg-brand-red text-white border-0'
-                    : 'bg-transparent border border-[#1a1a1a] text-[#1a1a1a]'
+                    : 'bg-transparent border border-zinc-900 text-zinc-900'
                 }`}
                 aria-label={`${tier.cta} — מסלול ${tier.name}`}
               >

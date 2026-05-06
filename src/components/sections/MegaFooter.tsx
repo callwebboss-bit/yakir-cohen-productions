@@ -37,11 +37,11 @@ const NAV_COLS = [
 ] as const;
 
 const PAYMENT_METHODS = [
-  { name: 'bit',      bg: '#FF6B00' },
-  { name: 'PayBox',   bg: '#0066CC' },
-  { name: 'VISA',     bg: '#1A1F71' },
-  { name: 'MC',       bg: '#EB001B' },
-  { name: 'Apple Pay',bg: '#000' },
+  { name: 'bit', className: 'bg-orange-600' },
+  { name: 'PayBox', className: 'bg-blue-700' },
+  { name: 'VISA', className: 'bg-indigo-900' },
+  { name: 'MC', className: 'bg-red-700' },
+  { name: 'Apple Pay', className: 'bg-zinc-950' },
 ] as const;
 
 export default function MegaFooter() {
@@ -91,12 +91,9 @@ export default function MegaFooter() {
               אמצעי תשלום
             </p>
             <ul className="list-none p-0 m-0 flex flex-wrap gap-1">
-              {PAYMENT_METHODS.map(({ name, bg }) => (
+              {PAYMENT_METHODS.map(({ name, className }) => (
                 <li key={name}>
-                  <span
-                    className="text-[10px] font-extrabold text-white px-1.5 py-0.5 rounded-[3px]"
-                    style={{ background: bg }}
-                  >
+                  <span className={`text-[10px] font-extrabold text-white px-1.5 py-0.5 rounded-[3px] ${className}`}>
                     {name}
                   </span>
                 </li>

@@ -58,7 +58,7 @@ export default function MultiStepForm() {
                   className={`py-3.5 px-4 rounded-[10px] font-sans text-sm font-bold cursor-pointer text-right border transition-colors ${
                     data.type === opt
                       ? 'bg-zinc-900 text-white border-zinc-900'
-                      : 'bg-white text-[#1a1a1a] border-zinc-200 hover:border-zinc-400'
+                      : 'bg-white text-zinc-900 border-zinc-200 hover:border-zinc-400'
                   }`}
                 >
                   {opt}

@@ -32,7 +32,7 @@ export default function ProductCard({ product = DEFAULT_PRODUCT, inGrid = false 
   return (
     <article
       dir="rtl"
-      className={`font-sans text-[#1a1a1a] bg-white border border-zinc-200 rounded-[14px] overflow-hidden flex flex-col ${
+      className={`font-sans text-zinc-900 bg-white border border-zinc-200 rounded-[14px] overflow-hidden flex flex-col ${
         inGrid ? 'w-full' : 'w-80'
       }`}
     >

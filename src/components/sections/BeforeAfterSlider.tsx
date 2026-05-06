@@ -32,7 +32,7 @@ export default function BeforeAfterSlider() {
           className="absolute inset-0"
           style={{
             clipPath: `inset(0 ${100 - pct}% 0 0)`,
-            borderInlineEnd: `2px solid #D42B2B`,
+            borderInlineEnd: '2px solid var(--color-brand-red)',
           }}
         >
           <Image

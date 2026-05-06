@@ -36,7 +36,7 @@ export default function SocialShare({
           target="_blank"
           rel="noopener noreferrer"
           aria-label="שתף בוואטסאפ"
-          className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-lg px-3.5 py-2 font-sans text-xs font-bold text-[#25D366] hover:border-zinc-400 transition-colors no-underline"
+          className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-lg px-3.5 py-2 font-sans text-xs font-bold text-green-700 hover:border-zinc-400 transition-colors no-underline"
         >
           <IconWhatsApp size={15} />
           WhatsApp
@@ -47,7 +47,7 @@ export default function SocialShare({
           target="_blank"
           rel="noopener noreferrer"
           aria-label="שתף בפייסבוק"
-          className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-lg px-3.5 py-2 font-sans text-xs font-bold text-[#1877F2] hover:border-zinc-400 transition-colors no-underline"
+          className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-lg px-3.5 py-2 font-sans text-xs font-bold text-blue-700 hover:border-zinc-400 transition-colors no-underline"
         >
           <IconFacebook size={15} />
           Facebook

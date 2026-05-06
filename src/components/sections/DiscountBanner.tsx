@@ -10,7 +10,7 @@ export default function DiscountBanner() {
   return (
     <div
       dir="rtl"
-      className="font-sans bg-gradient-to-r from-zinc-950 to-[#2a1212] text-white rounded-2xl p-6 grid grid-cols-[auto_1fr_auto] gap-6 items-center border-2 border-dashed border-brand-red"
+      className="font-sans bg-gradient-to-r from-zinc-950 to-zinc-800 text-white rounded-2xl p-6 grid grid-cols-[auto_1fr_auto] gap-6 items-center border-2 border-dashed border-brand-red"
     >
       <div className="w-14 h-14 rounded-[14px] bg-brand-red/20 text-brand-red grid place-items-center shrink-0">
         <IconZap size={28} />
