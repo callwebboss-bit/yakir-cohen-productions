@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { IconWhatsApp, IconFacebook, IconLink } from '@/components/icons';
 import { SectionWrapper } from './_shared';
 
@@ -9,9 +10,15 @@ interface SocialShareProps {
 }
 
 export default function SocialShare({
-  url = typeof window !== 'undefined' ? window.location.href : '',
+  url: urlProp,
   title = 'יקיר כהן הפקות',
 }: SocialShareProps) {
+  const [url, setUrl] = useState('');
+
+  useEffect(() => {
+    setUrl(urlProp ?? window.location.href);
+  }, [urlProp]);
+
   const waShare = `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`;
   const fbShare = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
 
