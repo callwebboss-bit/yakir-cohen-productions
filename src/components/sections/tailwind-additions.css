@@ -1,0 +1,36 @@
+/*
+  Tailwind Additions for Sections Library
+  ────────────────────────────────────────
+  Add these to your src/app/globals.css @theme block if not already present.
+  The sections library assumes these tokens are defined in the project.
+*/
+
+@theme {
+  /* Brand */
+  --color-brand-red: #d42b2b;
+  --color-surface:   #fafaf8;
+
+  /* Typography */
+  --font-sans:  'Heebo',            system-ui, sans-serif;
+  --font-serif: 'Frank Ruhl Libre', Georgia,   serif;
+  --font-label: 'Assistant',        'Heebo',   system-ui, sans-serif;
+}
+
+/* RTL-aware brand shadow (used on featured/highlighted cards) */
+@layer utilities {
+  .shadow-brand {
+    box-shadow: calc(var(--main-shadow-direction, -1) * -6px) 6px 0 theme(colors.brand-red);
+  }
+}
+
+/*
+  WhatsApp pulse animation (used by FloatingButton).
+  Add to your globals.css @layer base or @layer utilities.
+*/
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 12px 24px rgba(37, 211, 102, 0.4); }
+  50%       { box-shadow: 0 12px 24px rgba(37, 211, 102, 0.7), 0 0 0 8px rgba(37, 211, 102, 0.15); }
+}
+.animate-wa-pulse {
+  animation: wa-pulse 2s infinite;
+}

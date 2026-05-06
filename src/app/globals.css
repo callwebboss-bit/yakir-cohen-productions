@@ -93,3 +93,12 @@ body {
   border-radius: 9999px;
   background: var(--brand-red);
 }
+
+/* ─── WhatsApp floating button animation ──────────────────── */
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 12px 24px rgba(37, 211, 102, 0.4); }
+  50%       { box-shadow: 0 12px 24px rgba(37, 211, 102, 0.7), 0 0 0 8px rgba(37, 211, 102, 0.15); }
+}
+.animate-wa-pulse {
+  animation: wa-pulse 2s infinite;
+}
