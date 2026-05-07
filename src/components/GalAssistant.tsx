@@ -99,8 +99,8 @@ export default function GalAssistant() {
         aria-hidden={!isOpenState}
         onKeyDown={isOpenState ? handleKeyDown : undefined}
         className={[
-          "absolute bottom-20 start-0 w-80 md:w-96 bg-white border border-zinc-200",
-          "rounded-3xl shadow-2xl overflow-hidden flex flex-col",
+          "absolute bottom-20 start-0 w-80 md:w-96 bg-[#FAFAF8] border-[1.5px] border-[#1A1A1A]",
+          "rounded-none brand-shadow-dark overflow-hidden flex flex-col",
           /* min-height prevents CLS when messages load */
           "h-[500px]",
           /* CSS transition — no JS animation library needed */

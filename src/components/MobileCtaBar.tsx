@@ -42,7 +42,7 @@ export default function MobileCtaBar() {
 
   return (
     <div
-      className={`${BAR_BASE} bg-white/80 backdrop-blur-md border-t border-white/60 shadow-[0_-4px_24px_0_rgba(0,0,0,0.06)] px-3 py-2.5 flex gap-2`}
+      className={`${BAR_BASE} bg-[#FAFAF8] border-t-[1.5px] border-[#1A1A1A] px-3 py-2.5 flex gap-2`}
     >
       {/*
         WCAG 2.5.5 — minimum tap target 44×44 css-px.
@@ -51,7 +51,7 @@ export default function MobileCtaBar() {
       */}
       <a
         href="tel:0587555456"
-        className="flex-1 flex items-center justify-center gap-1.5 min-h-[44px] rounded-lg bg-zinc-100 text-zinc-900 font-bold text-sm hover:bg-zinc-200 active:bg-zinc-300 transition-colors min-w-0"
+        className="flex-1 flex items-center justify-center gap-1.5 min-h-[44px] rounded-none border-[1.5px] border-[#1A1A1A] bg-[#FAFAF8] text-[#1A1A1A] font-bold text-sm hover:bg-[#1A1A1A] hover:text-[#FAFAF8] transition-colors min-w-0"
       >
         <Phone size={15} aria-hidden="true" className="shrink-0" />
         <span className="truncate">058-7-555-456</span>
@@ -59,7 +59,7 @@ export default function MobileCtaBar() {
 
       <Link
         href="/contact/whatsapp"
-        className="flex-1 flex items-center justify-center gap-1.5 min-h-[44px] rounded-lg bg-[#D42B2B] text-white font-bold text-sm hover:bg-red-700 active:bg-red-800 transition-colors min-w-0"
+        className="flex-1 flex items-center justify-center gap-1.5 min-h-[44px] rounded-none border-[1.5px] border-[#D42B2B] bg-[#D42B2B] text-white font-bold text-sm hover:bg-[#1A1A1A] hover:border-[#1A1A1A] transition-colors min-w-0"
       >
         <MessageCircle size={15} aria-hidden="true" className="shrink-0" />
         <span>קבעו עכשיו</span>

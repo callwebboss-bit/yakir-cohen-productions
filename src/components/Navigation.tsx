@@ -264,7 +264,7 @@ export default function Navigation() {
 
             {openDropdown === MORE_KEY && (
               <div
-                className="absolute top-full start-0 mt-1.5 w-[400px] bg-white border border-zinc-200 rounded-3xl shadow-xl p-3 z-50"
+                className="absolute top-full start-0 mt-1.5 w-[400px] bg-[#FAFAF8] border-[1.5px] border-[rgba(26,26,26,0.2)] p-3 z-50"
                 aria-label="שירותים נוספים"
               >
                 <div className="grid grid-cols-2 gap-1.5">

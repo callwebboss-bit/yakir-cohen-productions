@@ -220,10 +220,16 @@ import CookieConsent  from '@/components/sections/CookieConsent';
 5. **Client components** (`'use client'`) are already marked. Server Components can import
    them freely — Next.js handles the boundary automatically.
 
-6. **Shadows**: use `brand-shadow` (featured card), `brand-shadow-sm`, `brand-shadow-card`
-   (subtle). Do NOT use Tailwind arbitrary `shadow-[...]` for brand shadows.
+6. **Shadows (Bauhaus)**: שטוח כברירת מחדל. `brand-shadow` הוא סיגנייצ'ר נדיר —
+   שימוש מותר רק ב־CTA ראשי **אחד** פר viewport או ב־`FeaturedProduct` היחיד בעמוד.
+   אל תוסיפו `brand-shadow-sm` / `brand-shadow-card` לכרטיסים סטנדרטיים — השתמשו
+   ב־`border-[1.5px] border-ink/15` ליצירת היררכיה במקום צללים.
 
-7. **Icons**: import from `@/components/icons`, not from lucide-react.
+7. **פינות (Bauhaus)**: `rounded-none` (חד) או `rounded-sm` (2px) לכפתורים, inputs,
+   וכרטיסים. עד `rounded-lg` (4px) לפאנלים גדולים. אל תשתמשו ב־`rounded-3xl/4xl/5xl` —
+   הוסרו מהמערכת. רק avatars/circular icons מותר `rounded-full`.
+
+8. **Icons**: import from `@/components/icons`, not from lucide-react.
 
 ---
 

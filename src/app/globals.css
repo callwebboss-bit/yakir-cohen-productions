@@ -6,15 +6,26 @@
 :root {
   color-scheme: light;
   --main-shadow-direction: 1;
+
+  /* Brand */
   --brand-red: #d42b2b;
+  --brand-red-hover: #1a1a1a;
+
+  /* Paper / Ink — Bauhaus surface tones with current canvas */
   --canvas: #fafaf8;
+  --canvas-container: #f0ede6;
+  --canvas-deep: #e6e2d6;
+  --ink: #1a1a1a;
+  --ink-soft: rgba(26, 26, 26, 0.15);
 }
 
 [dir="rtl"] {
   --main-shadow-direction: -1;
 }
 
-/* ─── Brand shadow utilities (direction-aware) ──────────── */
+/* ─── Brand shadow utilities (signature use only) ─────────
+   Use sparingly: max one CTA per viewport, or a single FeaturedProduct.
+   Do NOT apply to standard buttons or cards — use 1.5px borders instead. */
 .brand-shadow {
   box-shadow: calc(var(--main-shadow-direction) * 8px) 8px 0px #d42b2b;
 }
@@ -28,10 +39,10 @@
   box-shadow: calc(var(--main-shadow-direction) * 6px) 6px 0px rgba(0, 0, 0, 0.06);
 }
 
-/* ─── Fluid typography ─────────────────────────────────── */
-h1 { font-size: clamp(1.875rem, 3.5vw + 0.75rem, 4rem); line-height: 1.12; }
-h2 { font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.75rem); line-height: 1.2; }
-h3 { font-size: clamp(1.25rem, 1.8vw + 0.3rem, 2rem); line-height: 1.25; }
+/* ─── Fluid typography (Bauhaus heavier hierarchy) ─────── */
+h1 { font-size: clamp(2.25rem, 4vw + 1rem, 4.5rem); line-height: 1.05; letter-spacing: 0; }
+h2 { font-size: clamp(1.75rem, 3vw + 0.5rem, 3rem);  line-height: 1.15; letter-spacing: 0; }
+h3 { font-size: clamp(1.25rem, 1.8vw + 0.3rem, 2rem); line-height: 1.3; }
 h4 { font-size: clamp(1.1rem, 1.3vw + 0.2rem, 1.5rem); line-height: 1.3; }
 h5 { font-size: clamp(1rem, 1vw + 0.15rem, 1.25rem); line-height: 1.4; }
 h6 { font-size: clamp(0.875rem, 0.9vw + 0.1rem, 1.125rem); line-height: 1.4; }
@@ -43,8 +54,10 @@ html {
 body {
   min-height: 100vh;
   background: var(--canvas);
+  color: var(--ink);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "kern", "calt";
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -56,10 +69,11 @@ body {
   }
 }
 
+/* ─── Focus ring (Bauhaus — sharp, no rounding) ─── */
 :focus-visible {
-  outline: 2px solid #d42b2b;
-  outline-offset: 3px;
-  border-radius: 10px;
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+  border-radius: 0;
 }
 
 @keyframes ghostIn {
@@ -76,7 +90,7 @@ body {
   --font-frank: "Frank Ruhl Libre", serif;
 }
 
-/* כותרת מקטע אחידה — פס מותג מתחת (בלי pseudo ובלי color-mix) */
+/* כותרת מקטע אחידה — פס מותג מתחת */
 .section-heading {
   display: flex;
   flex-direction: column;
@@ -90,7 +104,7 @@ body {
 .section-heading__bar {
   width: 3rem;
   height: 4px;
-  border-radius: 9999px;
+  border-radius: 0;
   background: var(--brand-red);
 }
 

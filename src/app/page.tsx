@@ -82,7 +82,7 @@ export default function Home() {
     <div className="flex flex-col">
       <StructuredData data={homeSchema} />
 
-      <header className="relative min-h-[520px] md:min-h-[580px] lg:min-h-[min(78vh,820px)] flex flex-col justify-center bg-surface overflow-hidden border-b border-zinc-200/80">
+      <header className="relative min-h-[520px] md:min-h-[580px] lg:min-h-[min(78vh,820px)] flex flex-col justify-center bg-[#FAFAF8] overflow-hidden border-b border-zinc-200/80">
         <div
           className="absolute inset-0 bg-zinc-100/40"
           aria-hidden="true"
@@ -106,7 +106,7 @@ export default function Home() {
                 <input
                   id="global-search"
                   name="q"
-                  className="w-full bg-white border border-zinc-300 rounded-full py-4 md:py-4 pe-14 ps-8 text-base md:text-lg font-sans placeholder-zinc-400 focus:outline-none focus:border-zinc-900 focus:ring-2 focus:ring-brand-red/15 shadow-sm"
+                  className="w-full bg-[#FAFAF8] border-[1.5px] border-[#1A1A1A]/30 rounded-none py-4 md:py-4 pe-14 ps-8 text-base md:text-lg font-sans placeholder-zinc-400 focus:outline-none focus:border-[#1A1A1A]"
                   placeholder="לדוגמה: הקלטת שיר, פודקאסט, stem split…"
                   aria-label="חיפוש שירותים באתר"
                 />
@@ -125,8 +125,8 @@ export default function Home() {
             </div>
 
             <div className="hidden lg:flex lg:col-span-5 justify-center lg:justify-end mt-0">
-              <div className="w-full max-w-md rounded-3xl border border-zinc-200 bg-white px-8 py-8 shadow-md">
-                <p className="font-serif text-2xl xl:text-[1.65rem] text-zinc-800 leading-snug text-pretty text-start">
+              <div className="w-full max-w-md border-[1.5px] border-[rgba(26,26,26,0.15)] bg-[#F0EDE6] px-8 py-8">
+                <p className="font-serif text-2xl xl:text-[1.65rem] text-[#1A1A1A] leading-snug text-pretty text-start">
                   אותה שפה מקצועית — מאולפן דרך{" "}
                   <Link href="/online" className="text-brand-red font-semibold underline-offset-4 hover:underline">
                     שירות אונליין
@@ -148,10 +148,10 @@ export default function Home() {
                   </li>
                 </ul>
                 <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-start">
-                  <Link href="/studio" className="text-sm font-bold text-zinc-800 hover:text-brand-red transition-colors">
+                  <Link href="/studio" className="text-sm font-bold text-[#1A1A1A] hover:text-brand-red transition-colors">
                     האולפן ←
                   </Link>
-                  <Link href="/contact" className="text-sm font-bold text-zinc-800 hover:text-brand-red transition-colors">
+                  <Link href="/contact" className="text-sm font-bold text-[#1A1A1A] hover:text-brand-red transition-colors">
                     צור קשר ←
                   </Link>
                 </div>
@@ -207,7 +207,7 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-white border-y border-zinc-200">
         <div className={`${PAGE_SHELL} grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center`}>
           <div className="lg:col-span-5 relative">
-            <div className="aspect-[3/4] max-w-sm mx-auto lg:max-w-none rounded-3xl overflow-hidden border border-zinc-200 bg-surface p-2 shadow-sm brand-shadow">
+            <div className="aspect-[3/4] max-w-sm mx-auto lg:max-w-none overflow-hidden border-[1.5px] border-[#1A1A1A] bg-[#FAFAF8] p-2 brand-shadow">
               <Image
                 src={HOME_IMAGES.portrait}
                 alt="יקיר כהן באולפן ההקלטות במודיעין"
@@ -218,9 +218,9 @@ export default function Home() {
                 placeholder="blur"
                 blurDataURL={BLUR_DATA_URL}
               />
-              <div className="absolute bottom-8 inline-end-8 bg-white/95 backdrop-blur-sm border border-zinc-200 px-4 py-2 flex items-center gap-2 rounded-full shadow-lg max-w-[min(90%,280px)]">
-                <div className="w-2 h-2 rounded-full bg-brand-red shrink-0" aria-hidden="true" />
-                <span className="text-[11px] font-bold tracking-wide text-zinc-800 leading-tight">
+              <div className="absolute bottom-8 inline-end-8 bg-[#FAFAF8] border-[1.5px] border-[#1A1A1A] px-4 py-2 flex items-center gap-2 max-w-[min(90%,280px)]">
+                <div className="w-2 h-2 bg-brand-red shrink-0" aria-hidden="true" />
+                <span className="text-[11px] font-bold tracking-wide text-[#1A1A1A] leading-tight">
                   סאונד נקי, תהליך מסודר
                 </span>
               </div>
@@ -250,11 +250,11 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-wrap gap-4 mt-4">
-              <Link href="/contact" className="bg-zinc-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-brand-red transition-colors flex items-center gap-2 group shadow-md hover:shadow-lg">
+              <Link href="/contact" className="bg-brand-red text-white px-8 py-4 rounded-none font-bold border-[1.5px] border-brand-red hover:bg-ink hover:border-[#1A1A1A] transition-colors flex items-center gap-2 group brand-shadow-dark">
                 בואו נתחיל
                 <ArrowLeft className="group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
               </Link>
-              <Link href="/studio" className="border border-zinc-900/20 bg-white px-8 py-4 rounded-2xl font-bold hover:border-zinc-900 hover:bg-zinc-50/80 transition-colors shadow-sm">
+              <Link href="/studio" className="border-[1.5px] border-[#1A1A1A] bg-transparent text-ink px-8 py-4 rounded-none font-bold hover:bg-ink hover:text-surface transition-colors">
                 לראות את האולפן
               </Link>
             </div>
@@ -314,7 +314,7 @@ export default function Home() {
             .
           </p>
           <div className="w-16 h-1 bg-brand-red mb-10" aria-hidden="true" />
-          <div className="overflow-x-auto rounded-2xl border border-zinc-200 bg-white shadow-sm">
+          <div className="overflow-x-auto border-[1.5px] border-[rgba(26,26,26,0.15)] bg-[#F0EDE6]">
             <table className="w-full text-right text-sm md:text-base">
               <thead>
                 <tr className="border-b-2 border-zinc-200 bg-zinc-50/80">
@@ -378,17 +378,17 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12">
-            <div className="bg-white p-7 rounded-2xl border border-zinc-200 shadow-sm text-start md:text-center">
+            <div className="bg-[#F0EDE6] p-7 border-[1.5px] border-[rgba(26,26,26,0.15)] text-start md:text-center">
               <p className="text-brand-red font-bold mb-3">★★★★★</p>
               <p className="text-zinc-700 italic mb-4">"נכנסתי עם סקיצה קטנה ויצאתי עם שיר שמרגיש שלי. הכל היה ברור, נעים ומדויק."</p>
               <p className="font-bold text-sm">שירה כהן, זמרת</p>
             </div>
-            <div className="bg-white p-7 rounded-2xl border border-zinc-200 shadow-sm text-start md:text-center">
+            <div className="bg-[#F0EDE6] p-7 border-[1.5px] border-[rgba(26,26,26,0.15)] text-start md:text-center">
               <p className="text-brand-red font-bold mb-3">★★★★★</p>
               <p className="text-zinc-700 italic mb-4">"מהרגע שסגרנו ידענו שיש על מי לסמוך. המוזיקה עבדה, הרחבה נשארה חיה, והאטרקציות באו בזמן."</p>
               <p className="font-bold text-sm">מאיה וצביקה, חתונה</p>
             </div>
-            <div className="bg-white p-7 rounded-2xl border border-zinc-200 shadow-sm text-start md:text-center">
+            <div className="bg-[#F0EDE6] p-7 border-[1.5px] border-[rgba(26,26,26,0.15)] text-start md:text-center">
               <p className="text-brand-red font-bold mb-3">★★★★★</p>
               <p className="text-zinc-700 italic mb-4">"לא רק שהאולפן נשמע טוב, גם קיבלנו כיוון ברור. זה חסך לנו ניסוי וטעייה והזיז את הפודקאסט קדימה."</p>
               <p className="font-bold text-sm">דני גביאל, פודקאסט עסקי</p>
@@ -544,10 +544,10 @@ function CategoryCard({ id, icon, title, desc, href, isSpecial }: { id: string; 
   return (
     <Link href={href} id={id} className="group block h-full">
       <div
-        className={`h-full min-h-[240px] p-8 rounded-3xl border flex flex-col items-center justify-center text-center gap-4 transition-shadow ${
+        className={`h-full min-h-[240px] p-8 border-[1.5px] flex flex-col items-center justify-center text-center gap-4 transition-colors ${
           isSpecial
-            ? "bg-zinc-900 text-white border-zinc-800 shadow-sm group-hover:shadow-md"
-            : "bg-white border-zinc-200 shadow-sm group-hover:shadow-md group-hover:border-zinc-300"
+            ? "bg-ink text-surface border-[#1A1A1A] group-hover:bg-brand-red group-hover:border-brand-red"
+            : "bg-[#F0EDE6] border-[rgba(26,26,26,0.15)] group-hover:border-[#1A1A1A]"
         }`}
       >
         <div className={isSpecial ? "text-brand-red" : "text-zinc-900"}>{icon}</div>
@@ -562,7 +562,7 @@ function CategoryCard({ id, icon, title, desc, href, isSpecial }: { id: string; 
 
 function WorkCard({ id, img, category, title, artist, href }: { id: string; img: string; category: string; title: string; artist: string; href: string }) {
   return (
-    <article id={id} className="bg-white rounded-3xl overflow-hidden border border-zinc-200 shadow-sm hover:shadow-md transition-shadow flex flex-col group">
+    <article id={id} className="bg-[#F0EDE6] overflow-hidden border-[1.5px] border-[rgba(26,26,26,0.15)] hover:border-[#1A1A1A] transition-colors flex flex-col group">
       <div className="aspect-[4/3] overflow-hidden relative bg-zinc-100">
         <Image
           src={img}

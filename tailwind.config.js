@@ -10,20 +10,33 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        /** פינות רכות יותר מברירת המחדל — פחות “מרובע תעשייתי” */
-        "4xl": "2rem",
-        "5xl": "2.5rem",
+        /* Bauhaus — sharp. 2px max for surfaces, 4px ceiling for large panels.
+           rounded-3xl/4xl/5xl deliberately omitted; use rounded-full for avatars. */
+        none: "0",
+        sm: "2px",
+        DEFAULT: "2px",
+        md: "2px",
+        lg: "4px",
+        xl: "4px",
+        "2xl": "4px",
       },
       colors: {
         brand: {
           red: "#D42B2B",
+          ink: "#1A1A1A",
         },
         surface: "#FAFAF8",
+        "surface-container": "#F0EDE6",
+        "surface-deep": "#E6E2D6",
+        ink: "#1A1A1A",
+        "ink-soft": "rgba(26, 26, 26, 0.15)",
+      },
+      borderWidth: {
+        hairline: "1.5px",
       },
       fontFamily: {
         serif: ["Frank Ruhl Libre", "serif"],
         sans: ["Heebo", "system-ui", "sans-serif"],
-        /** תוויות / אנגלית — מוביל ל־Assistant שכבר נטען ב־layout */
         label: ["Assistant", "Heebo", "system-ui", "sans-serif"],
       },
     },

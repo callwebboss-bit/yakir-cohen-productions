@@ -2,31 +2,32 @@ import Image from 'next/image';
 import type { ReactNode, ButtonHTMLAttributes } from 'react';
 
 /* ─────────────────────────────────────────────────────────────────
-   Shared primitives for the Sections Library.
+   Shared primitives for the Sections Library — Bauhaus aesthetic.
 
-   Tailwind tokens assumed from the project (globals.css / tailwind.config):
-     text-brand-red / bg-brand-red  → #D42B2B
-     bg-surface                     → #FAFAF8
-     font-serif                     → Frank Ruhl Libre
-     font-sans                      → Heebo
-     font-label                     → Assistant
+   Tokens (globals.css / tailwind.config):
+     text-brand-red / bg-brand-red  → #D42B2B (single accent — hover swaps to ink)
+     bg-surface                     → #FAFAF8 (paper)
+     bg-surface-container           → #F0EDE6 (one step deeper)
+     bg-surface-deep                → #E6E2D6 (emphasis blocks)
+     text-ink / bg-ink              → #1A1A1A
+     border-ink/15                  → 1.5px hairline divider
+     font-serif (Frank Ruhl Libre)  → display / headlines
+     font-sans  (Heebo)             → body
+     font-label (Assistant)         → all-caps overlines
+
+   Bauhaus rules: flat (no shadows), sharp (0–2px radius), single accent,
+   hierarchy via whitespace + 1.5px borders, never gradients.
    ───────────────────────────────────────────────────────────────── */
 
-// Tiny gray 1×1 GIF used as blur placeholder until real images are swapped in.
 export const BLUR_PLACEHOLDER =
   'data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==';
 
-// WhatsApp base number
 export const WA_NUMBER = '972587555456';
 export function waHref(msg: string) {
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
 }
 
 // ─── SectionImage ─────────────────────────────────────────────────
-// Wraps next/image with project-standard defaults.
-// Replace `src` strings with real assets from next/image static imports
-// or a CDN URL; everything else (AVIF/WebP, quality, blur) is handled
-// automatically by next/image.
 export function SectionImage({
   src,
   alt,
@@ -46,7 +47,7 @@ export function SectionImage({
 }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-xl border border-zinc-200 ${className}`}
+      className={`relative overflow-hidden border-[1.5px] border-[rgba(26,26,26,0.15)] ${className}`}
       style={{ aspectRatio: aspect ?? `${width}/${height}` }}
     >
       <Image
@@ -74,7 +75,7 @@ export function Eyebrow({
 }) {
   return (
     <p
-      className={`text-[11px] font-extrabold tracking-[0.22em] uppercase m-0 ${
+      className={`font-label text-[11px] font-extrabold tracking-[0.22em] uppercase m-0 ${
         muted ? 'text-zinc-500' : 'text-brand-red'
       }`}
     >
@@ -84,10 +85,11 @@ export function Eyebrow({
 }
 
 // ─── Section wrapper ──────────────────────────────────────────────
+// Bauhaus: generous whitespace carries hierarchy instead of shadows.
 export function SectionWrapper({
   children,
   dark = false,
-  pad = 'p-[60px]',
+  pad = 'px-6 md:px-16 lg:px-24 py-20 md:py-28',
   id,
   className = '',
 }: {
@@ -101,7 +103,7 @@ export function SectionWrapper({
     <section
       id={id}
       dir="rtl"
-      className={`font-sans ${dark ? 'bg-zinc-900 text-white' : 'bg-surface text-zinc-900'} ${pad} ${className}`}
+      className={`font-sans ${dark ? 'bg-[#1A1A1A] text-[#FAFAF8]' : 'bg-[#FAFAF8] text-[#1A1A1A]'} ${pad} ${className}`}
     >
       {children}
     </section>
@@ -135,19 +137,23 @@ export function Btn({
 
   let variantClass = '';
   if (variant === 'primary') {
-    variantClass = 'bg-brand-red text-white border-transparent';
+    // Bauhaus dramatic monochrome shift on hover: red → ink
+    variantClass =
+      'bg-[#D42B2B] text-white border-[1.5px] border-[#D42B2B] hover:bg-[#1A1A1A] hover:border-[#1A1A1A] transition-colors';
   } else if (variant === 'ghost') {
     variantClass = dark
-      ? 'bg-transparent text-white border border-white/30'
-      : 'bg-transparent text-zinc-900 border border-zinc-900';
+      ? 'bg-transparent text-white border-[1.5px] border-white/40 hover:border-white transition-colors'
+      : 'bg-transparent text-[#1A1A1A] border-[1.5px] border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-[#FAFAF8] transition-colors';
   } else {
-    variantClass = 'bg-zinc-900 text-white border-transparent';
+    // soft = ink filled
+    variantClass =
+      'bg-[#1A1A1A] text-white border-[1.5px] border-[#1A1A1A] hover:bg-[#D42B2B] hover:border-[#D42B2B] transition-colors';
   }
 
   return (
     <button
       {...rest}
-      className={`inline-flex items-center gap-2 rounded-md font-extrabold font-sans cursor-pointer ${sizeClass} ${fullClass} ${variantClass} ${className}`}
+      className={`inline-flex items-center gap-2 rounded-none font-extrabold font-sans cursor-pointer ${sizeClass} ${fullClass} ${variantClass} ${className}`}
     >
       {icon}
       {children}
