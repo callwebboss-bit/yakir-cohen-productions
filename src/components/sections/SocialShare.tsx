@@ -1,8 +1,14 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { IconWhatsApp, IconFacebook, IconLink } from '@/components/icons';
-import { SectionWrapper } from './_shared';
+import { useState, useEffect } from "react";
+import {
+  IconWhatsApp,
+  IconFacebook,
+  IconLink,
+  IconCheck,
+} from "@/components/icons";
+import { SectionWrapper } from "./_shared";
+import { triggerHaptic } from "@/lib/haptic";
 
 interface SocialShareProps {
   url?: string;
@@ -11,9 +17,10 @@ interface SocialShareProps {
 
 export default function SocialShare({
   url: urlProp,
-  title = 'יקיר כהן הפקות',
+  title = "יקיר כהן הפקות",
 }: SocialShareProps) {
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState("");
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     setUrl(urlProp ?? window.location.href);
@@ -23,13 +30,22 @@ export default function SocialShare({
   const fbShare = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
 
   async function copyLink() {
-    try { await navigator.clipboard.writeText(url); } catch {}
+    triggerHaptic();
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    } catch {
+      /* silent fail */
+    }
   }
 
   return (
     <SectionWrapper pad="p-8">
       <div className="flex items-center gap-3.5 flex-wrap">
-        <span className="text-[13px] font-extrabold text-zinc-700">נהנים? שתפו:</span>
+        <span className="text-[13px] font-extrabold text-zinc-700">
+          נהנים? שתפו:
+        </span>
 
         <a
           href={waShare}
@@ -56,11 +72,24 @@ export default function SocialShare({
         <button
           type="button"
           onClick={copyLink}
-          aria-label="העתק קישור לדף"
-          className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-lg px-3.5 py-2 font-sans text-xs font-bold text-zinc-700 hover:border-zinc-400 transition-colors cursor-pointer"
+          aria-label={copied ? "הקישור הועתק בהצלחה" : "העתק קישור לדף"}
+          className={`inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-lg px-3.5 py-2 font-sans text-xs font-bold transition-colors cursor-pointer ${
+            copied
+              ? "text-green-600 border-green-200"
+              : "text-zinc-700 hover:border-zinc-400"
+          }`}
         >
-          <IconLink size={14} />
-          העתק קישור
+          {copied ? (
+            <>
+              <IconCheck size={14} />
+              הועתק!
+            </>
+          ) : (
+            <>
+              <IconLink size={14} />
+              העתק קישור
+            </>
+          )}
         </button>
       </div>
     </SectionWrapper>
