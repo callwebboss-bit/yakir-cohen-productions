@@ -40,3 +40,9 @@ export { default as NotificationBar }  from './NotificationBar';
 export { default as CookieConsent }    from './CookieConsent';
 export { default as BusinessHours }    from './BusinessHours';
 export { default as SocialShare }      from './SocialShare';
+
+// ── Group F · Premium Abbey Road Inspired ─────────────────────────
+export { default as HeroSection }      from './HeroSection';
+export { default as ServiceGrid }      from './ServiceGrid';
+export { default as LegacyTimeline }   from './LegacyTimeline';
+export { default as EquipmentMarquee } from './EquipmentMarquee';
