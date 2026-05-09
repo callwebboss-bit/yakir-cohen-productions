@@ -26,14 +26,15 @@ jobs:
         run: npm ci
 
       - name: Install Checkly CLI
-        run: npm install --save-dev @checkly/cli
+        run: npm install --save-dev checkly
 
       - name: Run checks against deployed URL
+        if: env.CHECKLY_API_KEY != '' && env.CHECKLY_ACCOUNT_ID != ''
         run: npx checkly test --record --verbose
         # --record  → saves results to Checkly dashboard
         # --verbose → full output in CI logs
 
       - name: Deploy check definitions
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && env.CHECKLY_API_KEY != '' && env.CHECKLY_ACCOUNT_ID != ''
         run: npx checkly deploy --force
         # Syncs check definitions to Checkly on every main push

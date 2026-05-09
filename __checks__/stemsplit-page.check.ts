@@ -1,4 +1,4 @@
-import { BrowserCheck, Frequency } from "@checkly/cli/constructs";
+import { BrowserCheck, Frequency } from "checkly/constructs";
 
 const BASE =
   process.env.PRODUCTION_URL ??

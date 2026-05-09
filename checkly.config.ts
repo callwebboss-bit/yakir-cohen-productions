@@ -1,4 +1,4 @@
-import { defineConfig } from "@checkly/cli";
+import { defineConfig } from "checkly";
 
 const SITE_URL =
   process.env.PRODUCTION_URL ??
@@ -9,7 +9,7 @@ const SITE_URL =
  * Checkly monitoring configuration.
  *
  * Setup (one time):
- *   npm install --save-dev @checkly/cli
+ *   npm install --save-dev checkly
  *   npx checkly login
  *   npx checkly deploy
  *

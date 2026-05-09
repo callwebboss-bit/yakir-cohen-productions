@@ -158,7 +158,7 @@ export default function StudioPage() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <WorkCard title="האולפן الראשי" category="הקלטה והפקה" image={STUDIO_WORK} />
+          <WorkCard title="האולפן הראשי" category="הקלטה והפקה" image={STUDIO_WORK} />
           <WorkCard title="עמדת פודקאסט" category="פודקאסט ועסקים" image={PODCAST_WORK} />
         </div>
       </SectionWrapper>
