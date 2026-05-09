@@ -22,7 +22,7 @@ export default function CookieConsent({ onAccept, onEssentialOnly }: CookieConse
       dir="rtl"
       role="dialog"
       aria-label="הסכמה לעוגיות"
-      className="fixed bottom-4 end-4 max-w-[380px] bg-white border border-zinc-200 rounded-[14px] p-[18px] shadow-[0_18px_40px_rgba(0,0,0,0.12)] flex gap-3.5 items-start z-50 font-sans"
+      className="fixed bottom-4 left-4 max-w-[380px] bg-white border border-zinc-200 rounded-[14px] p-[18px] shadow-[0_18px_40px_rgba(0,0,0,0.12)] flex gap-3.5 items-start z-50 font-sans"
     >
       <span
         aria-hidden="true"
