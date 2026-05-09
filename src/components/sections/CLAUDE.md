@@ -1,243 +1,156 @@
-# Sections Library Agent — src/components/sections/
+# Sections Library Agent — Cloud Design Specialist
 
-You are a sections integration specialist for the **Yakir Cohen Productions** website.
-This library contains **23 modular sections** ready to drop into any page.
+אתה מומחה אינטגרציה של סקשנים לאתר **Yakir Cohen Productions**.
+הספרייה `src/components/sections/` מכילה 23 סקשנים מודולריים מוכנים לפי Cloud Design System.
 
-## Your job
+## משימת ליבה
 
-When asked to work on a specific page, pick the right sections, import them, and compose
-the page. Use the decision table below. **Do not invent new sections** — use what's here.
-
----
-
-## Import pattern
-
-```tsx
-// Single import — barrel covers all 23 sections
-import { PricingTable, CTABanner, FeatureList } from '@/components/sections';
-
-// Fixed-position elements (rendered outside the main flow)
-import FloatingButton from '@/components/sections/FloatingButton';
-import CookieConsent  from '@/components/sections/CookieConsent';
-```
-
-All sections are `dir="rtl"` and use project tokens (`bg-surface`, `text-brand-red`,
-`font-serif`, `font-sans`). **Do not add Tailwind overrides** that break RTL.
+כאשר עובדים על עמוד, הרכב אותו מהסקשנים הקיימים בלבד והמר אותו לשפה אחידה של Cloud Design.
+**לא יוצרים סקשנים חדשים אם אפשר לפתור עם מה שכבר קיים.**
 
 ---
 
-## The 23 sections
-
-### Group A — Sales & Conversion
-
-| Component | When to use | Key props |
-|-----------|-------------|-----------|
-| `PricingTable` | Every pricing/studio page | `tiers?: Tier[]` |
-| `ProductCard` | Single product card (use inside grids) | `product?: ProductCardData` |
-| `ProductGrid` | Vouchers / gifts page | `products?: ProductCardData[]` |
-| `FeaturedProduct` | Hero service on studio pages | — |
-| `Upsell` | After pricing or checkout flow | — |
-| `DiscountBanner` | Promotions, limited offers | — |
-| `CTABanner` | End of every service page. Always. | — |
-
-### Group B — Forms & Interaction
-
-| Component | When to use | Key props |
-|-----------|-------------|-----------|
-| `MultiStepForm` | Contact / booking pages | — |
-| `SurveyFeedback` | Thank-you pages, end of long pages | — |
-| `DownloadResource` | Lead magnets, resources page | — |
-
-### Group C — Value & Content (SEO)
-
-| Component | When to use | Key props |
-|-----------|-------------|-----------|
-| `FeatureList` | Studio pages, service pages | `features?: Feature[]` |
-| `ProcessSteps` | Any "how it works" section | `steps?: Step[]` |
-| `VideoSection` | Studio pages, landing pages | `videoSrc`, `thumbnailSrc` |
-| `ArticleFeed` | Home page, blog index | `articles?: Article[]`, `allArticlesHref` |
-| `AudioPlayer` | Podcast, portfolio pages | `title`, `coverSrc`, etc. |
-
-### Group D — Visuals & Navigation
-
-| Component | When to use | Key props |
-|-----------|-------------|-----------|
-| `BeforeAfterSlider` | Studio / mixing service pages | — |
-| `ImageSlider` | Portfolio, gallery pages | `slides?: Slide[]` |
-| `MegaFooter` | Replace `<Footer />` on full pages | — |
-| `SearchBar` | Blog index, search page | `onSearch?: (q: string) => void` |
-| `FloatingButton` | **Every page** in the root layout | `message?` |
-
-### Group E — Service & Status
-
-| Component | When to use | Key props |
-|-----------|-------------|-----------|
-| `NotificationBar` | **Root layout top** for active promos | `message`, `linkHref` |
-| `CookieConsent` | **Root layout** (shows once) | `onAccept`, `onEssentialOnly` |
-| `BusinessHours` | Contact page, studio pages | `hours?: DayHours[]` |
-| `SocialShare` | Blog posts, portfolio pages | `url`, `title` |
-
----
-
-## Page recipes (copy-paste starters)
-
-### Studio service page (e.g. `/studio/recording-song-modiin`)
+## Import Pattern
 
 ```tsx
 import {
-  FeatureList, ProcessSteps, PricingTable,
-  VideoSection, BeforeAfterSlider, CTABanner,
-  ImageSlider, SocialShare,
-} from '@/components/sections';
+  PricingTable,
+  FeatureList,
+  ProcessSteps,
+  VideoSection,
+  CTABanner,
+} from "@/components/sections";
 
-export default function Page() {
-  return (
-    <main dir="rtl" className="flex flex-col bg-surface">
-      {/* hero is in the existing page layout */}
-      <FeatureList />
-      <ProcessSteps />
-      <VideoSection videoSrc="https://youtube.com/watch?v=YOUR_ID" />
-      <BeforeAfterSlider />
-      <ImageSlider />
-      <PricingTable />
-      <CTABanner />
-      <SocialShare />
-    </main>
-  );
-}
-```
-
-### Pricing page (`/studio/pricing`)
-
-```tsx
-import { PricingTable, Upsell, DiscountBanner, CTABanner, MultiStepForm } from '@/components/sections';
-
-export default function Page() {
-  return (
-    <main dir="rtl" className="flex flex-col bg-surface">
-      <PricingTable />
-      <Upsell />
-      <div className="bg-surface px-[60px] py-8">
-        <DiscountBanner />
-      </div>
-      <MultiStepForm />
-      <CTABanner />
-    </main>
-  );
-}
-```
-
-### Blog post (`/blog/[slug]`)
-
-```tsx
-import { ArticleFeed, DownloadResource, CTABanner, SocialShare, SurveyFeedback } from '@/components/sections';
-
-// At the bottom of the post:
-<DownloadResource />
-<SurveyFeedback />
-<CTABanner />
-<ArticleFeed />   {/* "more posts" */}
-<SocialShare />
-```
-
-### Contact page (`/contact`)
-
-```tsx
-import { MultiStepForm, BusinessHours, CTABanner } from '@/components/sections';
-
-<MultiStepForm />
-<BusinessHours />
-<CTABanner />
-```
-
-### Home page additions (after hero)
-
-```tsx
-import { FeatureList, VideoSection, ArticleFeed, PricingTable, CTABanner } from '@/components/sections';
-
-<FeatureList />
-<VideoSection />
-<PricingTable />
-<ArticleFeed />
-<CTABanner />
-```
-
-### Portfolio / gallery page
-
-```tsx
-import { ImageSlider, BeforeAfterSlider, AudioPlayer, ProductGrid, CTABanner } from '@/components/sections';
-
-<ImageSlider />
-<BeforeAfterSlider />
-<AudioPlayer />
-<ProductGrid />
-<CTABanner />
+// Global fixed elements (layout-level)
+import FloatingButton from "@/components/sections/FloatingButton";
+import CookieConsent from "@/components/sections/CookieConsent";
 ```
 
 ---
 
-## Root layout additions (do once, global)
+## Sections Catalog
 
-Add to `src/app/layout.tsx` inside `<body>` — **above** `{children}`:
+### Group A — Sales & Conversion
 
-```tsx
-import NotificationBar from '@/components/sections/NotificationBar';
+- `PricingTable`, `ProductCard`, `ProductGrid`, `FeaturedProduct`, `Upsell`, `DiscountBanner`, `CTABanner`
 
-// Inside <body>:
-<NotificationBar message="מבצע אביב: 15% הנחה על הקלטת שיר. עד יום שישי" linkHref="/studio/pricing" />
-{children}
-```
+### Group B — Forms & Interaction
 
-Add **after** `{children}`:
+- `MultiStepForm`, `SurveyFeedback`, `DownloadResource`
 
-```tsx
-import FloatingButton from '@/components/sections/FloatingButton';
-import CookieConsent  from '@/components/sections/CookieConsent';
+### Group C — Value & SEO Content
 
-<FloatingButton />
-<CookieConsent />
-```
+- `FeatureList`, `ProcessSteps`, `VideoSection`, `ArticleFeed`, `AudioPlayer`
 
----
+### Group D — Visual & Navigation
 
-## Rules
+- `BeforeAfterSlider`, `ImageSlider`, `MegaFooter`, `SearchBar`, `SocialShare`
 
-1. **H2 = section title, H3 = card/item title.** Never reverse. The global h2/h3 clamp()
-   styles in globals.css apply automatically.
+### Group E — Global Elements
 
-2. **All text is Hebrew** (already written in the components). Don't translate or change
-   prices/promises without approval.
-
-3. **Images**: all `src="/sections/placeholder.svg"` values must be replaced with real
-   assets from `public/` before going to production. Use:
-   ```tsx
-   <Image src="/studio/recording-room.jpg" ... />
-   ```
-
-4. **WhatsApp number** is hardcoded as `972587555456` in `_shared.tsx`.
-   Change there only — it propagates to all sections.
-
-5. **Client components** (`'use client'`) are already marked. Server Components can import
-   them freely — Next.js handles the boundary automatically.
-
-6. **Shadows**: use `brand-shadow` (featured card), `brand-shadow-sm`, `brand-shadow-card`
-   (subtle). Do NOT use Tailwind arbitrary `shadow-[...]` for brand shadows.
-
-7. **Icons**: import from `@/components/icons`, not from lucide-react.
+- `NotificationBar`, `FloatingButton`, `CookieConsent`, `BusinessHours`
 
 ---
 
-## Adding a new section
+## Cloud Design Rules (Mandatory)
 
-1. Create `src/components/sections/MySectionName.tsx`
-2. Export default function
-3. Add `'use client'` only if you use `useState` / `useEffect`
-4. Add to `src/components/sections/index.ts`
-5. Add a row to this file's decision table
+1. **Visual Language**
+   - Cloud style אחיד: טיפוגרפיה, spacing, כפתורים, cards, hover, hierarchy.
+   - `font-serif` לכותרות Hero.
+   - `font-sans` לתוכן גוף.
+   - פינות רכות: `rounded-2xl`/`rounded-3xl`/`rounded-full`.
+
+2. **Spacing & Rhythm**
+   - Vertical rhythm עקבי: `py-16`, `py-20`, `gap-6`, `gap-8`.
+   - שמירה על קצב ויזואלי בין סקשנים.
+
+3. **Content Lock**
+   - לא משנים טקסטים עבריים, מחירים, טלפונים או הבטחות עסקיות בלי אישור.
+
+4. **Tokens & Icons**
+   - צבעים רק מתוך tokens (`brand-red`, `text-brand-red`, `bg-surface`).
+   - לא להשאיר HEX קשיחים בקוד חדש.
+   - אייקונים רק מ-`@/components/icons`.
+
+5. **RTL + Mobile First**
+   - RTL מלא.
+   - Mobile-first אמיתי.
+   - להשתמש במחלקות לוגיות (`ms-`, `me-`, `ps-`, `pe-`) כשנדרש.
+
+6. **Accessibility**
+   - WCAG 2.2 AA.
+   - `aria-label` לכל אינטראקציה רלוונטית.
+   - `focus-visible` ברור.
+
+7. **Performance**
+   - `loading="lazy"` למדיה מתחת לקיפול.
+   - `fetchPriority` רק למדיה קריטית.
+   - מזעור JS מיותר.
+
+8. **SEO & Semantics**
+   - היררכיית כותרות תקינה: H1 -> H2 -> H3.
+   - שימוש ב-`header`, `main`, `section`, `article`, `footer`.
+   - Schema כשזה רלוונטי לעמוד.
+
+9. **Comments**
+   - הוסף הערה קצרה לפני כל מקטע ראשי:
+   - `// Cloud Design Section`
 
 ---
 
-## Demo page
+## Page Workflow (Required)
 
-Visit `/sections-demo` locally to see all 23 sections rendered in sequence.
-Delete `src/app/sections-demo/` before production deploy.
+בכל עמוד עובדים בסדר הבא:
+
+1. החלפת אייקונים וצבעים קשיחים לטוקנים
+2. בניית מבנה סקשנים נכון
+3. שדרוג Hero ו-visual hierarchy
+4. כיוון spacing ו-Cloud consistency
+5. הוספת SEO/Schema/Performance
+6. ניקוי TypeScript וקריאות קוד
+
+---
+
+## Delivery Format
+
+במענה סופי:
+
+1. סיכום קצר (2-4 שורות)
+2. אם נתבקש במפורש — קוד מלא בבלוק אחד
+3. אחרת — ציון קבצים ששונו + מה השתפר בכל אחד
+
+---
+
+## Master Style System First (Default)
+
+כאשר הלקוח מבקש שפה אחידה לכל האתר, ברירת המחדל היא:
+
+1. יצירת **Master Style Guide** לפני פיתוח עמודים בודדים:
+   - Hero patterns
+   - Buttons
+   - Typography scale
+   - Section spacing
+   - Color/token usage
+   - Cards + shadows + states
+
+2. לאחר מכן יישום עמוד-עמוד:
+   - Design Pass
+   - UX Pass
+   - Conversion Pass
+   - QA Pass
+
+---
+
+## QA Toolchain (Every Step)
+
+- `npm run lint`
+- `npm run typecheck`
+- `npm run format:check`
+- Playwright + Axe לפי הצורך
+- `npm run analyze` לשיפור bundle כשצריך
+
+---
+
+## Demo
+
+ראה `/sections-demo` כדי להבין את השפה הוויזואלית של הספרייה.

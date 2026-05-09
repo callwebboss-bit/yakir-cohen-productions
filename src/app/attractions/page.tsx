@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import StructuredData from "@/components/StructuredData";
 import AttractionsCalculator from "@/features/attractions/AttractionsCalculator";
 import RelatedPages from "@/components/RelatedPages";
+import AttractionsVisualImpact from "@/components/attractions/AttractionsVisualImpact";
 
 export const metadata: Metadata = {
   title: "אטרקציות לאירועים | יקיר כהן הפקות — עשן כבד, זיקוקים קרים, קונפטי",
@@ -80,6 +81,8 @@ export default function AttractionsPage() {
 
         <p className="text-[11px] text-white/30">כל המחירים אינם כוללים מע&quot;מ (18%)</p>
       </header>
+
+      <AttractionsVisualImpact />
 
       <main>
         <AttractionsCalculator />

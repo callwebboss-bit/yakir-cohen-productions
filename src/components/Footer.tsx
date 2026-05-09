@@ -1,7 +1,10 @@
 import Link from "next/link";
-import { Navigation as NavIcon, Instagram, Youtube, Facebook, Phone } from "lucide-react";
+import { Navigation as NavIcon, Instagram, Youtube, Facebook, Phone, MapPin } from "lucide-react";
 import TikTokIcon from "@/components/icons/TikTokIcon";
 import PaymentMethodBadges from "@/components/PaymentMethodBadges";
+import TrustBadgesFooter from "@/components/TrustBadgesFooter";
+import WaMeTrackedLink from "@/components/WaMeTrackedLink";
+import { SEO_FOOTER_LINKS } from "@/data/seo-footer-links";
 
 const WAZE_URL      = "https://waze.com/ul?q=%D7%A2%D7%9E%D7%A7+%D7%90%D7%99%D7%99%D7%9C%D7%95%D7%9F+34+%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F&navigate=yes";
 const INSTAGRAM_URL = "https://www.instagram.com/yakir.cohen.official";
@@ -81,14 +84,35 @@ export default function Footer() {
             </p>
 
             {/* Visible phone text — no aria-label override needed */}
-            <a
+            <WaMeTrackedLink
+              section="footer"
+              linkLabel="058-7-555-456"
               href={WHATSAPP_URL}
               title="שלחו הודעה בוואטסאפ ליקיר כהן הפקות"
               className="inline-flex items-center gap-2 text-sm font-bold text-zinc-900 hover:text-[#D42B2B] transition-colors"
             >
               <Phone size={15} aria-hidden="true" />
               <span>058-7-555-456</span>
+            </WaMeTrackedLink>
+
+            <a
+              href={WAZE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="ניווט לאולפן: עמק איילון 34, מודיעין מכבים רעות"
+              className="inline-flex items-start gap-2 text-sm text-zinc-600 hover:text-[#D42B2B] transition-colors max-w-xs text-start"
+            >
+              <MapPin size={16} className="shrink-0 mt-0.5" aria-hidden="true" />
+              <span>
+                עמק איילון 34/5
+                <br />
+                מודיעין מכבים רעות · קניון עזריאלי
+              </span>
             </a>
+
+            <div className="mt-2">
+              <TrustBadgesFooter />
+            </div>
 
             {/* Visible slogan — screen reader reads text directly, no override */}
             <p className="text-zinc-400 text-xs italic mt-auto">
@@ -172,7 +196,22 @@ export default function Footer() {
 
         </div>
 
-        <nav aria-label="קישורים פנימיים מהירים" className="mt-12 pt-10 border-t border-zinc-200">
+        <nav aria-label="קישורים מומלצים לחיפוש" className="mt-12 pt-10 border-t border-zinc-200">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 text-center sm:text-start">
+            ניווט SEO מהיר
+          </h3>
+          <ul className="flex flex-wrap justify-center sm:justify-start gap-x-4 gap-y-2 text-sm mb-10">
+            {SEO_FOOTER_LINKS.map(({ label, href, title }) => (
+              <li key={href}>
+                <Link href={href} title={title} className="text-zinc-600 hover:text-[#D42B2B] transition-colors">
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <nav aria-label="קישורים פנימיים מהירים" className="mt-2 pt-10 border-t border-zinc-200">
           <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 text-center sm:text-start">
             קישורים מהירים
           </h3>

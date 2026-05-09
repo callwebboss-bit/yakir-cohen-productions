@@ -5,6 +5,8 @@ import { Mic, Phone, MonitorPlay, Speaker, Podcast, FileText } from "lucide-reac
 import StructuredData from "@/components/StructuredData";
 import RelatedPages from "@/components/RelatedPages";
 import StudioRecordsSVG from "@/components/StudioRecordsSVG";
+import WhatsAppTrackedLink from "@/components/WhatsAppTrackedLink";
+import WaMeTrackedLink from "@/components/WaMeTrackedLink";
 
 export const metadata: Metadata = {
   title: "שירותים לעסקים | קריינות, הגברה והפקת תוכן",
@@ -92,10 +94,28 @@ export default function BusinessPage() {
           <StudioRecordsSVG />
         </div>
         <div className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 p-12 text-center">
-          <h1 className="font-serif text-5xl font-bold mb-4 text-white">שירותים לעסקים</h1>
-          <p className="text-xl text-zinc-200 max-w-2xl mx-auto leading-relaxed">
-            קריינות, אודיו והפקת תוכן לעסקים שרוצים להישמע מדויק.
+          <h1 className="font-serif text-5xl font-bold mb-4 text-white">אולפן פודקאסטים והפקת סאונד לעסקים</h1>
+          <p className="text-xl text-zinc-200 max-w-2xl mx-auto leading-relaxed mb-4">
+            מיתוג קולי, פרסומות ופודקאסט. טון חד וברור שמתאים לקהל היעד שלכם.
           </p>
+          <p className="text-zinc-300 text-sm max-w-2xl mx-auto leading-relaxed">
+            כשצריך שהטלפון יצלצל אחרי הקול הנכון, משקיעים בפרוטוקול ברור: מה המטרה, מה ההקדמה לפרסום ומה הפורמט המסחרי שמתאים למסך הקטן או לרדיו.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3 justify-center">
+            <WaMeTrackedLink
+              section="business_hero"
+              linkLabel="פיילוט קריינות"
+              href={`https://wa.me/972587555456?text=${encodeURIComponent("היי יקיר, רוצים פיילוט קריינות לעסק (IVR או פרסומת).")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex rounded-2xl bg-white text-zinc-900 px-6 py-3 font-bold hover:bg-zinc-100 transition-colors"
+            >
+              פיילוט קריינות — וואטסאפ
+            </WaMeTrackedLink>
+            <Link href="/podcast/podcast-production" className="inline-flex rounded-2xl border border-white/40 text-white px-6 py-3 font-bold hover:bg-white/10 transition-colors">
+              הפקת פודקאסט
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -110,9 +130,14 @@ export default function BusinessPage() {
           קריינות, אודיו לעסק, פודקאסטים ותמיכה לאירועים. עבודה אחת מסודרת במקום לרדוף אחרי כמה ספקים.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <Link href="/contact/whatsapp" className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors shadow-lg">
+          <WhatsAppTrackedLink
+            href="/contact/whatsapp"
+            section="business_header_cta"
+            linkLabel="בקשת הצעת מחיר"
+            className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors shadow-lg"
+          >
             בקשת הצעת מחיר
-          </Link>
+          </WhatsAppTrackedLink>
           <Link href="/business/professional-voiceover" className="border border-white/30 text-white px-8 py-4 rounded font-bold hover:bg-white/10 transition-colors">
             לעמוד הקריינות
           </Link>
@@ -169,12 +194,14 @@ export default function BusinessPage() {
         <h2 className="font-serif text-2xl font-bold mb-3">רוצים הצעת מחיר?</h2>
         <p className="text-zinc-400 mb-6">שלחו לנו כמה שורות על הפרויקט ונחזור עם כיוון ראשוני בהקדם.</p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <Link
+          <WhatsAppTrackedLink
             href="/contact/whatsapp"
+            section="business_footer_cta"
+            linkLabel="058-7-555-456 ב-WhatsApp"
             className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors"
           >
             058-7-555-456 ב-WhatsApp
-          </Link>
+          </WhatsAppTrackedLink>
           <Link
             href="/contact"
             className="border border-white/30 text-white px-8 py-4 rounded font-bold hover:bg-white/10 transition-colors"

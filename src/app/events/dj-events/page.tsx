@@ -5,6 +5,8 @@ import { CheckCircle2 } from "lucide-react";
 import StructuredData from "@/components/StructuredData";
 import YouTube from "@/components/ui/YouTube";
 import PriceReveal from "@/components/PriceReveal";
+import EventsAudienceTabs from "@/components/events/EventsAudienceTabs";
+import WhatsAppTrackedLink from "@/components/WhatsAppTrackedLink";
 
 export const metadata: Metadata = {
   title: "DJ לאירועים — חתונות, בר מצווה ואירועים פרטיים | יקיר כהן הפקות",
@@ -114,23 +116,33 @@ export default function DJEventsPage() {
           className="text-4xl md:text-6xl font-bold leading-tight mb-4"
           style={{ fontFamily: '"Frank Ruhl Libre", serif' }}
         >
-          DJ לאירועים.
+          יקיר כהן די ג&apos;יי והפקות
           <br />
-          <span className="text-[#D42B2B]">כי המוזיקה היא מה שנשאר.</span>
+          <span className="text-[#D42B2B]">ממרכזים רחבת ריקודים לאירוע שלם.</span>
         </h1>
-        <p className="text-zinc-300 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
-          חתונה, בר מצווה, אירוע פרטי. אנחנו מטפלים בכל הרגעים המוזיקליים — מהכניסה עד הריקוד האחרון.
+        <p className="text-zinc-300 text-lg max-w-xl mx-auto mb-6 leading-relaxed">
+          חתונה, בר מצווה, אירוע פרטי. אנחנו מטפלים בכל הרגעים המוזיקליים מהכניסה עד הריקוד האחרון.
+        </p>
+        <p className="text-zinc-400 text-sm max-w-2xl mx-auto mb-8 leading-relaxed">
+          מוזיקה זה כלי לחבר בין אנשים. אנחנו מתמחים גם בקהל מעורב ומתאימים את הסט באחריות מול האולם והמשפחה. לא רק פלייליסט: תיאום, סאונד וקריאה נכונה של הרחבה.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <Link href="/contact/whatsapp" className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors shadow-lg">
+          <WhatsAppTrackedLink
+            href="/contact/whatsapp"
+            section="dj_events_hero"
+            linkLabel="בדקו זמינות לתאריך שלכם"
+            className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors shadow-lg"
+          >
             בדקו זמינות לתאריך שלכם
-          </Link>
+          </WhatsAppTrackedLink>
           <Link href="/attractions" className="border border-white/30 text-white px-8 py-4 rounded font-bold hover:bg-white/10 transition-all">
             הוסיפו אטרקציות
           </Link>
         </div>
         <p className="text-zinc-600 text-xs mt-4">זמינות מוגבלת — כדאי לבדוק מוקדם</p>
       </header>
+
+      <EventsAudienceTabs />
 
       {/* Packages */}
       <section className="py-20 px-6 max-w-4xl mx-auto w-full">
@@ -161,8 +173,10 @@ export default function DJEventsPage() {
                   </li>
                 ))}
               </ul>
-              <Link
+              <WhatsAppTrackedLink
                 href="/contact/whatsapp"
+                section="dj_events_packages"
+                linkLabel={`קבעו פגישה — ${name}`}
                 className={`w-full text-center py-3 rounded font-bold transition-all ${
                   popular
                     ? "bg-[#D42B2B] text-white hover:bg-white hover:text-black"
@@ -170,7 +184,7 @@ export default function DJEventsPage() {
                 }`}
               >
                 קבעו פגישה
-              </Link>
+              </WhatsAppTrackedLink>
             </article>
           ))}
         </div>
@@ -261,9 +275,14 @@ export default function DJEventsPage() {
         <h2 className="font-serif text-2xl font-bold mb-3">בדקו זמינות לתאריך שלכם</h2>
         <p className="text-zinc-400 mb-6">שלחו הודעה עם התאריך ונחזור אליכם תוך שעות.</p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <Link href="/contact/whatsapp" className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors">
+          <WhatsAppTrackedLink
+            href="/contact/whatsapp"
+            section="dj_events_footer_cta"
+            linkLabel="058-7-555-456 וואטסאפ"
+            className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors"
+          >
             058-7-555-456 וואטסאפ
-          </Link>
+          </WhatsAppTrackedLink>
           <Link href="/attractions" className="border border-white/30 text-white px-8 py-4 rounded font-bold hover:bg-white/10 transition-all">
             אטרקציות לאירוע
           </Link>

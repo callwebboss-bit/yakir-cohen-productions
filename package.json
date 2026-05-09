@@ -7,12 +7,26 @@
     "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start -p 3000",
-    "lint": "next lint",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "typecheck": "tsc --noEmit",
     "counsel:check": "tsx src/agents/counsel-validator.ts",
     "lhci": "lhci autorun --config=lighthouserc.js",
     "lhci:build-and-run": "npm run build && npm run lhci",
+    "analyze": "ANALYZE=true next build",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,cjs,mjs}": [
+      "eslint --fix --max-warnings=0"
+    ],
+    "*.{json,md,css,scss,html,yml,yaml}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
@@ -31,8 +45,13 @@
     "vite": "^6.2.0"
   },
   "devDependencies": {
+    "@21st-extension/toolbar": "^0.5.14",
+    "@axe-core/playwright": "^4.11.3",
     "@chromatic-com/storybook": "^5.1.2",
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
     "@eslint/eslintrc": "^3.3.5",
+    "@next/bundle-analyzer": "^15.1.11",
     "@storybook/addon-a11y": "^10.3.6",
     "@storybook/addon-docs": "^10.3.6",
     "@storybook/addon-onboarding": "^10.3.6",
@@ -48,7 +67,11 @@
     "eslint": "^9.39.4",
     "eslint-config-next": "^15.5.18",
     "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.2",
     "playwright": "^1.59.1",
+    "prettier": "^3.8.3",
+    "prettier-plugin-tailwindcss": "^0.8.0",
     "storybook": "^10.3.6",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",

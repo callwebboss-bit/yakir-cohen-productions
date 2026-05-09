@@ -1,5 +1,10 @@
 {
   "/home": "/",
+  "/recording": "/studio",
+  "/studio-main": "/studio",
+  "/online-studio": "/online",
+  "/voiceover": "/business/professional-voiceover",
+  "/podcast-pricing": "/podcast",
   "/recording-studio": "/studio",
   "/studio-recording": "/studio",
   "/studio/recording-studio": "/studio",

@@ -83,6 +83,11 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  /* נתיבי אפליקציה תקינים תחת /studio — לא להפנות לחיפוש רך (אחרת עמודים כמו recording-song-modiin נחטפים) */
+  if (pathname === "/studio" || pathname.startsWith("/studio/")) {
+    return NextResponse.next();
+  }
+
   const searchKeywords = extractSearchKeywords(pathname);
   if (searchKeywords) {
     const url = request.nextUrl.clone();

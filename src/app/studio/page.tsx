@@ -8,6 +8,8 @@ import StructuredData from "@/components/StructuredData";
 import WorkCard from "@/components/WorkCard";
 import ShareButton from "@/components/ShareButton";
 import RelatedPages from "@/components/RelatedPages";
+import StudioGearRoom from "@/components/studio/StudioGearRoom";
+import WaMeTrackedLink from "@/components/WaMeTrackedLink";
 import { BLUR_DATA_URL } from "@/lib/blur";
 
 const STUDIO_HERO = "/assets/images/recording-studio/אולפן ההקלטה יקיר כהן.webp";
@@ -54,10 +56,40 @@ const studioSchema = {
   url: `${SITE_URL}/studio`,
 };
 
+const studioFaqItems = [
+  {
+    q: "האם אני חייב לדעת לשיר במדויק?",
+    a: "לא חובה. יש ליווי בטייקים, ואפשר לעבוד עם תיקון זיופים עדין כשצריך. המטרה שתצאו עם משהו שאתם גאים בו.",
+  },
+  {
+    q: "איפה האולפן נמצא?",
+    a: "האולפן במודיעין, עם גישה נוחה מהמרכז ומירושלים. לפרטים מדויקים וניווט תמצאו בעמוד צור קשר או בוווטסאפ.",
+  },
+  {
+    q: "כמה זמן מראש כדאי לשריין?",
+    a: "בעונה עמוסה עדיף לפחות כמה שבועות מראש. לפרויקטים גדולים אפשר לסגור תאריך מוקדם יותר כדי לשמור חלון אולפן.",
+  },
+  {
+    q: "מה מקבלים בסוף ההקלטה?",
+    a: "בדרך כלל קבצים מוכנים למסירה לפי מה שסיכמנו: מיקס, תיקונים, ואופציה לקליפ כשבוחרים חבילה שמתאימה.",
+  },
+] as const;
+
+const studioFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: studioFaqItems.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 export default function StudioPage() {
   return (
     <div className="flex flex-col">
       <StructuredData data={studioSchema} />
+      <StructuredData data={studioFaqSchema} />
 
       <section className="relative min-h-[80vh] flex items-center justify-center bg-zinc-900 border-b border-white/10 text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -83,8 +115,14 @@ export default function StudioPage() {
             <br />
             עבודה שמחזיקה גם אחרי הסשן.
           </h1>
+          <p className="text-sm md:text-base font-semibold text-brand-red/95 max-w-2xl mx-auto lg:mx-0 text-center lg:text-start leading-snug">
+            אולפן הקלטות במודיעין יקיר כהן: סאונד נקי וחוויית הקלטה נוחה, גם אם זו הפעם הראשונה שלכם מול מיקרופון.
+          </p>
           <p className="text-xl text-zinc-300 max-w-2xl leading-relaxed">
             שירים, פודקאסטים, מיקס ומאסטרינג בתוך אולפן מסודר, עם אוזן אחת על התוצאה ואוזן שנייה על מי שנמצא מולנו.
+          </p>
+          <p className="text-base text-zinc-400 max-w-2xl leading-relaxed border-t border-white/10 pt-6 mt-2">
+            רוצים לראות איך סשן נראה מההתחלה ועד הקובץ? נעבוד יחד בשקט, נדייק את הקול ונשמור על אווירה נעימה בלי להתפשר על סטנדרט.
           </p>
           <div className="flex flex-wrap gap-4 justify-center mt-6">
             <Link href="#services" className="bg-brand-red text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors shadow-xl">
@@ -153,6 +191,67 @@ export default function StudioPage() {
         </div>
       </section>
 
+      <section id="studio-services-detail" className="py-24 px-6 bg-surface border-y border-zinc-200" aria-labelledby="studio-detail-heading">
+        <div className="max-w-7xl mx-auto w-full">
+          <h2 id="studio-detail-heading" className="font-serif text-3xl md:text-4xl font-bold text-center mb-4">
+            שירותי אולפן במיקוד
+          </h2>
+          <p className="text-center text-zinc-600 max-w-2xl mx-auto mb-12 text-pretty leading-relaxed">
+            ארבעה כיוונים נפוצים. כל אחד עם דף משלו ותיאום קצר לפני שנוגעים בציוד.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                h: "קאברים ושירים מקוריים",
+                d: "בניית פלייבק, מיקס ומסירה מסודרת. מתאים למתנה, לחופה או לפרויקט אישי.",
+                href: "/studio/recording-song-modiin",
+                wa: "היי יקיר, מעוניינים בהקלטת קאבר או שיר מקורי באולפן.",
+              },
+              {
+                h: "ברכת כלה ותפילות לחופה",
+                d: "מקום שקט להכין את הרגע לפני שיוצאים לחופה, עם ליווי צמוד ורקע מוזיקלי מתאים.",
+                href: "/studio/blessings/bride-groom-blessing",
+                wa: "היי יקיר, רוצים לשריין הקלטת ברכת כלה לחופה.",
+              },
+              {
+                h: "קליפ באולפן",
+                d: "משלבים צילום וסאונד באותו מתחם כדי לצאת עם תוצר אחד צלול.",
+                href: "/studio/blessings/video-clip",
+                wa: "היי יקיר, מתעניינים בקליפ מצולם באולפן.",
+              },
+              {
+                h: "פודקאסט ועיבוד קול",
+                d: "מסלול מסודר מהמיקרופון ועד הקובץ להעלאה.",
+                href: "/podcast/podcast-production",
+                wa: "היי יקיר, רוצים להקליט פודקאסט או פרק באולפן.",
+              },
+            ].map((x) => (
+              <article key={x.h} className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm flex flex-col gap-4">
+                <h3 className="font-serif text-xl font-bold">{x.h}</h3>
+                <p className="text-zinc-600 text-sm leading-relaxed flex-grow">{x.d}</p>
+                <div className="flex flex-col sm:flex-row gap-2 pt-2">
+                  <Link href={x.href} className="inline-flex justify-center rounded-xl bg-zinc-900 text-white px-5 py-3 text-sm font-bold hover:bg-brand-red transition-colors">
+                    לעמוד השירות
+                  </Link>
+                  <WaMeTrackedLink
+                    section="studio_services_detail"
+                    linkLabel={x.h}
+                    href={`https://wa.me/972587555456?text=${encodeURIComponent(x.wa)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex justify-center rounded-xl border border-zinc-300 px-5 py-3 text-sm font-bold hover:border-brand-red transition-colors"
+                  >
+                    וואטסאפ על השירות
+                  </WaMeTrackedLink>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <StudioGearRoom />
+
       <section className="py-24 px-6 max-w-7xl mx-auto w-full">
         <div className="flex justify-between items-end mb-12">
           <div>
@@ -195,6 +294,27 @@ export default function StudioPage() {
               features={["זמן אולפן גמיש", "הפקה ועיבוד", "קליפ 4K פרימיום", "ליווי אישי מלא"]}
               href="/contact?service=full-production"
             />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-6 bg-white border-t border-zinc-200" aria-labelledby="studio-faq-heading">
+        <div className="max-w-3xl mx-auto w-full">
+          <h2 id="studio-faq-heading" className="font-serif text-2xl md:text-3xl font-bold mb-8 text-center md:text-start">
+            שאלות נפוצות על האולפן
+          </h2>
+          <div className="space-y-3">
+            {studioFaqItems.map(({ q, a }) => (
+              <details key={q} className="group rounded-2xl border border-zinc-200 bg-zinc-50/80 p-1 shadow-sm">
+                <summary className="cursor-pointer list-none rounded-xl px-5 py-4 font-bold text-zinc-900 flex items-center justify-between gap-4 text-start [&::-webkit-details-marker]:hidden">
+                  <span>{q}</span>
+                  <span className="text-brand-red text-xl shrink-0 group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <div className="px-5 pb-4 pt-0 text-zinc-600 text-sm leading-relaxed border-t border-zinc-100 mt-1 pt-4">
+                  <p>{a}</p>
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </section>

@@ -8,6 +8,14 @@ import StructuredData from "@/components/StructuredData";
 import { BLUR_DATA_URL } from "@/lib/blur";
 import GoogleReviewsEmbed from "@/components/embeds/GoogleReviewsEmbed";
 import ElfsightInstagramFeed from "@/components/embeds/ElfsightInstagramFeed";
+import HeroVideoBackdrop from "@/components/HeroVideoBackdrop";
+import CreationCompass from "@/components/CreationCompass";
+import ServicePillarCards from "@/components/ServicePillarCards";
+import HomeTestimonialCarousel from "@/components/HomeTestimonialCarousel";
+import WaMeTrackedLink from "@/components/WaMeTrackedLink";
+
+const HERO_WA_EVENT =
+  "היי יקיר, באתר ראינו את הפקות והאירועים ונשמח לדבר על האירוע שלנו.";
 
 const HOME_IMAGES = {
   portrait: "/assets/images/recording-studio/יקיר כהן הפקות באולפן.webp",
@@ -83,8 +91,12 @@ export default function Home() {
       <StructuredData data={homeSchema} />
 
       <header className="relative min-h-[520px] md:min-h-[580px] lg:min-h-[min(78vh,820px)] flex flex-col justify-center bg-surface overflow-hidden border-b border-zinc-200/80">
+        <HeroVideoBackdrop
+          poster={HOME_IMAGES.workEvents}
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-[0.38]"
+        />
         <div
-          className="absolute inset-0 bg-zinc-100/40"
+          className="absolute inset-0 z-[1] bg-gradient-to-b from-zinc-50/92 via-zinc-50/85 to-zinc-50/95"
           aria-hidden="true"
         />
         <div className={`relative z-10 ${PAGE_SHELL} py-12 md:py-16 lg:py-20`}>
@@ -94,10 +106,13 @@ export default function Home() {
                 יקיר כהן הפקות · מודיעין
               </p>
               <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold tracking-tight text-balance leading-[1.08] max-w-3xl lg:max-w-none">
-                אולפן הקלטות במודיעין
-                <br />
-                <span className="text-brand-red">ושירותים שמקיפים את כל מה שקורה אחרי ההקלטה.</span>
+                יקיר כהן הפקות
+                <span className="block mt-1 text-brand-red">מוזיקה. חוויה. תודעה.</span>
               </h1>
+              <p className="text-lg md:text-xl font-semibold text-zinc-800 max-w-2xl text-pretty leading-snug">
+                מי שלא מכיר יקיר. יוצר מוזיקלי, DJ מנוסה ומפיק אירועים. מעל עשור של עבודה בשטח, אולפן מקצועי במודיעין
+                ואטרקציות שמרימות את הרחבה.
+              </p>
 
               <form action="/search" method="get" className="w-full relative group max-w-xl mx-auto lg:mx-0">
                 <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-zinc-400 group-focus-within:text-brand-red transition-colors">
@@ -122,6 +137,24 @@ export default function Home() {
               <p className="text-zinc-600 max-w-lg lg:max-w-xl text-base md:text-lg leading-relaxed text-pretty mx-auto lg:mx-0">
                 הקלטה, עריכה ומיקס באולפן, שירותי קול אונליין, והפקה לאירועים — כל אחד עם דף משלו ומחירון שקוף.
               </p>
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+                <WaMeTrackedLink
+                  section="home_hero"
+                  linkLabel="בואו נדבר על האירוע שלכם"
+                  href={`https://wa.me/972587555456?text=${encodeURIComponent(HERO_WA_EVENT)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-2xl px-8 py-4 text-base font-black text-zinc-950 shadow-md border border-[color-mix(in_srgb,var(--accent-gold)_55%,#000_45%)] bg-[color-mix(in_srgb,var(--accent-gold)_90%,#fff_10%)] hover:brightness-105 transition-[filter]"
+                >
+                  בואו נדבר על האירוע שלכם
+                </WaMeTrackedLink>
+                <Link
+                  href="/studio"
+                  className="inline-flex items-center justify-center rounded-2xl border border-zinc-400 bg-white px-8 py-4 text-base font-bold text-zinc-900 hover:border-zinc-900 transition-colors"
+                >
+                  לאולפן
+                </Link>
+              </div>
             </div>
 
             <div className="hidden lg:flex lg:col-span-5 justify-center lg:justify-end mt-0">
@@ -160,6 +193,13 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      <section className={`py-12 md:py-16 ${PAGE_SHELL}`} aria-labelledby="compass-slot-heading">
+        <h2 id="compass-slot-heading" className="sr-only">
+          מצפן יצירה להודעת וואטסאפ
+        </h2>
+        <CreationCompass />
+      </section>
 
       <section className={`py-16 md:py-20 ${PAGE_SHELL}`} aria-labelledby="services-hub-heading">
         <div className="section-heading mx-auto max-w-3xl">
@@ -202,6 +242,19 @@ export default function Home() {
             isSpecial
           />
         </div>
+      </section>
+
+      <section className={`py-16 md:py-20 ${PAGE_SHELL}`} aria-labelledby="service-pillars-heading">
+        <div className="section-heading mx-auto max-w-3xl mb-10 md:mb-12">
+          <h2 id="service-pillars-heading" className="font-serif text-3xl md:text-4xl font-bold text-center text-balance">
+            עמודות שירות
+          </h2>
+          <span className="section-heading__bar" aria-hidden="true" />
+        </div>
+        <p className="text-center text-zinc-600 max-w-2xl mx-auto mb-10 md:mb-12 text-pretty leading-relaxed">
+          בוחרים קטגוריה, קוראים שני משפטים, וממשיכים לעמוד המלא או לוואטסאפ מהיר.
+        </p>
+        <ServicePillarCards />
       </section>
 
       <section className="py-16 md:py-24 bg-white border-y border-zinc-200">
@@ -289,7 +342,7 @@ export default function Home() {
               <p className="text-white/90 text-sm leading-relaxed">תומך ברחבה ובמסלול המוזיקה, לא מצליח על השיר.</p>
             </div>
           </div>
-          <div className="mt-10">
+          <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
             <Link
               href="/attractions"
               className="inline-flex items-center gap-2 font-bold text-white border-b-2 border-white/80 pb-1 hover:border-white transition-colors"
@@ -297,6 +350,26 @@ export default function Home() {
               לעמוד האטרקציות והמחשבון
               <ArrowLeft size={16} aria-hidden="true" />
             </Link>
+            <WaMeTrackedLink
+              section="home_events_strip"
+              linkLabel="שריון עמדת LED"
+              href={`https://wa.me/972587555456?text=${encodeURIComponent("היי יקיר, גלשתי בדף הבית וראיתי את עמדת ה-LED — נשמח לבדוק זמינות לתאריך שלנו.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-2xl bg-white/15 border border-white/35 px-5 py-3 text-sm font-bold text-white hover:bg-white/25 transition-colors"
+            >
+              שריון עמדת LED
+            </WaMeTrackedLink>
+            <WaMeTrackedLink
+              section="home_events_strip"
+              linkLabel="עשן ואפקטים לחופה"
+              href={`https://wa.me/972587555456?text=${encodeURIComponent("היי יקיר, מתעניינים בעשן כבד ואפקטים לחופה.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-2xl bg-white/15 border border-white/35 px-5 py-3 text-sm font-bold text-white hover:bg-white/25 transition-colors"
+            >
+              עשן ואפקטים לחופה
+            </WaMeTrackedLink>
           </div>
         </div>
       </section>
@@ -377,22 +450,20 @@ export default function Home() {
               .
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12">
-            <div className="bg-white p-7 rounded-2xl border border-zinc-200 shadow-sm text-start md:text-center">
-              <p className="text-brand-red font-bold mb-3">★★★★★</p>
-              <p className="text-zinc-700 italic mb-4">"נכנסתי עם סקיצה קטנה ויצאתי עם שיר שמרגיש שלי. הכל היה ברור, נעים ומדויק."</p>
-              <p className="font-bold text-sm">שירה כהן, זמרת</p>
-            </div>
-            <div className="bg-white p-7 rounded-2xl border border-zinc-200 shadow-sm text-start md:text-center">
-              <p className="text-brand-red font-bold mb-3">★★★★★</p>
-              <p className="text-zinc-700 italic mb-4">"מהרגע שסגרנו ידענו שיש על מי לסמוך. המוזיקה עבדה, הרחבה נשארה חיה, והאטרקציות באו בזמן."</p>
-              <p className="font-bold text-sm">מאיה וצביקה, חתונה</p>
-            </div>
-            <div className="bg-white p-7 rounded-2xl border border-zinc-200 shadow-sm text-start md:text-center">
-              <p className="text-brand-red font-bold mb-3">★★★★★</p>
-              <p className="text-zinc-700 italic mb-4">"לא רק שהאולפן נשמע טוב, גם קיבלנו כיוון ברור. זה חסך לנו ניסוי וטעייה והזיז את הפודקאסט קדימה."</p>
-              <p className="font-bold text-sm">דני גביאל, פודקאסט עסקי</p>
-            </div>
+          <div className="max-w-3xl mx-auto mt-12">
+            <HomeTestimonialCarousel />
+          </div>
+          <div className="flex justify-center mt-10">
+            <WaMeTrackedLink
+              section="home_testimonials"
+              linkLabel="רוצים להיות הסיפור הבא"
+              href={`https://wa.me/972587555456?text=${encodeURIComponent("היי יקיר, רוצים להיות סיפור ההצלחה הבא — נשמח לשמוע פרטים.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex rounded-2xl bg-brand-red text-white px-8 py-4 font-bold hover:bg-red-700 transition-colors shadow-md"
+            >
+              רוצים להיות הסיפור הבא? כתבו בוואטסאפ
+            </WaMeTrackedLink>
           </div>
         </div>
       </section>

@@ -8,6 +8,8 @@
   --main-shadow-direction: 1;
   --brand-red: #d42b2b;
   --canvas: #fafaf8;
+  --accent-gold: #c9a227;
+  --accent-gold-muted: #e8d5a0;
 }
 
 [dir="rtl"] {
@@ -104,4 +106,128 @@ a { color: inherit; }
 }
 .animate-wa-pulse {
   animation: wa-pulse 2s infinite;
+}
+
+/* ─── Cloud Design System (2026) — plain CSS (Tailwind v4 @apply gaps vary by pipeline) ─── */
+@layer components {
+  .btn-cloud-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    background-color: var(--brand-red);
+    padding: 0.875rem 1.75rem;
+    font-weight: 600;
+    color: #fff;
+    transition: opacity 200ms ease;
+  }
+  .btn-cloud-primary:hover {
+    opacity: 0.9;
+  }
+  .btn-cloud-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid #d4d4d8;
+    background-color: #fff;
+    padding: 0.875rem 1.75rem;
+    font-weight: 600;
+    color: #18181b;
+    transition: opacity 200ms ease;
+  }
+  .btn-cloud-secondary:hover {
+    opacity: 0.9;
+  }
+  .btn-cloud-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid #e4e4e7;
+    background-color: transparent;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    color: #27272a;
+    transition: opacity 200ms ease;
+  }
+  .btn-cloud-ghost:hover {
+    opacity: 0.9;
+  }
+  .btn-cloud-primary:focus-visible,
+  .btn-cloud-secondary:focus-visible,
+  .btn-cloud-ghost:focus-visible {
+    outline: 2px solid var(--brand-red);
+    outline-offset: 3px;
+    border-radius: 9999px;
+  }
+
+  .cloud-card {
+    border-radius: 1rem;
+    border: 1px solid #e4e4e7;
+    background-color: rgb(255 255 255 / 0.9);
+    padding: 1.5rem;
+    box-shadow: calc(var(--main-shadow-direction) * 6px) 6px 0px rgba(0, 0, 0, 0.06);
+  }
+  .cloud-card--lg {
+    padding: 2rem;
+  }
+  .cloud-card--flush {
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .section-heading--accent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-inline-start: 4px solid var(--brand-red);
+    padding-inline-start: 1rem;
+    text-align: start;
+  }
+  .section-heading--accent h2 {
+    font-family: "Frank Ruhl Libre", serif;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 800;
+    color: #18181b;
+  }
+
+  .icon-cloud {
+    display: inline-flex;
+    width: 2.75rem;
+    height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: #f4f4f5;
+    padding: 0.5rem;
+    color: #18181b;
+    box-shadow: 0 0 0 1px #e4e4e7;
+  }
+  .icon-cloud--red {
+    color: color-mix(in srgb, var(--brand-red) 80%, transparent);
+  }
+
+  .cloud-reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: cloudReveal 0.6s ease-out forwards;
+  }
+}
+
+@keyframes cloudReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

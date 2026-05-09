@@ -5,6 +5,8 @@ import { CheckCircle2, Mic, Edit3, Share2 } from "lucide-react";
 import StructuredData from "@/components/StructuredData";
 import YouTube from "@/components/ui/YouTube";
 import PriceReveal from "@/components/PriceReveal";
+import WhatsAppTrackedLink from "@/components/WhatsAppTrackedLink";
+import WaMeTrackedLink from "@/components/WaMeTrackedLink";
 
 export const metadata: Metadata = {
   title: "הפקת פודקאסט מקצועית — מרעיון לשידור | יקיר כהן הפקות",
@@ -127,15 +129,49 @@ export default function PodcastProductionPage() {
           אנחנו דואגים לכל השאר.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <Link href="/contact/whatsapp" className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors shadow-lg">
+          <WhatsAppTrackedLink
+            href="/contact/whatsapp"
+            section="podcast_production_hero"
+            linkLabel="קבעו פגישת ייעוץ"
+            className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors shadow-lg"
+          >
             קבעו פגישת ייעוץ
-          </Link>
+          </WhatsAppTrackedLink>
           <Link href="/podcast" className="border border-zinc-300 px-8 py-4 rounded font-bold hover:border-zinc-900 transition-all">
             מחירון פודקאסט
           </Link>
         </div>
         <p className="text-xs text-zinc-400 mt-4">כל המחירים אינם כוללים מע&quot;מ</p>
       </header>
+
+      <section className="py-14 px-6 bg-zinc-50 border-y border-zinc-200" aria-labelledby="podcast-audio-sample-heading">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 id="podcast-audio-sample-heading" className="font-serif text-xl font-bold mb-3">
+            דוגמת סאונד מהירה
+          </h2>
+          <p className="text-sm text-zinc-600 mb-6 leading-relaxed">
+            להאזנה ויזואלית מתוך האולפן — הסרטון הבא משמש גם כטעימה של סגנון העיבוד והמיקס. לקבצים גולמיים או פיילוט קולי כתבו בוואטסאפ.
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <a
+              href="https://www.youtube.com/watch?v=1O0isV7Zljg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex rounded-2xl bg-zinc-900 text-white px-6 py-3 font-bold hover:bg-brand-red transition-colors text-sm"
+            >
+              פתיחת דוגמה ביוטיוב
+            </a>
+            <a
+              href={`https://wa.me/972587555456?text=${encodeURIComponent("היי יקיר, רוצים פיילוט קולי / דוגמת ג'ינגל לעסק.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex rounded-2xl border border-zinc-300 bg-white px-6 py-3 font-bold hover:border-brand-red transition-colors text-sm"
+            >
+              בקשת פיילוט בוואטסאפ
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Phases */}
       <section className="py-20 px-6 max-w-5xl mx-auto w-full">
@@ -241,9 +277,14 @@ export default function PodcastProductionPage() {
         <h2 className="font-serif text-2xl font-bold mb-3">מוכנים להתחיל?</h2>
         <p className="text-zinc-500 mb-6">שלחו הודעה ונקבע פגישת ייעוץ קצרה.</p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <Link href="/contact/whatsapp" className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors">
+          <WhatsAppTrackedLink
+            href="/contact/whatsapp"
+            section="podcast_production_footer_cta"
+            linkLabel="058-7-555-456 וואטסאפ"
+            className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors"
+          >
             058-7-555-456 וואטסאפ
-          </Link>
+          </WhatsAppTrackedLink>
           <Link href="/podcast/podcast-studio" className="border border-zinc-300 px-8 py-4 rounded font-bold hover:border-zinc-900 transition-all">
             לאולפן הפודקאסט
           </Link>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { triggerHaptic } from "@/lib/haptic";
+import { trackWaClick } from "@/lib/analytics";
 
 const PHONE = "972587555456";
 
@@ -49,7 +50,10 @@ export default function WhatsAppFloat() {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => triggerHaptic()}
+      onClick={() => {
+        triggerHaptic();
+        trackWaClick("whatsapp_float");
+      }}
       /* Icon-only link — aria-label is mandatory */
       aria-label="שלחו לנו הודעה בוואטסאפ (נפתח בכרטיסייה חדשה)"
       className="fixed bottom-24 end-5 z-40 flex items-center justify-center w-14 h-14 rounded-full text-white lg:bottom-8"

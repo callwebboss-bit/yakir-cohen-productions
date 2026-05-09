@@ -5,11 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Menu, X, ChevronDown, Crown,
-  GraduationCap, Building2, Mic, Globe, Search,
+  GraduationCap, Building2, Mic, Globe, Search, MessageCircle,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
+import WhatsAppTrackedLink from "@/components/WhatsAppTrackedLink";
 
 type NavChild = { label: string; href: string };
 type NavItem = { label: string; href: string; children?: NavChild[] };
@@ -76,6 +77,10 @@ const NAV_ITEMS: NavItem[] = [
       { label: "טיפים לאולפן", href: "/blog/Studio-Tips" },
       { label: "הוצאה לאור", href: "/blog/RECORDS" },
     ],
+  },
+  {
+    label: "ממליצים עלינו",
+    href: "/about/reviews",
   },
   {
     label: "צור קשר", href: "/contact",
@@ -309,6 +314,20 @@ export default function Navigation() {
             <Search size={18} aria-hidden="true" />
           </Link>
 
+          <WhatsAppTrackedLink
+            href="/contact/whatsapp"
+            section="nav_desktop"
+            linkLabel="דברו איתי בוואטסאפ"
+            className={cn(
+              "hidden md:inline-flex items-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-black whitespace-nowrap",
+              "bg-[color-mix(in_srgb,var(--accent-gold)_92%,#000_8%)] text-zinc-950 shadow-sm border border-[color-mix(in_srgb,var(--accent-gold)_70%,#000_30%)]",
+              "hover:brightness-105 transition-[filter]"
+            )}
+          >
+            <MessageCircle size={17} aria-hidden="true" />
+            דברו איתי בוואטסאפ
+          </WhatsAppTrackedLink>
+
           <Link
             href="/vip"
             className={cn(
@@ -337,10 +356,20 @@ export default function Navigation() {
       </div>
 
       {isOpen && (
-        <div
-          id="mobile-menu"
-          className="absolute top-20 inset-inline-start-0 inset-inline-end-0 w-full bg-white border-b border-zinc-200 shadow-lg lg:hidden max-h-[calc(100vh-5rem)] overflow-y-auto"
-        >
+        <>
+          <button
+            type="button"
+            className="fixed inset-0 top-20 z-[55] bg-zinc-950/45 lg:hidden"
+            aria-label="סגירת תפריט"
+            onClick={() => setIsOpen(false)}
+          />
+          <div
+            id="mobile-menu"
+            className={cn(
+              "fixed z-[56] top-20 bottom-0 start-0 w-[min(100%,22rem)] max-w-[calc(100vw-2rem)]",
+              "bg-white border-e border-zinc-200 shadow-2xl lg:hidden overflow-y-auto overscroll-contain"
+            )}
+          >
           <ul className="flex flex-col ps-4 pe-4 py-4 gap-1">
             {NAV_ITEMS.map((item) => (
               <li key={item.href} className="border-b border-zinc-100">
@@ -425,7 +454,16 @@ export default function Navigation() {
               )}
             </li>
 
-            <li className="pt-4">
+            <li className="pt-4 flex flex-col gap-3">
+              <WhatsAppTrackedLink
+                href="/contact/whatsapp"
+                section="nav_mobile_drawer"
+                linkLabel="דברו איתי בוואטסאפ"
+                className="flex items-center justify-center gap-2 py-3.5 rounded-2xl font-black text-zinc-950 bg-[color-mix(in_srgb,var(--accent-gold)_88%,#fff_12%)] border border-[color-mix(in_srgb,var(--accent-gold)_60%,#000_40%)]"
+              >
+                <MessageCircle size={18} aria-hidden="true" />
+                דברו איתי בוואטסאפ
+              </WhatsAppTrackedLink>
               <Link
                 href="/vip"
                 className="flex items-center justify-center gap-2 py-3 rounded-2xl bg-gradient-to-b from-amber-400 to-amber-600 text-zinc-900 font-black"
@@ -435,7 +473,8 @@ export default function Navigation() {
               </Link>
             </li>
           </ul>
-        </div>
+          </div>
+        </>
       )}
     </nav>
   );

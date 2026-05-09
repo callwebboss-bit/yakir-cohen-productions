@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Phone, MessageCircle } from "lucide-react";
 import { useMemo } from "react";
+import { trackWaClick } from "@/lib/analytics";
 
 type Status = "open" | "closed" | "shabbat" | "early-sunday";
 
@@ -59,6 +60,7 @@ export default function MobileCtaBar() {
 
       <Link
         href="/contact/whatsapp"
+        onClick={() => trackWaClick("mobile_cta_bar", "קבעו עכשיו")}
         className="flex-1 flex items-center justify-center gap-1.5 min-h-[44px] rounded-lg bg-[#D42B2B] text-white font-bold text-sm hover:bg-red-700 active:bg-red-800 transition-colors min-w-0"
       >
         <MessageCircle size={15} aria-hidden="true" className="shrink-0" />
