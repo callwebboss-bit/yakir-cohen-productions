@@ -1,21 +1,29 @@
 import { IconWhatsApp } from '@/components/icons';
 import { Eyebrow, SectionWrapper, Btn, waHref } from './_shared';
 
-export default function CTABanner() {
+interface CTABannerProps {
+  title?: string;
+  subtitle?: string;
+}
+
+export default function CTABanner({
+  title = "קפצו לאולפן לחצי שעה. בלי התחייבות.",
+  subtitle = "רואים את החדר. שומעים את ההבדל. אם זה מתאים, קובעים."
+}: CTABannerProps) {
   return (
     <SectionWrapper dark>
-      <div className="grid grid-cols-[1fr_auto] gap-10 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 items-center text-center md:text-start">
         <div>
           <Eyebrow>לא צריך להחליט עכשיו</Eyebrow>
           <h2 className="font-serif text-[32px] font-black mt-2 mb-2 tracking-tight">
-            קפצו לאולפן לחצי שעה. בלי התחייבות.
+            {title}
           </h2>
           <p className="text-white/65 text-sm m-0">
-            רואים את החדר. שומעים את ההבדל. אם זה מתאים, קובעים.
+            {subtitle}
           </p>
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap justify-center md:justify-start gap-3">
           <a
             href={waHref('היי, רוצה לבוא לאולפן לביקור')}
             target="_blank"
