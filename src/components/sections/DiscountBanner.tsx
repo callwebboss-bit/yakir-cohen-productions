@@ -10,7 +10,7 @@ export default function DiscountBanner() {
   return (
     <div
       dir="rtl"
-      className="font-sans bg-gradient-to-r from-zinc-950 to-[#2a1212] text-white rounded-2xl p-6 grid grid-cols-[auto_1fr_auto] gap-6 items-center border-2 border-dashed border-brand-red"
+      className="font-sans bg-gradient-to-r from-zinc-950 to-[#2a1212] text-white rounded-2xl p-6 flex flex-col md:grid md:grid-cols-[auto_1fr_auto] gap-6 items-center border-2 border-dashed border-brand-red text-center md:text-start"
     >
       <div className="w-14 h-14 rounded-[14px] bg-brand-red/20 text-brand-red grid place-items-center shrink-0">
         <IconZap size={28} />
@@ -29,15 +29,15 @@ export default function DiscountBanner() {
         </p>
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
         <input
           value={code}
           onChange={(e) => setCode(e.target.value)}
           placeholder="קוד קופון"
           aria-label="הכנס קוד קופון"
-          className="bg-white/8 border border-white/15 rounded-lg px-3.5 py-2.5 text-white text-[13px] w-36 outline-none placeholder:text-white/40 focus:border-white/40"
+          className="bg-white/8 border border-white/15 rounded-lg px-3.5 py-2.5 text-white text-[13px] w-full sm:w-36 outline-none placeholder:text-white/40 focus:border-white/40"
         />
-        <Btn type="button">הפעל</Btn>
+        <Btn type="button" full className="sm:w-auto">הפעל</Btn>
       </div>
     </div>
   );

@@ -1,10 +1,15 @@
 import { SITE_URL } from "@/lib/site-url";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
 import StructuredData from "@/components/StructuredData";
-import YouTube from "@/components/ui/YouTube";
-import PriceReveal from "@/components/PriceReveal";
+import {
+  PricingTable,
+  VideoSection,
+  FeatureList,
+  ProcessSteps,
+  CTABanner,
+  SocialShare,
+} from '@/components/sections';
+import { SectionWrapper, Eyebrow } from "@/components/sections/_shared";
 
 export const metadata: Metadata = {
   title: "DJ לאירועים — חתונות, בר מצווה ואירועים פרטיים | יקיר כהן הפקות",
@@ -68,208 +73,82 @@ const faqSchema = {
   ],
 };
 
-const packages = [
-  {
-    name: "DJ לחתונה",
-    price: "12,650",
-    desc: "הפקה מוזיקלית מלאה לליל שבת, מן הכניסה ועד להיפרד",
-    features: [
-      "ציוד מקצועי ותאורה",
-      "שירי כניסה לחופה",
-      "ריקוד סלואו מותאם אישית",
-      "תיאום עם כל ספקי האירוע",
-      "גיבוי ציוד מלא",
-    ],
-    popular: true,
-  },
+const DJ_TIERS = [
   {
     name: "DJ לבר/בת מצווה",
     price: "7,500",
-    desc: "יום שנשאר בזיכרון — מוזיקה שמרגשת כל דור",
-    features: [
-      "מוזיקה לכל שלבי האירוע",
-      "שירים לפי בקשת הבר/בת מצווה",
-      "ציוד מקצועי",
-      "תיאום מלא עם ההורים",
-    ],
-    popular: false,
+    tag: null,
+    includes: ["ציוד הגברה ותאורה", "מוזיקה לכל שלבי האירוע", "תיאום מלא עם ההורים", "שירים לפי בקשה"],
+    missing: ["שירי כניסה מופקים", "עמדת לד פרימיום"],
+    cta: "בדקו זמינות",
+  },
+  {
+    name: "DJ לחתונה",
+    price: "12,650",
+    tag: "הכי נבחר",
+    includes: ["הפקה מוזיקלית מלאה", "שירי כניסה וסלואו", "ציוד ותאורה היקפית", "גיבוי ציוד מלא", "תיאום מול אולם"],
+    missing: [],
+    cta: "מתאים לי",
   },
 ];
 
 export default function DJEventsPage() {
   return (
-    <div className="flex flex-col" dir="rtl">
+    <main dir="rtl" className="flex flex-col bg-surface">
       <StructuredData data={schema} />
       <StructuredData data={faqSchema} />
 
-      {/* Hero */}
-      <header
-        className="py-20 px-6 text-center text-white"
-        style={{ background: "linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)" }}
-      >
-        <p className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4">
-          יקיר כהן הפקות · תקליטן לאירועים
-        </p>
-        <h1
-          className="text-4xl md:text-6xl font-bold leading-tight mb-4"
-          style={{ fontFamily: '"Frank Ruhl Libre", serif' }}
-        >
-          DJ לאירועים.
-          <br />
-          <span className="text-[#D42B2B]">כי המוזיקה היא מה שנשאר.</span>
-        </h1>
-        <p className="text-zinc-300 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
-          חתונה, בר מצווה, אירוע פרטי. אנחנו מטפלים בכל הרגעים המוזיקליים — מהכניסה עד הריקוד האחרון.
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <Link href="/contact/whatsapp" className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors shadow-lg">
-            בדקו זמינות לתאריך שלכם
-          </Link>
-          <Link href="/attractions" className="border border-white/30 text-white px-8 py-4 rounded font-bold hover:bg-white/10 transition-all">
-            הוסיפו אטרקציות
-          </Link>
-        </div>
-        <p className="text-zinc-600 text-xs mt-4">זמינות מוגבלת — כדאי לבדוק מוקדם</p>
-      </header>
-
-      {/* Packages */}
-      <section className="py-20 px-6 max-w-4xl mx-auto w-full">
-        <h2 className="font-serif text-3xl font-bold text-center mb-12">חבילות DJ</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {packages.map(({ name, price, desc, features, popular }) => (
-            <article
-              key={name}
-              className={`rounded-2xl p-8 flex flex-col gap-6 border ${
-                popular ? "bg-zinc-900 text-white border-zinc-700 shadow-2xl" : "bg-white border-zinc-200"
-              }`}
-            >
-              {popular && (
-                <span className="bg-[#D42B2B] text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider w-fit">
-                  הכי מבוקש
-                </span>
-              )}
-              <div>
-                <h3 className="font-serif text-2xl font-bold mb-1">{name}</h3>
-                <p className={`text-sm ${popular ? "text-zinc-400" : "text-zinc-500"}`}>{desc}</p>
-              </div>
-              <PriceReveal price={`מ-₪${price}`} service={name} dark={popular} />
-              <ul className="flex flex-col gap-3">
-                {features.map((f) => (
-                  <li key={f} className="flex items-center gap-2 justify-end text-sm">
-                    <span className={popular ? "text-zinc-300" : "text-zinc-600"}>{f}</span>
-                    <CheckCircle2 size={14} className="text-[#D42B2B] shrink-0" />
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/contact/whatsapp"
-                className={`w-full text-center py-3 rounded font-bold transition-all ${
-                  popular
-                    ? "bg-[#D42B2B] text-white hover:bg-white hover:text-black"
-                    : "border border-zinc-300 hover:bg-zinc-900 hover:text-white hover:border-zinc-900"
-                }`}
-              >
-                קבעו פגישה
-              </Link>
-            </article>
-          ))}
-        </div>
-        <p className="text-center text-xs text-zinc-400 mt-6">המחירים אינם כוללים מע&quot;מ (18%)</p>
-      </section>
-
-      {/* Video */}
-      <section className="py-10 px-6 bg-zinc-50 border-y border-zinc-200">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-serif text-2xl font-bold text-center mb-2">
-            איך עובדת הנחיית האירוע?
-          </h2>
-          <p className="text-center text-zinc-500 mb-6 text-sm">סרטון שמסביר את כל הפרטים</p>
-          <YouTube
-            url="https://www.youtube.com/watch?v=TF8DcK6M6jw"
-            title="הנחיית אירועים — DJ יקיר כהן הפקות"
-          />
-        </div>
-      </section>
-
-      {/* Portfolio divider + AI DJ demo */}
-      <div className="border-t-4 border-zinc-100" />
-      <section className="py-12 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-zinc-400 text-center mb-2">
-            תיק עבודות
+      <SectionWrapper dark pad="py-24">
+        <div className="text-center">
+          <Eyebrow muted>יקיר כהן הפקות · תקליטן לאירועים</Eyebrow>
+          <h1
+            className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 mt-4"
+            style={{ fontFamily: '"Frank Ruhl Libre", serif' }}
+          >
+            DJ לאירועים.
+            <br />
+            <span className="text-[#D42B2B]">כי המוזיקה היא מה שנשאר.</span>
+          </h1>
+          <p className="text-zinc-300 text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+            חתונה, בר מצווה, אירוע פרטי. אנחנו מטפלים בכל הרגעים המוזיקליים — מהכניסה עד הריקוד האחרון.
           </p>
-          <h2 className="font-serif text-2xl font-bold text-center mb-2">
-            AI בזמן אמת — ככה זה נשמע
-          </h2>
-          <p className="text-center text-zinc-500 mb-6 text-sm">
-            מיקס חכם מבוסס AI — חתונה אמיתית, קהל אמיתי
-          </p>
-          <YouTube
-            url="https://www.youtube.com/watch?v=lmYykgKAdUg"
-            title="DJ יקיר כהן עם AI בזמן אמת — תיק עבודות"
-          />
         </div>
-      </section>
+      </SectionWrapper>
 
-      {/* Why us */}
-      <section className="py-20 px-6 max-w-4xl mx-auto w-full">
-        <h2 className="font-serif text-2xl font-bold text-center mb-10">למה בוחרים ביקיר?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          {[
-            { t: "20+ שנות ניסיון", d: "אירועים ממגוון תרבויות ומסורות. יודעים לקרוא כל קהל." },
-            { t: "ציוד מקצועי + גיבוי", d: "ציוד ראשי ועתודה מלאה. לא מסתמכים על המזל." },
-            { t: "תיאום מלא", d: "עובדים עם כל ספקי האירוע — צלם, קייטרינג, אולם." },
-          ].map(({ t, d }) => (
-            <div key={t} className="flex flex-col gap-2">
-              <h3 className="font-bold text-lg">{t}</h3>
-              <p className="text-zinc-500 text-sm leading-relaxed">{d}</p>
-            </div>
-          ))}
+      <FeatureList
+        features={[
+          { icon: '🎧', title: "20+ שנות ניסיון", description: "אירועים ממגוון תרבויות ומסורות. יודעים לקרוא כל קהל." },
+          { icon: '🔊', title: "ציוד מקצועי", description: "ציוד ראשי ועתודה מלאה. לא מסתמכים על המזל." },
+          { icon: '🤝', title: "תיאום מלא", description: "עובדים עם כל ספקי האירוע — צלם, קייטרינג, אולם." },
+          { icon: '🪄', title: "AI בזמן אמת", description: "שילוב טכנולוגיה חכמה למיקסים מושלמים ומדויקים." },
+          { icon: '💃', title: "ניהול רחבה", description: "אנחנו יודעים מתי להרים ומתי לתת לרגע לדבר." },
+          { icon: '✨', title: "אטרקציות", description: "אפשרות לשלב זיקוקים, עשן ולד בחבילה אחת." },
+        ].map(f => ({ ...f, icon: <span className="text-xl">{f.icon}</span> }))}
+      />
+
+      <VideoSection
+        videoSrc="https://www.youtube.com/watch?v=TF8DcK6M6jw"
+        title="איך אנחנו מנהלים את המוזיקה באירוע שלכם"
+      />
+
+      <PricingTable tiers={DJ_TIERS} />
+
+      <ProcessSteps
+        steps={[
+          { title: 'פגישת היכרות', description: 'יושבים על הקפה, מבינים את הסגנון שלכם ושל האורחים.' },
+          { title: 'בניית פלייליסט', description: 'בוחרים שירי כניסה, סלואו ודגשים מוזיקליים.' },
+          { title: 'תיאום ספקים', description: 'אנחנו מדברים עם האולם והצלמים כדי שהכל יזרום.' },
+          { title: 'האירוע עצמו', description: 'אנחנו שם מהרגע הראשון ועד שאחרון האורחים הולך.' },
+        ]}
+      />
+
+      <CTABanner />
+
+      <SectionWrapper className="bg-white">
+        <div className="flex justify-center">
+          <SocialShare title="DJ לאירועים - יקיר כהן הפקות" />
         </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-20 px-6 bg-zinc-50 border-t border-zinc-200">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-serif text-2xl font-bold mb-8">שאלות נפוצות</h2>
-          <dl className="flex flex-col divide-y divide-zinc-200">
-            {[
-              { q: "מה כולל המחיר של חבילת חתונה?", a: "ציוד מקצועי, תאורה, שירי כניסה לחופה, ריקוד סלואו, תיאום עם ספקים וגיבוי ציוד. הכל במחיר אחד." },
-              { q: "כמה מראש צריך להזמין?", a: "לחתונות — מומלץ להזמין 6-12 חודשים מראש. לבר/בת מצווה — לפחות 3 חודשים." },
-              { q: "האם אפשר לבקש שירים ספציפיים?", a: "בהחלט. בונים יחד רשימת שירים מותאמת אישית — שיר כניסה, שירי ריקוד, שיר לסיום." },
-            ].map(({ q, a }) => (
-              <div key={q} className="py-6">
-                <dt className="font-bold mb-2">{q}</dt>
-                <dd className="text-zinc-500 text-sm leading-relaxed">{a}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-16 px-6 bg-[#D42B2B] text-white text-center">
-        <h2 className="font-serif text-2xl font-bold mb-3">מחפשים DJ בעיר שלכם?</h2>
-        <p className="text-white/90 mb-6">אנחנו משרתים את כל ישראל — בחרו את העיר שלכם.</p>
-        <Link href="/dj-events/cities" className="inline-block bg-white text-[#D42B2B] px-8 py-4 rounded font-bold hover:bg-zinc-100 transition-colors">
-          חפשו DJ בעיר
-        </Link>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-16 px-6 bg-zinc-900 text-white text-center">
-        <h2 className="font-serif text-2xl font-bold mb-3">בדקו זמינות לתאריך שלכם</h2>
-        <p className="text-zinc-400 mb-6">שלחו הודעה עם התאריך ונחזור אליכם תוך שעות.</p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <Link href="/contact/whatsapp" className="bg-[#D42B2B] text-white px-8 py-4 rounded font-bold hover:bg-red-700 transition-colors">
-            058-7-555-456 וואטסאפ
-          </Link>
-          <Link href="/attractions" className="border border-white/30 text-white px-8 py-4 rounded font-bold hover:bg-white/10 transition-all">
-            אטרקציות לאירוע
-          </Link>
-        </div>
-        <p className="text-zinc-600 text-xs mt-4">*תוכן זה נוצר בסיוע בינה מלאכותית</p>
-      </section>
-    </div>
+      </SectionWrapper>
+    </main>
   );
 }
