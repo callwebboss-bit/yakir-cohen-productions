@@ -5,6 +5,9 @@ import PodcastCalculator from '@/features/podcast/PodcastCalculator';
 import StudioRecordsSVG from '@/components/StudioRecordsSVG';
 import RelatedPages from '@/components/RelatedPages';
 
+// Sections Library
+import { SectionWrapper, Eyebrow } from "@/components/sections/_shared";
+
 export const metadata: Metadata = {
   title: 'הפקת פודקאסט מקצועית במודיעין | יקיר כהן הפקות',
   description:
@@ -59,32 +62,30 @@ const TAGS = ['הקלטה בלבד', 'וידאו מולטי-קאם', 'מכונת
 
 export default function PodcastPage() {
   return (
-    <div className="min-h-screen bg-[#FAFAF8]">
+    <div className="min-h-screen bg-[#FAFAF8] flex flex-col">
       <StructuredData data={podcastSchema} />
 
       {/* Dynamic Glassmorphism Hero */}
-      <div className="relative mb-16 rounded-3xl overflow-hidden">
-        <div className="absolute inset-0">
-          <StudioRecordsSVG />
+      <SectionWrapper containerClass="max-w-7xl mx-auto px-4 md:px-0">
+        <div className="relative rounded-3xl overflow-hidden min-h-[400px] flex items-center justify-center">
+          <div className="absolute inset-0">
+            <StudioRecordsSVG />
+          </div>
+          <div className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 backdrop-blur-md p-12 text-center w-full h-full flex flex-col justify-center">
+            <h1 className="font-serif text-5xl md:text-6xl font-bold mb-4 italic text-white">הפקת פודקאסט מקצועית</h1>
+            <p className="text-xl text-zinc-200 max-w-2xl mx-auto leading-relaxed">
+              הפודקאסט שלי ייצר נוכחות, אמון ולידים. אני דואג לכל השאר.
+            </p>
+          </div>
         </div>
-        <div className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-800/80 backdrop-blur-md p-12 text-center">
-          <h1 className="font-serif text-5xl font-bold mb-4 italic text-white">הפקת פודקאסט מקצועית</h1>
-          <p className="text-xl text-zinc-200 max-w-2xl mx-auto leading-relaxed">
-            הפודקאסט שלי ייצר נוכחות, אמון ולידים. אני דואג לכל השאר.
-          </p>
-        </div>
-      </div>
+      </SectionWrapper>
 
-      {/* Hero */}
-      <header className="bg-white border-b border-zinc-100 text-center py-14 px-4">
-        <p className="text-[11px] font-bold uppercase tracking-[1.4px] text-zinc-400 mb-5 flex items-center justify-center gap-2">
-          <span className="inline-block w-5 h-px bg-zinc-200" aria-hidden="true" />
-          יקיר כהן הפקות · מודיעין
-          <span className="inline-block w-5 h-px bg-zinc-200" aria-hidden="true" />
-        </p>
+      {/* Content Header */}
+      <SectionWrapper className="bg-white border-y border-zinc-100 text-center" pad="py-16 md:py-20">
+        <Eyebrow muted>יקיר כהן הפקות · מודיעין</Eyebrow>
 
         <h1
-          className="text-4xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-3"
+          className="text-4xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-4 mt-4"
           style={{ fontFamily: '"Frank Ruhl Libre", serif' }}
         >
           הפקת פודקאסט מקצועית במודיעין.
@@ -92,31 +93,32 @@ export default function PodcastPage() {
           <span className="text-[#D42B2B]">המקום שבו מומחים הופכים לאוטוריטה.</span>
         </h1>
 
-        <p className="text-[#6B6560] text-base max-w-sm mx-auto mb-6 leading-relaxed">
+        <p className="text-[#6B6560] text-lg max-w-xl mx-auto mb-8 leading-relaxed">
           הפודקאסט שלי ייצר נוכחות, אמון ולידים. אני דואג לכל השאר.
         </p>
 
-        <div className="flex flex-wrap gap-2 justify-center mb-4">
+        <div className="flex flex-wrap gap-2 justify-center mb-6">
           {TAGS.map((tag) => (
             <span
               key={tag}
-              className="border border-zinc-200 px-2.5 py-1 rounded text-[11px] font-semibold text-zinc-500 bg-white"
+              className="border border-zinc-200 px-3 py-1.5 rounded-full text-xs font-semibold text-zinc-500 bg-white"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <p className="text-[11px] text-zinc-400">כל המחירים אינם כוללים מע&quot;מ (18%)</p>
-      </header>
+        <p className="text-[11px] text-zinc-400">כל המחירים אינם כוללים מע"מ (18%)</p>
+      </SectionWrapper>
 
       {/* Calculator */}
-      <section className="py-10">
-        <p className="text-[10px] font-black uppercase tracking-[1.2px] text-zinc-400 text-center mb-6">
-          בחרו מסלול
-        </p>
+      <SectionWrapper pad="py-12 md:py-16">
+        <div className="text-center mb-10">
+          <Eyebrow>בחירת מסלול</Eyebrow>
+          <h2 className="font-serif text-3xl font-bold mt-2">מחשבון עלויות הפקה</h2>
+        </div>
         <PodcastCalculator />
-      </section>
+      </SectionWrapper>
 
       <RelatedPages
         title="מסלולי פודקאסט קשורים"

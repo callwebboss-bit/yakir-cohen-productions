@@ -9,6 +9,10 @@ import { BLUR_DATA_URL } from "@/lib/blur";
 import GoogleReviewsEmbed from "@/components/embeds/GoogleReviewsEmbed";
 import ElfsightInstagramFeed from "@/components/embeds/ElfsightInstagramFeed";
 
+// Sections Library
+import { SectionWrapper, Eyebrow, Btn } from "@/components/sections/_shared";
+import PricingTable from "@/components/sections/PricingTable";
+
 const HOME_IMAGES = {
   portrait: "/assets/images/recording-studio/יקיר כהן הפקות באולפן.webp",
   workStudio: "/assets/images/recording-studio/אולפן ההקלטה יקיר כהן.webp",
@@ -87,7 +91,7 @@ export default function Home() {
           className="absolute inset-0 bg-zinc-100/40"
           aria-hidden="true"
         />
-        <div className={`relative z-10 ${PAGE_SHELL} py-12 md:py-16 lg:py-20`}>
+        <div className={`relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 py-12 md:py-16 lg:py-20`}>
           <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14 lg:items-center">
             <div className="lg:col-span-7 flex flex-col items-center text-center lg:items-start lg:text-start gap-7 md:gap-9">
               <p className="text-xs font-bold tracking-widest text-zinc-500">
@@ -161,16 +165,16 @@ export default function Home() {
         </div>
       </header>
 
-      <section className={`py-16 md:py-20 ${PAGE_SHELL}`} aria-labelledby="services-hub-heading">
-        <div className="section-heading mx-auto max-w-3xl">
-          <h2 id="services-hub-heading" className="font-serif text-3xl md:text-4xl font-bold text-center text-balance">
+      <SectionWrapper>
+        <div className="text-center mb-10 md:mb-12">
+          <Eyebrow>קטגוריות שירות</Eyebrow>
+          <h2 id="services-hub-heading" className="font-serif text-3xl md:text-4xl font-bold text-balance mt-2">
             ארבעה כניסות ראשיות
           </h2>
-          <span className="section-heading__bar" aria-hidden="true" />
+          <p className="text-zinc-600 max-w-2xl mx-auto mt-4 text-pretty leading-relaxed">
+            בוחרים נושא — מגיעים לעמוד שמסביר את התהליך, מה כלול, ואיך ממשיכים משם.
+          </p>
         </div>
-        <p className="text-center text-zinc-600 max-w-2xl mx-auto mb-10 md:mb-12 text-pretty leading-relaxed mt-2">
-          בוחרים נושא — מגיעים לעמוד שמסביר את התהליך, מה כלול, ואיך ממשיכים משם.
-        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
           <CategoryCard
             id="cat-studio"
@@ -202,10 +206,10 @@ export default function Home() {
             isSpecial
           />
         </div>
-      </section>
+      </SectionWrapper>
 
-      <section className="py-16 md:py-24 bg-white border-y border-zinc-200">
-        <div className={`${PAGE_SHELL} grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center`}>
+      <SectionWrapper className="bg-white border-y border-zinc-200" pad="py-16 md:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           <div className="lg:col-span-5 relative">
             <div className="aspect-[3/4] max-w-sm mx-auto lg:max-w-none rounded-3xl overflow-hidden border border-zinc-200 bg-surface p-2 shadow-sm brand-shadow">
               <Image
@@ -227,6 +231,7 @@ export default function Home() {
             </div>
           </div>
           <article className="lg:col-span-7 flex flex-col gap-8 xl:pe-4">
+            <Eyebrow>החזון שלנו</Eyebrow>
             <h2 className="font-serif text-4xl md:text-5xl font-bold leading-tight text-balance">
               אותו בית הפקה.
               <br />
@@ -260,108 +265,88 @@ export default function Home() {
             </div>
           </article>
         </div>
-      </section>
+      </SectionWrapper>
 
-      <section className="py-16 md:py-24 bg-brand-red text-white" aria-labelledby="events-teaser-heading">
-        <div className={PAGE_SHELL}>
-          <h2 id="events-teaser-heading" className="font-serif text-3xl md:text-4xl font-bold mb-3 text-balance">
-            אטרקציות וציוד לאירוע
-          </h2>
-          <p className="text-white/85 max-w-2xl mb-10 leading-relaxed text-pretty">
-            בנוסף ל-DJ ולסאונד — אפשר להזמין זיקוקים קרים, עשן, בועות ועוד. פירוט מלא ומחשבון הערכה בעמוד האטרקציות.
-          </p>
-          <div className="w-16 h-1 bg-white/90 mb-10" aria-hidden="true" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div className="bg-white/15 p-6 rounded-2xl border border-white/25">
-              <h3 className="font-bold text-lg mb-2">זיקוקים קרים</h3>
-              <p className="text-white/90 text-sm leading-relaxed">רגעי כניסה וחופה — בטיחותי כשעובדים לפי הנחיות המקום.</p>
-            </div>
-            <div className="bg-white/15 p-6 rounded-2xl border border-white/25">
-              <h3 className="font-bold text-lg mb-2">עשן ו-CO₂</h3>
-              <p className="text-white/90 text-sm leading-relaxed">עומק בתמונה ובאווירה, עם תיאום מול אולם וחשמל.</p>
-            </div>
-            <div className="bg-white/15 p-6 rounded-2xl border border-white/25">
-              <h3 className="font-bold text-lg mb-2">בועות סבון</h3>
-              <p className="text-white/90 text-sm leading-relaxed">מתאים לכניסות, ילדים וצילומי משפחה.</p>
-            </div>
-            <div className="bg-white/15 p-6 rounded-2xl border border-white/25">
-              <h3 className="font-bold text-lg mb-2">תאורה ואפקטים</h3>
-              <p className="text-white/90 text-sm leading-relaxed">תומך ברחבה ובמסלול המוזיקה, לא מצליח על השיר.</p>
-            </div>
+      <SectionWrapper dark pad="py-16 md:py-24">
+        <Eyebrow muted>אטרקציות</Eyebrow>
+        <h2 id="events-teaser-heading" className="font-serif text-3xl md:text-4xl font-bold mb-3 text-balance mt-2">
+          אטרקציות וציוד לאירוע
+        </h2>
+        <p className="text-white/85 max-w-2xl mb-10 leading-relaxed text-pretty">
+          בנוסף ל-DJ ולסאונד — אפשר להזמין זיקוקים קרים, עשן, בועות ועוד. פירוט מלא ומחשבון הערכה בעמוד האטרקציות.
+        </p>
+        <div className="w-16 h-1 bg-white/90 mb-10" aria-hidden="true" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="bg-white/15 p-6 rounded-2xl border border-white/25">
+            <h3 className="font-bold text-lg mb-2">זיקוקים קרים</h3>
+            <p className="text-white/90 text-sm leading-relaxed">רגעי כניסה וחופה — בטיחותי כשעובדים לפי הנחיות המקום.</p>
           </div>
-          <div className="mt-10">
-            <Link
-              href="/attractions"
-              className="inline-flex items-center gap-2 font-bold text-white border-b-2 border-white/80 pb-1 hover:border-white transition-colors"
-            >
-              לעמוד האטרקציות והמחשבון
-              <ArrowLeft size={16} aria-hidden="true" />
-            </Link>
+          <div className="bg-white/15 p-6 rounded-2xl border border-white/25">
+            <h3 className="font-bold text-lg mb-2">עשן ו-CO₂</h3>
+            <p className="text-white/90 text-sm leading-relaxed">עומק בתמונה ובאווירה, עם תיאום מול אולם וחשמל.</p>
+          </div>
+          <div className="bg-white/15 p-6 rounded-2xl border border-white/25">
+            <h3 className="font-bold text-lg mb-2">בועות סבון</h3>
+            <p className="text-white/90 text-sm leading-relaxed">מתאים לכניסות, ילדים וצילומי משפחה.</p>
+          </div>
+          <div className="bg-white/15 p-6 rounded-2xl border border-white/25">
+            <h3 className="font-bold text-lg mb-2">תאורה ואפקטים</h3>
+            <p className="text-white/90 text-sm leading-relaxed">תומך ברחבה ובמסלול המוזיקה, לא מצליח על השיר.</p>
           </div>
         </div>
-      </section>
-
-      <section className="py-16 md:py-24 bg-white" aria-labelledby="pricing-snapshot-heading">
-        <div className={PAGE_SHELL}>
-          <h2 id="pricing-snapshot-heading" className="font-serif text-3xl md:text-4xl font-bold mb-3 text-balance">
-            נקודות פתיחה למחירון
-          </h2>
-          <p className="text-zinc-600 max-w-2xl mb-8 leading-relaxed text-pretty">
-            המספרים להמחשה בלבד; סוג הפרויקט, זמן האולפן והליווי משפיעים על ההצעה הסופית. לפירוט מדויק — עמוד השירות או{" "}
-            <Link href="/contact" className="font-bold text-brand-red underline-offset-2 hover:underline">
-              צור קשר
-            </Link>
-            .
-          </p>
-          <div className="w-16 h-1 bg-brand-red mb-10" aria-hidden="true" />
-          <div className="overflow-x-auto rounded-2xl border border-zinc-200 bg-white shadow-sm">
-            <table className="w-full text-right text-sm md:text-base">
-              <thead>
-                <tr className="border-b-2 border-zinc-200 bg-zinc-50/80">
-                  <th scope="col" className="py-4 px-6 font-bold">שירות</th>
-                  <th scope="col" className="py-4 px-6 font-bold">החל מ־</th>
-                  <th scope="col" className="py-4 px-6 font-bold">מה בדרך כלל כלול</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-zinc-100">
-                  <td className="py-4 px-6">הקלטת שיר</td>
-                  <td className="py-4 px-6 font-bold">990 ש"ח</td>
-                  <td className="py-4 px-6 text-sm">טכנאי סאונד, תיקון זיופים ומיקס ראשוני</td>
-                </tr>
-                <tr className="border-b border-zinc-100">
-                  <td className="py-4 px-6">DJ ל-4 שעות</td>
-                  <td className="py-4 px-6 font-bold">2,490 ש"ח</td>
-                  <td className="py-4 px-6 text-sm">סאונד, תאורה, MC וניהול מוזיקלי מלא</td>
-                </tr>
-                <tr className="border-b border-zinc-100">
-                  <td className="py-4 px-6">זיקוקים קרים</td>
-                  <td className="py-4 px-6 font-bold">1,500 ש"ח</td>
-                  <td className="py-4 px-6 text-sm">ציוד, הקמה וליווי טכני</td>
-                </tr>
-                <tr className="border-b border-zinc-100">
-                  <td className="py-4 px-6">מכונת עשן</td>
-                  <td className="py-4 px-6 font-bold">890 ש"ח</td>
-                  <td className="py-4 px-6 text-sm">ציוד והפעלה לאורך האירוע</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6">הפקת פודקאסט</td>
-                  <td className="py-4 px-6 font-bold">3,990 ש"ח</td>
-                  <td className="py-4 px-6 text-sm">הקלטה, עריכה, מיקס והכנה להפצה</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div className="mt-10">
+          <Link
+            href="/attractions"
+            className="inline-flex items-center gap-2 font-bold text-white border-b-2 border-white/80 pb-1 hover:border-white transition-colors"
+          >
+            לעמוד האטרקציות והמחשבון
+            <ArrowLeft size={16} aria-hidden="true" />
+          </Link>
         </div>
-      </section>
+      </SectionWrapper>
 
-      <section className="py-16 md:py-24 bg-zinc-100/50">
-        <div className={`${PAGE_SHELL} text-center`}>
+      <PricingTable
+        tiers={[
+          {
+            name: 'הקלטת שיר',
+            price: '990',
+            tag: null,
+            includes: ['טכנאי סאונד', 'תיקון זיופים', 'מיקס ראשוני', 'סשן באולפן'],
+            missing: ['מילים ולחן מקורי'],
+            cta: 'הזמן הקלטה',
+          },
+          {
+            name: 'DJ לאירוע',
+            price: '2,490',
+            tag: 'הכי נבחר',
+            includes: ['סאונד ותאורה', 'MC וניהול מוזיקלי', 'פגישת תיאום', '4 שעות אירוע'],
+            missing: [],
+            cta: 'בדוק זמינות',
+          },
+          {
+            name: 'זיקוקים קרים',
+            price: '1,500',
+            tag: null,
+            includes: ['ציוד והקמה', 'ליווי טכני', 'בטיחותי ומאושר'],
+            missing: [],
+            cta: 'הוסף לאירוע',
+          },
+          {
+            name: 'הפקת פודקאסט',
+            price: '3,990',
+            tag: 'פרימיום',
+            includes: ['הקלטה ועריכה', 'מיקס והכנה להפצה', 'ליווי תוכן', 'ציוד קצה'],
+            missing: [],
+            cta: 'דברו איתנו',
+          }
+        ]}
+      />
+
+      <SectionWrapper className="bg-zinc-100/50" pad="py-16 md:py-24">
+        <div className="text-center">
           <div className="mb-10">
-            <div className="section-heading mx-auto max-w-3xl">
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-balance">משובים (דוגמאות)</h2>
-              <span className="section-heading__bar" aria-hidden="true" />
-            </div>
+            <Eyebrow>מה חושבים עלינו</Eyebrow>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-balance mt-2">משובים (דוגמאות)</h2>
             <div className="flex justify-center gap-1 mb-4 mt-6" aria-hidden="true">
               {[1, 2, 3, 4, 5].map((i) => (
                 <span key={i} className="text-3xl text-brand-red/90">
@@ -395,147 +380,140 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionWrapper>
 
-      <section className="py-14 md:py-20 bg-white border-t border-zinc-200" aria-labelledby="explore-more-heading">
-        <div className={PAGE_SHELL}>
-          <div className="section-heading section-heading--start mb-3 max-w-2xl">
-            <h2 id="explore-more-heading" className="font-serif text-2xl md:text-3xl font-bold text-balance text-start w-full">
-              ניווט מהיר לפי שירות
-            </h2>
-            <span className="section-heading__bar self-start" aria-hidden="true" />
+      <SectionWrapper className="bg-white border-t border-zinc-200" pad="py-14 md:py-20">
+        <Eyebrow>ניווט</Eyebrow>
+        <h2 id="explore-more-heading" className="font-serif text-2xl md:text-3xl font-bold text-balance text-start w-full mt-2 mb-3">
+          ניווט מהיר לפי שירות
+        </h2>
+        <p className="text-zinc-600 mb-8 max-w-2xl text-sm md:text-base leading-relaxed text-pretty">
+          כל קישור מוביל לעמוד ייעודי עם פירוט, מחירים כשהם רלוונטיים, ודרך ליצירת קשר.
+        </p>
+        <nav aria-label="קישורים לשירותים עיקריים" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-3 text-sm">
+          <ul className="space-y-2 list-none p-0">
+            <li className="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">אולפן</li>
+            <li>
+              <Link href="/studio/recording-song-modiin" className="text-zinc-700 hover:text-brand-red font-medium">
+                הקלטת שיר במודיעין
+              </Link>
+            </li>
+            <li>
+              <Link href="/studio/blessings" className="text-zinc-700 hover:text-brand-red font-medium">
+                ברכות לחתונה ואירועים
+              </Link>
+            </li>
+            <li>
+              <Link href="/online/vocal-fix" className="text-zinc-700 hover:text-brand-red font-medium">
+                שירותי קול אונליין
+              </Link>
+            </li>
+          </ul>
+          <ul className="space-y-2 list-none p-0">
+            <li className="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">אירועים ותוכן</li>
+            <li>
+              <Link href="/events/dj-events" className="text-zinc-700 hover:text-brand-red font-medium">
+                DJ לאירועים
+              </Link>
+            </li>
+            <li>
+              <Link href="/podcast/podcast-production" className="text-zinc-700 hover:text-brand-red font-medium">
+                הפקת פודקאסט
+              </Link>
+            </li>
+            <li>
+              <Link href="/business/professional-voiceover" className="text-zinc-700 hover:text-brand-red font-medium">
+                קריינות לעסקים
+              </Link>
+            </li>
+          </ul>
+          <ul className="space-y-2 list-none p-0">
+            <li className="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">כלים ומידע</li>
+            <li>
+              <Link href="/online/vocal-fix/stem-split" className="text-zinc-700 hover:text-brand-red font-medium">
+                פיצול ערוצים (Stem split)
+              </Link>
+            </li>
+            <li>
+              <Link href="/stemsplit" className="text-zinc-700 hover:text-brand-red font-medium">
+                StemSplit — כלי באתר
+              </Link>
+            </li>
+            <li>
+              <Link href="/site-map" className="text-zinc-700 hover:text-brand-red font-medium">
+                מפת אתר מלאה
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </SectionWrapper>
+
+      <SectionWrapper className="bg-white">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-12 md:mb-16 px-1">
+          <div>
+            <Eyebrow>גלריה</Eyebrow>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-3 text-balance mt-2">מתוך העבודה</h2>
+            <div className="w-16 h-1 bg-brand-red" aria-hidden="true" />
           </div>
-          <p className="text-zinc-600 mb-8 max-w-2xl text-sm md:text-base leading-relaxed text-pretty">
-            כל קישור מוביל לעמוד ייעודי עם פירוט, מחירים כשהם רלוונטיים, ודרך ליצירת קשר.
+          <Link href="/studio" className="text-zinc-600 font-bold hover:text-black transition-colors flex items-center gap-2 shrink-0">
+            לעמוד האולפן
+            <ArrowLeft size={16} aria-hidden="true" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
+          <WorkCard
+            id="work-1"
+            img={HOME_IMAGES.workStudio}
+            category="הפקה והקלטה"
+            title="האולפן בזמן עבודה"
+            artist="סשן הקלטה מתוך המתחם"
+            href="/studio"
+          />
+          <WorkCard
+            id="work-2"
+            img={HOME_IMAGES.workPodcast}
+            category="פודקאסט ועסקים"
+            title="עמדת פודקאסט פעילה"
+            artist="צילום מתוך אולפן הפודקאסט"
+            href="/podcast"
+          />
+          <WorkCard
+            id="work-3"
+            img={HOME_IMAGES.workEvents}
+            category="אירועים ואטרקציות"
+            title="חופה עם זיקוקים קרים"
+            artist="אפקט כניסה לאירוע"
+            href="/attractions"
+          />
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper className="bg-zinc-50 border-t border-zinc-200" pad="py-16 md:py-24">
+        <div className="mb-10 px-1">
+          <Eyebrow muted>Google</Eyebrow>
+          <h2 id="home-google-reviews-heading" className="font-serif text-3xl md:text-4xl font-bold text-balance mb-3 mt-2">
+            מה אומרים עלינו בגוגל
+          </h2>
+          <p className="text-sm text-zinc-600 max-w-2xl leading-relaxed">
+            ביקורות חיות מהפרופיל בגוגל — נטען בעצלתיים כדי לא להאט את דף הבית.
           </p>
-          <nav aria-label="קישורים לשירותים עיקריים" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-3 text-sm">
-            <ul className="space-y-2">
-              <li className="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">אולפן</li>
-              <li>
-                <Link href="/studio/recording-song-modiin" className="text-zinc-700 hover:text-brand-red font-medium">
-                  הקלטת שיר במודיעין
-                </Link>
-              </li>
-              <li>
-                <Link href="/studio/blessings" className="text-zinc-700 hover:text-brand-red font-medium">
-                  ברכות לחתונה ואירועים
-                </Link>
-              </li>
-              <li>
-                <Link href="/online/vocal-fix" className="text-zinc-700 hover:text-brand-red font-medium">
-                  שירותי קול אונליין
-                </Link>
-              </li>
-            </ul>
-            <ul className="space-y-2">
-              <li className="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">אירועים ותוכן</li>
-              <li>
-                <Link href="/events/dj-events" className="text-zinc-700 hover:text-brand-red font-medium">
-                  DJ לאירועים
-                </Link>
-              </li>
-              <li>
-                <Link href="/podcast/podcast-production" className="text-zinc-700 hover:text-brand-red font-medium">
-                  הפקת פודקאסט
-                </Link>
-              </li>
-              <li>
-                <Link href="/business/professional-voiceover" className="text-zinc-700 hover:text-brand-red font-medium">
-                  קריינות לעסקים
-                </Link>
-              </li>
-            </ul>
-            <ul className="space-y-2">
-              <li className="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">כלים ומידע</li>
-              <li>
-                <Link href="/online/vocal-fix/stem-split" className="text-zinc-700 hover:text-brand-red font-medium">
-                  פיצול ערוצים (Stem split)
-                </Link>
-              </li>
-              <li>
-                <Link href="/stemsplit" className="text-zinc-700 hover:text-brand-red font-medium">
-                  StemSplit — כלי באתר
-                </Link>
-              </li>
-              <li>
-                <Link href="/site-map" className="text-zinc-700 hover:text-brand-red font-medium">
-                  מפת אתר מלאה
-                </Link>
-              </li>
-            </ul>
-          </nav>
         </div>
-      </section>
+        <GoogleReviewsEmbed />
+      </SectionWrapper>
 
-      <section className="py-16 md:py-24 bg-white">
-        <div className={PAGE_SHELL}>
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-12 md:mb-16 px-1">
-            <div>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-3 text-balance">מתוך העבודה</h2>
-              <div className="w-16 h-1 bg-brand-red" aria-hidden="true" />
-            </div>
-            <Link href="/studio" className="text-zinc-600 font-bold hover:text-black transition-colors flex items-center gap-2 shrink-0">
-              לעמוד האולפן
-              <ArrowLeft size={16} aria-hidden="true" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
-            <WorkCard
-              id="work-1"
-              img={HOME_IMAGES.workStudio}
-              category="הפקה והקלטה"
-              title="האולפן בזמן עבודה"
-              artist="סשן הקלטה מתוך המתחם"
-              href="/studio"
-            />
-            <WorkCard
-              id="work-2"
-              img={HOME_IMAGES.workPodcast}
-              category="פודקאסט ועסקים"
-              title="עמדת פודקאסט פעילה"
-              artist="צילום מתוך אולפן הפודקאסט"
-              href="/podcast"
-            />
-            <WorkCard
-              id="work-3"
-              img={HOME_IMAGES.workEvents}
-              category="אירועים ואטרקציות"
-              title="חופה עם זיקוקים קרים"
-              artist="אפקט כניסה לאירוע"
-              href="/attractions"
-            />
-          </div>
+      <SectionWrapper className="bg-white border-t border-zinc-200" pad="py-16 md:py-24">
+        <div className="mb-10 px-1">
+          <Eyebrow muted>Instagram</Eyebrow>
+          <h2 id="home-instagram-heading" className="font-serif text-3xl md:text-4xl font-bold text-balance mb-3 mt-2">
+            עקבו אחרינו באינסטגרם
+          </h2>
+          <p className="text-sm text-zinc-600 max-w-2xl leading-relaxed">
+            עדכונים מהאולפן, מאחורי הקלעים ומהשטח — הפיד נטען כשמתקרבים אליו.
+          </p>
         </div>
-      </section>
-
-      <section className="py-16 md:py-24 bg-zinc-50 border-t border-zinc-200" aria-labelledby="home-google-reviews-heading">
-        <div className={PAGE_SHELL}>
-          <div className="mb-10 px-1">
-            <h2 id="home-google-reviews-heading" className="font-serif text-3xl md:text-4xl font-bold text-balance mb-3">
-              מה אומרים עלינו בגוגל
-            </h2>
-            <p className="text-sm text-zinc-600 max-w-2xl leading-relaxed">
-              ביקורות חיות מהפרופיל בגוגל — נטען בעצלתיים כדי לא להאט את דף הבית.
-            </p>
-          </div>
-          <GoogleReviewsEmbed />
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24 bg-white border-t border-zinc-200" aria-labelledby="home-instagram-heading">
-        <div className={PAGE_SHELL}>
-          <div className="mb-10 px-1">
-            <h2 id="home-instagram-heading" className="font-serif text-3xl md:text-4xl font-bold text-balance mb-3">
-              עקבו אחרינו באינסטגרם
-            </h2>
-            <p className="text-sm text-zinc-600 max-w-2xl leading-relaxed">
-              עדכונים מהאולפן, מאחורי הקלעים ומהשטח — הפיד נטען כשמתקרבים אליו.
-            </p>
-          </div>
-          <ElfsightInstagramFeed />
-        </div>
-      </section>
+        <ElfsightInstagramFeed />
+      </SectionWrapper>
     </div>
   );
 }

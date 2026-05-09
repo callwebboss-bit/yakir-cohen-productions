@@ -36,7 +36,7 @@ export default function ProcessSteps({ steps = DEFAULT_STEPS }: ProcessStepsProp
         ארבעה צעדים. בלי הפתעות.
       </h2>
 
-      <ol className="list-none p-0 m-0 grid grid-cols-4 gap-4" aria-label="שלבי התהליך">
+      <ol className="list-none p-0 m-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4" aria-label="שלבי התהליך">
         {steps.map((step, i) => (
           <li key={step.title} className="relative">
             <div
@@ -45,11 +45,11 @@ export default function ProcessSteps({ steps = DEFAULT_STEPS }: ProcessStepsProp
             >
               {i + 1}
             </div>
-            {/* Connector line between steps */}
+            {/* Connector line between steps - only on large screens */}
             {i < steps.length - 1 && (
               <div
                 aria-hidden="true"
-                className="absolute top-[22px] start-[50px] end-[-8px] h-px bg-zinc-200"
+                className="hidden lg:block absolute top-[22px] start-[50px] end-[-8px] h-px bg-zinc-200"
               />
             )}
             <h3 className="font-serif text-lg font-extrabold mb-1.5">{step.title}</h3>

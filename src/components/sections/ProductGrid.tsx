@@ -40,10 +40,13 @@ export default function ProductGrid({ products = DEFAULT_PRODUCTS }: ProductGrid
   return (
     <SectionWrapper>
       <Eyebrow>שוברים ומוצרים</Eyebrow>
-      <h2 className="font-serif text-[32px] font-black mt-2 mb-[22px] tracking-tight">
+      <h2 className="font-serif text-4xl font-black mt-2 mb-1.5 tracking-tight">
         מתנות שמשמיעות.
       </h2>
-      <div className="grid grid-cols-3 gap-4">
+      <p className="text-zinc-600 text-sm mb-7">
+        שוברים שאפשר לתת ביד או במייל. מתאים ליום הולדת, חתונה או פרישה.
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
         {products.map((product, i) => (
           <ProductCard key={i} product={product} inGrid />
         ))}

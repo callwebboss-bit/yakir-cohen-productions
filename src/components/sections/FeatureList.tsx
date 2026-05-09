@@ -56,7 +56,7 @@ export default function FeatureList({ features = FEATURES }: FeatureListProps) {
         שש סיבות שלקוחות חוזרים. כל אחת קונקרטית, אפשר למדוד.
       </p>
 
-      <ul className="list-none p-0 m-0 grid grid-cols-3 gap-4">
+      <ul className="list-none p-0 m-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
         {features.map((f) => (
           <li
             key={f.title}

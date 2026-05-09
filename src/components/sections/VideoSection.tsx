@@ -5,16 +5,22 @@ interface VideoSectionProps {
   videoSrc?: string;
   thumbnailSrc?: string;
   thumbnailAlt?: string;
+  eyebrow?: string;
+  title?: string;
+  description?: string;
 }
 
 export default function VideoSection({
   videoSrc = 'https://www.youtube.com/watch?v=REPLACE_ME',
   thumbnailSrc = '/sections/placeholder.svg',
   thumbnailAlt = 'תצוגה מקדימה של סרטון האולפן',
+  eyebrow = 'צופים מבפנים',
+  title = 'ככה נראית הקלטה אצלנו.',
+  description = 'סשן אחד, שלוש שעות, מקוצר ל־90 שניות. המקום, הציוד, ואיך עובד התהליך.',
 }: VideoSectionProps) {
   return (
     <SectionWrapper>
-      <div className="grid grid-cols-[1.4fr_1fr] gap-9 items-center">
+      <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr_1fr] gap-8 lg:gap-9 items-center">
         <div className="relative">
           <SectionImage
             src={thumbnailSrc}
@@ -34,13 +40,13 @@ export default function VideoSection({
           </a>
         </div>
 
-        <div>
-          <Eyebrow>צופים מבפנים</Eyebrow>
-          <h2 className="font-serif text-[30px] font-black mt-2 mb-3 tracking-tight">
-            ככה נראית הקלטה אצלנו.
+        <div className="text-center lg:text-start order-first lg:order-none">
+          <Eyebrow>{eyebrow}</Eyebrow>
+          <h2 className="font-serif text-3xl md:text-[30px] font-black mt-2 mb-3 tracking-tight">
+            {title}
           </h2>
           <p className="text-zinc-600 text-sm leading-[1.7] mb-4">
-            סשן אחד, שלוש שעות, מקוצר ל־90 שניות. המקום, הציוד, ואיך עובד התהליך.
+            {description}
           </p>
           <p className="text-zinc-400 text-[11px] m-0">
             וידאו מתארח ב־YouTube · נטען רק על קליק

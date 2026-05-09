@@ -15,6 +15,11 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import IdleGhostButton from "@/components/IdleGhostButton";
 import ClipboardAttribution from "@/components/ClipboardAttribution";
 
+// Sections Library Globals
+import NotificationBar from '@/components/sections/NotificationBar';
+import FloatingButton from '@/components/sections/FloatingButton';
+import CookieConsent from '@/components/sections/CookieConsent';
+
 const BASE_URL = SITE_URL;
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 const OG_IMAGE = `${BASE_URL}/assets/images/recording-studio/%D7%90%D7%95%D7%9C%D7%A4%D7%9F-%D7%94%D7%A7%D7%9C%D7%98%D7%95%D7%AA-2-scaled.webp`;
@@ -139,6 +144,7 @@ export default function RootLayout({
         <div className="sr-only" aria-hidden="true">
           <Logo />
         </div>
+        <NotificationBar />
         <Navigation />
         <DynamicHero />
         <main id="main-content" className="min-h-screen pt-20 pb-20 lg:pb-0">
@@ -151,6 +157,8 @@ export default function RootLayout({
         <WhatsAppFloat />
         <IdleGhostButton />
         <ClipboardAttribution />
+        <FloatingButton />
+        <CookieConsent />
       </body>
     </html>
   );

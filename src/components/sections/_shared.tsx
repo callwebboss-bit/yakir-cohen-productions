@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import React from 'react';
 import type { ReactNode, ButtonHTMLAttributes } from 'react';
 
 /* ─────────────────────────────────────────────────────────────────
@@ -87,15 +88,17 @@ export function Eyebrow({
 export function SectionWrapper({
   children,
   dark = false,
-  pad = 'p-[60px]',
+  pad = 'py-16 md:py-20 lg:py-24 px-6 md:px-10 lg:px-12',
   id,
   className = '',
+  containerClass = 'max-w-7xl mx-auto',
 }: {
   children: ReactNode;
   dark?: boolean;
   pad?: string;
   id?: string;
   className?: string;
+  containerClass?: string;
 }) {
   return (
     <section
@@ -103,7 +106,9 @@ export function SectionWrapper({
       dir="rtl"
       className={`font-sans ${dark ? 'bg-zinc-900 text-white' : 'bg-surface text-[#1a1a1a]'} ${pad} ${className}`}
     >
-      {children}
+      <div className={containerClass}>
+        {children}
+      </div>
     </section>
   );
 }
@@ -118,6 +123,7 @@ interface BtnProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'childr
   sm?: boolean;
   full?: boolean;
   icon?: ReactNode;
+  asChild?: boolean;
 }
 
 export function Btn({
@@ -128,6 +134,7 @@ export function Btn({
   full = false,
   icon,
   className = '',
+  asChild = false,
   ...rest
 }: BtnProps) {
   const sizeClass = sm ? 'px-3.5 py-2 text-[12px]' : 'px-[22px] py-[13px] text-sm';
@@ -144,11 +151,18 @@ export function Btn({
     variantClass = 'bg-zinc-900 text-white border-transparent';
   }
 
+  const classes = `inline-flex items-center gap-2 rounded-md font-extrabold font-sans cursor-pointer ${sizeClass} ${fullClass} ${variantClass} ${className}`;
+
+  if (asChild && React.isValidElement(children)) {
+    const child = children as React.ReactElement<any>;
+    return React.cloneElement(child, {
+      className: `${child.props.className || ''} ${classes}`,
+      ...rest,
+    });
+  }
+
   return (
-    <button
-      {...rest}
-      className={`inline-flex items-center gap-2 rounded-md font-extrabold font-sans cursor-pointer ${sizeClass} ${fullClass} ${variantClass} ${className}`}
-    >
+    <button {...rest} className={classes}>
       {icon}
       {children}
     </button>

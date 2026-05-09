@@ -60,7 +60,7 @@ export default function PricingTable({ tiers = DEFAULT_TIERS }: PricingTableProp
         מחירים סופיים, כוללים מע״מ. אפשר לשדרג בכל שלב.
       </p>
 
-      <div className="grid grid-cols-4 gap-3.5 items-stretch">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6 items-stretch">
         {tiers.map((tier) => {
           const featured = tier.tag === 'הכי נבחר';
           return (

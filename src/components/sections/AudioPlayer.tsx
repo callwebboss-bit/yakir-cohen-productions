@@ -8,6 +8,7 @@ interface AudioPlayerProps {
   episodeNumber?: number;
   title?: string;
   guests?: string;
+  artist?: string;
   durationLabel?: string;
   currentTime?: string;
   progressPct?: number;
@@ -18,6 +19,7 @@ export default function AudioPlayer({
   episodeNumber = 12,
   title = 'איך בוחרים מיקרופון לפודקאסט?',
   guests = 'יקיר כהן ומיכל אלון',
+  artist,
   durationLabel = '32 דקות',
   currentTime = '04:32',
   progressPct = 30,
@@ -41,7 +43,7 @@ export default function AudioPlayer({
           <Eyebrow>פרק {episodeNumber}</Eyebrow>
           <h3 className="font-serif text-[22px] font-extrabold mt-1.5 mb-1">{title}</h3>
           <p className="text-white/60 text-xs mb-3.5">
-            {durationLabel} · {guests}
+            {durationLabel} · {artist || guests}
           </p>
 
           {/* Progress bar */}
